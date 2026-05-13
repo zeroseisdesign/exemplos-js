@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplos JavaScript</title>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -77,78 +78,21 @@ document.write("Negativo");
     <button id="btnComprobar">Comprobar</button>
     <p id="resultado2"></p>
 
-    <script>
-        //Exemplo operacións lóxicas
-        let idade = 19;
-        let tenCarnet = true;
+    <h3>Eventos</h3>
+    <button id="btnSaudo">
+        Premer
+    </button>
+    <h3 id="texto">
+        Cambios dinámicos
+    </h3>
+    <button id="btnCambiar">
+        Cambiar texto
+    </button>
+    <h3>Cambiar propiedades</h3>
+    <button id="btnColor">
+        Cambiar cor
+    </button>
 
-        if (idade >= 18 && tenCarnet) {
-            console.log("Pode conducir");
-        }
-
-        //Secuencias dun programa
-        let num = 5;
-        let dobre = num * 2;
-        console.log(dobre);
-
-        //Ordinograma
-        let num2 = 3;
-
-        if (num2 > 0) {
-            console.log("É maior que 0");
-        }
-        else {
-            console.log("É menor ou igual que 0");
-        }
-
-        //Pseudocódigo traducido
-        let numero = prompt("Introduce un número");
-
-        if (numero > 0) {
-            document.write("Positivo");
-        } else {
-            document.write("Negativo");
-        }
-
-        //Con formulario
-        function comprobar() {
-            let numeroInput = document.getElementById("numeroinput").value;
-
-            if (numeroInput > 0) {
-                alert("positivo");
-            } else {
-                alert("negativo");
-            }
-        }
-
-        //Con formulario y resultado en tag de página
-        function comprobarTag() {
-            let numeroInput = document.getElementById("numeroinput2").value;
-            let resultado = document.getElementById("resultado");
-
-            if (numeroInput > 0) {
-                resultado.innerHTML = "positivo";
-            } else {
-                resultado.innerHTML = "negativo";
-            }
-        }
-
-        //Con formulario y resultado en tag de página y evento desde el script
-        let boton = document.getElementById("btnComprobar");
-
-        boton.addEventListener("click", comprobarTag3);
-
-        function comprobarTag3() {
-            let numeroInput = document.getElementById("numeroinput3").value;
-            let resultado = document.getElementById("resultado2");
-
-            if (numeroInput > 0) {
-                resultado.innerHTML = "positivo";
-            } else {
-                resultado.innerHTML = "negativo";
-            }
-        }
-    </script>
 </body>
 
 </html>
