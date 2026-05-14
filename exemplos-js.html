@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 5px 10px;
+        }
+
+        #output {
+            background: #eee;
+            padding: 10px;
+            min-height: 20px;
+        }
+
+        .interactive {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exemplos JavaScript do curso</h1>
+    <div id="output"></div>
+
+    <section id="variables">
+        <h2>Declaración de variables</h2>
+        <pre><code>let nome = "Ana";
+let idade = 25;</code></pre>
+        <button onclick="executar('variables')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="variables-validas">
+        <h2>Exemplos válidos de variables</h2>
+        <pre><code>let usuario;
+let idadeAlumno;
+let totalCompra;</code></pre>
+        <button onclick="executar('variables-validas')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="operacions">
+        <h2>Operacións con variables</h2>
+        <pre><code>let prezo = 10;
+let unidades = 3;
+
+let total = prezo * unidades;
+
+console.log(total);</code></pre>
+        <button onclick="executar('operacions')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="booleanos">
+        <h2>Datos booleanos</h2>
+        <pre><code>let conectado = true;
+let aprobado = false;</code></pre>
+        <button onclick="executar('booleanos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="numericos">
+        <h2>Datos numéricos</h2>
+        <pre><code>let idade = 20;
+let altura = 1.75;</code></pre>
+        <button onclick="executar('numericos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="texto">
+        <h2>Datos de texto</h2>
+        <pre><code>let nome = "Carlos";
+let mensaxe = 'Benvido';</code></pre>
+        <button onclick="executar('texto')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="nulos">
+        <h2>Valores nulos</h2>
+        <pre><code>let usuario = null;</code></pre>
+        <button onclick="executar('nulos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="asignacion">
+        <h2>Operadores de asignación</h2>
+        <pre><code>let numero = 5;</code></pre>
+        <button onclick="executar('asignacion')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="asignacion-abreviada">
+        <h2>Asignación abreviada</h2>
+        <pre><code>let numero = 5;
+numero += 2;</code></pre>
+        <button onclick="executar('asignacion-abreviada')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="comparacion">
+        <h2>Operadores de comparación</h2>
+        <pre><code>let idade = 20;
+
+console.log(idade >= 18);</code></pre>
+        <button onclick="executar('comparacion')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="aritmeticos">
+        <h2>Operadores aritméticos</h2>
+        <pre><code>let suma = 5 + 3;
+let resta = 8 - 2;
+let multiplicacion = 4 * 2;
+let division = 10 / 2;</code></pre>
+        <button onclick="executar('aritmeticos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="bits">
+        <h2>Operadores sobre bits</h2>
+        <pre><code>let resultado = 5 & 1;</code></pre>
+        <button onclick="executar('bits')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="logicos">
+        <h2>Operadores lóxicos</h2>
+        <pre><code>let idade = 20;
+let acceso = true;
+
+console.log(idade >= 18 && acceso);</code></pre>
+        <button onclick="executar('logicos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="cadeas">
+        <h2>Operadores de cadeas de caracteres</h2>
+        <pre><code>let nome = "Ana";
+let apelido = "López";
+
+let completo = nome + " " + apelido;</code></pre>
+        <button onclick="executar('cadeas')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="especiais">
+        <h2>Operadores especiais</h2>
+        <pre><code>let idade = 20;
+
+console.log(typeof idade);</code></pre>
+        <button onclick="executar('especiais')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exp-cadea">
+        <h2>Expresións de cadea</h2>
+        <pre><code>let mensaxe = "Ola " + "mundo";</code></pre>
+        <button onclick="executar('exp-cadea')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exp-aritmetica">
+        <h2>Expresións aritméticas</h2>
+        <pre><code>let resultado = (5 + 3) * 2;</code></pre>
+        <button onclick="executar('exp-aritmetica')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exp-logica">
+        <h2>Expresións lóxicas</h2>
+        <pre><code>let acceso = 20 > 18;</code></pre>
+        <button onclick="executar('exp-logica')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exp-obxecto">
+        <h2>Expresións de obxecto</h2>
+        <pre><code>let alumno = {
+  nome: "Ana",
+  idade: 22
+};
+
+console.log(alumno.nome);</code></pre>
+        <button onclick="executar('exp-obxecto')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="if">
+        <h2>Sentenza IF</h2>
+        <pre><code>let idade = 20;
+
+if (idade >= 18) {
+  console.log("Maior de idade");
+}</code></pre>
+        <button onclick="executar('if')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="while">
+        <h2>Sentenza WHILE</h2>
+        <pre><code>let contador = 1;
+
+while (contador <= 5) {
+  console.log(contador);
+  contador++;
+}</code></pre>
+        <button onclick="executar('while')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="for">
+        <h2>Sentenza FOR</h2>
+        <pre><code>for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}</code></pre>
+        <button onclick="executar('for')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="break">
+        <h2>Sentenza BREAK</h2>
+        <pre><code>for (let i = 1; i <= 10; i++) {
+
+  if (i === 5) {
+    break;
+  }
+
+  console.log(i);
+}</code></pre>
+        <button onclick="executar('break')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="continue">
+        <h2>Sentenza CONTINUE</h2>
+        <pre><code>for (let i = 1; i <= 5; i++) {
+
+  if (i === 3) {
+    continue;
+  }
+
+  console.log(i);
+}</code></pre>
+        <button onclick="executar('continue')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="switch">
+        <h2>Sentenza SWITCH</h2>
+        <pre><code>let dia = 2;
+
+switch (dia) {
+
+  case 1:
+    console.log("Luns");
+    break;
+
+  case 2:
+    console.log("Martes");
+    break;
+
+  default:
+    console.log("Outro día");
+}</code></pre>
+        <button onclick="executar('switch')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="funcion-def">
+        <h2>Definición de funcións</h2>
+        <pre><code>function saudar() {
+
+  console.log("Ola");
+
+}</code></pre>
+        <button onclick="executar('funcion-def')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="return">
+        <h2>Sentenza RETURN</h2>
+        <pre><code>function sumar(a, b) {
+
+  return a + b;
+
+}
+
+let resultado = sumar(2, 3);</code></pre>
+        <button onclick="executar('return')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="funcion-param">
+        <h2>Función con parámetros</h2>
+        <pre><code>function saudar(nome) {
+
+  console.log("Ola " + nome);
+
+}</code></pre>
+        <button onclick="executar('funcion-param')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="funciones-predef">
+        <h2>Funcións predefinidas</h2>
+        <pre><code>console.log("Texto");
+parseInt("25");
+Number("10");</code></pre>
+        <button onclick="executar('funciones-predef')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="funcion-variable">
+        <h2>Función gardada en variable</h2>
+        <pre><code>let multiplicar = function(a, b) {
+
+  return a * b;
+
+};</code></pre>
+        <button onclick="executar('funcion-variable')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="funcion-evento">
+        <h2>Función usada en evento</h2>
+        <pre><code>// Exemplo: boton.addEventListener("click", mostrar);</code></pre>
+        <p>Este exemplo require un botón. Vex o exercicio práctico.</p>
+    </section>
+
+    <section id="lectura-campo">
+        <h2>Lectura de teclado de datos</h2>
+        <input type="text" id="nome-input" placeholder="Introduce nome">
+        <button onclick="executar('lectura-campo')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="almacenamento">
+        <h2>Almacenamento en variables</h2>
+        <pre><code>let idade = 20;</code></pre>
+        <button onclick="executar('almacenamento')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="impresion">
+        <h2>Impresión en pantalla do resultado</h2>
+        <button onclick="executar('impresion')">Executar</button>
+        <div id="resultado" class="output"></div>
+    </section>
+
+    <section id="prompt">
+        <h2>Sentenza PROMPT</h2>
+        <button onclick="executar('prompt')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="document-write">
+        <h2>Sentencia DOCUMENT.WRITE</h2>
+        <button onclick="executar('document-write')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exercicio">
+        <h2>Exercicio práctico</h2>
+        <input type="number" id="numero-input" placeholder="Introduce un número">
+        <button onclick="comprobarNumero()">Comprobar</button>
+        <div id="resultado-exercicio"></div>
+    </section>
+
+    <script>
+        let originalLog = console.log;
+        let outputDiv = document.getElementById('output');
+
+        function log(message) {
+            outputDiv.textContent += message + '\n';
+            originalLog(message);
+        }
+
+        console.log = log;
+
+        function executar(id) {
+            let section = document.getElementById(id);
+            let output = section.querySelector('.output');
+            output.textContent = '';
+
+            switch (id) {
+                case 'variables':
+                    let nome = "Ana";
+                    let idade = 25;
+                    console.log('Nome: ' + nome + ', Idade: ' + idade);
+                    break;
+                case 'variables-validas':
+                    let usuario;
+                    let idadeAlumno;
+                    let totalCompra;
+                    console.log('Variables declaradas');
+                    break;
+                case 'operacions':
+                    let prezo = 10;
+                    let unidades = 3;
+                    let total = prezo * unidades;
+                    console.log(total);
+                    break;
+                case 'booleanos':
+                    let conectado = true;
+                    let aprobado = false;
+                    console.log('Conectado: ' + conectado + ', Aprobado: ' + aprobado);
+                    break;
+                case 'numericos':
+                    let idadeNum = 20;
+                    let altura = 1.75;
+                    console.log('Idade: ' + idadeNum + ', Altura: ' + altura);
+                    break;
+                case 'texto':
+                    let nomeTexto = "Carlos";
+                    let mensaxe = 'Benvido';
+                    console.log('Nome: ' + nomeTexto + ', Mensaxe: ' + mensaxe);
+                    break;
+                case 'nulos':
+                    let usuarioNull = null;
+                    console.log('Usuario: ' + usuarioNull);
+                    break;
+                case 'asignacion':
+                    let numero = 5;
+                    console.log('Numero: ' + numero);
+                    break;
+                case 'asignacion-abreviada':
+                    let numeroAbr = 5;
+                    numeroAbr += 2;
+                    console.log('Numero: ' + numeroAbr);
+                    break;
+                case 'comparacion':
+                    let idadeComp = 20;
+                    console.log(idadeComp >= 18);
+                    break;
+                case 'aritmeticos':
+                    let suma = 5 + 3;
+                    let resta = 8 - 2;
+                    let multiplicacion = 4 * 2;
+                    let division = 10 / 2;
+                    console.log('Suma: ' + suma + ', Resta: ' + resta + ', Multiplicacion: ' + multiplicacion + ', Division: ' + division);
+                    break;
+                case 'bits':
+                    let resultadoBits = 5 & 1;
+                    console.log('Resultado: ' + resultadoBits);
+                    break;
+                case 'logicos':
+                    let idadeLog = 20;
+                    let acceso = true;
+                    console.log(idadeLog >= 18 && acceso);
+                    break;
+                case 'cadeas':
+                    let nomeCad = "Ana";
+                    let apelido = "López";
+                    let completo = nomeCad + " " + apelido;
+                    console.log('Completo: ' + completo);
+                    break;
+                case 'especiais':
+                    let idadeEsp = 20;
+                    console.log(typeof idadeEsp);
+                    break;
+                case 'exp-cadea':
+                    let mensaxeExp = "Ola " + "mundo";
+                    console.log(mensaxeExp);
+                    break;
+                case 'exp-aritmetica':
+                    let resultadoAri = (5 + 3) * 2;
+                    console.log('Resultado: ' + resultadoAri);
+                    break;
+                case 'exp-logica':
+                    let accesoExp = 20 > 18;
+                    console.log('Acceso: ' + accesoExp);
+                    break;
+                case 'exp-obxecto':
+                    let alumno = {
+                        nome: "Ana",
+                        idade: 22
+                    };
+                    console.log(alumno.nome);
+                    break;
+                case 'if':
+                    let idadeIf = 20;
+                    if (idadeIf >= 18) {
+                        console.log("Maior de idade");
+                    }
+                    break;
+                case 'while':
+                    let contador = 1;
+                    while (contador <= 5) {
+                        console.log(contador);
+                        contador++;
+                    }
+                    break;
+                case 'for':
+                    for (let i = 1; i <= 5; i++) {
+                        console.log(i);
+                    }
+                    break;
+                case 'break':
+                    for (let i = 1; i <= 10; i++) {
+                        if (i === 5) {
+                            break;
+                        }
+                        console.log(i);
+                    }
+                    break;
+                case 'continue':
+                    for (let i = 1; i <= 5; i++) {
+                        if (i === 3) {
+                            continue;
+                        }
+                        console.log(i);
+                    }
+                    break;
+                case 'switch':
+                    let dia = 2;
+                    switch (dia) {
+                        case 1:
+                            console.log("Luns");
+                            break;
+                        case 2:
+                            console.log("Martes");
+                            break;
+                        default:
+                            console.log("Outro día");
+                    }
+                    break;
+                case 'funcion-def':
+                    function saudar() {
+                        console.log("Ola");
+                    }
+                    saudar();
+                    break;
+                case 'return':
+                    function sumar(a, b) {
+                        return a + b;
+                    }
+                    let resultadoRet = sumar(2, 3);
+                    console.log('Resultado: ' + resultadoRet);
+                    break;
+                case 'funcion-param':
+                    function saudarParam(nome) {
+                        console.log("Ola " + nome);
+                    }
+                    saudarParam("Ana");
+                    break;
+                case 'funciones-predef':
+                    console.log("Texto");
+                    let parsed = parseInt("25");
+                    let num = Number("10");
+                    console.log('Parsed: ' + parsed + ', Number: ' + num);
+                    break;
+                case 'funcion-variable':
+                    let multiplicar = function (a, b) {
+                        return a * b;
+                    };
+                    let resMult = multiplicar(4, 5);
+                    console.log('Resultado: ' + resMult);
+                    break;
+                case 'lectura-campo':
+                    let nomeCampo = document.getElementById("nome-input").value;
+                    console.log('Nome: ' + nomeCampo);
+                    break;
+                case 'almacenamento':
+                    let idadeAlm = 20;
+                    console.log('Idade: ' + idadeAlm);
+                    break;
+                case 'impresion':
+                    document.getElementById("resultado").textContent = "Ola";
+                    break;
+                case 'prompt':
+                    let nomePrompt = prompt("Introduce o teu nome");
+                    console.log('Nome: ' + nomePrompt);
+                    break;
+                case 'document-write':
+                    let nomeDoc = "Ana";
+                    document.write("Benvido " + nomeDoc);
+                    break;
+            }
+        }
+
+        function comprobarNumero() {
+            let numero = parseFloat(document.getElementById("numero-input").value);
+            let resultadoDiv = document.getElementById("resultado-exercicio");
+            if (numero > 0) {
+                resultadoDiv.textContent = "Positivo";
+            } else if (numero < 0) {
+                resultadoDiv.textContent = "Negativo";
+            } else {
+                resultadoDiv.textContent = "Cero";
+            }
+        }
+    </script>
+</body>
+
+</html>
