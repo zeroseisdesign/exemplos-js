@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referencia de JavaScript - Exemplos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 5px 10px;
+        }
+
+        #output {
+            background: #eee;
+            padding: 10px;
+            min-height: 20px;
+        }
+
+        .interactive {
+            margin: 10px 0;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Referencia de JavaScript - Exemplos</h1>
+    <div id="output"></div>
+
+    <section id="erro-sintaxe">
+        <h2>Erros de sintaxe.</h2>
+        <p>Prodúcense cando o código está mal escrito.</p>
+        <h3>Exemplo:</h3>
+        <pre><code>let nome = "Ana</code></pre>
+        <p>Falta pechar as comiñas.</p>
+        <button onclick="executar('erro-sintaxe')">Executar</button>
+    </section>
+
+    <section id="erro-execucion">
+        <h2>Erros de execución</h2>
+        <p>Prodúcense cando o código é correcto sintacticamente, pero falla ao executarse.</p>
+        <h3>Exemplo:</h3>
+        <pre><code>let numero = 10;
+
+console.log(numeroo);</code></pre>
+        <p>A variable <code>numeroo</code> non existe.</p>
+        <button onclick="executar('erro-execucion')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="escritura-programa">
+        <h2>Escritura do programa fonte</h2>
+        <p>O programa fonte é o código escrito polo desenvolvedor.</p>
+        <h3>Exemplo:</h3>
+        <pre><code>let idade = 20;
+
+if (idade >= 18) {
+  console.log("Maior de idade");
+}</code></pre>
+        <button onclick="executar('escritura-programa')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="compilacion">
+        <h2>Compilación do programa fonte</h2>
+        <p>JavaScript é interpretado.</p>
+        <h3>Exemplo:</h3>
+        <pre><code>console.log("Programa iniciado");</code></pre>
+        <button onclick="executar('compilacion')">Executar</button>
+        <div class="output"></div>
+        <h3>TypeScript exemplo:</h3>
+        <pre><code>let idade: number = 25;</code></pre>
+    </section>
+
+    <section id="correccion-sintaxe">
+        <h2>Corrección de erros de sintaxe</h2>
+        <h3>Exemplo incorrecto:</h3>
+        <pre><code>if (true {
+  console.log("Erro");
+}</code></pre>
+        <h3>Exemplo correcto:</h3>
+        <pre><code>if (true) {
+  console.log("Correcto");
+}</code></pre>
+        <p>Pasos habituais:</p>
+        <ul>
+            <li>Revisar a liña indicada pola consola.</li>
+            <li>Comprobar parénteses, chaves e comiñas.</li>
+            <li>Revisar puntos e comas ou nomes incorrectos.</li>
+            <li>Gardar e executar novamente o script.</li>
+        </ul>
+    </section>
+
+    <section id="correccion-execucion">
+        <h2>Corrección de erros de execución</h2>
+        <h3>Exemplo:</h3>
+        <pre><code>let usuario = null;
+
+console.log(usuario.nome);</code></pre>
+        <p>Neste caso prodúcese un erro porque <code>usuario</code> non contén un obxecto.</p>
+        <button onclick="executar('correccion-execucion')">Executar</button>
+        <div class="output"></div>
+        <p>Pasos habituais:</p>
+        <ul>
+            <li>Abrir a consola do navegador.</li>
+            <li>Ler a mensaxe de erro completa.</li>
+            <li>Identificar a variable ou función que produce o problema.</li>
+            <li>Revisar os datos utilizados.</li>
+            <li>Corrixir o código e volver probalo.</li>
+        </ul>
+    </section>
+
+    <section id="mensaxes-erro">
+        <h2>Mensaxes de erro</h2>
+        <p>As mensaxes de erro indican o tipo de problema e a liña onde se produce.</p>
+        <h3>Exemplo habitual na consola:</h3>
+        <pre><code>Uncaught ReferenceError: variable is not defined</code></pre>
+        <p>As mensaxes de erro adoitan indicar:</p>
+        <ul>
+            <li>O tipo de erro.</li>
+            <li>O arquivo onde se produce.</li>
+            <li>A liña do código afectada.</li>
+            <li>A descrición do problema.</li>
+        </ul>
+    </section>
+
+    <section id="funciones-erro">
+        <h2>Funcións para controlar os erros</h2>
+        <table>
+            <tr>
+                <th>Instrución</th>
+                <th>Descrición</th>
+            </tr>
+            <tr>
+                <td>try</td>
+                <td>Executa un bloque de código</td>
+            </tr>
+            <tr>
+                <td>catch</td>
+                <td>Captura o erro producido</td>
+            </tr>
+            <tr>
+                <td>finally</td>
+                <td>Executa código ao finalizar</td>
+            </tr>
+            <tr>
+                <td>throw</td>
+                <td>Xera un erro manualmente</td>
+            </tr>
+        </table>
+        <h3>Exemplo:</h3>
+        <pre><code>try {
+  let resultado = numero + 10;
+} catch (erro) {
+  console.log("Produciuse un erro");
+}</code></pre>
+        <button onclick="executar('funciones-erro')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="uso-consola">
+        <h2>Uso básico da consola</h2>
+        <p>A consola permite mostrar información, detectar erros, executar código manualmente, comprobar valores de
+            variables.</p>
+        <h3>Exemplo:</h3>
+        <pre><code>let nome = "Ana";
+
+console.log(nome);</code></pre>
+        <button onclick="executar('uso-consola')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exercicio">
+        <h2>Exercicio práctico</h2>
+        <p>Crear unha páxina web que declare varias variables, realice unha operación matemática, mostre datos por
+            consola, solicite un nome mediante prompt(), mostre unha mensaxe personalizada, inclúa un erro intencionado,
+            localice e corrixa o erro usando a consola do navegador.</p>
+        <h3>Exemplo inicial:</h3>
+        <pre><code>let nome = prompt("Introduce o teu nome");
+
+console.log("Benvido " + nome);
+
+let numero1 = 10;
+let numero2 = 5;
+
+console.log(numero1 + numero2);</code></pre>
+        <button onclick="executar('exercicio')">Executar</button>
+        <div class="output"></div>
+        <script>
+            let originalLog = console.log;
+            let outputDiv = document.getElementById('output');
+
+            function log(message) {
+                outputDiv.textContent += message + '\n';
+                originalLog(message);
+            }
+
+            console.log = log;
+
+            function executar(id) {
+                let section = document.getElementById(id);
+                let output = section.querySelector('.output');
+                output.textContent = '';
+
+                switch (id) {
+                    case 'erro-sintaxe':
+                        let nomeS = "Ana";
+                        console.log(nomeS);
+                        break;
+                    case 'erro-execucion':
+                        let numero = 10;
+                        console.log(numeroo);
+                        break;
+                    case 'escritura-programa':
+                        let idade = 20;
+                        if (idade >= 18) {
+                            console.log("Maior de idade");
+                        }
+                        break;
+                    case 'compilacion':
+                        console.log("Programa iniciado");
+                        break;
+                    case 'correccion-execucion':
+                        let usuario = null;
+                        console.log(usuario.nome);
+                        break;
+                    case 'funciones-erro':
+                        try {
+                            let resultado = numero + 10;
+                        } catch (erro) {
+                            console.log("Produciuse un erro");
+                        }
+                        break;
+                    case 'uso-consola':
+                        let nome = "Ana";
+                        console.log(nome);
+                        break;
+                    case 'exercicio':
+                        let nomeEx = prompt("Introduce o teu nome");
+                        console.log("Benvido " + nomeEx);
+                        let numero1 = 10;
+                        let numero2 = 5;
+                        console.log(numero1 + numero2);
+                        break;
+                }
+            }
+        </script>
+</body>
+
+</html>
