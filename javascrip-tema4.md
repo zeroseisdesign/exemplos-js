@@ -1,5 +1,3 @@
-
-
 # 4. Desenvolvemento de scripts
 
 ## Ferramentas de desenvolvemento, utilización
