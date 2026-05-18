@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos JavaScript - Tema 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 5px 10px;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #d63384;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .output {
+            background: #eee;
+            min-height: 20px;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+
+        .interactive {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px dashed #bbb;
+        }
+
+        .visible {
+            background: #e7f5ff;
+            padding: 8px;
+        }
+
+        .activo {
+            border: 2px solid #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exemplos JavaScript - Tema 5</h1>
+    <p>Xestión de obxectos da linguaxe de guión: navegador, documento, DOM e formularios.</p>
+
+    <section id="xerarquia">
+        <h2>Xerarquía de obxectos</h2>
+        <pre><code>window
+ └── document
+      └── forms
+           └── inputs</code></pre>
+        <p>Esta árbore mostra que <code>window</code> contén o documento e o documento contén formularios e elementos.</p>
+    </section>
+
+    <section id="propiedades-compartidas">
+        <h2>Propiedades compartidas dos obxectos</h2>
+        <pre><code>console.log(document.title);
+console.log(window.innerWidth);</code></pre>
+        <button onclick="executar('propiedades-compartidas')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="navegar-xerarquia">
+        <h2>Navegar pola xerarquía dos obxectos</h2>
+        <pre><code>document.body.style.backgroundColor = "lightblue";</code></pre>
+        <button onclick="executar('navegar-xerarquia')">Executar</button>
+        <button onclick="restaurarFondo()">Restaurar fondo</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="window">
+        <h2>O obxecto superior window</h2>
+        <pre><code>alert("Benvido");
+window.open("https://www.google.com");</code></pre>
+        <button onclick="executar('window')">Executar alerta</button>
+        <button onclick="abrirLigazon('https://www.google.com')">Abrir ligazón</button>
+        <div class="output"></div>
+        <table>
+            <tr>
+                <th>Método/Propiedade</th>
+                <th>Descrición</th>
+            </tr>
+            <tr>
+                <td>alert()</td>
+                <td>Mostra unha caixa de alerta</td>
+            </tr>
+            <tr>
+                <td>open()</td>
+                <td>Abre unha nova ventá ou pestana</td>
+            </tr>
+            <tr>
+                <td>setTimeout()</td>
+                <td>Executa unha función despois dun intervalo de tempo</td>
+            </tr>
+            <tr>
+                <td>innerWidth</td>
+                <td>Ancho interior da ventá do navegador</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="navigator">
+        <h2>O obxecto navigator</h2>
+        <pre><code>console.log(navigator.userAgent);
+console.log(navigator.language);</code></pre>
+        <button onclick="executar('navigator')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="location">
+        <h2>URL actual: location</h2>
+        <pre><code>console.log(location.href);
+location.reload();</code></pre>
+        <button onclick="executar('location')">Mostrar URL</button>
+        <button onclick="location.reload()">Recargar páxina</button>
+        <div class="output"></div>
+        <table>
+            <tr>
+                <th>Propiedade</th>
+                <th>Valor actual</th>
+            </tr>
+            <tr>
+                <td>href</td>
+                <td id="location-href"></td>
+            </tr>
+            <tr>
+                <td>hostname</td>
+                <td id="location-hostname"></td>
+            </tr>
+            <tr>
+                <td>pathname</td>
+                <td id="location-pathname"></td>
+            </tr>
+            <tr>
+                <td>protocol</td>
+                <td id="location-protocol"></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="history">
+        <h2>URL visitada polo usuario: history</h2>
+        <pre><code>history.go(-1);</code></pre>
+        <pre><code>history.back();
+history.forward();</code></pre>
+        <button onclick="executar('history')">Mostrar lonxitude do historial</button>
+        <button onclick="history.back()">Atrás</button>
+        <button onclick="history.forward()">Adiante</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="document-title">
+        <h2>Título da páxina</h2>
+        <pre><code>document.title = "Nova páxina";</code></pre>
+        <button onclick="executar('document-title')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="document-background">
+        <h2>Cor de fondo</h2>
+        <pre><code>document.body.style.backgroundColor = "beige";</code></pre>
+        <button onclick="executar('document-background')">Executar</button>
+        <button onclick="restaurarFondo()">Restaurar fondo</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="document-forms">
+        <h2>Formularios</h2>
+        <pre><code>console.log(document.forms);</code></pre>
+        <button onclick="executar('document-forms')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="email-value">
+        <h2>Valor dun campo</h2>
+        <pre><code>let email = document.getElementById("email");
+
+console.log(email.value);</code></pre>
+        <div class="interactive">
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="ana@example.com">
+        </div>
+        <button onclick="executar('email-value')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="document-properties">
+        <h2>Exemplos de propiedades de document</h2>
+        <pre><code>console.log(document.title);
+console.log(document.images.length);</code></pre>
+        <img src="image.png" alt="Imaxe de exemplo" width="80">
+        <button onclick="executar('document-properties')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="document-methods">
+        <h2>Métodos de document</h2>
+        <table>
+            <tr>
+                <th>Método</th>
+                <th>Descrición</th>
+            </tr>
+            <tr>
+                <td>getElementById()</td>
+                <td>Selecciona un elemento polo seu ID</td>
+            </tr>
+            <tr>
+                <td>querySelector()</td>
+                <td>Selecciona o primeiro elemento que coincide cun selector CSS</td>
+            </tr>
+            <tr>
+                <td>querySelectorAll()</td>
+                <td>Selecciona todos os elementos que coinciden cun selector CSS</td>
+            </tr>
+            <tr>
+                <td>createElement()</td>
+                <td>Crea un novo elemento HTML</td>
+            </tr>
+            <tr>
+                <td>appendChild()</td>
+                <td>Engade un elemento como fillo</td>
+            </tr>
+            <tr>
+                <td>removeChild()</td>
+                <td>Elimina un fillo dun elemento</td>
+            </tr>
+            <tr>
+                <td>addEventListener()</td>
+                <td>Engade un escoitador de eventos</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="text-content">
+        <h2>textContent</h2>
+        <pre><code>let titulo = document.getElementById("titulo");
+
+titulo.textContent = "Novo título";</code></pre>
+        <h3 id="titulo">Título orixinal</h3>
+        <button onclick="executar('text-content')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="inner-html">
+        <h2>innerHTML</h2>
+        <pre><code>let caixa = document.getElementById("caixa");
+
+caixa.innerHTML = "&lt;strong&gt;Texto en negra&lt;/strong&gt;";</code></pre>
+        <div id="caixa" class="interactive">Texto inicial</div>
+        <button onclick="executar('inner-html')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="modificar-estilos">
+        <h2>Modificar estilos CSS</h2>
+        <pre><code>let paragrafo = document.querySelector("p");
+
+paragrafo.style.color = "blue";
+paragrafo.style.fontSize = "20px";</code></pre>
+        <p id="paragrafo-demo">Este parágrafo cambia de cor e tamaño.</p>
+        <button onclick="executar('modificar-estilos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="manipular-clases">
+        <h2>Manipular clases CSS</h2>
+        <pre><code>let menu = document.getElementById("menu");
+
+menu.classList.add("visible");
+menu.classList.toggle("activo");</code></pre>
+        <div id="menu" class="interactive">Menú de exemplo</div>
+        <button onclick="executar('manipular-clases')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="modificar-atributos">
+        <h2>Modificar atributos HTML</h2>
+        <pre><code>let enlace = document.querySelector("a");
+
+enlace.setAttribute("target", "_blank");</code></pre>
+        <a id="enlace-demo" href="https://www.google.com">Ligazón de exemplo</a>
+        <button onclick="executar('modificar-atributos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="obtencion-elementos">
+        <h2>Obtención de elementos HTML</h2>
+        <pre><code>let titulo = document.getElementById("titulo");
+
+titulo.textContent = "Novo título";</code></pre>
+        <h3 id="titulo-obtencion">Outro título orixinal</h3>
+        <button onclick="executar('obtencion-elementos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exemplo-practico">
+        <h2>Exemplo práctico</h2>
+        <pre><code>let titulo = document.getElementById("titulo");
+
+titulo.textContent = "Benvidos";</code></pre>
+        <h3 id="titulo-practico">Título práctico</h3>
+        <button onclick="executar('exemplo-practico')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="crear-elementos">
+        <h2>Crear elementos HTML</h2>
+        <pre><code>let novo = document.createElement("p");
+
+novo.textContent = "Texto engadido";</code></pre>
+        <button onclick="executar('crear-elementos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="engadir-elementos">
+        <h2>Engadir elementos ao documento</h2>
+        <pre><code>document.body.appendChild(novo);</code></pre>
+        <div id="zona-engadir" class="interactive">Zona onde se engade o parágrafo:</div>
+        <button onclick="executar('engadir-elementos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="eliminar-elementos">
+        <h2>Eliminar elementos</h2>
+        <pre><code>let aviso = document.getElementById("aviso");
+
+aviso.remove();</code></pre>
+        <div id="aviso" class="interactive">Aviso que pode eliminarse.</div>
+        <button onclick="executar('eliminar-elementos')">Executar</button>
+        <button onclick="restaurarAviso()">Restaurar aviso</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="inserir-elementos">
+        <h2>Inserir elementos nunha posición concreta</h2>
+        <pre><code>let lista = document.getElementById("lista");
+
+lista.prepend(novo);</code></pre>
+        <ul id="lista">
+            <li>Elemento existente</li>
+        </ul>
+        <button onclick="executar('inserir-elementos')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="document-open-close">
+        <h2>Métodos open() e close() de document</h2>
+        <p><code>document.open()</code> e <code>document.close()</code> poden substituír todo o documento, polo que aquí só se mostra a explicación.</p>
+    </section>
+
+    <section id="form-value">
+        <h2>Propiedades e métodos dos obxectos do formulario</h2>
+        <pre><code>let nome = document.getElementById("nome");
+
+console.log(nome.value);</code></pre>
+        <div class="interactive">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" value="Uxía">
+        </div>
+        <button onclick="executar('form-value')">Executar</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="formulario">
+        <h2>Manipulación de campos do formulario</h2>
+        <form id="contacto" name="contacto" method="get" action="#">
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" value="Pepe">
+            <label>
+                <input type="checkbox" id="aceptar">
+                Aceptar condicións
+            </label>
+            <label for="pais">País:</label>
+            <select id="pais">
+                <option value="Ga">Galicia</option>
+                <option value="Es">España</option>
+                <option value="Pt">Portugal</option>
+            </select>
+        </form>
+        <pre><code>let usuario = document.getElementById("usuario");
+
+usuario.value = "Ana";</code></pre>
+        <button onclick="executar('cambiar-valores')">Cambiar valores</button>
+        <pre><code>usuario.value = "";</code></pre>
+        <button onclick="executar('limpar-campos')">Limpar campos</button>
+        <pre><code>let aceptar = document.getElementById("aceptar");
+
+aceptar.checked = true;</code></pre>
+        <button onclick="executar('checkbox')">Marcar checkbox</button>
+        <pre><code>let pais = document.getElementById("pais");
+
+pais.value = "Es";</code></pre>
+        <button onclick="executar('select')">Seleccionar opción</button>
+        <pre><code>let formulario = document.getElementById("contacto");
+
+formulario.reset();</code></pre>
+        <button onclick="executar('form-reset')">Reiniciar formulario</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="get-post">
+        <h2>Métodos GET e POST</h2>
+        <pre><code>&lt;form method="get"&gt;</code></pre>
+        <pre><code>&lt;form method="post"&gt;</code></pre>
+        <p>GET envía os datos na URL. POST envía os datos no corpo da petición.</p>
+    </section>
+
+    <section id="outros-obxectos">
+        <h2>Propiedades e métodos doutros obxectos da linguaxe</h2>
+        <pre><code>document.title = "Empresa";</code></pre>
+        <button onclick="executar('outro-document')">Document</button>
+        <pre><code>window.open("https://openai.com");</code></pre>
+        <button onclick="abrirLigazon('https://openai.com')">Window</button>
+        <pre><code>history.go(-1);</code></pre>
+        <button onclick="executar('outro-history')">History</button>
+        <pre><code>console.log(location.hostname);</code></pre>
+        <button onclick="executar('outro-location')">Location</button>
+        <pre><code>console.log(navigator.appName);</code></pre>
+        <button onclick="executar('outro-navigator')">Navigator</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exercicio">
+        <h2>Exercicio práctico</h2>
+        <p id="idioma-navegador"></p>
+        <button id="boton-cor">Cambiar cor de fondo</button>
+        <button id="boton-recargar">Recargar páxina</button>
+        <pre><code>document.title = "Empresa";
+document.getElementById("idioma-navegador").textContent = navigator.language;
+
+document.getElementById("boton-cor").addEventListener("click", function () {
+  document.body.style.backgroundColor = "beige";
+});
+
+document.getElementById("boton-recargar").addEventListener("click", function () {
+  location.reload();
+});</code></pre>
+        <button onclick="executar('exercicio')">Preparar exercicio</button>
+        <div class="output"></div>
+    </section>
+
+    <script>
+        let fondoOrixinal = document.body.style.backgroundColor;
+
+        function escribir(id, mensaxe) {
+            let section = document.getElementById(id);
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent += mensaxe + "\n";
+            }
+            console.log(mensaxe);
+        }
+
+        function limpar(id) {
+            let section = document.getElementById(id);
+            if (!section) {
+                return;
+            }
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent = "";
+            }
+        }
+
+        function abrirLigazon(url) {
+            window.open(url, "_blank");
+        }
+
+        function restaurarFondo() {
+            document.body.style.backgroundColor = fondoOrixinal;
+        }
+
+        function restaurarAviso() {
+            let section = document.getElementById("eliminar-elementos");
+            if (!document.getElementById("aviso")) {
+                let aviso = document.createElement("div");
+                aviso.id = "aviso";
+                aviso.className = "interactive";
+                aviso.textContent = "Aviso que pode eliminarse.";
+                section.insertBefore(aviso, section.querySelector("button"));
+            }
+        }
+
+        function executar(id) {
+            limpar(id);
+
+            switch (id) {
+                case "propiedades-compartidas":
+                    escribir(id, "Título: " + document.title);
+                    escribir(id, "Ancho da ventá: " + window.innerWidth + "px");
+                    break;
+                case "navegar-xerarquia":
+                    document.body.style.backgroundColor = "lightblue";
+                    escribir(id, "Aplicouse document.body.style.backgroundColor = 'lightblue'");
+                    break;
+                case "window":
+                    alert("Benvido");
+                    escribir(id, "Executouse alert('Benvido')");
+                    break;
+                case "navigator":
+                    escribir(id, navigator.userAgent);
+                    escribir(id, "Idioma: " + navigator.language);
+                    break;
+                case "location":
+                    escribir(id, "URL completa: " + location.href);
+                    escribir(id, "A recarga está nun botón separado para evitar facela sen querer.");
+                    break;
+                case "history":
+                    escribir(id, "Entradas dispoñibles no historial: " + history.length);
+                    escribir(id, "history.go(-1), back() e forward() están en botóns separados.");
+                    break;
+                case "document-title":
+                    document.title = "Nova páxina";
+                    escribir(id, "Novo título: " + document.title);
+                    break;
+                case "document-background":
+                    document.body.style.backgroundColor = "beige";
+                    escribir(id, "Cor de fondo cambiada a beige.");
+                    break;
+                case "document-forms":
+                    escribir(id, "Número de formularios: " + document.forms.length);
+                    escribir(id, "Primeiro formulario: " + (document.forms[0] ? document.forms[0].id : "non hai formularios"));
+                    break;
+                case "email-value":
+                    let email = document.getElementById("email");
+                    escribir(id, "Valor do email: " + email.value);
+                    break;
+                case "document-properties":
+                    escribir(id, "Título: " + document.title);
+                    escribir(id, "Número de imaxes: " + document.images.length);
+                    break;
+                case "text-content":
+                    let titulo = document.getElementById("titulo");
+                    titulo.textContent = "Novo título";
+                    escribir(id, "Texto cambiado con textContent.");
+                    break;
+                case "inner-html":
+                    let caixa = document.getElementById("caixa");
+                    caixa.innerHTML = "<strong>Texto en negra</strong>";
+                    escribir(id, "Contido HTML inserido dentro da caixa.");
+                    break;
+                case "modificar-estilos":
+                    let paragrafo = document.getElementById("paragrafo-demo");
+                    paragrafo.style.color = "blue";
+                    paragrafo.style.fontSize = "20px";
+                    escribir(id, "Aplicouse cor azul e tamaño 20px.");
+                    break;
+                case "manipular-clases":
+                    let menu = document.getElementById("menu");
+                    menu.classList.add("visible");
+                    menu.classList.toggle("activo");
+                    escribir(id, "Clases actuais: " + menu.className);
+                    break;
+                case "modificar-atributos":
+                    let enlace = document.getElementById("enlace-demo");
+                    enlace.setAttribute("target", "_blank");
+                    escribir(id, "target do enlace: " + enlace.getAttribute("target"));
+                    break;
+                case "obtencion-elementos":
+                    let tituloObtencion = document.getElementById("titulo-obtencion");
+                    tituloObtencion.textContent = "Novo título";
+                    escribir(id, "Elemento seleccionado con getElementById().");
+                    break;
+                case "exemplo-practico":
+                    let tituloPractico = document.getElementById("titulo-practico");
+                    tituloPractico.textContent = "Benvidos";
+                    escribir(id, "Título práctico actualizado.");
+                    break;
+                case "crear-elementos":
+                    let novoCreado = document.createElement("p");
+                    novoCreado.textContent = "Texto engadido";
+                    escribir(id, "Creouse un elemento: " + novoCreado.outerHTML);
+                    break;
+                case "engadir-elementos":
+                    let novoEngadido = document.createElement("p");
+                    novoEngadido.textContent = "Texto engadido";
+                    document.getElementById("zona-engadir").appendChild(novoEngadido);
+                    escribir(id, "Parágrafo engadido á zona de exemplo.");
+                    break;
+                case "eliminar-elementos":
+                    let aviso = document.getElementById("aviso");
+                    if (aviso) {
+                        aviso.remove();
+                        escribir(id, "Aviso eliminado.");
+                    } else {
+                        escribir(id, "O aviso xa estaba eliminado.");
+                    }
+                    break;
+                case "inserir-elementos":
+                    let lista = document.getElementById("lista");
+                    let novoItem = document.createElement("li");
+                    novoItem.textContent = "Texto engadido ao inicio";
+                    lista.prepend(novoItem);
+                    escribir(id, "Elemento inserido ao principio da lista.");
+                    break;
+                case "form-value":
+                    let nome = document.getElementById("nome");
+                    escribir(id, "Valor do nome: " + nome.value);
+                    break;
+                case "cambiar-valores":
+                    document.getElementById("usuario").value = "Ana";
+                    escribir("formulario", "usuario.value = 'Ana'");
+                    break;
+                case "limpar-campos":
+                    document.getElementById("usuario").value = "";
+                    escribir("formulario", "usuario.value = ''");
+                    break;
+                case "checkbox":
+                    document.getElementById("aceptar").checked = true;
+                    escribir("formulario", "Checkbox marcado.");
+                    break;
+                case "select":
+                    document.getElementById("pais").value = "Es";
+                    escribir("formulario", "País seleccionado: " + document.getElementById("pais").value);
+                    break;
+                case "form-reset":
+                    document.getElementById("contacto").reset();
+                    escribir("formulario", "Formulario reiniciado.");
+                    break;
+                case "outro-document":
+                    document.title = "Empresa";
+                    escribir("outros-obxectos", "Título cambiado a: " + document.title);
+                    break;
+                case "outro-history":
+                    escribir("outros-obxectos", "history.go(-1) movería o navegador á páxina anterior.");
+                    break;
+                case "outro-location":
+                    escribir("outros-obxectos", "Hostname: " + location.hostname);
+                    break;
+                case "outro-navigator":
+                    escribir("outros-obxectos", "appName: " + navigator.appName);
+                    break;
+                case "exercicio":
+                    document.title = "Empresa";
+                    document.getElementById("idioma-navegador").textContent = "Idioma do navegador: " + navigator.language;
+                    escribir(id, "Exercicio preparado. Usa os botóns de cor e recarga.");
+                    break;
+            }
+        }
+
+        document.getElementById("location-href").textContent = location.href;
+        document.getElementById("location-hostname").textContent = location.hostname || "(sen servidor)";
+        document.getElementById("location-pathname").textContent = location.pathname;
+        document.getElementById("location-protocol").textContent = location.protocol;
+
+        document.getElementById("boton-cor").addEventListener("click", function () {
+            document.body.style.backgroundColor = "beige";
+        });
+
+        document.getElementById("boton-recargar").addEventListener("click", function () {
+            location.reload();
+        });
+    </script>
+</body>
+
+</html>
