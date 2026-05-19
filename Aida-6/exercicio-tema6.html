@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 6 práctico</title>
+<link rel="stylesheet" href="assets/estilos.css">
+</head>
+
+<body>
+    <button id="btnMenu">Menú</button>
+
+    <ul class="nav-mobile">
+        <li>Inicio</li>
+        <li>Servizos</li>
+        <li>Contacto</li>
+    </ul>
+
+    <script>
+        let boton = document.getElementById("btnMenu");
+
+        let menu = document.querySelector(".nav-mobile");
+
+        boton.addEventListener("click", mostrar);
+
+        function mostrar() {
+            menu.classList.toggle("visible");
+        }
+    </script>
+
+
+</body>
+
+</html>
