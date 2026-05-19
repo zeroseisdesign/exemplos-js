@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos JavaScript - Tema 6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 5px 10px;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #d63384;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .output {
+            background: #eee;
+            min-height: 20px;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+
+        .interactive {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px dashed #bbb;
+        }
+
+        .visible {
+            display: block;
+            background: #e7f5ff;
+            padding: 8px;
+        }
+
+        .activo {
+            border: 2px solid #0d6efd;
+        }
+
+        .zona-rato {
+            height: 120px;
+            background: #f8f9fa;
+            cursor: crosshair;
+            user-select: none;
+        }
+
+        .zona-rato.activo {
+            background: #d0ebff;
+        }
+
+        .nav-mobile {
+            display: none;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background: #f4f4f4;
+        }
+
+        .nav-mobile.visible {
+            display: block;
+        }
+
+        .caixa-drop {
+            min-height: 80px;
+            border: 2px dashed #999;
+            background: #fafafa;
+        }
+
+        .caixa-drop.activo {
+            border-color: #0d6efd;
+            background: #e7f5ff;
+        }
+
+        .elemento-arrastrable {
+            display: inline-block;
+            padding: 8px 12px;
+            background: #e9ecef;
+            border: 1px solid #bbb;
+            cursor: grab;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exemplos JavaScript - Tema 6</h1>
+    <p>Os eventos da linguaxe de guión: formulario, rato, teclado, foco, xanela e boas prácticas con <code>addEventListener()</code>.</p>
+
+    <section id="definicion-eventos">
+        <h2>Definición de eventos</h2>
+        <p>Un evento executa código cando o usuario realiza unha acción na páxina.</p>
+        <pre><code>boton.addEventListener("click", function () {
+  console.log("Evento click executado");
+});</code></pre>
+        <button id="btn-definicion">Premer</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="accions-eventos">
+        <h2>Accións asociadas aos eventos</h2>
+        <pre><code>let boton = document.getElementById("btn");
+
+boton.addEventListener("click", mostrar);
+
+function mostrar() {
+  console.log("Fixeches clic");
+}</code></pre>
+        <button id="btn-accion">Premer</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="xerarquia-eventos">
+        <h2>Xerarquía dos eventos desde Window</h2>
+        <table>
+            <tr>
+                <th>Obxecto</th>
+                <th>Función</th>
+            </tr>
+            <tr>
+                <td><code>window</code></td>
+                <td>Xanela do navegador</td>
+            </tr>
+            <tr>
+                <td><code>document</code></td>
+                <td>Documento HTML cargado</td>
+            </tr>
+            <tr>
+                <td>Elementos HTML</td>
+                <td>Botóns, formularios, textos, imaxes...</td>
+            </tr>
+        </table>
+        <pre><code>window.addEventListener("load", iniciar);
+
+function iniciar() {
+  console.log("Páxina cargada");
+}</code></pre>
+        <button onclick="executar('xerarquia-eventos')">Mostrar estado</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="onselect">
+        <h2>Evento onselect</h2>
+        <pre><code>input.addEventListener("select", seleccionar);
+
+function seleccionar() {
+  console.log("Texto seleccionado");
+}</code></pre>
+        <div class="interactive">
+            <label for="texto-select">Selecciona parte deste texto:</label>
+            <input type="text" id="texto-select" value="Texto de exemplo para seleccionar">
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="onchange">
+        <h2>Evento onchange</h2>
+        <pre><code>cidade.addEventListener("change", cambiar);
+
+function cambiar() {
+  console.log(cidade.value);
+}</code></pre>
+        <div class="interactive">
+            <label for="cidade">Cidade:</label>
+            <select id="cidade">
+                <option>A Coruña</option>
+                <option>Vigo</option>
+                <option>Santiago</option>
+                <option>Lugo</option>
+            </select>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="eventos-rato">
+        <h2>Eventos de rato</h2>
+        <table>
+            <tr>
+                <th>Evento</th>
+                <th>Descrición</th>
+            </tr>
+            <tr>
+                <td><code>mousedown</code></td>
+                <td>Pulsar un botón do rato</td>
+            </tr>
+            <tr>
+                <td><code>mousemove</code></td>
+                <td>Mover o rato</td>
+            </tr>
+            <tr>
+                <td><code>mouseout</code></td>
+                <td>Saír dun elemento</td>
+            </tr>
+            <tr>
+                <td><code>mouseover</code></td>
+                <td>Entrar nun elemento</td>
+            </tr>
+            <tr>
+                <td><code>mouseup</code></td>
+                <td>Soltar un botón do rato</td>
+            </tr>
+            <tr>
+                <td><code>click</code></td>
+                <td>Facer clic</td>
+            </tr>
+        </table>
+        <pre><code>elemento.addEventListener("mouseover", entrar);
+elemento.addEventListener("mousemove", mover);
+elemento.addEventListener("mouseout", sair);</code></pre>
+        <div id="zona-rato" class="interactive zona-rato">Move o rato por esta zona e fai clic.</div>
+        <button onclick="limpar('eventos-rato')">Limpar saída</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="eventos-teclado">
+        <h2>Eventos de teclado</h2>
+        <table>
+            <tr>
+                <th>Evento</th>
+                <th>Descrición</th>
+            </tr>
+            <tr>
+                <td><code>keydown</code></td>
+                <td>Pulsar unha tecla</td>
+            </tr>
+            <tr>
+                <td><code>keypress</code></td>
+                <td>Manter unha tecla pulsada</td>
+            </tr>
+            <tr>
+                <td><code>keyup</code></td>
+                <td>Soltar unha tecla</td>
+            </tr>
+        </table>
+        <pre><code>campo.addEventListener("keyup", escribir);
+
+function escribir() {
+  console.log(campo.value);
+}</code></pre>
+        <div class="interactive">
+            <label for="campo-teclado">Escribe aquí:</label>
+            <input type="text" id="campo-teclado" placeholder="Proba o teclado">
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="eventos-foco">
+        <h2>Eventos de enfoque</h2>
+        <pre><code>input.addEventListener("focus", activar);
+input.addEventListener("blur", validar);</code></pre>
+        <div class="interactive">
+            <label for="campo-foco">Nome:</label>
+            <input type="text" id="campo-foco" placeholder="Entra e sae do campo">
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="eventos-formulario">
+        <h2>Eventos de formulario</h2>
+        <pre><code>formulario.addEventListener("submit", enviar);
+formulario.addEventListener("reset", limpar);
+
+function enviar(event) {
+  event.preventDefault();
+  console.log("Formulario enviado");
+}</code></pre>
+        <form id="form-eventos" class="interactive" action="#" method="get">
+            <label for="nome-form">Nome:</label>
+            <input type="text" id="nome-form" value="Uxía">
+            <button type="submit">Enviar</button>
+            <button type="reset">Reiniciar</button>
+        </form>
+        <div class="output"></div>
+    </section>
+
+    <section id="eventos-xanela">
+        <h2>Eventos de xanela</h2>
+        <table>
+            <tr>
+                <th>Evento</th>
+                <th>Descrición</th>
+            </tr>
+            <tr>
+                <td><code>load</code></td>
+                <td>Carga completa da páxina</td>
+            </tr>
+            <tr>
+                <td><code>resize</code></td>
+                <td>Cambio de tamaño da xanela</td>
+            </tr>
+            <tr>
+                <td><code>unload</code></td>
+                <td>Saída da páxina</td>
+            </tr>
+            <tr>
+                <td><code>move</code></td>
+                <td>Movemento da xanela, con pouco uso actual</td>
+            </tr>
+        </table>
+        <pre><code>window.addEventListener("resize", cambiarTamano);
+
+function cambiarTamano() {
+  console.log(window.innerWidth);
+}</code></pre>
+        <button onclick="executar('eventos-xanela')">Mostrar tamaño actual</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="outros-eventos">
+        <h2>Outros eventos</h2>
+        <pre><code>boton.addEventListener("click", mostrar);
+elemento.addEventListener("drop", soltar);
+imaxe.addEventListener("error", erro);</code></pre>
+        <h3>onclick</h3>
+        <button id="btn-click">Executar click</button>
+        <h3>ondragdrop</h3>
+        <div id="elemento-arrastrable" class="elemento-arrastrable" draggable="true">Arrástrame</div>
+        <div id="caixa-drop" class="interactive caixa-drop">Solta aquí o elemento.</div>
+        <h3>onerror</h3>
+        <button onclick="executar('erro-imaxe')">Cargar imaxe con erro</button>
+        <div id="zona-imaxe-erro"></div>
+        <h3>onabort</h3>
+        <button onclick="executar('abortar-evento')">Simular carga abortada</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="boas-practicas">
+        <h2>Boas prácticas actuais</h2>
+        <p>Recoméndase utilizar <code>addEventListener()</code> para separar o HTML do JavaScript e permitir varios eventos nun mesmo elemento.</p>
+        <pre><code>boton.addEventListener("click", mostrar);</code></pre>
+        <button id="btn-boas-practicas">Executar exemplo</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="dom-eventos">
+        <h2>Manipulación habitual do DOM con eventos</h2>
+        <table>
+            <tr>
+                <th>Propiedade ou método</th>
+                <th>Descrición</th>
+            </tr>
+            <tr>
+                <td><code>textContent</code></td>
+                <td>Cambia texto dun elemento</td>
+            </tr>
+            <tr>
+                <td><code>innerHTML</code></td>
+                <td>Insire HTML dentro dun elemento</td>
+            </tr>
+            <tr>
+                <td><code>value</code></td>
+                <td>Obtén o valor dun input</td>
+            </tr>
+            <tr>
+                <td><code>classList.toggle()</code></td>
+                <td>Activa ou desactiva unha clase</td>
+            </tr>
+            <tr>
+                <td><code>style</code></td>
+                <td>Modifica estilos CSS</td>
+            </tr>
+        </table>
+        <pre><code>menu.classList.toggle("visible");</code></pre>
+        <div id="caixa-dom" class="interactive">Texto inicial</div>
+        <button onclick="executar('dom-eventos')">Modificar DOM</button>
+        <div class="output"></div>
+    </section>
+
+    <section id="exercicio">
+        <h2>Exercicio práctico</h2>
+        <p>Crear un botón de menú móbil que mostra e oculta a navegación usando <code>click</code>, <code>querySelector()</code> e <code>classList.toggle()</code>.</p>
+        <pre><code>let boton = document.getElementById("btnMenu");
+let menu = document.querySelector(".nav-mobile");
+
+boton.addEventListener("click", mostrar);
+
+function mostrar() {
+  menu.classList.toggle("visible");
+}</code></pre>
+        <button id="btnMenu">Menú</button>
+        <ul class="nav-mobile">
+            <li>Inicio</li>
+            <li>Servizos</li>
+            <li>Contacto</li>
+        </ul>
+        <div class="output"></div>
+    </section>
+
+    <script>
+        let movementosRato = 0;
+        let resizeTimer;
+
+        function escribir(id, mensaxe) {
+            let section = document.getElementById(id);
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent += mensaxe + "\n";
+            }
+            console.log(mensaxe);
+        }
+
+        function limpar(id) {
+            let section = document.getElementById(id);
+            if (!section) {
+                return;
+            }
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent = "";
+            }
+        }
+
+        function executar(id) {
+            limpar(id);
+
+            switch (id) {
+                case "xerarquia-eventos":
+                    escribir(id, "O documento está cargado e listo.");
+                    escribir(id, "document.readyState: " + document.readyState);
+                    break;
+                case "eventos-xanela":
+                    escribir(id, "Ancho: " + window.innerWidth + "px");
+                    escribir(id, "Alto: " + window.innerHeight + "px");
+                    break;
+                case "erro-imaxe":
+                    crearImaxeConErro();
+                    break;
+                case "abortar-evento":
+                    escribir("outros-eventos", "Simulación de onabort: interrompeuse unha carga.");
+                    break;
+                case "dom-eventos":
+                    let caixa = document.getElementById("caixa-dom");
+                    caixa.textContent = "Texto cambiado por un evento";
+                    caixa.classList.toggle("visible");
+                    caixa.classList.toggle("activo");
+                    caixa.style.fontWeight = "bold";
+                    escribir(id, "Aplicáronse textContent, classList.toggle() e style.");
+                    break;
+            }
+        }
+
+        function crearImaxeConErro() {
+            let zona = document.getElementById("zona-imaxe-erro");
+            zona.innerHTML = "";
+
+            let imaxe = document.createElement("img");
+            imaxe.alt = "Imaxe inexistente";
+            imaxe.width = 120;
+            imaxe.addEventListener("error", function () {
+                escribir("outros-eventos", "Evento error: a imaxe non puido cargarse.");
+            });
+            imaxe.src = "imaxe-inexistente.png";
+
+            zona.appendChild(imaxe);
+        }
+
+        window.addEventListener("load", function () {
+            escribir("xerarquia-eventos", "Evento load: páxina cargada.");
+        });
+
+        window.addEventListener("resize", function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                limpar("eventos-xanela");
+                escribir("eventos-xanela", "Evento resize detectado.");
+                escribir("eventos-xanela", "Novo tamaño: " + window.innerWidth + " x " + window.innerHeight + "px");
+            }, 200);
+        });
+
+        document.getElementById("btn-definicion").addEventListener("click", function () {
+            limpar("definicion-eventos");
+            escribir("definicion-eventos", "Evento click executado.");
+        });
+
+        document.getElementById("btn-accion").addEventListener("click", mostrarAccion);
+
+        function mostrarAccion() {
+            limpar("accions-eventos");
+            escribir("accions-eventos", "Fixeches clic.");
+        }
+
+        document.getElementById("texto-select").addEventListener("select", function () {
+            limpar("onselect");
+            escribir("onselect", "Texto seleccionado.");
+        });
+
+        document.getElementById("cidade").addEventListener("change", function (event) {
+            limpar("onchange");
+            escribir("onchange", "Cidade seleccionada: " + event.target.value);
+        });
+
+        let zonaRato = document.getElementById("zona-rato");
+
+        zonaRato.addEventListener("mousedown", function () {
+            zonaRato.classList.add("activo");
+            escribir("eventos-rato", "mousedown: botón do rato pulsado.");
+        });
+
+        zonaRato.addEventListener("mouseup", function () {
+            zonaRato.classList.remove("activo");
+            escribir("eventos-rato", "mouseup: botón do rato soltado.");
+        });
+
+        zonaRato.addEventListener("mouseover", function () {
+            escribir("eventos-rato", "mouseover: entraches na zona.");
+        });
+
+        zonaRato.addEventListener("mouseout", function () {
+            zonaRato.classList.remove("activo");
+            escribir("eventos-rato", "mouseout: saíches da zona.");
+        });
+
+        zonaRato.addEventListener("mousemove", function (event) {
+            movementosRato++;
+            if (movementosRato % 12 === 0) {
+                escribir("eventos-rato", "mousemove: x=" + event.offsetX + ", y=" + event.offsetY);
+            }
+        });
+
+        zonaRato.addEventListener("click", function () {
+            escribir("eventos-rato", "click: fixeches clic na zona.");
+        });
+
+        let campoTeclado = document.getElementById("campo-teclado");
+
+        campoTeclado.addEventListener("keydown", function (event) {
+            limpar("eventos-teclado");
+            escribir("eventos-teclado", "keydown: " + event.key);
+        });
+
+        campoTeclado.addEventListener("keypress", function (event) {
+            escribir("eventos-teclado", "keypress: " + event.key);
+        });
+
+        campoTeclado.addEventListener("keyup", function () {
+            escribir("eventos-teclado", "keyup, valor actual: " + campoTeclado.value);
+        });
+
+        let campoFoco = document.getElementById("campo-foco");
+
+        campoFoco.addEventListener("focus", function () {
+            campoFoco.style.backgroundColor = "lightyellow";
+            limpar("eventos-foco");
+            escribir("eventos-foco", "focus: o campo recibiu o foco.");
+        });
+
+        campoFoco.addEventListener("blur", function () {
+            campoFoco.style.backgroundColor = "";
+            escribir("eventos-foco", "blur: o campo perdeu o foco.");
+        });
+
+        document.getElementById("form-eventos").addEventListener("submit", function (event) {
+            event.preventDefault();
+            limpar("eventos-formulario");
+            escribir("eventos-formulario", "Formulario enviado con preventDefault().");
+            escribir("eventos-formulario", "Nome: " + document.getElementById("nome-form").value);
+        });
+
+        document.getElementById("form-eventos").addEventListener("reset", function () {
+            limpar("eventos-formulario");
+            escribir("eventos-formulario", "Formulario reiniciado.");
+        });
+
+        document.getElementById("btn-click").addEventListener("click", function () {
+            limpar("outros-eventos");
+            escribir("outros-eventos", "onclick: executouse o evento click.");
+        });
+
+        let elementoArrastrable = document.getElementById("elemento-arrastrable");
+        let caixaDrop = document.getElementById("caixa-drop");
+
+        elementoArrastrable.addEventListener("dragstart", function (event) {
+            event.dataTransfer.setData("text/plain", "Elemento arrastrado");
+            escribir("outros-eventos", "dragstart: comezou o arrastre.");
+        });
+
+        caixaDrop.addEventListener("dragover", function (event) {
+            event.preventDefault();
+            caixaDrop.classList.add("activo");
+        });
+
+        caixaDrop.addEventListener("dragleave", function () {
+            caixaDrop.classList.remove("activo");
+        });
+
+        caixaDrop.addEventListener("drop", function (event) {
+            event.preventDefault();
+            caixaDrop.classList.remove("activo");
+            caixaDrop.textContent = event.dataTransfer.getData("text/plain") + " soltado correctamente.";
+            escribir("outros-eventos", "drop: elemento soltado na caixa.");
+        });
+
+        document.getElementById("btn-boas-practicas").addEventListener("click", function () {
+            limpar("boas-practicas");
+            escribir("boas-practicas", "Evento creado con addEventListener().");
+        });
+
+        let botonMenu = document.getElementById("btnMenu");
+        let menu = document.querySelector(".nav-mobile");
+
+        botonMenu.addEventListener("click", function () {
+            menu.classList.toggle("visible");
+            limpar("exercicio");
+            escribir("exercicio", "Clase actual do menú: " + menu.className);
+        });
+    </script>
+</body>
+
+</html>
