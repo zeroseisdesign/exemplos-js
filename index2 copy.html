@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú móbil - Exemplos JavaScript</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+
+<body>
+    <h1>Menú móbil</h1>
+    <button id="btnMenu">Menú</button>
+    <ul class="nav-mobile">
+        <li>Inicio</li>
+        <li>Servizos</li>
+        <li>Contacto</li>
+    </ul>
+
+    <script>
+        let boton = document.getElementById("btnMenu");
+        let menu = document.querySelector(".nav-mobile");
+
+        boton.addEventListener("click", mostrar);
+
+        function mostrar() {
+            menu.classList.toggle("visible");
+            boton.classList.toggle("activo");
+        }
+    </script>
+</body>
+
+</html>

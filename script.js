@@ -94,3 +94,11 @@
         function cambiarCor() {
             document.body.style.backgroundColor = "lightblue";
         }
+
+        // Menú móbil: mostrar/ocultar navegación con toggle
+        let botonMenu = document.querySelector("#btnMenu");
+        let menuMobile = document.querySelector(".nav-mobile");
+
+        botonMenu.addEventListener("click", function () {
+            menuMobile.classList.toggle("visible");
+        });

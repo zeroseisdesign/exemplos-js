@@ -5,11 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplos JavaScript</title>
+    <style>
+        .nav-mobile {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0;
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            width: max-content;
+        }
+
+        .nav-mobile li {
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nav-mobile li:last-child {
+            border-bottom: none;
+        }
+
+        .nav-mobile.visible {
+            display: block;
+        }
+    </style>
     <script src="script.js" defer></script>
 </head>
 
 <body>
     <h1>Exemplos JavaScript</h1>
+    <section>
+        <h2>Menú móbil</h2>
+        <button id="btnMenu">Menú</button>
+        <ul class="nav-mobile" id="navMobile">
+            <li>Inicio</li>
+            <li>Servizos</li>
+            <li>Contacto</li>
+        </ul>
+    </section>
     <h2>Operacións lóxicas</h2>
     <pre>
         <code>
