@@ -7,18 +7,47 @@
     <title>Exercicio 7 — Formulario con Bootstrap</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-D2PFb4x0o8gJQ/TMhv+vI2IzxMD1iC7sZfYhFhR+KkXZyLbx2pcQS8EvxA9fOV8j" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/estilos.css">
+
 </head>
 
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-gradient">
+        <div class="container">
+            <!-- <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-code-square me-2"></i>Formulario Avanzado
+        
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="header-section">
+        <div class="container">
+            <div class="mb-3">
+                <h1 class="display-4 fw-bold mb-2">
+                    <i class="bi bi-pencil-square me-2"></i>Exercicio 7
+                </h1>
+                <p class="lead mb-0">
+                    <i class="bi bi-info-circle me-2"></i>Formulario con Bootstrap 5 e validación personalizada en
+                    JavaScript
+                </p>
+            </div>
+            <div class="mt-4">
+                <span class="badge bg-light text-primary fs-6 px-3 py-2">
+                    <i class="bi bi-check2-circle me-2"></i>Paso 1/3: Completa o formulario
+                </span>
+            </div>
+        </div>
+    </div>
+
     <main class="container py-5">
         <div class="row justify-content-center">
             <div class="col-12 col-xl-9">
-                <div class="text-center mb-4">
-                    <h1 class="fw-bold">Exercicio 7</h1>
-                    <p class="lead mb-0">Formulario con Bootstrap 5 e validación personalizada en JavaScript.</p>
-                </div>
-
                 <div class="card shadow-sm">
                     <div class="card-body p-4">
                         <form id="registroForm" class="needs-validation" novalidate>
@@ -71,70 +100,70 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <fieldset>
-                                        <legend class="col-form-label mb-2">Sexo</legend>
-                                        <div class="d-flex flex-wrap gap-3" id="sexoGroup">
+
+                                    <legend class="col-form-label mb-2">Sexo</legend>
+                                    <div class="d-flex flex-wrap gap-3" id="sexoGroup">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sexo" id="sexoHombre"
+                                                value="Home" required>
+                                            <label class="form-check-label" for="sexoHombre">Home</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sexo" id="sexoMuller"
+                                                value="Muller" required>
+                                            <label class="form-check-label" for="sexoMuller">Muller</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sexo" id="sexoOutro"
+                                                value="Outro" required>
+                                            <label class="form-check-label" for="sexoOutro">Outro</label>
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback d-block" id="sexoFeedback">Selecciona unha opción.
+                                    </div>
+
+                                </div> <br>
+
+                                <div class="col-12">
+
+                                    <legend class="col-form-label mb-2">Linguaxes favoritas</legend>
+                                    <div class="row row-cols-2 row-cols-md-4 g-2" id="lenguajesGroup">
+                                        <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="sexo" id="sexoHombre"
-                                                    value="Home" required>
-                                                <label class="form-check-label" for="sexoHombre">Home</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="sexo" id="sexoMuller"
-                                                    value="Muller" required>
-                                                <label class="form-check-label" for="sexoMuller">Muller</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="sexo" id="sexoOutro"
-                                                    value="Outro" required>
-                                                <label class="form-check-label" for="sexoOutro">Outro</label>
+                                                <input class="form-check-input" type="checkbox" id="lenguajeJS"
+                                                    value="JavaScript">
+                                                <label class="form-check-label" for="lenguajeJS">JavaScript</label>
                                             </div>
                                         </div>
-                                        <div class="invalid-feedback d-block" id="sexoFeedback">Selecciona unha opción.
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="lenguajePHP"
+                                                    value="PHP">
+                                                <label class="form-check-label" for="lenguajePHP">PHP</label>
+                                            </div>
                                         </div>
-                                    </fieldset>
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="lenguajePython"
+                                                    value="Python">
+                                                <label class="form-check-label" for="lenguajePython">Python</label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="lenguajeJava"
+                                                    value="Java">
+                                                <label class="form-check-label" for="lenguajeJava">Java</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback d-block" id="lenguajesFeedback">Selecciona polo
+                                        menos unha linguaxe.</div>
+
                                 </div>
 
                                 <div class="col-12">
-                                    <fieldset>
-                                        <legend class="col-form-label mb-2">Linguaxes favoritas</legend>
-                                        <div class="row row-cols-2 row-cols-md-4 g-2" id="lenguajesGroup">
-                                            <div class="col">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="lenguajeJS"
-                                                        value="JavaScript">
-                                                    <label class="form-check-label" for="lenguajeJS">JavaScript</label>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="lenguajePHP"
-                                                        value="PHP">
-                                                    <label class="form-check-label" for="lenguajePHP">PHP</label>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="lenguajePython"
-                                                        value="Python">
-                                                    <label class="form-check-label" for="lenguajePython">Python</label>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="lenguajeJava"
-                                                        value="Java">
-                                                    <label class="form-check-label" for="lenguajeJava">Java</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="invalid-feedback d-block" id="lenguajesFeedback">Selecciona polo
-                                            menos unha linguaxe.</div>
-                                    </fieldset>
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="comentarios" class="form-label">Comentarios</label>
+                                    <label for="comentarios" class="form-label">Comentarios</label> <br>
                                     <textarea id="comentarios" class="form-control" rows="4" required minlength="10"
                                         placeholder="Escribe un comentario máis completo."></textarea>
                                     <div class="form-text"><span id="comentariosCount">0</span> / 300 caracteres</div>
@@ -156,9 +185,13 @@
                             </div>
                         </form>
 
-                        <div id="previewCard" class="card mt-4 d-none">
+                        <div id="previewCard" class="card mt-4 d-none border-success">
+                            <div class="card-header bg-success bg-opacity-10 border-success">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>Vista previa dos datos
+                                </h5>
+                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Vista previa dos datos</h5>
                                 <div id="previewContent"></div>
                             </div>
                         </div>
@@ -168,7 +201,10 @@
         </div>
     </main>
 
-    <script src="assets/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55VCUC7jzrtUfTSWnN9MnE2cXPFsn"
+        crossorigin="anonymous"></script>
+    <script src="assets/script/script.js" defer></script>
 </body>
 
 </html>
