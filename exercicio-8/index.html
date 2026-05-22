@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu hamburguesa</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+    <link rel="stylesheet" href="assets/fancybox/fancybox.css" />
 </head>
 
 <body>
@@ -30,15 +30,17 @@
     </header>
 
     <main>
-        <a href="https://lipsum.app/id/60/1600x1200" data-fancybox="gallery">
-            <img src="https://lipsum.app/id/60/200x150" width="200" height="150" alt="Sample image #1" />
-        </a>
-        <a href="assets/images/key-visual.webp" data-fancybox>
+        <a href="assets/images/key-visual.webp" data-fancybox="gallery" data-caption="Single image">
             <img src="assets/images/key-visual.webp" alt="Single image" class="thumb" />
         </a>
     </main>
     <script src="assets/scripts/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
+    <script src="assets/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+        });
+    </script>
 </body>
 
 </html>
