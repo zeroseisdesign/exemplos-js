@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu hamburguesa</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Mi web</div>
+
+            <button class="hamburguesa" id="boton-menu" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="menu" id="menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Proyectos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <a href="https://lipsum.app/id/60/1600x1200" data-fancybox="gallery">
+            <img src="https://lipsum.app/id/60/200x150" width="200" height="150" alt="Sample image #1" />
+        </a>
+        <a href="assets/images/key-visual.webp" data-fancybox>
+            <img src="assets/images/key-visual.webp" alt="Single image" class="thumb" />
+        </a>
+    </main>
+    <script src="assets/scripts/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
+</body>
+
+</html>
