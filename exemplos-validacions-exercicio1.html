@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1 - Formulario de Rexistro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 900px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        h4 {
+            color: #555;
+            margin-top: 0;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            user-select: all;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 5px 10px;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #d63384;
+        }
+
+        .output {
+            background: #eee;
+            min-height: 20px;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+
+        .interactive {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px dashed #bbb;
+        }
+
+        .paso {
+            background: #f9f9f9;
+            border-left: 4px solid #0d6efd;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+
+        .paso-num {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        input:valid {
+            border: 2px solid green;
+        }
+
+        input:invalid {
+            border: 2px solid red;
+        }
+
+        input:focus:invalid {
+            background-color: #ffe5e5;
+        }
+
+        .mensaxe-erro {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .mensaxe-valida {
+            color: green;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+            margin: 5px 0;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .nota {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 8px 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Exercicio 1: Formulario de Rexistro</h1>
+    <p>Implementación paso a paso dun formulario de rexistro con validacións.</p>
+
+    <p><strong>Requisitos:</strong></p>
+    <ul>
+        <li>Campos: Nome, Apelidos, Email, Idade, Contrasinal</li>
+        <li>Todos obrigatorios</li>
+        <li>Idade entre 18 e 99</li>
+        <li>Contrasinal mínimo 8 caracteres</li>
+        <li>Feedback visual con CSS</li>
+    </ul>
+
+    <hr>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 1:</span> Estrutura HTML do formulario</h3>
+        <p>Definimos o formulario cos campos necesarios. Cada campo leva o seu <code>label</code>, <code>type</code> axeitado e atributos de validación HTML5.</p>
+        <pre><code>&lt;form id="form-rexistro" action="#" method="get"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Datos de rexistro&lt;/legend&gt;
+
+        &lt;label for="rex-nome"&gt;Nome:&lt;/label&gt;
+        &lt;input type="text" id="rex-nome" required&gt;
+        &lt;div class="mensaxe-erro" id="erro-nome"&gt;&lt;/div&gt;
+
+        &lt;label for="rex-apelidos"&gt;Apelidos:&lt;/label&gt;
+        &lt;input type="text" id="rex-apelidos" required&gt;
+        &lt;div class="mensaxe-erro" id="erro-apelidos"&gt;&lt;/div&gt;
+
+        &lt;label for="rex-email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="rex-email" required&gt;
+        &lt;div class="mensaxe-erro" id="erro-email"&gt;&lt;/div&gt;
+
+        &lt;label for="rex-idade"&gt;Idade:&lt;/label&gt;
+        &lt;input type="number" id="rex-idade" min="18" max="99" required&gt;
+        &lt;div class="mensaxe-erro" id="erro-idade"&gt;&lt;/div&gt;
+
+        &lt;label for="rex-password"&gt;Contrasinal:&lt;/label&gt;
+        &lt;input type="password" id="rex-password" minlength="8" required&gt;
+        &lt;div class="mensaxe-erro" id="erro-password"&gt;&lt;/div&gt;
+
+        &lt;br&gt;
+        &lt;button type="submit"&gt;Rexistrarse&lt;/button&gt;
+        &lt;button type="reset"&gt;Limpar&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 2:</span> Estilos CSS para feedback visual</h3>
+        <p>Usamos as pseudoclases <code>:valid</code>, <code>:invalid</code> e <code>:focus:invalid</code> para dar feedback visual automático sen JavaScript.</p>
+        <pre><code>/* Campos válidos - bordo verde */
+input:valid {
+    border: 2px solid green;
+}
+
+/* Campos inválidos - bordo vermello */
+input:invalid {
+    border: 2px solid red;
+}
+
+/* Campo inválido con foco - fondo vermello claro */
+input:focus:invalid {
+    background-color: #ffe5e5;
+}
+
+/* Mensaxes de erro */
+.mensaxe-erro {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+.mensaxe-valida {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 4px;
+}</code></pre>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 3:</span> Funcións de validación individuais</h3>
+        <p>Creamos unha función para cada campo. Isto organiza mellor o código e permite reutilizar as validacións.</p>
+        <pre><code>function validarCampoTexto(id, min, max) {
+    let campo = document.getElementById(id);
+    let valor = campo.value.trim();
+    if (valor === "") {
+        return "Campo obrigatorio";
+    }
+    if (valor.length < min) {
+        return "Mínimo " + min + " caracteres";
+    }
+    if (max && valor.length > max) {
+        return "Máximo " + max + " caracteres";
+    }
+    return "";
+}
+
+function validarEmail(id) {
+    let campo = document.getElementById(id);
+    let valor = campo.value.trim();
+    if (valor === "") {
+        return "Campo obrigatorio";
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor)) {
+        return "Formato de email incorrecto";
+    }
+    return "";
+}
+
+function validarIdade(id, min, max) {
+    let campo = document.getElementById(id);
+    let valor = parseInt(campo.value, 10);
+    if (isNaN(valor)) {
+        return "Campo obrigatorio";
+    }
+    if (valor < min) {
+        return "A idade mínima é " + min;
+    }
+    if (valor > max) {
+        return "A idade máxima é " + max;
+    }
+    return "";
+}
+
+function validarPassword(id, min) {
+    let campo = document.getElementById(id);
+    let valor = campo.value;
+    if (valor === "") {
+        return "Campo obrigatorio";
+    }
+    if (valor.length < min) {
+        return "Mínimo " + min + " caracteres (actuais: " + valor.length + ")";
+    }
+    return "";
+}</code></pre>
+        <div class="nota">
+            <strong>Nota:</strong> Cada función devolve unha cadea baleira se é válido, ou unha mensaxe de erro se non é válido.
+        </div>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 4:</span> Validación en tempo real con evento input</h3>
+        <p>Asociamos o evento <code>input</code> a cada campo para validar mentres o usuario escribe. Así o usuario ve o feedback inmediatamente.</p>
+        <pre><code>function mostrarMensaxe(idErro, mensaxe) {
+    let div = document.getElementById(idErro);
+    if (mensaxe) {
+        div.className = "mensaxe-erro";
+        div.textContent = mensaxe;
+    } else {
+        div.className = "mensaxe-valida";
+        div.textContent = "&#10003; Correcto";
+    }
+}
+
+// Validación en tempo real para cada campo
+document.getElementById("rex-nome").addEventListener("input", function () {
+    let erro = validarCampoTexto("rex-nome", 2, 50);
+    mostrarMensaxe("erro-nome", erro);
+});
+
+document.getElementById("rex-apelidos").addEventListener("input", function () {
+    let erro = validarCampoTexto("rex-apelidos", 2, 100);
+    mostrarMensaxe("erro-apelidos", erro);
+});
+
+document.getElementById("rex-email").addEventListener("input", function () {
+    let erro = validarEmail("rex-email");
+    mostrarMensaxe("erro-email", erro);
+});
+
+document.getElementById("rex-idade").addEventListener("input", function () {
+    let erro = validarIdade("rex-idade", 18, 99);
+    mostrarMensaxe("erro-idade", erro);
+});
+
+document.getElementById("rex-password").addEventListener("input", function () {
+    let erro = validarPassword("rex-password", 8);
+    mostrarMensaxe("erro-password", erro);
+});</code></pre>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 5:</span> Validación ó enviar o formulario</h3>
+        <p>Cando o usuario fai clic en "Rexistrarse", validamos todos os campos. Se hai algún erro, cancelamos o envío con <code>preventDefault()</code> e mostramos unha alerta.</p>
+        <pre><code>document.getElementById("form-rexistro").addEventListener("submit", function (event) {
+    let erros = [];
+
+    let erroNome = validarCampoTexto("rex-nome", 2, 50);
+    if (erroNome) erros.push("Nome: " + erroNome);
+
+    let erroApelidos = validarCampoTexto("rex-apelidos", 2, 100);
+    if (erroApelidos) erros.push("Apelidos: " + erroApelidos);
+
+    let erroEmail = validarEmail("rex-email");
+    if (erroEmail) erros.push("Email: " + erroEmail);
+
+    let erroIdade = validarIdade("rex-idade", 18, 99);
+    if (erroIdade) erros.push("Idade: " + erroIdade);
+
+    let erroPassword = validarPassword("rex-password", 8);
+    if (erroPassword) erros.push("Contrasinal: " + erroPassword);
+
+    if (erros.length > 0) {
+        event.preventDefault();
+        alert("Erros no formulario:\n- " + erros.join("\n- "));
+    } else {
+        event.preventDefault();
+        let output = document.querySelector("#demo-final .output");
+        output.textContent = "✓ Formulario enviado correctamente!\n";
+        output.textContent += "   Nome: " + document.getElementById("rex-nome").value + "\n";
+        output.textContent += "   Apelidos: " + document.getElementById("rex-apelidos").value + "\n";
+        output.textContent += "   Email: " + document.getElementById("rex-email").value + "\n";
+        output.textContent += "   Idade: " + document.getElementById("rex-idade").value + "\n";
+        output.textContent += "   Contrasinal: " + "*".repeat(document.getElementById("rex-password").value.length);
+    }
+});</code></pre>
+    </div>
+
+    <hr>
+
+    <section id="demo-final">
+        <h2>Demo final: Formulario de rexistro completo</h2>
+        <p>Formulario funcional con validación en tempo real e ó enviar. Todos os campos son obrigatorios.</p>
+
+        <form id="form-rexistro" class="interactive" action="#" method="get">
+            <fieldset>
+                <legend>Datos de rexistro</legend>
+
+                <label for="rex-nome">Nome:</label>
+                <input type="text" id="rex-nome" required>
+                <div class="mensaxe-erro" id="erro-nome"></div>
+
+                <label for="rex-apelidos">Apelidos:</label>
+                <input type="text" id="rex-apelidos" required>
+                <div class="mensaxe-erro" id="erro-apelidos"></div>
+
+                <label for="rex-email">Email:</label>
+                <input type="email" id="rex-email" required>
+                <div class="mensaxe-erro" id="erro-email"></div>
+
+                <label for="rex-idade">Idade:</label>
+                <input type="number" id="rex-idade" min="18" max="99" required>
+                <div class="mensaxe-erro" id="erro-idade"></div>
+
+                <label for="rex-password">Contrasinal:</label>
+                <input type="password" id="rex-password" minlength="8" required>
+                <div class="mensaxe-erro" id="erro-password"></div>
+
+                <br>
+                <button type="submit">Rexistrarse</button>
+                <button type="reset">Limpar</button>
+            </fieldset>
+        </form>
+        <div class="output"></div>
+    </section>
+
+    <script>
+        function escribir(id, mensaxe) {
+            let section = document.getElementById(id);
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent += mensaxe + "\n";
+            }
+        }
+
+        function limpar(id) {
+            let section = document.getElementById(id);
+            if (!section) {
+                return;
+            }
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent = "";
+            }
+        }
+
+        function validarCampoTexto(id, min, max) {
+            let campo = document.getElementById(id);
+            let valor = campo.value.trim();
+            if (valor === "") {
+                return "Campo obrigatorio";
+            }
+            if (valor.length < min) {
+                return "Mínimo " + min + " caracteres";
+            }
+            if (max && valor.length > max) {
+                return "Máximo " + max + " caracteres";
+            }
+            return "";
+        }
+
+        function validarEmail(id) {
+            let campo = document.getElementById(id);
+            let valor = campo.value.trim();
+            if (valor === "") {
+                return "Campo obrigatorio";
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor)) {
+                return "Formato de email incorrecto";
+            }
+            return "";
+        }
+
+        function validarIdade(id, min, max) {
+            let campo = document.getElementById(id);
+            let valor = parseInt(campo.value, 10);
+            if (isNaN(valor)) {
+                return "Campo obrigatorio";
+            }
+            if (valor < min) {
+                return "A idade mínima é " + min;
+            }
+            if (valor > max) {
+                return "A idade máxima é " + max;
+            }
+            return "";
+        }
+
+        function validarPassword(id, min) {
+            let campo = document.getElementById(id);
+            let valor = campo.value;
+            if (valor === "") {
+                return "Campo obrigatorio";
+            }
+            if (valor.length < min) {
+                return "Mínimo " + min + " caracteres (actuais: " + valor.length + ")";
+            }
+            return "";
+        }
+
+        function mostrarMensaxe(idErro, mensaxe) {
+            let div = document.getElementById(idErro);
+            if (mensaxe) {
+                div.className = "mensaxe-erro";
+                div.textContent = mensaxe;
+            } else {
+                div.className = "mensaxe-valida";
+                div.textContent = "✓ Correcto";
+            }
+        }
+
+        document.getElementById("rex-nome").addEventListener("input", function () {
+            let erro = validarCampoTexto("rex-nome", 2, 50);
+            mostrarMensaxe("erro-nome", erro);
+        });
+
+        document.getElementById("rex-apelidos").addEventListener("input", function () {
+            let erro = validarCampoTexto("rex-apelidos", 2, 100);
+            mostrarMensaxe("erro-apelidos", erro);
+        });
+
+        document.getElementById("rex-email").addEventListener("input", function () {
+            let erro = validarEmail("rex-email");
+            mostrarMensaxe("erro-email", erro);
+        });
+
+        document.getElementById("rex-idade").addEventListener("input", function () {
+            let erro = validarIdade("rex-idade", 18, 99);
+            mostrarMensaxe("erro-idade", erro);
+        });
+
+        document.getElementById("rex-password").addEventListener("input", function () {
+            let erro = validarPassword("rex-password", 8);
+            mostrarMensaxe("erro-password", erro);
+        });
+
+        document.getElementById("form-rexistro").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let erros = [];
+
+            let erroNome = validarCampoTexto("rex-nome", 2, 50);
+            if (erroNome) erros.push("Nome: " + erroNome);
+
+            let erroApelidos = validarCampoTexto("rex-apelidos", 2, 100);
+            if (erroApelidos) erros.push("Apelidos: " + erroApelidos);
+
+            let erroEmail = validarEmail("rex-email");
+            if (erroEmail) erros.push("Email: " + erroEmail);
+
+            let erroIdade = validarIdade("rex-idade", 18, 99);
+            if (erroIdade) erros.push("Idade: " + erroIdade);
+
+            let erroPassword = validarPassword("rex-password", 8);
+            if (erroPassword) erros.push("Contrasinal: " + erroPassword);
+
+            limpar("demo-final");
+
+            if (erros.length > 0) {
+                alert("Erros no formulario:\n- " + erros.join("\n- "));
+            } else {
+                let output = document.querySelector("#demo-final .output");
+                output.textContent = "✓ Formulario enviado correctamente!\n";
+                output.textContent += "   Nome: " + document.getElementById("rex-nome").value + "\n";
+                output.textContent += "   Apelidos: " + document.getElementById("rex-apelidos").value + "\n";
+                output.textContent += "   Email: " + document.getElementById("rex-email").value + "\n";
+                output.textContent += "   Idade: " + document.getElementById("rex-idade").value + "\n";
+                let pass = document.getElementById("rex-password").value;
+                output.textContent += "   Contrasinal: " + "*".repeat(pass.length);
+            }
+        });
+
+        document.getElementById("form-rexistro").addEventListener("reset", function () {
+            limpar("demo-final");
+            let mensaxes = ["erro-nome", "erro-apelidos", "erro-email", "erro-idade", "erro-password"];
+            mensaxes.forEach(function (id) {
+                document.getElementById(id).className = "mensaxe-erro";
+                document.getElementById(id).textContent = "";
+            });
+            let output = document.querySelector("#demo-final .output");
+            output.textContent = "Formulario reiniciado.";
+        });
+    </script>
+</body>
+
+</html>
