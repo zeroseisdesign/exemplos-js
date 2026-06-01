@@ -1,11 +1,15 @@
-/* ===========================
+﻿/* ===========================
    HERO SECTION
 =========================== */
 .hero-section {
     min-height: 100vh;
+    width: 100%;
     padding-top: 80px;
     /* navbar fixed */
-    background: radial-gradient(circle at top left, #1f2937, #020617);
+    background-image: url('../img/TimeX-One-smartwatch.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #f9fafb;
     display: flex;
     align-items: center;
@@ -14,8 +18,9 @@
 }
 
 .hero-watch {
-    max-width: 380px;
     width: 100%;
+    height: 0;
+    min-height: 0;
     filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
 }
 
@@ -76,10 +81,6 @@ body {
     .hero-section {
         padding-top: 60px;
     }
-
-    .hero-watch {
-        max-width: 300px;
-    }
 }
 
 /* Móviles */
@@ -90,11 +91,56 @@ body {
         padding-right: 15px;
     }
 
-    .hero-watch {
-        max-width: 240px;
-    }
-
     body {
         padding-top: 60px;
     }
+}
+
+
+.contenedor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columnas iguales */
+    grid-template-rows: repeat(2, 1fr);
+    /* 2 filas iguales */
+    gap: 0;
+    /* sin separación */
+    width: 100%;
+    /* ocupa todo el ancho de la pantalla */
+    height: auto;
+    /* opcional: ocupa toda la altura */
+}
+
+.contenedor-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* rellena la celda sin deformarse */
+    display: block;
+    /* elimina espacios fantasmas */
+}
+
+
+.separacion-30 {
+    margin-top: 30px;
+}
+
+
+.contenedor-form {
+
+
+    background: #1D2021;
+
+
+
+}
+
+.texto {
+    color: #f9fafb;
+}
+
+.fondo {
+    background-color: black;
+
+
 }
