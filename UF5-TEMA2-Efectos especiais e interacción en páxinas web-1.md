@@ -338,42 +338,12 @@ Exemplo:
 ```html
 <img src="foto.jpg" loading="lazy" alt="Fotografía">
 ```
----
 
-2. picture (control por formato e art direction)
-
-A etiqueta picture permite:
-
-* Servir distintos formatos (AVIF, WebP, JPG),
-* Aplicar condicións por pantalla (media queries),
-* Definir prioridade de carga.
-```html
-<picture>
-
-  <source srcset="imaxe.avif" type="image/avif">
-
-  <source srcset="imaxe.webp" type="image/webp">
-
-  <img src="imaxe.jpg" alt="Imaxe adaptable">
-
-</picture>
-```
-
-Como escolle o navegador:
-
-1. Proba o primeiro <source>.
-2. Se o formato é compatible, úsao e detense.
-3. Se non, pasa ao seguinte.
-4. Se ningún é válido, usa o <img> final.
-
-👉 Isto garante compatibilidade total con optimización progresiva.
 ---
 
 ### Iconografía web
 
 As iconas utilízanse para mellorar a comunicación visual.
-
----
 
 ### SVG inline
 
@@ -408,6 +378,29 @@ Exemplo:
 ```
 
 ---
+
+### Bancos de imaxes e recursos visuais
+
+Para o traballo profesional en deseño web é habitual empregar bancos de imaxes xa optimizadas ou de uso libre. Permiten acelerar o fluxo de traballo e garantir calidade visual.
+
+#### Bancos máis usados
+
+- Unsplash → Fotografías de alta calidade e uso libre.
+- Pexels → Imaxes e vídeos gratuítos para uso comercial.
+- Pixabay → Fotos, ilustracións e vídeos libres de dereitos.
+- Freepik → Recursos gráficos, vectores e imaxes (modelo freemium).
+- Adobe Stock → Banco profesional de pago con integración en Adobe.
+- Shutterstock → Gran catálogo profesional de imaxes e vídeo.
+
+#### Boas prácticas de uso
+
+- Comprobar sempre a licenza de uso.
+- Evitar imaxes excesivamente xenéricas.
+- Optimizar sempre antes de subir á web.
+- Manter coherencia visual entre recursos.
+
+---
+
 CSS para adaptar e mellorar imaxes
 
 ## Efectos visuais con CSS
@@ -527,7 +520,7 @@ Exemplo:
 
 ---
 
-## 2.X Presentación das imaxes en interface
+## Presentación das imaxes en interface
 
 A presentación das imaxes nunha interface web non é só unha cuestión estética, senón unha decisión de deseño centrada na experiencia de usuario, a jerarquía visual e a conversión.
 
@@ -607,7 +600,7 @@ Uso típico:
 
 Os sliders son variantes dos carruseis con control máis narrativo.
 
-Tipos:
+Tipos:x
 - Automáticos: cambian sen interacción.
 - Manuais: controlados polo usuario.
 - Mixtos: combinan ambos comportamentos.
@@ -648,6 +641,51 @@ Exemplo típico de hero multimedia:
         <p>Mensaxe de valor</p>
     </div>
 </section>
+```
+---
+
+## Anexo: Xeración de imaxes con intelixencia artificial
+
+A xeración de imaxes con IA converteuse nunha ferramenta habitual no deseño web, especialmente para prototipos, ilustracións e creatividades rápidas.
+
+### Ferramentas máis usadas
+
+- Midjourney → Alta calidade artística, moi usada en creatividade e concept art.
+- DALL·E → Integrada en ecosistemas de IA, moi útil para imaxes xerais e ilustracións.
+- Stable Diffusion → Open source, altamente personalizable.
+- Adobe Firefly → Integración directa con Photoshop e Illustrator.
+- Leonardo AI → Enfoque en assets para xogos, UI e creatividades comerciais.
+
+### Uso habitual en web
+
+- Imaxes de hero section.
+- Ilustracións conceptuais.
+- Mockups rápidos.
+- Propostas visuais para clientes.
+
+### Estrutura básica dun prompt
+
+Un bo prompt debe incluír:
+
+- Tipo de imaxe
+- Estilo visual
+- Obxecto principal
+- Contexto
+- Iluminación / atmosfera
+- Formato ou enquadre
+
+### Exemplo de prompt (plantilla)
+
+```
+[Tipo de imaxe], estilo [estilo visual], mostrando [obxecto principal] en [contexto].
+Iluminación [descrición], ambiente [descrición], alta calidade, detalle profesional, formato web.
+```
+
+### Exemplo completo
+
+```
+Hero image para web corporativa, estilo minimalista moderno, mostrando un equipo de traballo en oficina luminosa.
+Iluminación natural suave, ambiente profesional e limpo, profundidade de campo reducida, formato horizontal.
 ```
 
 ---
@@ -760,3 +798,81 @@ img:hover {
   filter: grayscale(0%);
   transform: scale(1.05);
 }
+```
+
+## Exercicio práctico: creación de imaxes con IA para web
+
+### Obxectivo
+
+Aprender a xerar imaxes coherentes para interfaces web (hero, thumbnails e banners) utilizando ferramentas de IA, controlando estilo, composición e consistencia visual.
+
+
+#### Fase preliminar. Contexto do proxecto
+
+Imaxina que estás a deseñar a web dun estudo creativo chamado “Nordic Studio”, especializado en deseño dixital minimalista.
+
+Necesítanse 3 tipos de imaxes:
+
+* Hero principal para a portada
+* Thumbnails para unha galería de proxectos
+* Banner para sección de servizos
+
+
+#### Fase 1: creación de prompts base
+
+Crea 3 prompts diferentes (un por tipo de imaxe).
+
+Requisitos comúns:
+
+* Estilo: minimalista escandinavo
+* Luz natural suave
+* Estética coherente entre todas as imaxes
+* Fondo limpo ou arquitectónico
+* Sensación profesional e tecnolóxica
+
+Estrutura recomendada de prompt:
+
+* Sujeto principal
+* Entorno
+* Estilo visual
+* Iluminación
+* Nivel de detalle
+* Uso final (web/branding)
+
+
+#### Fase 2: iteración e mellora
+
+A partir dos primeiros resultados:
+
+Debes facer mínimo 2 iteracións por imaxe, modificando:
+
+* Composición (centrado / regra dos terzos)
+* Paleta de cor (fría, cálida, neutra)
+* Nivel de abstracción (realista vs conceptual)
+* Profundidade de campo (bokeh, foco suave, etc.)
+* Formato (horizontal, cuadrado, panorámico)
+
+#### Fase 3: adaptación a formato web
+
+Adapta cada imaxe a un uso real:
+
+* Hero → 1920x900 aprox.
+* Thumbnail → 600x600 aprox.
+* Banner → 1920x500 aprox.
+
+Indica en cada caso:
+
+* Por que ese formato é o axeitado
+* Como afecta á composición
+* Que partes da imaxe se sacrifican ou priorizan
+
+#### Fase 4: coherencia visual
+
+Debes asegurar que as 3 imaxes:
+
+* Parecen parte da mesma marca
+* Comparten estilo fotográfico ou ilustrativo
+* Teñen coherencia cromática
+* Funcionan xuntas nunha mesma web
+
+Se non o fan, deberás reescribir os prompts.
