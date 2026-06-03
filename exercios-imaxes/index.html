@@ -14,6 +14,7 @@
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -31,6 +32,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 0 0 60px 60px;
+            padding: 0 20px;
         }
 
         header nav {
@@ -48,16 +50,15 @@
             /* h1 */
             font-style: normal;
             font-weight: 900;
-            font-size: 64px;
-            line-height: 77px;
+            font-size: 48px;
             text-align: center;
             color: #FFFFFF;
-            margin-bottom: 63px;
+            margin: 200px 0 63px;
         }
 
         .hero {
             width: 100%;
-            height: auto;
+            height: 100%;
             position: absolute;
             top: 0;
             z-index: -1;
@@ -89,15 +90,25 @@
             text-align: center;
             color: #6B01B8;
         }
+
+        @media (min-width: 768px) {}
+
+        @media (min-width: 1280px) {
+            h1 {
+                font-size: 64px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <img class="hero" src="imaxe-1.jpg" srcset="imaxe-1.jpg 1x, imaxe-1@2x.jpg 2x" alt="Imaxe 1" width="1600"
-            height="1067">
-        <nav><img src="logo.png" srcset="logo.png 1x, logo@2x.png 2x, logo@3x.png 3x" alt="logo" width="197"
-                height="184"></nav>
+        <img class="hero" src="imaxe-440.jpg" srcset="imaxe-440.jpg 440w, imaxe-1.jpg 800w, imaxe-1@2x.jpg 1200w"
+            alt="Exemplo responsive">
+        <nav>
+            <img src="logo.png" srcset="logo.png 1x, logo@2x.png 2x, logo@3x.png 3x" alt="logo" width="197"
+                height="184">
+        </nav>
         <h1>Especialistas en deseño web</h1>
         <button type="button" class="cta">Despega dende aquí <img src="frecha-cta.svg" alt="Flecha" width="23"
                 height="15"></button>
