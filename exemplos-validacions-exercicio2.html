@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2 - Validación en Tempo Real</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 900px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        h4 {
+            color: #555;
+            margin-top: 0;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            user-select: all;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 5px 10px;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #d63384;
+        }
+
+        .output {
+            background: #eee;
+            min-height: 20px;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+
+        .interactive {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px dashed #bbb;
+        }
+
+        .paso {
+            background: #f9f9f9;
+            border-left: 4px solid #198754;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+
+        .paso-num {
+            font-weight: bold;
+            color: #198754;
+        }
+
+        .mensaxe-erro {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .mensaxe-valida {
+            color: green;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .mensaxe-info {
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 4px;
+        }
+
+        input.erro {
+            border: 2px solid red;
+            background-color: #fff0f0;
+        }
+
+        input.valido {
+            border: 2px solid green;
+            background-color: #f0fff0;
+        }
+
+        input.neutro {
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        label {
+            display: inline-block;
+            width: 140px;
+            margin: 5px 0;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .barra-progreso {
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .barra-progreso .cheo {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, red, orange, yellow, green);
+            border-radius: 3px;
+            transition: width 0.2s;
+        }
+
+        .nota {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 8px 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .contador {
+            font-family: "Courier New", monospace;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .grid-campos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-campos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Exercicio 2: Validación en Tempo Real</h1>
+    <p>Implementación paso a paso dun sistema de validación que reacciona mentres o usuario escribe.</p>
+
+    <p><strong>Requisitos:</strong></p>
+    <ul>
+        <li>O usuario escribe e o campo cambia de cor automaticamente</li>
+        <li>Mostrar mensaxe baixo o campo indicando o estado</li>
+        <li>Feedback visual inmediato sen necesidade de premer ningún botón</li>
+    </ul>
+
+    <hr>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 1:</span> Estrutura HTML do campo</h3>
+        <p>Creamos un campo de texto simple cun <code>div</code> para a mensaxe de feedback. Non leva <code>button</code> porque a validación é automática.</p>
+        <pre><code>&lt;label for="campo-tempo-real"&gt;Nome de usuario:&lt;/label&gt;
+&lt;input type="text" id="campo-tempo-real" placeholder="Escribe aquí..."&gt;
+&lt;div id="feedback-tempo-real" class="mensaxe-info"&gt;
+    Agardando entrada...
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 2:</span> Estilos CSS para os estados</h3>
+        <p>Definimos tres estilos visuais: estado neutro (sen escribir), erro (inválido) e válido. A transición suave fai que o cambio sexa agradable.</p>
+        <pre><code>/* Estado neutro - sen escribir */
+input.neutro {
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+/* Estado de erro */
+input.erro {
+    border: 2px solid red;
+    background-color: #fff0f0;
+}
+
+/* Estado válido */
+input.valido {
+    border: 2px solid green;
+    background-color: #f0fff0;
+}
+
+/* Mensaxes */
+.mensaxe-erro {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+.mensaxe-valida {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+.mensaxe-info {
+    color: #666;
+    font-size: 0.85em;
+    margin-top: 4px;
+}</code></pre>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 3:</span> Función de validación con criterios</h3>
+        <p>A función recibe o valor e devolve obxectos co resultado e a mensaxe. Así podemos comprobar múltiples condicións.</p>
+        <pre><code>function validarUsuario(valor) {
+    let resultado = {
+        valido: false,
+        mensaxe: ""
+    };
+
+    if (valor === "") {
+        resultado.mensaxe = "Escribe algo...";
+        return resultado;
+    }
+
+    if (valor.length < 3) {
+        resultado.mensaxe = "Necesítanse polo menos 3 caracteres (levas " + valor.length + ")";
+        return resultado;
+    }
+
+    if (valor.length > 20) {
+        resultado.mensaxe = "Máximo 20 caracteres (" + valor.length + " exceden o límite)";
+        return resultado;
+    }
+
+    resultado.valido = true;
+    resultado.mensaxe = "✓ \"" + valor + "\" é correcto (" + valor.length + " caracteres)";
+    return resultado;
+}</code></pre>
+        <div class="nota">
+            <strong>Nota:</strong> Usar obxectos como valor de retorno é unha boa práctica porque permite devolver múltiples datos (válido + mensaxe) nun só lugar.
+        </div>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 4:</span> Evento input con cambio de cor e mensaxe</h3>
+        <p>O evento <code>input</code> disparase cada vez que o campo cambia. Aquí actualizamos a clase CSS e a mensaxe baixo o campo.</p>
+        <pre><code>document.getElementById("campo-tempo-real")
+    .addEventListener("input", function () {
+
+    let feedback = document.getElementById("feedback-tempo-real");
+    let resultado = validarUsuario(this.value);
+
+    // Cambiar clase CSS do campo
+    if (this.value === "") {
+        this.className = "neutro";
+        feedback.className = "mensaxe-info";
+    } else if (resultado.valido) {
+        this.className = "valido";
+        feedback.className = "mensaxe-valida";
+    } else {
+        this.className = "erro";
+        feedback.className = "mensaxe-erro";
+    }
+
+    feedback.textContent = resultado.mensaxe;
+});</code></pre>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 5:</span> Engadir barra de progreso visual</h3>
+        <p>Podemos mellorar o feedback visual cunha barra de progreso que mostre cantos caracteres leva o usuario respecto ao mínimo.</p>
+        <pre><code>function actualizarBarra(valor, min, max) {
+    let barra = document.querySelector(".barra-progreso .cheo");
+    let porcentaxe;
+
+    if (valor === 0) {
+        porcentaxe = 0;
+    } else if (valor < min) {
+        porcentaxe = (valor / min) * 50; // 0-50%
+    } else if (valor <= max) {
+        porcentaxe = 50 + ((valor - min) / (max - min)) * 50; // 50-100%
+    } else {
+        porcentaxe = 100;
+    }
+
+    barra.style.width = Math.min(porcentaxe, 100) + "%";
+}</code></pre>
+    </div>
+
+    <div class="paso">
+        <h3><span class="paso-num">Paso 6:</span> Múltiples campos con validación en tempo real</h3>
+        <p>Podemos aplicar o mesmo patrón a varios campos. Cada campo ten o seu propio feedback e barra de progreso.</p>
+        <pre><code>function configurarCampo(idCampo, idFeedback, idBarra, min, max, nome) {
+    let campo = document.getElementById(idCampo);
+    let feedback = document.getElementById(idFeedback);
+    let barra = document.getElementById(idBarra);
+
+    campo.addEventListener("input", function () {
+        let valor = this.value;
+        let longitud = valor.length;
+
+        // Validar
+        let valido = longitud >= min && longitud <= max;
+        let mensaxe = "";
+
+        if (valor === "") {
+            mensaxe = "Escribe o " + nome + "...";
+            campo.className = "neutro";
+            feedback.className = "mensaxe-info";
+        } else if (longitud < min) {
+            mensaxe = "Faltan " + (min - longitud) + " caracteres para o mínimo";
+            campo.className = "erro";
+            feedback.className = "mensaxe-erro";
+        } else if (longitud > max) {
+            mensaxe = "Excedes o máximo en " + (longitud - max) + " caracteres";
+            campo.className = "erro";
+            feedback.className = "mensaxe-erro";
+        } else {
+            mensaxe = "✓ " + nome + " correcto (" + longitud + " caracteres)";
+            campo.className = "valido";
+            feedback.className = "mensaxe-valida";
+        }
+
+        feedback.textContent = mensaxe;
+        if (barra) {
+            actualizarBarra(longitud, min, max, barra);
+        }
+    });
+}
+
+// Configurar varios campos
+configurarCampo("campo-nome", "fb-nome", "barra-nome", 3, 15, "nome");
+configurarCampo("campo-usuario", "fb-usuario", "barra-usuario", 4, 12, "usuario");
+configurarCampo("campo-contrasinal", "fb-contrasinal", null, 6, 20, "contrasinal");</code></pre>
+        <div class="nota">
+            <strong>Nota:</strong> Esta función <code>configurarCampo</code> recibe os IDs dos elementos e os límites. Isto fai que o código sexa reutilizable e fácil de modificar.
+        </div>
+    </div>
+
+    <hr>
+
+    <section id="demo-simple">
+        <h2>Demo 1: Validación simple en tempo real</h2>
+        <p>Escribe no campo. A cor e a mensaxe cambian automaticamente.</p>
+
+        <pre><code>// Escoitar o evento input
+campo.addEventListener("input", function () {
+    let resultado = validarUsuario(this.value);
+    this.className = resultado.valido ? "valido" : "erro";
+    feedback.textContent = resultado.mensaxe;
+});</code></pre>
+
+        <div class="interactive">
+            <label for="campo-tempo-real">Nome de usuario:</label>
+            <input type="text" id="campo-tempo-real" class="neutro" placeholder="Escribe aquí...">
+            <div id="feedback-tempo-real" class="mensaxe-info">Agardando entrada...</div>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="demo-multi">
+        <h2>Demo 2: Múltiples campos con validación en tempo real</h2>
+        <p>Cada campo valídase mentres escribes, con barra de progreso incluída.</p>
+
+        <pre><code>configurarCampo("campo-nome", "fb-nome", "barra-nome", 3, 15, "nome");
+configurarCampo("campo-usuario", "fb-usuario", "barra-usuario", 4, 12, "usuario");</code></pre>
+
+        <div class="interactive">
+            <div class="grid-campos">
+                <div>
+                    <label for="campo-nome">Nome (3-15 caracteres):</label>
+                    <input type="text" id="campo-nome" class="neutro" placeholder="Nome">
+                    <div class="barra-progreso"><div class="cheo" id="barra-nome"></div></div>
+                    <div id="fb-nome" class="mensaxe-info">Agardando nome...</div>
+                </div>
+                <div>
+                    <label for="campo-usuario">Usuario (4-12 caracteres):</label>
+                    <input type="text" id="campo-usuario" class="neutro" placeholder="Usuario">
+                    <div class="barra-progreso"><div class="cheo" id="barra-usuario"></div></div>
+                    <div id="fb-usuario" class="mensaxe-info">Agardando usuario...</div>
+                </div>
+                <div>
+                    <label for="campo-contrasinal">Contrasinal (6-20 caracteres):</label>
+                    <input type="password" id="campo-contrasinal" class="neutro" placeholder="Contrasinal">
+                    <div id="fb-contrasinal" class="mensaxe-info">Agardando contrasinal...</div>
+                </div>
+                <div>
+                    <label for="campo-email">Email:</label>
+                    <input type="email" id="campo-email" class="neutro" placeholder="correo@exemplo.com">
+                    <div id="fb-email" class="mensaxe-info">Agardando email...</div>
+                </div>
+            </div>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="demo-forza">
+        <h2>Demo 3: Indicador de forza do contrasinal</h2>
+        <p>Un indicador visual que mostra a seguridade do contrasinal baseado en múltiples criterios.</p>
+
+        <pre><code>function avaliarForza(password) {
+    let puntos = 0;
+    if (password.length >= 8) puntos++;
+    if (password.length >= 12) puntos++;
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) puntos++;
+    if (/[0-9]/.test(password)) puntos++;
+    if (/[^a-zA-Z0-9]/.test(password)) puntos++;
+    return puntos;
+}</code></pre>
+
+        <div class="interactive">
+            <label for="campo-forza">Contrasinal:</label>
+            <input type="password" id="campo-forza" class="neutro" placeholder="Escribe un contrasinal">
+            <div id="fb-forza" class="mensaxe-info">Agardando contrasinal...</div>
+            <div style="margin-top:8px;">
+                <span id="etiqueta-forza" style="font-weight:bold;">Forza: </span>
+                <span id="indicador-forza" style="font-size:1.5em;">⬜⬜⬜⬜⬜</span>
+            </div>
+            <div style="margin-top:5px; font-size:0.85em; color:#666;">
+                Criterios: 8+ caracteres | 12+ caracteres | maiúsculas + minúsculas | números | símbolos
+            </div>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <script>
+        function escribir(id, mensaxe) {
+            let section = document.getElementById(id);
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent += mensaxe + "\n";
+            }
+        }
+
+        function limpar(id) {
+            let section = document.getElementById(id);
+            if (!section) {
+                return;
+            }
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent = "";
+            }
+        }
+
+        function validarUsuario(valor) {
+            let resultado = {
+                valido: false,
+                mensaxe: ""
+            };
+
+            if (valor === "") {
+                resultado.mensaxe = "Escribe algo...";
+                return resultado;
+            }
+
+            if (valor.length < 3) {
+                resultado.mensaxe = "Necesítanse polo menos 3 caracteres (levas " + valor.length + ")";
+                return resultado;
+            }
+
+            if (valor.length > 20) {
+                resultado.mensaxe = "Máximo 20 caracteres (" + valor.length + " exceden o límite)";
+                return resultado;
+            }
+
+            resultado.valido = true;
+            resultado.mensaxe = "✓ \"" + valor + "\" é correcto (" + valor.length + " caracteres)";
+            return resultado;
+        }
+
+        // Demo 1: Simple
+        document.getElementById("campo-tempo-real").addEventListener("input", function () {
+            let feedback = document.getElementById("feedback-tempo-real");
+            let resultado = validarUsuario(this.value);
+
+            if (this.value === "") {
+                this.className = "neutro";
+                feedback.className = "mensaxe-info";
+            } else if (resultado.valido) {
+                this.className = "valido";
+                feedback.className = "mensaxe-valida";
+            } else {
+                this.className = "erro";
+                feedback.className = "mensaxe-erro";
+            }
+
+            feedback.textContent = resultado.mensaxe;
+        });
+
+        // Demo 2: Múltiples campos
+        function actualizarBarra(longitud, min, max, elemento) {
+            if (!elemento) {
+                return;
+            }
+            let porcentaxe;
+            if (longitud === 0) {
+                porcentaxe = 0;
+            } else if (longitud < min) {
+                porcentaxe = (longitud / min) * 50;
+            } else if (longitud <= max) {
+                porcentaxe = 50 + ((longitud - min) / (max - min)) * 50;
+            } else {
+                porcentaxe = 100;
+            }
+            elemento.style.width = Math.min(porcentaxe, 100) + "%";
+        }
+
+        function configurarCampo(idCampo, idFeedback, idBarra, min, max, nome) {
+            let campo = document.getElementById(idCampo);
+            let feedback = document.getElementById(idFeedback);
+            let barra = idBarra ? document.getElementById(idBarra) : null;
+
+            if (!campo || !feedback) {
+                return;
+            }
+
+            campo.addEventListener("input", function () {
+                let valor = this.value;
+                let longitud = valor.length;
+                let mensaxe = "";
+
+                if (valor === "") {
+                    mensaxe = "Escribe o " + nome + "...";
+                    campo.className = "neutro";
+                    feedback.className = "mensaxe-info";
+                } else if (longitud < min) {
+                    mensaxe = "Faltan " + (min - longitud) + " caracteres para o mínimo";
+                    campo.className = "erro";
+                    feedback.className = "mensaxe-erro";
+                } else if (longitud > max) {
+                    mensaxe = "Excedes o máximo en " + (longitud - max) + " caracteres";
+                    campo.className = "erro";
+                    feedback.className = "mensaxe-erro";
+                } else {
+                    mensaxe = "✓ " + nome + " correcto (" + longitud + " caracteres)";
+                    campo.className = "valido";
+                    feedback.className = "mensaxe-valida";
+                }
+
+                feedback.textContent = mensaxe;
+                if (barra) {
+                    actualizarBarra(longitud, min, max, barra);
+                }
+            });
+        }
+
+        configurarCampo("campo-nome", "fb-nome", "barra-nome", 3, 15, "nome");
+        configurarCampo("campo-usuario", "fb-usuario", "barra-usuario", 4, 12, "usuario");
+        configurarCampo("campo-contrasinal", "fb-contrasinal", null, 6, 20, "contrasinal");
+
+        // Email validation for demo 2
+        document.getElementById("campo-email").addEventListener("input", function () {
+            let feedback = document.getElementById("fb-email");
+            let valor = this.value;
+
+            if (valor === "") {
+                this.className = "neutro";
+                feedback.className = "mensaxe-info";
+                feedback.textContent = "Agardando email...";
+            } else if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor)) {
+                this.className = "valido";
+                feedback.className = "mensaxe-valida";
+                feedback.textContent = "✓ Email correcto";
+            } else {
+                this.className = "erro";
+                feedback.className = "mensaxe-erro";
+                feedback.textContent = "✗ Formato de email incorrecto";
+            }
+        });
+
+        // Demo 3: Indicador de forza do contrasinal
+        document.getElementById("campo-forza").addEventListener("input", function () {
+            let valor = this.value;
+            let feedback = document.getElementById("fb-forza");
+
+            if (valor === "") {
+                this.className = "neutro";
+                feedback.className = "mensaxe-info";
+                feedback.textContent = "Agardando contrasinal...";
+                document.getElementById("indicador-forza").textContent = "⬜⬜⬜⬜⬜";
+                document.getElementById("etiqueta-forza").textContent = "Forza: ";
+                return;
+            }
+
+            let puntos = 0;
+            if (valor.length >= 8) puntos++;
+            if (valor.length >= 12) puntos++;
+            if (/[a-z]/.test(valor) && /[A-Z]/.test(valor)) puntos++;
+            if (/[0-9]/.test(valor)) puntos++;
+            if (/[^a-zA-Z0-9]/.test(valor)) puntos++;
+
+            let simbolos = ["⬜", "🟥", "🟧", "🟨", "🟩", "🟩"];
+            let etiquetas = ["Moi feble", "Feble", "Regular", "Bo", "Forte", "Moi forte"];
+            let icono = "";
+            for (let i = 0; i < 5; i++) {
+                icono += (i < puntos) ? "🟩" : "⬜";
+            }
+
+            if (puntos <= 1) {
+                this.className = "erro";
+                feedback.className = "mensaxe-erro";
+            } else if (puntos <= 3) {
+                this.className = "neutro";
+                feedback.className = "mensaxe-info";
+            } else {
+                this.className = "valido";
+                feedback.className = "mensaxe-valida";
+            }
+
+            feedback.textContent = puntos + "/5 criterios cumpridos - " + etiquetas[puntos];
+            document.getElementById("indicador-forza").textContent = icono;
+            document.getElementById("etiqueta-forza").textContent = "Forza: " + etiquetas[puntos];
+        });
+    </script>
+</body>
+
+</html>

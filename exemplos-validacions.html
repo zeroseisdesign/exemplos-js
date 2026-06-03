@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos Validacións - Tema 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 5px 10px;
+        }
+
+        code {
+            font-family: "Courier New", monospace;
+            color: #d63384;
+        }
+
+        .output {
+            background: #eee;
+            min-height: 20px;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+
+        .interactive {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px dashed #bbb;
+        }
+
+        input:valid {
+            border: 2px solid green;
+        }
+
+        input:invalid {
+            border: 2px solid red;
+        }
+
+        input:focus:invalid {
+            background-color: #ffe5e5;
+        }
+
+        .mensaxe-erro {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .mensaxe-valida {
+            color: green;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        fieldset {
+            margin: 10px 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exemplos de Validacións de Datos</h1>
+    <p>Exemplos do Tema 1: Validación de datos en páxinas web con HTML5, JavaScript e CSS.</p>
+
+    <section id="validacion-basica">
+        <h2>Función básica de validación</h2>
+        <p>Función que verifica que un nome teña polo menos 3 caracteres:</p>
+        <pre><code>function validarNome(nome) {
+    return nome.length >= 3;
+}</code></pre>
+        <div class="interactive">
+            <label for="nome-basico">Nome:</label>
+            <input type="text" id="nome-basico" placeholder="Introduce o nome">
+            <button id="btn-validar-nome">Validar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="validacion-alerta">
+        <h2>Validación con mensaxe de alerta</h2>
+        <p>Se a validación falla, móstrase unha alerta:</p>
+        <pre><code>if (!validarNome(nome)) {
+    alert("O nome debe ter polo menos 3 caracteres");
+}</code></pre>
+        <div class="interactive">
+            <label for="nome-alerta">Nome:</label>
+            <input type="text" id="nome-alerta" placeholder="Proba cun nome curto">
+            <button id="btn-alerta">Comprobar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="email-html5-js">
+        <h2>HTML5 e JavaScript combinados</h2>
+        <p>Validación de email con HTML5 e <code>validity.typeMismatch</code>:</p>
+        <pre><code>&lt;input type="email" id="correo" required&gt;
+
+const correo = document.getElementById("correo");
+correo.addEventListener("input", () => {
+    if (correo.validity.typeMismatch) {
+        correo.setCustomValidity("Introduce un email válido");
+    } else {
+        correo.setCustomValidity("");
+    }
+});</code></pre>
+        <div class="interactive">
+            <label for="correo-combinado">Correo electrónico:</label>
+            <input type="email" id="correo-combinado" required placeholder="correo@exemplo.com">
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="validacion-albabetica-js">
+        <h2>Validación alfabética (JavaScript)</h2>
+        <p>Función que permite só letras con expresión regular:</p>
+        <pre><code>function validarTexto(texto) {
+    return /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/.test(texto);
+}</code></pre>
+        <div class="interactive">
+            <label for="texto-alb">Texto (só letras):</label>
+            <input type="text" id="texto-alb" placeholder="Só letras">
+            <button id="btn-texto-alb">Validar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="validacion-albabetica-html5">
+        <h2>Validación alfabética (HTML5 con pattern)</h2>
+        <p>Usando o atributo <code>pattern</code> de HTML5:</p>
+        <pre><code>&lt;input type="text"
+       pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ ]+"
+       required&gt;</code></pre>
+        <div class="interactive">
+            <label for="texto-alb-html5">Texto (só letras):</label>
+            <input type="text" id="texto-alb-html5" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ ]+" required placeholder="Só letras">
+            <button id="btn-texto-alb-html5">Comprobar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="validacion-numerica-js">
+        <h2>Validación numérica (JavaScript)</h2>
+        <p>Función que verifica se un valor é un número:</p>
+        <pre><code>function validarNumero(numero) {
+    return !isNaN(numero);
+}</code></pre>
+        <div class="interactive">
+            <label for="numero-js">Número:</label>
+            <input type="text" id="numero-js" placeholder="Introduce un número">
+            <button id="btn-numero-js">Validar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="validacion-numerica-html5">
+        <h2>Validación numérica (HTML5)</h2>
+        <p>Usando <code>type="number"</code> con <code>min</code> e <code>max</code>:</p>
+        <pre><code>&lt;input type="number" min="1" max="100"&gt;</code></pre>
+        <div class="interactive">
+            <label for="numero-html5">Número (1-100):</label>
+            <input type="number" id="numero-html5" min="1" max="100" placeholder="1-100">
+            <button id="btn-numero-html5">Validar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="validacion-data-js">
+        <h2>Validación de data (JavaScript)</h2>
+        <p>Función que comproba se unha data é válida con <code>Date.parse()</code>:</p>
+        <pre><code>function validarData(data) {
+    return !isNaN(Date.parse(data));
+}</code></pre>
+        <div class="interactive">
+            <label for="data-js">Data (aaaa-mm-dd):</label>
+            <input type="text" id="data-js" placeholder="2025-06-15">
+            <button id="btn-data-js">Validar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="validacion-data-html5">
+        <h2>Validación de data (HTML5)</h2>
+        <p>Usando <code>type="date"</code>:</p>
+        <pre><code>&lt;input type="date"&gt;</code></pre>
+        <div class="interactive">
+            <label for="data-html5">Data:</label>
+            <input type="date" id="data-html5">
+            <button id="btn-data-html5">Amosar data</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="restrinxir-datas">
+        <h2>Restrinxir datas con min e max</h2>
+        <p>Limitando o rango de datas con HTML5:</p>
+        <pre><code>&lt;input type="date" min="2025-01-01" max="2025-12-31"&gt;</code></pre>
+        <div class="interactive">
+            <label for="data-restrinxida">Data (2025):</label>
+            <input type="date" id="data-restrinxida" min="2025-01-01" max="2025-12-31">
+            <button id="btn-data-restrinxida">Validar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="password-minlength">
+        <h2>Validación de contrasinal con HTML5</h2>
+        <p>Contrasinal obrigatorio con mínimo 8 caracteres:</p>
+        <pre><code>&lt;input type="password" minlength="8" required&gt;</code></pre>
+        <div class="interactive">
+            <label for="password-field">Contrasinal (mín. 8 caracteres):</label>
+            <input type="password" id="password-field" minlength="8" required placeholder="Mínimo 8 caracteres">
+            <button id="btn-password">Validar</button>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="formulario-submit">
+        <h2>Formulario con validación en submit</h2>
+        <p>Validación ó enviar o formulario con <code>preventDefault()</code>:</p>
+        <pre><code>formulario.addEventListener("submit", (evento) => {
+    const nome = document.getElementById("nome").value;
+    if (nome.length < 3) {
+        evento.preventDefault();
+        alert("O nome debe ter mínimo 3 caracteres");
+    }
+});</code></pre>
+        <form id="form-submit" class="interactive" action="#" method="get">
+            <label for="nome-submit">Nome:</label>
+            <input type="text" id="nome-submit" required placeholder="Mínimo 3 caracteres">
+            <button type="submit">Enviar</button>
+            <button type="reset">Reiniciar</button>
+        </form>
+        <div class="output"></div>
+    </section>
+
+    <section id="evento-input">
+        <h2>Validación en tempo real co evento input</h2>
+        <p>O campo valídase mentres o usuario escribe:</p>
+        <pre><code>input.addEventListener("input", validarCampo);
+
+function validarCampo() {
+    if (input.value.length >= 3) {
+        // Válido
+    } else {
+        // Inválido
+    }
+}</code></pre>
+        <div class="interactive">
+            <label for="input-tempo-real">Nome (mín. 3 caracteres):</label>
+            <input type="text" id="input-tempo-real" placeholder="Escribe aquí...">
+            <div id="feedback-tempo-real" class="mensaxe-erro"></div>
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="formulario-rexistro">
+        <h2>Formulario de rexistro completo</h2>
+        <p>Formulario con usuario e email, validación ó enviar:</p>
+        <pre><code>&lt;form id="registro"&gt;
+    &lt;input type="text" id="usuario" required minlength="4"&gt;
+    &lt;input type="email" id="email" required&gt;
+    &lt;button type="submit"&gt;Rexistrarse&lt;/button&gt;
+&lt;/form&gt;
+
+const formulario = document.getElementById("registro");
+formulario.addEventListener("submit", (evento) => {
+    const usuario = document.getElementById("usuario");
+    if (usuario.value.length &lt; 4) {
+        evento.preventDefault();
+        alert("O usuario debe ter mínimo 4 caracteres");
+    }
+});</code></pre>
+        <form id="form-rexistro" class="interactive" action="#" method="get">
+            <label for="usuario-rexistro">Usuario (mín. 4 caracteres):</label>
+            <input type="text" id="usuario-rexistro" required minlength="4" placeholder="Usuario">
+            <br>
+            <label for="email-rexistro">Email:</label>
+            <input type="email" id="email-rexistro" required placeholder="correo@exemplo.com">
+            <br>
+            <button type="submit">Rexistrarse</button>
+            <button type="reset">Reiniciar</button>
+        </form>
+        <div class="output"></div>
+    </section>
+
+    <section id="css-valid-invalid">
+        <h2>CSS con pseudoclases :valid e :invalid</h2>
+        <p>Os campos cambian de cor automaticamente segundo o seu estado:</p>
+        <pre><code>input:valid {
+    border: 2px solid green;
+}
+input:invalid {
+    border: 2px solid red;
+}</code></pre>
+        <div class="interactive">
+            <p>Campos con validación CSS automática:</p>
+            <label for="css-email">Email:</label>
+            <input type="email" id="css-email" required placeholder="correo@exemplo.com">
+            <br><br>
+            <label for="css-number">Número (10-50):</label>
+            <input type="number" id="css-number" min="10" max="50" placeholder="10-50">
+            <br><br>
+            <label for="css-text">Texto (mín. 3 caracteres):</label>
+            <input type="text" id="css-text" minlength="3" required placeholder="Mínimo 3">
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <section id="css-focus-invalid">
+        <h2>CSS con pseudoclase :focus:invalid</h2>
+        <p>O campo inválido cambia de fondo cando recibe o foco:</p>
+        <pre><code>input:focus:invalid {
+    background-color: #ffe5e5;
+}</code></pre>
+        <div class="interactive">
+            <label for="focus-email">Email:</label>
+            <input type="email" id="focus-email" required placeholder="Escribe un email inválido e fai clic">
+        </div>
+        <div class="output"></div>
+    </section>
+
+    <script>
+        function escribir(id, mensaxe) {
+            let section = document.getElementById(id);
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent += mensaxe + "\n";
+            }
+            console.log(mensaxe);
+        }
+
+        function limpar(id) {
+            let section = document.getElementById(id);
+            if (!section) {
+                return;
+            }
+            let output = section.querySelector(".output");
+            if (output) {
+                output.textContent = "";
+            }
+        }
+
+        function validarNome(nome) {
+            return nome.length >= 3;
+        }
+
+        function validarTexto(texto) {
+            return /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/.test(texto);
+        }
+
+        function validarNumero(numero) {
+            return !isNaN(numero);
+        }
+
+        function validarData(data) {
+            return !isNaN(Date.parse(data));
+        }
+
+        // Sección 1: Validación básica
+        document.getElementById("btn-validar-nome").addEventListener("click", function () {
+            limpar("validacion-basica");
+            let nome = document.getElementById("nome-basico").value;
+            if (validarNome(nome)) {
+                escribir("validacion-basica", "✓ Nome válido: \"" + nome + "\"");
+            } else {
+                escribir("validacion-basica", "✗ O nome debe ter polo menos 3 caracteres");
+            }
+        });
+
+        // Sección 2: Validación con alerta
+        document.getElementById("btn-alerta").addEventListener("click", function () {
+            let nome = document.getElementById("nome-alerta").value;
+            if (!validarNome(nome)) {
+                alert("O nome debe ter polo menos 3 caracteres");
+            } else {
+                limpar("validacion-alerta");
+                escribir("validacion-alerta", "✓ Nome válido: \"" + nome + "\"");
+            }
+        });
+
+        // Sección 3: Email HTML5 + JS
+        document.getElementById("correo-combinado").addEventListener("input", function () {
+            limpar("email-html5-js");
+            if (this.value === "") {
+                escribir("email-html5-js", "Campo baleiro");
+                this.setCustomValidity("");
+            } else if (this.validity.typeMismatch) {
+                this.setCustomValidity("Introduce un email válido");
+                escribir("email-html5-js", "✗ Formato de email incorrecto");
+            } else {
+                this.setCustomValidity("");
+                escribir("email-html5-js", "✓ Email con formato correcto: " + this.value);
+            }
+        });
+
+        // Sección 4: Validación alfabética JS
+        document.getElementById("btn-texto-alb").addEventListener("click", function () {
+            limpar("validacion-albabetica-js");
+            let texto = document.getElementById("texto-alb").value;
+            if (validarTexto(texto)) {
+                escribir("validacion-albabetica-js", "✓ Texto válido (só contén letras)");
+            } else {
+                escribir("validacion-albabetica-js", "✗ O texto contén caracteres non permitidos");
+            }
+        });
+
+        // Sección 5: Validación alfabética HTML5
+        document.getElementById("btn-texto-alb-html5").addEventListener("click", function () {
+            limpar("validacion-albabetica-html5");
+            let input = document.getElementById("texto-alb-html5");
+            if (input.validity.patternMismatch || input.value === "") {
+                escribir("validacion-albabetica-html5", "✗ Só se permiten letras e espazos");
+            } else {
+                escribir("validacion-albabetica-html5", "✓ Texto válido: \"" + input.value + "\"");
+            }
+        });
+
+        // Sección 6: Validación numérica JS
+        document.getElementById("btn-numero-js").addEventListener("click", function () {
+            limpar("validacion-numerica-js");
+            let valor = document.getElementById("numero-js").value;
+            if (validarNumero(valor)) {
+                escribir("validacion-numerica-js", "✓ É un número: " + valor);
+            } else {
+                escribir("validacion-numerica-js", "✗ Non é un número válido");
+            }
+        });
+
+        // Sección 7: Validación numérica HTML5
+        document.getElementById("btn-numero-html5").addEventListener("click", function () {
+            limpar("validacion-numerica-html5");
+            let input = document.getElementById("numero-html5");
+            let valor = input.value;
+            if (valor === "") {
+                escribir("validacion-numerica-html5", "✗ Campo baleiro");
+            } else if (input.validity.rangeUnderflow) {
+                escribir("validacion-numerica-html5", "✗ O número debe ser maior ou igual a 1");
+            } else if (input.validity.rangeOverflow) {
+                escribir("validacion-numerica-html5", "✗ O número debe ser menor ou igual a 100");
+            } else {
+                escribir("validacion-numerica-html5", "✓ Número válido: " + valor);
+            }
+        });
+
+        // Sección 8: Validación data JS
+        document.getElementById("btn-data-js").addEventListener("click", function () {
+            limpar("validacion-data-js");
+            let data = document.getElementById("data-js").value;
+            if (validarData(data)) {
+                escribir("validacion-data-js", "✓ Data válida: " + data);
+            } else {
+                escribir("validacion-data-js", "✗ Data non válida. Formato: aaaa-mm-dd");
+            }
+        });
+
+        // Sección 9: Validación data HTML5
+        document.getElementById("btn-data-html5").addEventListener("click", function () {
+            limpar("validacion-data-html5");
+            let data = document.getElementById("data-html5").value;
+            if (data) {
+                escribir("validacion-data-html5", "Data seleccionada: " + data);
+            } else {
+                escribir("validacion-data-html5", "Non se seleccionou ningunha data");
+            }
+        });
+
+        // Sección 10: Restrinxir datas
+        document.getElementById("btn-data-restrinxida").addEventListener("click", function () {
+            limpar("restrinxir-datas");
+            let input = document.getElementById("data-restrinxida");
+            let data = input.value;
+            if (!data) {
+                escribir("restrinxir-datas", "Non se seleccionou ningunha data");
+            } else if (input.validity.rangeUnderflow) {
+                escribir("restrinxir-datas", "✗ A data debe ser posterior a 2025-01-01");
+            } else if (input.validity.rangeOverflow) {
+                escribir("restrinxir-datas", "✗ A data debe ser anterior a 2025-12-31");
+            } else {
+                escribir("restrinxir-datas", "✓ Data dentro do rango: " + data);
+            }
+        });
+
+        // Sección 11: Password
+        document.getElementById("btn-password").addEventListener("click", function () {
+            limpar("password-minlength");
+            let input = document.getElementById("password-field");
+            let valor = input.value;
+            if (valor === "") {
+                escribir("password-minlength", "✗ O contrasinal é obrigatorio");
+            } else if (valor.length < 8) {
+                escribir("password-minlength", "✗ O contrasinal debe ter polo menos 8 caracteres (actuais: " + valor.length + ")");
+            } else {
+                escribir("password-minlength", "✓ Contrasinal válido (" + valor.length + " caracteres)");
+            }
+        });
+
+        // Sección 12: Formulario submit
+        document.getElementById("form-submit").addEventListener("submit", function (event) {
+            event.preventDefault();
+            limpar("formulario-submit");
+            let nome = document.getElementById("nome-submit").value;
+            if (validarNome(nome)) {
+                escribir("formulario-submit", "✓ Formulario enviado correctamente. Nome: \"" + nome + "\"");
+            } else {
+                alert("O nome debe ter mínimo 3 caracteres");
+            }
+        });
+
+        document.getElementById("form-submit").addEventListener("reset", function () {
+            limpar("formulario-submit");
+            escribir("formulario-submit", "Formulario reiniciado.");
+        });
+
+        // Sección 13: Evento input en tempo real
+        document.getElementById("input-tempo-real").addEventListener("input", function () {
+            let feedback = document.getElementById("feedback-tempo-real");
+            let valor = this.value;
+            if (valor === "") {
+                feedback.className = "mensaxe-erro";
+                feedback.textContent = "Campo obrigatorio";
+            } else if (valor.length < 3) {
+                feedback.className = "mensaxe-erro";
+                feedback.textContent = "Necesítanse polo menos 3 caracteres (levas " + valor.length + ")";
+            } else {
+                feedback.className = "mensaxe-valida";
+                feedback.textContent = "✓ " + valor.length + " caracteres, correcto";
+            }
+        });
+
+        // Sección 14: Formulario rexistro
+        document.getElementById("form-rexistro").addEventListener("submit", function (event) {
+            event.preventDefault();
+            limpar("formulario-rexistro");
+            let usuario = document.getElementById("usuario-rexistro");
+            let email = document.getElementById("email-rexistro");
+            if (usuario.value.length < 4) {
+                alert("O usuario debe ter mínimo 4 caracteres");
+                return;
+            }
+            if (usuario.validity.valueMissing || email.validity.valueMissing) {
+                alert("Todos os campos son obrigatorios");
+                return;
+            }
+            escribir("formulario-rexistro", "✓ Rexistro completado!");
+            escribir("formulario-rexistro", "   Usuario: \"" + usuario.value + "\"");
+            escribir("formulario-rexistro", "   Email: \"" + email.value + "\"");
+        });
+
+        document.getElementById("form-rexistro").addEventListener("reset", function () {
+            limpar("formulario-rexistro");
+            escribir("formulario-rexistro", "Formulario reiniciado.");
+        });
+
+        // Sección 15: CSS :valid / :invalid
+        let cssElements = ["css-email", "css-number", "css-text"];
+        cssElements.forEach(function (id) {
+            document.getElementById(id).addEventListener("input", function () {
+                limpar("css-valid-invalid");
+                for (let i = 0; i < cssElements.length; i++) {
+                    let el = document.getElementById(cssElements[i]);
+                    if (el.value) {
+                        if (el.checkValidity()) {
+                            escribir("css-valid-invalid", "✓ " + cssElements[i] + ": válido");
+                        } else {
+                            escribir("css-valid-invalid", "✗ " + cssElements[i] + ": inválido");
+                        }
+                    }
+                }
+            });
+        });
+
+        // Sección 16: CSS :focus:invalid
+        document.getElementById("focus-email").addEventListener("blur", function () {
+            limpar("css-focus-invalid");
+            if (this.value && this.checkValidity()) {
+                escribir("css-focus-invalid", "✓ Email válido");
+            } else if (this.value) {
+                escribir("css-focus-invalid", "✗ Formato de email incorrecto (fondo vermello ao enfocar)");
+            }
+        });
+    </script>
+</body>
+
+</html>
