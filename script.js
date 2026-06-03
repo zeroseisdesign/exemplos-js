@@ -81,9 +81,9 @@
 
         botonCambio.addEventListener("click", cambiarTexto);
 
-        function cambiarTexto() {
-            let texto = document.getElementById("texto");
-            texto.innerHTML = "Texto modificado";
+        function cambiarTitulo() {
+            let titulo = document.getElementById("titulo");
+            titulo.innerHTML = "Nuevo titulo jajajajaja";
         }
 
         //Cambio de propiedades
@@ -91,6 +91,19 @@
 
         botonBack.addEventListener("click", cambiarCor);
 
-        function cambiarCor() {
-            document.body.style.backgroundColor = "lightblue";
+        function cambiarColor() {
+            let texto = document.querySelector("p");
+            texto.style.color = "red";
         }
+
+        //recargar pagina
+        function recargarPagina() {
+            location.reload();
+            window.open("https://google.com");
+        }
+
+        let ciudades = document.getElementById("ciudades");
+        ciudades.addEventListener("change", mostrarCiudad);
+        function mostrarCiudad(){
+            console.log(ciudades.value);
+        } 
