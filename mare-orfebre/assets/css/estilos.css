@@ -45,8 +45,42 @@ body {
     color: #FFFFFF !important;
 }
 
+/* ========== HAMBURGER MENU ANIMADO ========== */
 .navbar-toggler {
     border-color: rgba(0,0,0,0.3);
+    border-width: 2px;
+    padding: 8px 10px;
+}
+
+.hamburger-lines {
+    width: 24px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-lines span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #000;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.navbar-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.navbar-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
 }
 
 /* ========== GALERÍA ========== */
@@ -58,6 +92,7 @@ body {
 .gallery-item {
     position: relative;
     overflow: hidden;
+    max-width: 100%;
 }
 
 .gallery-item img {
@@ -154,6 +189,14 @@ body {
 }
 
 /* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+    .gallery-item {
+        height: 300px !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+}
+
 @media (max-width: 768px) {
     .gallery-item {
         height: 250px !important;
@@ -182,5 +225,13 @@ body {
     .footer {
         padding: 50px 0;
         font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-item {
+        height: 200px !important;
+        width: 100% !important;
+        margin-top: 0 !important;
     }
 }
