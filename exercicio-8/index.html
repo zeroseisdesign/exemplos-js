@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeX One</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fancybox/fancybox.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="topnav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">TIMEX ONE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">CARACTERÍSTICAS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">GALERÍA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tabs">INFORMACIÓN TÉCNICA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">CONTACTO</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-cyan btn-sm rounded-pill px-3 py-1" href="#">BUY NOW</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero d-flex align-items-center" id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-text">
+                    <h1 class="hero-title">TimeX One</h1>
+                    <p class="hero-subtitle">O reloxo intelixente deseñado para o teu ritmo de vida.</p>
+                    <div class="hero-buttons d-flex flex-wrap gap-3 mt-4">
+                        <a href="#" class="btn btn-cyan btn-lg rounded-pill px-4">COMPRAR AGORA</a>
+                        <a href="#" class="btn btn-outline-cyan btn-lg rounded-pill px-4">MÁIS INFORMACIÓN</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-img-col">
+                    <div class="hero-img-wrapper">
+                        <img src="assets/images/hero-smartwatch.png" alt="TimeX One Smartwatch" class="hero-img">
+                        <div class="hero-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section-features" id="features">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Excelencia en Cada Segundo</h2>
+                <span class="section-divider"></span>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
+                                <path d="M8 10c.55 0 1.02-.196 1.412-.587.392-.392.588-.863.588-1.413s-.196-1.02-.588-1.412A1.926 1.926 0 0 0 8 6c-.55 0-1.02.196-1.412.588A1.926 1.926 0 0 0 6 8c0 .55.196 1.02.588 1.413.391.391.862.587 1.412.587zm0 10C5.317 17.717 3.313 15.596 1.988 13.637c-1.325-1.958-1.988-3.77-1.988-5.437 0-2.5.804-4.492 2.413-5.975C3.02.742 4.883 0 7 0s3.979.742 5.588 2.225c1.608 1.483 2.412 3.475 2.412 5.975 0 1.667-.662 3.48-1.987 5.438C13.688 15.596 11.683 17.717 8 20z" fill="#00f1fe"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">GPS integrado</h3>
+                        <p class="feature-desc">Controla as túas rutas en tempo real cunha precisión milimétrica.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
+                                <path d="M10 18.35l-1.45-1.3c-1.683-1.517-3.075-2.825-4.175-3.925-1.1-1.1-1.975-2.088-2.625-2.963-.65-.875-1.104-1.679-1.362-2.412C.129 7.017 0 6.267 0 5.5c0-1.567.525-2.875 1.575-3.925C2.625.525 3.933 0 5.5 0c.867 0 1.692.183 2.475.55.783.367 1.458.883 2.025 1.55A5.07 5.07 0 0 1 12.025.55C12.808.183 13.633 0 14.5 0c1.567 0 2.875.525 3.925 1.575C19.475 2.625 20 3.933 20 5.5c0 .767-.129 1.517-.387 2.25-.259.733-.713 1.537-1.363 2.412-.65.875-1.525 1.863-2.625 2.963-1.1 1.1-2.492 2.408-4.175 3.925L10 18.35z" fill="#00f1fe"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Monitor cardíaco</h3>
+                        <p class="feature-desc">Consulta a túa actividade física durante todo o día para un control total.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
+                                <path d="M8.275 17c.2-.017.37-.096.512-.237.142-.142.213-.313.213-.513 0-.233-.075-.42-.225-.562-.15-.142-.342-.205-.575-.188-.683.05-1.408-.137-2.175-.562-.767-.425-1.25-1.196-1.45-2.313a.598.598 0 0 0-.262-.45.56.56 0 0 0-.488-.175.589.589 0 0 0-.575.263.527.527 0 0 0-.15.612c.283 1.517.95 2.6 2 3.25 1.05.65 2.108.942 3.175.875zM8 20C5.717 20 3.813 19.217 2.288 17.65c-1.525-1.567-2.288-3.517-2.288-5.85 0-1.667.663-3.48 1.988-5.438C3.325 4.404 5.33 2.283 8 0c2.67 2.283 4.675 4.404 6 6.362 1.325 1.959 1.988 3.771 1.988 5.438 0 2.333-.763 4.283-2.288 5.85C12.175 19.217 10.283 20 8 20z" fill="#00f1fe"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Resistente á auga</h3>
+                        <p class="feature-desc">Preparado para deporte e actividades exteriores sen límites.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="13" height="20" viewBox="0 0 13 20" fill="none">
+                                <path d="M9.5 20v-3H7l3.5-5v3h2.5l-3.5 5zM1 20c-.283 0-.52-.096-.712-.288A.973.973 0 0 1 0 19V3c0-.283.096-.52.288-.712A.973.973 0 0 1 1 2h2V0h4v2h2c.283 0 .52.096.712.288.192.192.288.429.288.712v7a6.17 6.17 0 0 0-4.25 1.762A6.17 6.17 0 0 0 6 14c0 .767.133 1.492.4 2.175.267.683.642 1.292 1.125 1.825H1z" fill="#00f1fe"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Batería avanzada</h3>
+                        <p class="feature-desc">Ata 7 días de autonomía nunha soa carga para que nada te deteña.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section-gallery" id="gallery">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Galería Visual</h2>
+                <span class="section-divider"></span>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-6">
+                    <a href="assets/images/gallery-lifestyle.png" data-fancybox="gallery" data-caption="Lifestyle">
+                        <img src="assets/images/gallery-lifestyle.png" alt="Lifestyle" class="gallery-img">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="assets/images/gallery-health.png" data-fancybox="gallery" data-caption="Health">
+                        <img src="assets/images/gallery-health.png" alt="Health" class="gallery-img">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="assets/images/gallery-water.png" data-fancybox="gallery" data-caption="Water Resistance">
+                        <img src="assets/images/gallery-water.png" alt="Water Resistance" class="gallery-img">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="assets/images/gallery-navigation.png" data-fancybox="gallery" data-caption="Navigation">
+                        <img src="assets/images/gallery-navigation.png" alt="Navigation" class="gallery-img">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="assets/images/gallery-charging.png" data-fancybox="gallery" data-caption="Charging">
+                        <img src="assets/images/gallery-charging.png" alt="Charging" class="gallery-img">
+                    </a>
+                </div>
+                <div class="col-md-4 col-6">
+                    <a href="assets/images/gallery-luxury.png" data-fancybox="gallery" data-caption="Luxury Design">
+                        <img src="assets/images/gallery-luxury.png" alt="Luxury Design" class="gallery-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="section-tabs" id="tabs">
+        <div class="container py-5">
+            <ul class="nav nav-tabs border-0" id="infoTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="deseno-tab" data-bs-toggle="tab" data-bs-target="#deseno"
+                        type="button" role="tab" aria-controls="deseno" aria-selected="true">DESEÑO</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="saude-tab" data-bs-toggle="tab" data-bs-target="#saude"
+                        type="button" role="tab" aria-controls="saude" aria-selected="false">SAÚDE</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="deportes-tab" data-bs-toggle="tab" data-bs-target="#deportes"
+                        type="button" role="tab" aria-controls="deportes" aria-selected="false">DEPORTES</button>
+                </li>
+            </ul>
+            <div class="tab-content pt-4" id="infoTabsContent">
+                <div class="tab-pane fade show active" id="deseno" role="tabpanel" aria-labelledby="deseno-tab">
+                    <h3 class="tab-title">Elegancia Ergonómica</h3>
+                    <p class="tab-text">Carcasa de titanio de grao aeroespacial e correa de silicona hipoalerxénica. Pantalla AMOLED de 1.5 polgadas con cristal de zafiro resistente a rabuñazos.</p>
+                </div>
+                <div class="tab-pane fade" id="saude" role="tabpanel" aria-labelledby="saude-tab">
+                    <h3 class="tab-title">Saúde Integral</h3>
+                    <p class="tab-text">Monitorización continua da frecuencia cardíaca, análise do sono, medición de osíxeno en sangue e alertas de estrés. Todo ao teu alcance.</p>
+                </div>
+                <div class="tab-pane fade" id="deportes" role="tabpanel" aria-labelledby="deportes-tab">
+                    <h3 class="tab-title">Rendemento Deportivo</h3>
+                    <p class="tab-text">Máis de 100 modos de adestramento, análise avanzada de movemento e seguimento GPS en tempo real para acadar os teus obxectivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section-contact" id="contact">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="contact-card p-4 p-md-5">
+                        <h2 class="section-title text-center mb-4">Contacta connosco</h2>
+                        <form>
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">NOME</label>
+                                <input type="text" class="form-control" id="nome" placeholder="O teu nome completo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">CORREO ELECTRÓNICO</label>
+                                <input type="email" class="form-control" id="email" placeholder="exemplo@correo.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">TELÉFONO</label>
+                                <input type="tel" class="form-control" id="telefono" placeholder="+34 000 000 000">
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensaxe" class="form-label">MENSAXE</label>
+                                <textarea class="form-control" id="mensaxe" rows="4" placeholder="En que podemos axudarche?"></textarea>
+                            </div>
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="privacidade">
+                                <label class="form-check-label" for="privacidade">Acepto a política de privacidade e os termos de servizo.</label>
+                            </div>
+                            <button type="submit" class="btn btn-cyan w-100 rounded-pill py-2">ENVIAR MENSAXE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-center py-4">
+                <span class="footer-brand">TIMEX ONE</span>
+                <div class="d-flex gap-3">
+                    <a href="#" class="footer-link" aria-label="Twitter/X">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M24 2.309a10.06 10.06 0 0 1-2.828.775 4.935 4.935 0 0 0 2.165-2.724 9.86 9.86 0 0 1-3.127 1.195A4.924 4.924 0 0 0 15.616 0c-3.179 0-5.515 2.966-4.797 6.045A13.977 13.977 0 0 1 .67.901a4.917 4.917 0 0 0 1.523 6.574 4.902 4.902 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.084 4.93 4.93 0 0 0 4.6 3.419A9.883 9.883 0 0 1 0 17.292a13.94 13.94 0 0 0 7.548 2.212c9.142 0 14.307-7.721 13.995-14.646A9.992 9.992 0 0 0 24 2.309z" fill="#c5c6cd"/>
+                        </svg>
+                    </a>
+                </div>
+                <span class="footer-copy">© 2024 TimeX Precision Horology. All rights reserved.</span>
+                <div class="d-flex gap-3">
+                    <a href="#" class="footer-link fw-bold">PRIVACY POLICY</a>
+                    <a href="#" class="footer-link fw-bold">TERMS</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {});
+    </script>
+</body>
+
+</html>
