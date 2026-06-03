@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script2.js" defer></script>
+    <title>ejercicio 7</title>
+</head>
+
+<body>
+    <fieldset>
+        <form class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="form-control" required minlength="3">
+                <div class="invalid-feedback">Por favor, introduce tu nombre</div>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" class="form-control" required
+                    pattern="[A-Za-záéíóúÁÉÍÓÚñÑ]+\s[A-Za-záéíóúÁÉÍÓÚñÑ]+">
+                <div class="invalid-feedback">Por favor, introduce dos apellido</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" required>
+                <div class="invalid-feedback">Por favor, introduce tu email</div>
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input type="number" id="edad" class="form-control" required>
+                <div class="invalid-feedback">La edad debe estar entre 18 y 99 años.</div>
+            </div>
+            <div class="form-group">
+                <label for="provincia">Provincia</label>
+                <select id="provincia" class="form-control" required>
+                    <option value="A Coruña">A Coruña</option>
+                    <option value="Lugo">Lugo</option>
+                    <option value="Ourense">Ourense</option>
+                    <option value="Pontevedra">Pontevedra</option>
+                </select>
+                <div class="invalid-feedback">Por favor, selecciona una provincia</div>
+            </div>
+            <div class="form-group">
+                <label>Sexo</label>
+                <div class="radio-group">
+                    <input type="radio" name="sexo" value="masculino" required>Masculino
+                    <input type="radio" name="sexo" value="femenino" required>Femenino
+                    <input type="radio" name="sexo" value="otro" required>Otro
+                </div>
+                <div class="invalid-feedback">Por favor, selecciona una opción</div>
+            </div>
+            <div class="form-group">
+                <label>Lenguajes</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" name="lenguajes" value="Javascript">Javascript
+                    <input type="checkbox" name="lenguajes" value="PHP">PHP
+                    <input type="checkbox" name="lenguajes" value="Python">Python
+                    <input type="checkbox" name="lenguajes" value="Java">Java
+                </div>
+                <div class="invalid-feedback">Por favor, selecciona al menos un lenguaje</div>
+            </div>
+            <div class="form-group">
+                <label>Comentarios</label>
+                <textarea id="comentarios" class="form-control"></textarea>
+                <div class="invalid-feedback">Por favor, introduce tus comentario mas completo. Minino 10 caracteres
+                </div>
+            </div>
+            <input class="form-control" type="checkbox" id="terminos" required>
+            <label for="terminos">Acepto los términos y condiciones</label>
+            <div class="invalid-feedback">Por favor, acepta los términos y condiciones</div>
+            <div class="form-group">
+                <button class="btn-enviar" type="submit" checkValidity()>Enviar</button>
+                <button class="btn-limpiar" type="reset">Limpiar</button>
+            </div>
+        </form>
+    </fieldset>
+</body>
+
+</html>

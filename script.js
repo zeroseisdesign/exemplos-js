@@ -94,6 +94,8 @@
         function cambiarColor() {
             let texto = document.querySelector("p");
             texto.style.color = "red";
+            document.button.style.backgroundColor = "red";
+            document.querySelector("button").style.backgroundColor = "red";
         }
 
         //recargar pagina
