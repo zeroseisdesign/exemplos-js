@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        header {
+            width: 100%;
+            height: 100vh;
+            max-height: 1067px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 60px 60px;
+            padding: 0 20px;
+        }
+
+        header nav {
+            background: rgb(255, 255, 255);
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            clip-path: polygon(0% 0%, 0% 62%, 50% 100%, 100% 62%, 100% 0%);
+        }
+
+        h1 {
+            /* h1 */
+            font-style: normal;
+            font-weight: 900;
+            font-size: 48px;
+            text-align: center;
+            color: #FFFFFF;
+            margin: 200px 0 63px;
+        }
+
+        .hero {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .cta {
+            width: 342px;
+            height: 72px;
+            background: #17EA9E;
+            border-radius: 100px;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: center;
+            color: #000000;
+        }
+
+        main {
+            padding: 140px 20px;
+        }
+
+        h2 {
+            font-style: normal;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 58px;
+            text-align: center;
+            color: #6B01B8;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        @media (min-width: 768px) {
+            .galeria {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            h1 {
+                font-size: 64px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="hero" src="imaxe-440.jpg" srcset="imaxe-440.jpg 440w, imaxe-1.jpg 800w, imaxe-1@2x.jpg 1200w"
+            alt="Exemplo responsive">
+        <nav>
+            <img src="logo.png" srcset="logo.png 1x, logo@2x.png 2x, logo@3x.png 3x" alt="logo" width="197"
+                height="184">
+        </nav>
+        <h1>Especialistas en deseño web</h1>
+        <button type="button" class="cta">Despega dende aquí <img src="frecha-cta.svg" alt="Flecha" width="23"
+                height="15"></button>
+    </header>
+    <main>
+        <section>
+            <h2>Coñece o noso traballo</h2>
+            <div class="galeria">
+                <img src="imaxe-2.jpg" srcset="imaxe-2.jpg 1x, imaxe-2@2x.jpg 2x" alt="Proxecto 1" class="thumbnail"
+                    width="770" height="704">
+                <img src="imaxe-3.jpg" srcset="imaxe-3.jpg 1x, imaxe-3@2x.jpg 2x" alt="Proxecto 2" class="thumbnail"
+                    width="770" height="704">
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
