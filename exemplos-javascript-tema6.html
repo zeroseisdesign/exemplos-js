@@ -329,6 +329,10 @@ function enviar(event) {
                 <td>Cambio de tamaño da xanela</td>
             </tr>
             <tr>
+                <td><code>scroll</code></td>
+                <td>Desprazamento vertical ou horizontal da páxina</td>
+            </tr>
+            <tr>
                 <td><code>unload</code></td>
                 <td>Saída da páxina</td>
             </tr>
@@ -341,8 +345,13 @@ function enviar(event) {
 
 function cambiarTamano() {
   console.log(window.innerWidth);
+}
+
+window.addEventListener("scroll", function () {
+  console.log("Posición vertical:", window.scrollY);
 }</code></pre>
         <button onclick="executar('eventos-xanela')">Mostrar tamaño actual</button>
+        <button onclick="executar('scroll-demo')">Desprazar páxina</button>
         <div class="output"></div>
     </section>
 
@@ -429,6 +438,7 @@ function mostrar() {
     <script>
         let movementosRato = 0;
         let resizeTimer;
+        let scrollTimer;
 
         function escribir(id, mensaxe) {
             let section = document.getElementById(id);
@@ -461,6 +471,10 @@ function mostrar() {
                 case "eventos-xanela":
                     escribir(id, "Ancho: " + window.innerWidth + "px");
                     escribir(id, "Alto: " + window.innerHeight + "px");
+                    break;
+                case "scroll-demo":
+                    document.getElementById("outros-eventos").scrollIntoView({ behavior: "smooth" });
+                    escribir("eventos-xanela", "Desprazando ata a sección Outros eventos...");
                     break;
                 case "erro-imaxe":
                     crearImaxeConErro();
@@ -505,6 +519,15 @@ function mostrar() {
                 escribir("eventos-xanela", "Evento resize detectado.");
                 escribir("eventos-xanela", "Novo tamaño: " + window.innerWidth + " x " + window.innerHeight + "px");
             }, 200);
+        });
+
+        window.addEventListener("scroll", function () {
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(function () {
+                limpar("eventos-xanela");
+                escribir("eventos-xanela", "Evento scroll detectado.");
+                escribir("eventos-xanela", "Posición vertical: " + Math.round(window.scrollY) + "px");
+            }, 150);
         });
 
         document.getElementById("btn-definicion").addEventListener("click", function () {

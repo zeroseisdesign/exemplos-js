@@ -1,5 +1,3 @@
-
-
 # Tema 6. Os eventos da linguaxe de guión
 
 ## Utilización de eventos
@@ -324,6 +322,31 @@ window.addEventListener("resize", cambiarTamaño);
 ```
 
 Moi utilizado en deseño responsive.
+
+---
+
+### Evento scroll
+
+O evento `scroll` execútase cando o usuario despraza o contido dunha páxina.
+
+Úsase moito para:
+
+- Mostrar animacións ao facer scroll.
+- Detectar a posición do usuario na páxina.
+- Crear menús fixos.
+- Cargar contido dinámicamente.
+
+Exemplo:
+
+```javascript
+window.addEventListener("scroll", function() {
+    console.log("Posición vertical:", window.scrollY);
+});
+```
+
+**window.scrollY** devolve os píxeles desprazados verticalmente.
+
+> Actualmente, `scroll` é un dos eventos máis utilizados en interfaces web modernas.
 
 ---
 
