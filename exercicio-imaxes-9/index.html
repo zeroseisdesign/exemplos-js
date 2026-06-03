@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Visual</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <img src="assets/logo-300.png" alt="Logo" class="logo" width="150" height="150"
+            onerror="this.src='assets/logo.png'">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#carrusel">Destacados</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <picture>
+            <source srcset="assets/hero/hero.webp" type="image/webp">
+            <img src="assets/hero/hero.jpg" alt="Fondo hero" class="hero-bg">
+        </picture>
+        <div class="hero-content">
+            <h1>Portfolio de Proxectos</h1>
+            <p>Deseño, creatividade e tecnoloxía</p>
+            <a href="#galeria" class="btn">Ver traballos</a>
+        </div>
+    </section>
+
+    <section id="galeria" class="section">
+        <h2>Galería</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <picture>
+                    <source
+                        srcset="assets/responsive/imaxe-1-300w.webp 300w, assets/responsive/imaxe-1-800w.webp 800w, assets/responsive/imaxe-1-1200w.webp 1200w"
+                        type="image/webp" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                    <img src="assets/responsive/imaxe-1-800w.jpg"
+                        srcset="assets/responsive/imaxe-1-300w.jpg 300w, assets/responsive/imaxe-1-800w.jpg 800w, assets/responsive/imaxe-1-1200w.jpg 1200w"
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Proxecto 1"
+                        class="gallery-img" loading="lazy" width="800" height="534">
+                </picture>
+                <div class="overlay"><span>Proxecto Alpha</span></div>
+            </div>
+            <div class="gallery-item">
+                <picture>
+                    <source
+                        srcset="assets/responsive/imaxe-3-300w.webp 300w, assets/responsive/imaxe-3-800w.webp 800w, assets/responsive/imaxe-3-1200w.webp 1200w"
+                        type="image/webp" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw">
+                    <img src="assets/responsive/imaxe-3-800w.jpg"
+                        srcset="assets/responsive/imaxe-3-300w.jpg 300w, assets/responsive/imaxe-3-800w.jpg 800w, assets/responsive/imaxe-3-1200w.jpg 1200w"
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Proxecto 2"
+                        class="gallery-img" loading="lazy" width="800" height="800">
+                </picture>
+                <div class="overlay"><span>Proxecto Beta</span></div>
+            </div>
+            <div class="gallery-item">
+                <picture>
+                    <source srcset="assets/responsive/imaxe-2-800w.webp 800w" type="image/webp">
+                    <img src="assets/responsive/imaxe-2-800w.jpg" srcset="assets/responsive/imaxe-2-800w.jpg 800w"
+                        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Proxecto 3"
+                        class="gallery-img" loading="lazy" width="800" height="732">
+                </picture>
+                <div class="overlay"><span>Proxecto Gamma</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/thumbs/imaxe-1-thumb.jpg" alt="Proxecto 4" class="gallery-img" loading="lazy"
+                    width="300" height="200">
+                <div class="overlay"><span>Proxecto Delta</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/thumbs/imaxe-3-thumb.jpg" alt="Proxecto 5" class="gallery-img" loading="lazy"
+                    width="300" height="300">
+                <div class="overlay"><span>Proxecto Epsilon</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/thumbs/imaxe-2-thumb.jpg" alt="Proxecto 6" class="gallery-img" loading="lazy"
+                    width="300" height="275">
+                <div class="overlay"><span>Proxecto Zeta</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="carrusel" class="section carrusel-section">
+        <h2>Destacados</h2>
+        <div class="carrusel-container">
+            <button class="carrusel-btn prev" aria-label="Anterior">&#10094;</button>
+            <div class="carrusel-track">
+                <div class="carrusel-slide">
+                    <picture>
+                        <source srcset="assets/gallery/imaxe-1-800.webp" type="image/webp">
+                        <img src="assets/gallery/imaxe-1-800.jpg" alt="Destacado 1" class="carrusel-img">
+                    </picture>
+                    <div class="carrusel-caption">Proxecto Alpha — Deseño web</div>
+                </div>
+                <div class="carrusel-slide">
+                    <picture>
+                        <source srcset="assets/gallery/imaxe-3-800.webp" type="image/webp">
+                        <img src="assets/gallery/imaxe-3-800.jpg" alt="Destacado 2" class="carrusel-img">
+                    </picture>
+                    <div class="carrusel-caption">Proxecto Beta — Identidade visual</div>
+                </div>
+                <div class="carrusel-slide">
+                    <picture>
+                        <source srcset="assets/gallery/imaxe-2-800.webp" type="image/webp">
+                        <img src="assets/gallery/imaxe-2-800.jpg" alt="Destacado 3" class="carrusel-img">
+                    </picture>
+                    <div class="carrusel-caption">Proxecto Gamma — Aplicación móbil</div>
+                </div>
+            </div>
+            <button class="carrusel-btn next" aria-label="Seguinte">&#10095;</button>
+        </div>
+        <div class="carrusel-dots"></div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Portfolio Visual</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
