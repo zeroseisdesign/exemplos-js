@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchiDesign - Galería de Arquitectura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <!-- Navegación con logo -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="assets/logotipo-45w.png"
+                    srcset="assets/logotipo-45w.png 1x, assets/logotipo-90w.png 2x, assets/logotipo.png 3x"
+                    alt="Logo de ArchiDesign" class="logo-img">
+                <span class="logo-text">ArchiDesign</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Arquitectura Contemporánea</h1>
+            <p>Descubre diseños innovadores que fusionan estética y funcionalidad. Cada proyecto cuenta una historia de
+                creatividad y precisión.</p>
+            <a class="cta-button" href="#galeria">Explorar Galería</a>
+        </div>
+    </section>
+
+    <!-- Carrusel destacado -->
+    <section class="carrusel-destacado">
+        <div class="carrusel-container">
+            <h2>Proyectos Destacados</h2>
+            <div class="carrusel-wrapper">
+                <div class="carrusel">
+                    <div class="carrusel-slide active">
+                        <img srcset="assets/imaxe3-300w.jpg 300w, assets/imaxe3-800w.jpg 800w, assets/imaxe3-1200w.jpg 1200w"
+                            src="assets/imaxe3-1200w.jpg" alt="Proyecto arquitectónico vertical con fachada escultórica"
+                            sizes="(max-width: 480px) 300px, (max-width: 1024px) 800px, 1200px">
+                        <div class="carrusel-info">
+                            <h3>Oso</h3>
+                            <p>Diseño arquitectónico innovador con elementos modernos.</p>
+                        </div>
+                    </div>
+                    <div class="carrusel-slide">
+                        <img srcset="assets/imaxe4-300w.jpg 300w, assets/imaxe4-800w.jpg 800w, assets/imaxe4-1200w.jpg 1200w"
+                            src="assets/imaxe4-1200w.jpg" alt="Cúpula arquitectónica con estructura geométrica"
+                            sizes="(max-width: 480px) 300px, (max-width: 1024px) 800px, 1200px">
+                        <div class="carrusel-info">
+                            <h3>Cúpula</h3>
+                            <p>Estructura geométrica perfecta con acabados excepcionales.</p>
+                        </div>
+                    </div>
+                    <div class="carrusel-slide">
+                        <img srcset="assets/imaxe5-300w.jpg 300w, assets/imaxe5-800w.jpg 800w, assets/imaxe5-1200w.jpg 1200w"
+                            src="assets/imaxe5-1200w.jpg" alt="Edificio minimalista de líneas limpias"
+                            sizes="(max-width: 480px) 300px, (max-width: 1024px) 800px, 1200px">
+                        <div class="carrusel-info">
+                            <h3>Minimalista</h3>
+                            <p>Simplicidad y elegancia en su máxima expresión.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrusel-prev" onclick="cambiarSlide(-1)">❮</button>
+                <button class="carrusel-next" onclick="cambiarSlide(1)">❯</button>
+            </div>
+            <div class="carrusel-dots">
+                <span class="dot active" onclick="irAlSlide(0)"></span>
+                <span class="dot" onclick="irAlSlide(1)"></span>
+                <span class="dot" onclick="irAlSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de 6 imágenes -->
+    <section class="galeria" id="galeria">
+        <div class="galeria-container">
+            <h2>Nuestros Proyectos</h2>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img srcset="assets/imaxe3-300w.jpg 300w, assets/imaxe3-800w.jpg 800w, assets/imaxe3-1200w.jpg 1200w"
+                        src="assets/imaxe3-800w.jpg" alt="Proyecto arquitectónico vertical con fachada escultórica"
+                        sizes="(max-width: 480px) 300px, (max-width: 1024px) 50vw, 33vw" loading="lazy">
+                    <div class="galeria-overlay">
+                        <p>Oso</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img srcset="assets/imaxe4-300w.jpg 300w, assets/imaxe4-800w.jpg 800w, assets/imaxe4-1200w.jpg 1200w"
+                        src="assets/imaxe4-800w.jpg" alt="Cúpula arquitectónica con estructura geométrica"
+                        sizes="(max-width: 480px) 300px, (max-width: 1024px) 50vw, 33vw" loading="lazy">
+                    <div class="galeria-overlay">
+                        <p>Cúpula</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img srcset="assets/imaxe5-300w.jpg 300w, assets/imaxe5-800w.jpg 800w, assets/imaxe5-1200w.jpg 1200w"
+                        src="assets/imaxe5-800w.jpg" alt="Edificio minimalista de líneas limpias"
+                        sizes="(max-width: 480px) 300px, (max-width: 1024px) 50vw, 33vw" loading="lazy">
+                    <div class="galeria-overlay">
+                        <p>Minimalista</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img srcset="assets/imaxe6-300w.jpg 300w, assets/imaxe6-800w.jpg 800w, assets/imaxe6-1200w.jpg 1200w"
+                        src="assets/imaxe6-800w.jpg" alt="Detalle de arquitectura con figuras geométricas"
+                        sizes="(max-width: 480px) 300px, (max-width: 1024px) 50vw, 33vw" loading="lazy">
+                    <div class="galeria-overlay">
+                        <p>Figuras geométricas</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img srcset="assets/imaxe7-300w.jpg 300w, assets/imaxe7-800w.jpg 800w, assets/imaxe7-1200w.jpg 1200w"
+                        src="assets/imaxe7-800w.jpg" alt="Edificio con fachada curva"
+                        sizes="(max-width: 480px) 300px, (max-width: 1024px) 50vw, 33vw" loading="lazy">
+                    <div class="galeria-overlay">
+                        <p>Curva</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img srcset="assets/imaxe8-300w.jpg 300w, assets/imaxe8-800w.jpg 800w, assets/imaxe8-1200w.jpg 1200w"
+                        src="assets/imaxe8-800w.jpg" alt="Arquitectura modernista de inspiración cubista"
+                        sizes="(max-width: 480px) 300px, (max-width: 1024px) 50vw, 33vw" loading="lazy">
+                    <div class="galeria-overlay">
+                        <p>Modernista cubista</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Justificación de optimización -->
+    <section class="optimizacion">
+        <div class="optimizacion-container">
+            <h2>Optimización de imágenes</h2>
+            <div class="optimizacion-grid">
+                <article class="optimizacion-item">
+                    <h3>Imágenes reducidas</h3>
+                    <p>No se usan las imágenes originales porque superan el tamaño necesario para la web y aumentan el
+                        tiempo de carga, el consumo de datos y la memoria del navegador.</p>
+                </article>
+                <article class="optimizacion-item">
+                    <h3>Formatos adecuados</h3>
+                    <p>Las fotografías se sirven en versiones JPG optimizadas para el responsive y también se mantienen
+                        versiones WebP en la carpeta de recursos. El logotipo se conserva en PNG por su transparencia.
+                    </p>
+                </article>
+                <article class="optimizacion-item">
+                    <h3>Responsive</h3>
+                    <p>La galería usa <code>srcset</code> con 300w, 800w y 1200w para que el navegador elija la imagen
+                        correcta según el ancho de pantalla y la densidad de píxeles.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <p>&copy; 2024 ArchiDesign. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let indiceSlideActual = 0;
+
+        function cambiarSlide(n) {
+            mostrarSlide(indiceSlideActual += n);
+        }
+
+        function irAlSlide(n) {
+            mostrarSlide(indiceSlideActual = n);
+        }
+
+        function mostrarSlide(n) {
+            const slides = document.querySelectorAll('.carrusel-slide');
+            const dots = document.querySelectorAll('.dot');
+
+            if (n >= slides.length) {
+                indiceSlideActual = 0;
+            }
+            if (n < 0) {
+                indiceSlideActual = slides.length - 1;
+            }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[indiceSlideActual].classList.add('active');
+            dots[indiceSlideActual].classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
