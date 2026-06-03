@@ -1,0 +1,162 @@
+{
+  "version": "2.13",
+  "children": [
+    {
+      "type": "frame",
+      "id": "IsqV8",
+      "x": -448,
+      "y": -505,
+      "name": "inicio",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "#ffffffff",
+      "layout": "none",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "M1LwR",
+          "x": 0,
+          "y": 0,
+          "name": "Rectangle 1",
+          "fill": "#c990ccff",
+          "width": 1440,
+          "height": 278
+        },
+        {
+          "type": "rectangle",
+          "id": "rAY0D",
+          "x": 1,
+          "y": 54,
+          "name": "logosestlife 1",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "image-import.jpg",
+            "mode": "fill"
+          },
+          "width": 147,
+          "height": 147
+        },
+        {
+          "type": "text",
+          "id": "i588eK",
+          "x": 720,
+          "y": 106,
+          "name": "INICIO DISEÑO CONSTRUCCION HOSPEDAJE MANTENIMIENTO",
+          "fill": "#000000ff",
+          "textGrowth": "fixed-width-height",
+          "width": 663,
+          "height": 95,
+          "content": "INICIO DISEÑO CONSTRUCCION HOSPEDAJE MANTENIMIENTO",
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "rectangle",
+          "id": "rzjOA",
+          "x": 0,
+          "y": 278,
+          "name": "Rectangle 2",
+          "fill": "#d1d1d6ff",
+          "width": 1440,
+          "height": 746
+        },
+        {
+          "type": "rectangle",
+          "id": "PVEQD",
+          "x": 1,
+          "y": 278,
+          "name": "DISEÑO 1",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "image-import.png",
+            "mode": "fill"
+          },
+          "width": 660,
+          "height": 411
+        },
+        {
+          "type": "rectangle",
+          "id": "Vu5Pm",
+          "x": 665,
+          "y": 291,
+          "name": "DISEÑO2 1",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "image-import-2.png",
+            "mode": "fill"
+          },
+          "width": 761,
+          "height": 398
+        },
+        {
+          "type": "rectangle",
+          "id": "QiKEk",
+          "x": 0,
+          "y": 692,
+          "name": "DISEÑO3 1",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "image-import-2.jpg",
+            "mode": "fill"
+          },
+          "width": 661,
+          "height": 357
+        },
+        {
+          "type": "rectangle",
+          "id": "ZKtLK",
+          "x": 812,
+          "y": 689,
+          "name": "DISEÑO4 1",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "image-import-1.jpg",
+            "mode": "fill"
+          },
+          "width": 467,
+          "height": 335
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "MF1iV",
+      "x": -448,
+      "y": 504,
+      "name": "Section 1",
+      "width": 1440,
+      "height": 238,
+      "fill": "#c990ccff",
+      "cornerRadius": 2,
+      "stroke": "#c990cc1a",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "EWIqn",
+          "x": 118,
+          "y": 44,
+          "name": "copyright ZESTLIFE C.A. VENTAS@ZESTLIFE.COM TELEFONO:555555555",
+          "fill": "#000000ff",
+          "textGrowth": "fixed-width-height",
+          "width": 1227,
+          "height": 131,
+          "content": "\ncopyright ZESTLIFE C.A. \nVENTAS@ZESTLIFE.COM\nTELEFONO:555555555",
+          "textAlign": "center",
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": "normal"
+        }
+      ]
+    }
+  ]
+}
