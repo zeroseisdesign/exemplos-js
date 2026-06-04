@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio visual de Nordic Studio, estudo de deseño dixital minimalista.">
+    <title>Nordic Studio</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="6"/>
+                    <path d="M30 60 L50 30 L70 60" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Nordic Studio</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#galeria">Portfolio</a></li>
+                <li><a href="#carrusel">Proxectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <picture class="hero-media">
+            <source srcset="imaxes/01.jpg" media="(min-width: 1200px)">
+            <img src="imaxes/01.jpg" alt="Oficina luminosa con tecnoloxía moderna" loading="eager">
+        </picture>
+
+        <div class="hero-content">
+            <h1>Deseño minimalista.<br>Impacto real.</h1>
+            <p>Creamos experiencias dixitais con estética escandinava e tecnoloxía de vangarda.</p>
+            <a href="#galeria" class="btn">Ver portfolio</a>
+        </div>
+    </section>
+
+    <main>
+
+        <section id="galeria" class="galeria-section">
+            <header class="section-header">
+                <h2>Portfolio</h2>
+                <p>Unha selección dos nosos proxectos máis recentes.</p>
+            </header>
+
+            <div class="gallery">
+
+                <figure class="gallery-item">
+                    <img src="imaxes/02.jpg" alt="Proxecto de deseño 02" loading="lazy">
+                    <figcaption>Proxecto Aurora</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imaxes/03.jpg" alt="Proxecto de deseño 03" loading="lazy">
+                    <figcaption>Estudio Nórdico</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imaxes/04.jpeg" alt="Proxecto de deseño 04" loading="lazy">
+                    <figcaption>Workshop UX</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imaxes/05.jpg" alt="Proxecto de deseño 05" loading="lazy">
+                    <figcaption>Coworking Oslo</figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+        <section id="carrusel" class="carrusel-section">
+            <header class="section-header">
+                <h2>Proxectos destacados</h2>
+                <p>Un repaso visual aos traballos máis relevantes do estudo.</p>
+            </header>
+
+            <div class="carousel" aria-roledescription="carousel" aria-label="Proxectos destacados">
+                <button class="carousel-btn prev" aria-label="Imaxe anterior">&#10094;</button>
+
+                <div class="carousel-track">
+                    <article class="carousel-slide is-active">
+                        <img src="imaxes/06.jpg" alt="Proxecto destacado 06" loading="lazy">
+                        <div class="carousel-caption">
+                            <h3>Branding Aurora</h3>
+                            <p>Identidade visual para unha startup tecnolóxica.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-slide">
+                        <img src="imaxes/07.jpeg" alt="Proxecto destacado 07" loading="lazy">
+                        <div class="carousel-caption">
+                            <h3>Web Corporativa Fjord</h3>
+                            <p>Sitio web minimalista para empresa de enerxía.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-slide">
+                        <img src="imaxes/08.jpg" alt="Proxecto destacado 08" loading="lazy">
+                        <div class="carousel-caption">
+                            <h3>App Móvil Birch</h3>
+                            <p>Aplicación de benestar con interface limpa.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <button class="carousel-btn next" aria-label="Imaxe seguinte">&#10095;</button>
+
+                <div class="carousel-dots" role="tablist">
+                    <button class="dot is-active" aria-label="Ir á diapositiva 1"></button>
+                    <button class="dot" aria-label="Ir á diapositiva 2"></button>
+                    <button class="dot" aria-label="Ir á diapositiva 3"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contacto-section">
+            <h2>Traballamos xuntos?</h2>
+            <p>Contáctanos para converter a túa idea nun produto dixital memorable.</p>
+            <a href="mailto:hola@nordicstudio.gal" class="btn btn-secondary">Escribir correo</a>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Nordic Studio.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prev = document.querySelector('.carousel-btn.prev');
+            const next = document.querySelector('.carousel-btn.next');
+            let index = 0;
+            let timer = null;
+
+            function show(i) {
+                slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+                dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+                index = i;
+            }
+
+            function nextSlide() { show((index + 1) % slides.length); }
+            function prevSlide() { show((index - 1 + slides.length) % slides.length); }
+
+            function autoplay() {
+                timer = setInterval(nextSlide, 5000);
+            }
+            function pause() { clearInterval(timer); }
+
+            prev.addEventListener('click', () => { prevSlide(); pause(); });
+            next.addEventListener('click', () => { nextSlide(); pause(); });
+            dots.forEach((d, k) => d.addEventListener('click', () => { show(k); pause(); }));
+
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('mouseenter', pause);
+            carousel.addEventListener('mouseleave', autoplay);
+
+            autoplay();
+        })();
+    </script>
+
+</body>
+</html>
