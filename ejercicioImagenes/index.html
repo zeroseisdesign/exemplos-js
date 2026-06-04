@@ -10,14 +10,17 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.css" />
   <link rel="stylesheet" href="css/styles.css">
+
 </head>
 
 <body>
 
   <nav class="nav">
     <div class="nav__inner container">
-      <a href="#" class="nav__logo">Nordic Studio</a>
+      <a href="../ejercicioImagenes/imagenes/queimada2.jpg" data-fancybox="logo-popup" class="nav__logo">Nordic
+        Studio</a>
       <button class="nav__toggle" aria-label="Menú">
         <span></span><span></span><span></span>
       </button>
@@ -35,7 +38,8 @@
     <div class="hero__content container">
       <h1 class="hero__title">Nordic Studio</h1>
       <p class="hero__subtitle">Deseño dixital minimalista</p>
-      <a href="#projects" class="hero__cta">Ver proxectos</a>
+      <a href="../ejercicioImagenes/imagenes/sanxuan.jpg" data-fancybox="logo-popup" class="hero__cta">Ver
+        proxectos</a>
     </div>
   </section>
 
@@ -46,14 +50,17 @@
         <h2 class="section-label__title">Galería de traballos</h2>
       </div>
       <div class="projects__grid">
-        <a href="#" class="project-card">
+        <a href="../ejercicioImagenes/imagenes/1dibujo.avif" data-fancybox="gallery" data-caption="Branding · Minimal"
+          class="project-card">
           <div class="project-card__img" style="background-image: url('../ejercicioImagenes/imagenes/1dibujo.avif');">
             <div class="project-card__overlay">
               <span class="project-card__label">Branding · Minimal</span>
             </div>
           </div>
         </a>
-        <a href="#" class="project-card">
+        <a href="../ejercicioImagenes/imagenes/2telefonoLaptop.avif" data-fancybox="gallery"
+          data-caption="UX · Interface" class="project-card">
+
           <div class="project-card__img"
             style="background-image: url('../ejercicioImagenes/imagenes/2telefonoLaptop.avif');">
             <div class="project-card__overlay">
@@ -61,14 +68,16 @@
             </div>
           </div>
         </a>
-        <a href="#" class="project-card">
+        <a href="../ejercicioImagenes/imagenes/3pinturas.avif" data-fancybox="gallery" data-caption="Web · Editorial"
+          class="project-card">
           <div class="project-card__img" style="background-image: url('../ejercicioImagenes/imagenes/3pinturas.avif');">
             <div class="project-card__overlay">
               <span class="project-card__label">Web · Editorial</span>
             </div>
           </div>
         </a>
-        <a href="#" class="project-card">
+        <a href="../ejercicioImagenes/imagenes/4ondapurpura.avif" data-fancybox="gallery"
+          data-caption="Identidade · Corporativo" class="project-card">
           <div class="project-card__img"
             style="background-image: url('../ejercicioImagenes/imagenes/4ondapurpura.avif');">
             <div class="project-card__overlay">
@@ -76,7 +85,8 @@
             </div>
           </div>
         </a>
-        <a href="#" class="project-card">
+        <a href="../ejercicioImagenes/imagenes/5revistalogos.avif" data-fancybox="gallery"
+          data-caption="Fotografía · Produto" class="project-card">
           <div class="project-card__img"
             style="background-image: url('../ejercicioImagenes/imagenes/5revistalogos.avif');">
             <div class="project-card__overlay">
@@ -84,7 +94,8 @@
             </div>
           </div>
         </a>
-        <a href="#" class="project-card">
+        <a href="../ejercicioImagenes/imagenes/6sofa.png" data-fancybox="gallery" data-caption="Motion · Animación"
+          class="project-card">
           <div class="project-card__img" style="background-image: url('../ejercicioImagenes/imagenes/6sofa.png');">
             <div class="project-card__overlay">
               <span class="project-card__label">Motion · Animación</span>
@@ -228,6 +239,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.js"></script>
   <script src="js/main.js"></script>
 </body>
 

@@ -258,6 +258,7 @@ img {
   align-items: flex-end;
   padding: 20px;
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--transition);
 }
 
@@ -622,4 +623,55 @@ img {
     flex-direction: column;
     gap: 4px;
   }
+}
+
+/* 1. Custom Smooth Easing for the Backdrop Dark Overlay */
+.fancybox__backdrop {
+  transition: opacity 0.45s cubic-bezier(0.215, 0.610, 0.355, 1) !important;
+  background: rgba(10, 10, 10, 0.88) !important;
+  /* Premium dark mask */
+}
+
+/* 2. Fluid Zoom Animations for the Image */
+@keyframes fancybox-zoomIn {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fancybox-zoomOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+}
+
+/* 3. Sleek 'X' Close Button Customization */
+.fancybox__button--close {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  margin: 15px;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.25s ease;
+}
+
+/* Subtle interactive bounce/grow when hovering the 'X' */
+.fancybox__button--close:hover {
+  transform: scale(1.15) rotate(90deg);
+  /* Scales up and slightly rotates for flair */
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.fancybox__button--close svg {
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
 }

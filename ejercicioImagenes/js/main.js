@@ -6,6 +6,11 @@
   const links = document.querySelector('.nav__links');
   const linkItems = document.querySelectorAll('.nav__links a');
 
+  if (!toggle || !links) {
+    console.warn('Nav elements not found');
+    return;
+  }
+
   toggle.addEventListener('click', function () {
     links.classList.toggle('nav__links--open');
     nav.classList.toggle('nav--menu-open');
@@ -74,3 +79,41 @@
   });
 
 })();
+
+Fancybox.bind('[data-fancybox="gallery"]', {
+  animated: true,
+  dragToClose: true,
+  Toolbar: {
+    display: {
+      left: ['infobar'],
+      middle: [],
+      right: ['slideshow', 'thumbs', 'close']
+    }
+  }
+});
+
+// Initialize Fancybox for your logo popup
+Fancybox.bind('[data-fancybox="logo-popup"]', {
+  // Smooth zoom effect from the actual link position
+  Images: {
+    zoom: true,
+  },
+
+  // Transition effects & speeds
+  showClass: "fancybox-zoomIn",
+  hideClass: "fancybox-zoomOut",
+  animated: true,
+  speed: 450, // 450ms is the sweet spot for a cinematic, fluid motion
+
+  // Fluid backdrop fade duration
+  backdropClick: "close",
+
+  // Toolbar configuration: Displays ONLY the modern 'X' close button on the right
+  Toolbar: {
+    display: {
+      left: [],
+      main: [],
+      right: ["close"],
+    },
+  },
+});
