@@ -18,7 +18,7 @@ body {
 
 .navbar-custom.scrolled {
     padding: 15px 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-brand {
@@ -30,6 +30,7 @@ body {
 .logo-img {
     width: 221px;
     height: auto;
+    margin-bottom: 0px;
 }
 
 .logo-text {
@@ -37,7 +38,7 @@ body {
     font-size: 18px;
     font-weight: 700;
     color: #FFFFFF;
-    margin-top: 4px;
+    margin-top: 0px;
 }
 
 .navbar-custom .nav-link {
@@ -54,7 +55,7 @@ body {
 
 /* ========== HAMBURGER MENU ANIMADO ========== */
 .navbar-toggler {
-    border-color: rgba(0,0,0,0.3);
+    border-color: rgba(0, 0, 0, 0.3);
     border-width: 2px;
     padding: 8px 10px;
 }
@@ -114,7 +115,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     color: #FFFFFF;
     padding: 12px 20px;
     font-size: 18px;
