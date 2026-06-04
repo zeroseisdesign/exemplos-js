@@ -21,16 +21,23 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
+.navbar-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .logo-img {
-    width: 147px;
+    width: 221px;
     height: auto;
 }
 
 .logo-text {
-    display: none;
-    font-size: 28px;
+    display: block;
+    font-size: 18px;
     font-weight: 700;
     color: #FFFFFF;
+    margin-top: 4px;
 }
 
 .navbar-custom .nav-link {
