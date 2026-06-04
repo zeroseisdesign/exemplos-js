@@ -23,7 +23,6 @@ body {
     top: 0;
     width: 100%;
     z-index: 100;
-    backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -61,6 +60,46 @@ body {
     display: flex;
     list-style: none;
     gap: 3rem;
+}
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    padding: 0.7rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #d4af37;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-toggle:hover,
+.menu-toggle.menu-abierto {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.12);
+}
+
+.menu-toggle.menu-abierto span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.menu-abierto span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.menu-abierto span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 .nav-menu a {
@@ -489,13 +528,65 @@ body {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0.9rem 0;
+    }
+
     .navbar-container {
         padding: 0 1.5rem;
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: flex;
     }
 
     .nav-menu {
-        gap: 1rem;
-        font-size: 0.9rem;
+        position: absolute;
+        top: calc(100% + 0.9rem);
+        left: 1.5rem;
+        right: 1.5rem;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(20, 20, 20, 0.98);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        pointer-events: none;
+        overflow: hidden;
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    .nav-menu.menu-abierto {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-menu li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 1rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .nav-menu a::after {
+        bottom: 0.65rem;
+        left: 1.2rem;
+    }
+
+    .nav-menu a:hover::after {
+        width: calc(100% - 2.4rem);
     }
 
     .hero {
@@ -539,7 +630,17 @@ body {
     }
 
     .nav-menu {
-        gap: 0.8rem;
-        font-size: 0.8rem;
+        left: 1rem;
+        right: 1rem;
     }
+}
+
+
+.mareo{
+    display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100vh;
+  background:rgb(14, 16, 15);
 }

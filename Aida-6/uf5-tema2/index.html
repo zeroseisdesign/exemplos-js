@@ -7,6 +7,8 @@
     <title>ArchiDesign - Galería de Arquitectura</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilos.css">
+
+
 </head>
 
 <body>
@@ -19,7 +21,13 @@
                     alt="Logo de ArchiDesign" class="logo-img">
                 <span class="logo-text">ArchiDesign</span>
             </div>
-            <ul class="nav-menu">
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="menu-principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="menu-principal">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#galeria">Galería</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -165,40 +173,20 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <section class="mareo">
+        <canvas></canvas>
+    </section>
+
     <footer class="footer" id="contacto">
-        <p>&copy; 2024 ArchiDesign. Todos los derechos reservados.</p>
-    </footer>
 
-    <script>
-        let indiceSlideActual = 0;
+        <!-- Footer -->
+        <footer class="footer" id="contacto">
+            <p>&copy; 2024 ArchiDesign. Todos los derechos reservados.</p>
+        </footer>
+        <script src="scripts/animaciones.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
 
-        function cambiarSlide(n) {
-            mostrarSlide(indiceSlideActual += n);
-        }
 
-        function irAlSlide(n) {
-            mostrarSlide(indiceSlideActual = n);
-        }
-
-        function mostrarSlide(n) {
-            const slides = document.querySelectorAll('.carrusel-slide');
-            const dots = document.querySelectorAll('.dot');
-
-            if (n >= slides.length) {
-                indiceSlideActual = 0;
-            }
-            if (n < 0) {
-                indiceSlideActual = slides.length - 1;
-            }
-
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-
-            slides[indiceSlideActual].classList.add('active');
-            dots[indiceSlideActual].classList.add('active');
-        }
-    </script>
 </body>
 
 </html>
