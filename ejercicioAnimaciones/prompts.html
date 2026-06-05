@@ -39,6 +39,31 @@
       border-left: 4px solid var(--accent);
     }
 
+    .img-preview {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 20px var(--card-shadow);
+    }
+
+    .img-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .img-preview--square {
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .img-preview--banner img {
+      aspect-ratio: 1920 / 500;
+      object-fit: cover;
+    }
+
     .image-type h2 {
       font-size: 1.5rem;
       color: var(--accent);
@@ -194,6 +219,10 @@
     <p class="use">Portada · Sección Hero</p>
     <span class="dimensions">1920 × 900 px · Panorámico 21:9</span>
 
+    <div class="img-preview">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=900&fit=crop&q=80" alt="Hero Nordic Studio">
+    </div>
+
     <p style="margin:0.75rem 0 0.25rem;font-size:0.85rem;opacity:0.7;"><strong>Formato axeitado:</strong> O hero ocupa todo o ancho do viewport. 1920×900 dá espazo horizontal para texto e CTA sen saturar visualmente. Sácranse os laterais para manter o foco no centro.</p>
 
     <div class="prompt-box">
@@ -226,6 +255,10 @@
     <p class="use">Thumbnails · 6 tarxetas · Grid</p>
     <span class="dimensions">600 × 600 px · Cadrado 1:1</span>
 
+    <div class="img-preview img-preview--square">
+      <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop&q=80" alt="Thumbnail Nordic Studio">
+    </div>
+
     <p style="margin:0.75rem 0 0.25rem;font-size:0.85rem;opacity:0.7;"><strong>Formato axeitado:</strong> Cadrado encaixa perfectamente nun grid homoxéneo. O ollo humano escanea rapidamente cadrados iguais. Sácranse os extremos horizontais para centrar o obxecto principal.</p>
 
     <div class="prompt-box">
@@ -257,6 +290,10 @@
     <h2>Banner de servizos</h2>
     <p class="use">Sección Servizos · Ancho completo</p>
     <span class="dimensions">1920 × 500 px · Bandeira 3.8:1</span>
+
+    <div class="img-preview img-preview--banner">
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&h=500&fit=crop&q=80" alt="Banner Nordic Studio">
+    </div>
 
     <p style="margin:0.75rem 0 0.25rem;font-size:0.85rem;opacity:0.7;"><strong>Formato axeitado:</strong> O banner estreito e ancho cobre toda a pantalla horizontal sen ocupar demasiado alto, ideal para unha sección informativa. Sácranse os extremos superior e inferior, así que a información clave debe situarse na faixa central.</p>
 
