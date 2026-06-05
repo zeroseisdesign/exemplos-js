@@ -20,7 +20,7 @@
         <!-- NAVIGATION -->
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">Nordic Studio</div>
+                <a href="#inicio" class="logo-link"><img src="assets/logo.png" alt="Nordic Studio" class="logo"></a>
                 <div class="nav-toggle" id="navToggle">
                     <span></span>
                     <span></span>
@@ -35,13 +35,9 @@
         </nav>
 
         <!-- HERO BACKGROUND IMAGE -->
-        <picture class="hero-background">
-            <source media="(min-width: 1600px)" srcset="assets/hero-1600.avif 1x, assets/hero-1600@2x.avif 2x">
-            <source media="(min-width: 1024px)" srcset="assets/hero-1200.avif 1x, assets/hero-1200@2x.avif 2x">
-            <source media="(min-width: 768px)" srcset="assets/hero-960.avif 1x, assets/hero-960@2x.avif 2x">
-            <img src="assets/hero-600.avif" srcset="assets/hero-600.avif 1x, assets/hero-600@2x.avif 2x"
-                alt="Nordic Studio - Diseño Digital Minimalista" class="hero-img">
-        </picture>
+        <div class="hero-background">
+            <img src="assets/hero.avif" alt="Nordic Studio - Diseño Digital Minimalista" loading="eager">
+        </div>
 
         <!-- HERO CONTENT -->
         <div class="hero-content">
@@ -52,94 +48,69 @@
     </section>
 
     <!-- CAROUSEL SECTION -->
-    <section class="carousel-section">
-        <div class="carousel-container">
-            <button class="carousel-btn carousel-prev" id="prevBtn">&#10094;</button>
-
+    <section class="carousel-section" id="carousel">
+        <h2 class="section-title">Nuestro Proceso</h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn carousel-prev" id="prevBtn" aria-label="Anterior">&#10094;</button>
             <div class="carousel-track" id="carouselTrack">
                 <div class="carousel-slide">
-                    <img src="assets/Foto1-800.avif" loading="lazy" srcset="assets/Foto1-480.avif 480w,
-                                 assets/Foto1-800.avif 800w,
-                                 assets/Foto1-1200.avif 1200w,
-                                 assets/Foto1-480@2x.avif 480w 2x,
-                                 assets/Foto1-800@2x.avif 800w 2x,
-                                 assets/Foto1-1200@2x.avif 1200w 2x" sizes="(max-width: 600px) 480px,
-                                (max-width: 1000px) 800px,
-                                1200px" alt="Reunión creativa">
+                    <div class="carousel-img">
+                        <img src="assets/Foto1.avif" loading="lazy" alt="Reunión creativa">
+                    </div>
                     <div class="carousel-caption">
                         <h3>Reunión creativa</h3>
                         <p>Equipo colaborando en soluciones innovadoras</p>
                     </div>
                 </div>
                 <div class="carousel-slide">
-                    <img src="assets/foto2-800.avif" loading="lazy" srcset="assets/foto2-480.avif 480w,
-                                 assets/foto2-800.avif 800w,
-                                 assets/foto2-1200.avif 1200w,
-                                 assets/foto2-480@2x.avif 480w 2x,
-                                 assets/foto2-800@2x.avif 800w 2x,
-                                 assets/foto2-1200@2x.avif 1200w 2x" sizes="(max-width: 600px) 480px,
-                                (max-width: 1000px) 800px,
-                                1200px" alt="Conceptualización" <div class="carousel-caption">
-                    <h3>Conceptualización</h3>
-                    <p>Plasmamos tus ideas en wireframes</p>
+                    <div class="carousel-img">
+                        <img src="assets/foto2.avif" loading="lazy" alt="Conceptualización">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>Conceptualización</h3>
+                        <p>Plasmamos tus ideas en wireframes</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="carousel-img">
+                        <img src="assets/Foto3.avif" loading="lazy" alt="Diseño digital">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>Diseño digital</h3>
+                        <p>Creamos interfaces modernas y funcionales</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="carousel-img">
+                        <img src="assets/Foto4.avif" loading="lazy" alt="Experiencia de usuario">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>Experiencia de usuario</h3>
+                        <p>Interfaces intuitivas y accesibles</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="carousel-img">
+                        <img src="assets/Foto5.avif" loading="lazy" alt="Colaboración">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>Colaboración</h3>
+                        <p>Trabajamos juntos en cada proyecto</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="carousel-img">
+                        <img src="assets/Foto6.avif" loading="lazy" alt="Presentación final">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>Presentación final</h3>
+                        <p>Resultados que superan expectativas</p>
+                    </div>
                 </div>
             </div>
-            <div class="carousel-slide">
-                <img src="assets/Foto3-800.avif" loading="lazy" srcset="assets/Foto3-480.avif 480w,
-                                 assets/Foto3-800.avif 800w,
-                                 assets/Foto3-1200.avif 1200w,
-                                 assets/Foto3-480@2x.avif 480w 2x,
-                                 assets/Foto3-800@2x.avif 800w 2x,
-                                 assets/Foto3-1200@2x.avif 1200w 2x" sizes="(max-width: 600px) 480px,
-                                (max-width: 1000px) 800px,
-                                1200px" alt="Diseño digital" <div class="carousel-caption">
-                <h3>Diseño digital</h3>
-                <p>Creamos interfaces modernas y funcionales</p>
-            </div>
+            <button class="carousel-btn carousel-next" id="nextBtn" aria-label="Siguiente">&#10095;</button>
         </div>
-        <div class="carousel-slide">
-            <img src="assets/Foto4-800.avif" loading="lazy" srcset="assets/Foto4-480.avif 480w,
-                                 assets/Foto4-800.avif 800w,
-                                 assets/Foto4-1200.avif 1200w,
-                                 assets/Foto4-480@2x.avif 480w 2x,
-                                 assets/Foto4-800@2x.avif 800w 2x,
-                                 assets/Foto4-1200@2x.avif 1200w 2x" sizes="(max-width: 600px) 480px,
-                                (max-width: 1000px) 800px,
-                                1200px" alt="Experiencia de usuario" <div class="carousel-caption">
-            <h3>Experiencia de usuario</h3>
-            <p>Interfaces intuitivas y accesibles</p>
-        </div>
-        </div>
-        <div class="carousel-slide">
-            <img src="assets/Foto5-800.avif" loading="lazy" srcset="assets/Foto5-480.avif 480w,
-                                 assets/Foto5-800.avif 800w,
-                                 assets/Foto5-1200.avif 1200w,
-                                 assets/Foto5-480@2x.avif 480w 2x,
-                                 assets/Foto5-800@2x.avif 800w 2x,
-                                 assets/Foto5-1200@2x.avif 1200w 2x" sizes="(max-width: 600px) 480px,
-                                (max-width: 1000px) 800px,
-                                1200px" alt="Colaboración" <div class="carousel-caption">
-            <h3>Colaboración</h3>
-            <p>Trabajamos juntos en cada proyecto</p>
-        </div>
-        </div>
-        <div class="carousel-slide">
-            <img src="assets/Foto6-800.avif" loading="lazy" srcset="assets/Foto6-480.avif 480w,
-                                 assets/Foto6-800.avif 800w,
-                                 assets/Foto6-1200.avif 1200w,
-                                 assets/Foto6-480@2x.avif 480w 2x,
-                                 assets/Foto6-800@2x.avif 800w 2x,
-                                 assets/Foto6-1200@2x.avif 1200w 2x" sizes="(max-width: 600px) 480px,
-                                (max-width: 1000px) 800px,
-                                1200px" alt="Presentación final" <div class="carousel-caption">
-            <h3>Presentación final</h3>
-            <p>Resultados que superan expectativas</p>
-        </div>
-        </div>
-        </div>
-
-        <button class="carousel-btn carousel-next" id="nextBtn">&#10095;</button>
-        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
     </section>
 
     <!-- GALLERY SECTION -->
@@ -147,116 +118,74 @@
         <h2 class="section-title">Nuestros Trabajos</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="assets/Foto1-600.avif" loading="lazy" srcset="assets/Foto1-300.avif 300w,
-                             assets/Foto1-600.avif 600w,
-                             assets/Foto1-900.avif 900w,
-                             assets/Foto1-300@2x.avif 300w 2x,
-                             assets/Foto1-600@2x.avif 600w 2x,
-                             assets/Foto1-900@2x.avif 900w 2x" sizes="(max-width: 480px) 300px,
-                            (max-width: 768px) 600px,
-                            900px" alt="Reunión creativa" <div class="gallery-overlay">
-                <h3>Reunión creativa</h3>
+                <img src="assets/Foto1.avif" loading="lazy" alt="Reunión creativa">
+                <div class="gallery-overlay">
+                    <h3>Reunión creativa</h3>
+                </div>
             </div>
-        </div>
-        <div class="gallery-item">
-            <img src="assets/foto2-600.avif" loading="lazy" srcset="assets/foto2-300.avif 300w,
-                             assets/foto2-600.avif 600w,
-                             assets/foto2-900.avif 900w,
-                             assets/foto2-300@2x.avif 300w 2x,
-                             assets/foto2-600@2x.avif 600w 2x,
-                             assets/foto2-900@2x.avif 900w 2x" sizes="(max-width: 480px) 300px,
-                            (max-width: 768px) 600px,
-                            900px" alt="Conceptualización" <div class="gallery-overlay">
-            <h3>Conceptualización</h3>
-        </div>
-        </div>
-        <div class="gallery-item">
-            <img src="assets/Foto3-600.avif" loading="lazy" srcset="assets/Foto3-300.avif 300w,
-                             assets/Foto3-600.avif 600w,
-                             assets/Foto3-900.avif 900w,
-                             assets/Foto3-300@2x.avif 300w 2x,
-                             assets/Foto3-600@2x.avif 600w 2x,
-                             assets/Foto3-900@2x.avif 900w 2x" sizes="(max-width: 480px) 300px,
-                            (max-width: 768px) 600px,
-                            900px" alt="Diseño digital" <div class="gallery-overlay">
-            <h3>Diseño digital</h3>
-        </div>
-        </div>
-        <div class="gallery-item">
-            <img src="assets/Foto4-600.avif" loading="lazy" srcset="assets/Foto4-300.avif 300w,
-                             assets/Foto4-600.avif 600w,
-                             assets/Foto4-900.avif 900w,
-                             assets/Foto4-300@2x.avif 300w 2x,
-                             assets/Foto4-600@2x.avif 600w 2x,
-                             assets/Foto4-900@2x.avif 900w 2x" sizes="(max-width: 480px) 300px,
-                            (max-width: 768px) 600px,
-                            900px" alt="Experiencia de usuario" <div class="gallery-overlay">
-            <h3>Experiencia de usuario</h3>
-        </div>
-        </div>
-        <div class="gallery-item">
-            <img src="assets/Foto5-600.avif" loading="lazy" srcset="assets/Foto5-300.avif 300w,
-                             assets/Foto5-600.avif 600w,
-                             assets/Foto5-900.avif 900w,
-                             assets/Foto5-300@2x.avif 300w 2x,
-                             assets/Foto5-600@2x.avif 600w 2x,
-                             assets/Foto5-900@2x.avif 900w 2x" sizes="(max-width: 480px) 300px,
-                            (max-width: 768px) 600px,
-                            900px" alt="Colaboración" <div class="gallery-overlay">
-            <h3>Colaboración</h3>
-        </div>
-        </div>
-        <div class="gallery-item">
-            <img src="assets/Foto6-600.avif" loading="lazy" srcset="assets/Foto6-300.avif 300w,
-                             assets/Foto6-600.avif 600w,
-                             assets/Foto6-900.avif 900w,
-                             assets/Foto6-300@2x.avif 300w 2x,
-                             assets/Foto6-600@2x.avif 600w 2x,
-                             assets/Foto6-900@2x.avif 900w 2x" sizes="(max-width: 480px) 300px,
-                            (max-width: 768px) 600px,
-                            900px" alt="Presentación final" <div class="gallery-overlay">
-            <h3>Presentación final</h3>
-        </div>
-        </div>
+            <div class="gallery-item">
+                <img src="assets/foto2.avif" loading="lazy" alt="Conceptualización">
+                <div class="gallery-overlay">
+                    <h3>Conceptualización</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/Foto3.avif" loading="lazy" alt="Diseño digital">
+                <div class="gallery-overlay">
+                    <h3>Diseño digital</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/Foto4.avif" loading="lazy" alt="Experiencia de usuario">
+                <div class="gallery-overlay">
+                    <h3>Experiencia de usuario</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/Foto5.avif" loading="lazy" alt="Colaboración">
+                <div class="gallery-overlay">
+                    <h3>Colaboración</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/Foto6.avif" loading="lazy" alt="Presentación final">
+                <div class="gallery-overlay">
+                    <h3>Presentación final</h3>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- SERVICES SECTION -->
     <section class="services-section" id="servicios">
         <div class="services-banner">
-            <img src="assets/banner-1200.avif" loading="lazy" srcset="assets/banner-960.avif 960w,
-                         assets/banner-1200.avif 1200w,
-                         assets/banner-1600.avif 1600w,
-                         assets/banner-960@2x.avif 960w 2x,
-                         assets/banner-1200@2x.avif 1200w 2x,
-                         assets/banner-1600@2x.avif 1600w 2x" sizes="(max-width: 768px) 960px,
-                        (max-width: 1200px) 1200px,
-                        1600px" alt="Servicios Nordic Studio" </div>
-            <div class="services-content">
-                <h2 class="section-title">Nuestros Servicios</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🎨</div>
-                        <h3>Diseño de Logotipos</h3>
-                        <p>Identidad visual única y memorable para tu marca</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>Frameworks</h3>
-                        <p>Desarrollo con tecnologías modernas y escalables</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🛠️</div>
-                        <h3>Mantenimiento Web</h3>
-                        <p>Soporte continuo y actualizaciones de tu sitio</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">✨</div>
-                        <h3>Creación de Páginas Web</h3>
-                        <p>Sitios web profesionales y responsivos</p>
-                    </div>
+            <img src="assets/banner.avif" loading="lazy" alt="Servicios Nordic Studio">
+        </div>
+        <div class="services-content">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Diseño de Logotipos</h3>
+                    <p>Identidad visual única y memorable para tu marca</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Frameworks</h3>
+                    <p>Desarrollo con tecnologías modernas y escalables</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Mantenimiento Web</h3>
+                    <p>Soporte continuo y actualizaciones de tu sitio</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Creación de Páginas Web</h3>
+                    <p>Sitios web profesionales y responsivos</p>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- CONTACT SECTION -->

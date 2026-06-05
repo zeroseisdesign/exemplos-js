@@ -13,6 +13,7 @@ const carouselTrack = document.getElementById('carouselTrack');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const contactForm = document.getElementById('contactForm');
+const carouselDots = document.getElementById('carouselDots');
 
 let currentSlide = 0;
 const slides = document.querySelectorAll('.carousel-slide');
@@ -55,6 +56,27 @@ document.addEventListener('click', (e) => {
 // ============================================
 // CARRUSEL AUTOMÁTICO
 // ============================================
+function createDots() {
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Ir a diapositiva ' + (i + 1));
+        dot.addEventListener('click', () => moveToSlide(i));
+        carouselDots.appendChild(dot);
+    }
+}
+
+function updateDots() {
+    const dots = carouselDots.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function getSlideWidth() {
+    return carouselTrack.querySelector('.carousel-slide').offsetWidth;
+}
+
 function moveToSlide(index) {
     if (index >= totalSlides) {
         currentSlide = 0;
@@ -63,9 +85,12 @@ function moveToSlide(index) {
     } else {
         currentSlide = index;
     }
-    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    carouselTrack.scrollLeft = currentSlide * getSlideWidth();
+    updateDots();
     resetAutoSlide();
 }
+
+createDots();
 
 function nextSlide() {
     moveToSlide(currentSlide + 1);
@@ -91,6 +116,19 @@ nextBtn.addEventListener('click', nextSlide);
 // Iniciar auto-slide
 autoSlideInterval = setInterval(autoSlide, 5000);
 
+// Sincronizar dots al hacer scroll manual
+carouselTrack.addEventListener('scroll', () => {
+    const slideWidth = getSlideWidth();
+    if (slideWidth > 0) {
+        const newIndex = Math.round(carouselTrack.scrollLeft / slideWidth);
+        if (newIndex !== currentSlide) {
+            currentSlide = newIndex;
+            updateDots();
+            resetAutoSlide();
+        }
+    }
+});
+
 // Pausar auto-slide cuando el usuario interactúa
 carouselTrack.addEventListener('mouseenter', () => {
     clearInterval(autoSlideInterval);
@@ -98,39 +136,31 @@ carouselTrack.addEventListener('mouseenter', () => {
 
 carouselTrack.addEventListener('mouseleave', resetAutoSlide);
 
-// Support para touch/swipe en mobile
-let touchStartX = 0;
-let touchEndX = 0;
-
-carouselTrack.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
+// Pausar auto-slide en interacción táctil
+carouselTrack.addEventListener('touchstart', () => {
     clearInterval(autoSlideInterval);
 }, false);
 
-carouselTrack.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
+carouselTrack.addEventListener('touchend', () => {
     resetAutoSlide();
 }, false);
 
-function handleSwipe() {
-    if (touchStartX - touchEndX > 50) {
-        nextSlide();
-    } else if (touchEndX - touchStartX > 50) {
-        prevSlide();
-    }
-}
-
 // ============================================
-// SCROLL EFFECTS
+// SCROLL EFFECTS & PARALLAX
 // ============================================
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    const scrolled = window.scrollY;
     
-    if (window.scrollY > 100) {
+    if (scrolled > 100) {
         navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
     } else {
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+    }
+    
+    const heroImg = document.querySelector('.hero-background img');
+    if (heroImg && scrolled <= window.innerHeight) {
+        heroImg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
     }
 });
 
@@ -153,32 +183,72 @@ backToTop.addEventListener('click', () => {
 });
 
 // ============================================
-// FORMULARIO DE CONTACTO
+// FORMULARIO DE CONTACTO - VALIDACIÓN EN VIVO
 // ============================================
+const formInputs = contactForm.querySelectorAll('input, textarea');
+const formStatus = document.createElement('div');
+formStatus.className = 'form-status';
+contactForm.querySelector('button[type="submit"]').before(formStatus);
+
+formInputs.forEach(input => {
+    input.addEventListener('input', () => {
+        if (input.checkValidity()) {
+            input.style.borderColor = '#2e7d32';
+        } else {
+            input.style.borderColor = '';
+        }
+        if (input.value === '') {
+            input.style.borderColor = '';
+            input.style.backgroundColor = '';
+        }
+    });
+});
+
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    // Obtener valores del formulario
+
+    let isValid = true;
+    formInputs.forEach(input => {
+        if (!input.checkValidity()) {
+            isValid = false;
+            input.style.borderColor = '#c62828';
+            input.style.backgroundColor = '#fce4ec';
+        }
+    });
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+
+    if (!isValid) {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Por favor, completa todos los campos correctamente.';
+        return;
+    }
+
     const name = contactForm.querySelector('input[type="text"]').value;
     const email = contactForm.querySelector('input[type="email"]').value;
     const message = contactForm.querySelector('textarea').value;
-    
-    // Aquí se podría enviar a un servidor
+
     console.log('Formulario enviado:', { name, email, message });
-    
-    // Mostrar mensaje de confirmación
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = '✓ Mensaje enviado';
-    submitBtn.style.backgroundColor = '#4a4a4a';
+
+    formStatus.className = 'form-status success';
+    formStatus.textContent = '✓ Mensaje enviado correctamente';
+    submitBtn.textContent = '✓ Enviado';
+    submitBtn.style.backgroundColor = '#2e7d32';
+    submitBtn.style.borderColor = '#2e7d32';
     submitBtn.style.color = '#ffffff';
-    
-    // Resetear formulario
+
     setTimeout(() => {
         contactForm.reset();
+        formInputs.forEach(input => {
+            input.style.borderColor = '';
+            input.style.backgroundColor = '';
+        });
         submitBtn.textContent = originalText;
         submitBtn.style.backgroundColor = '';
+        submitBtn.style.borderColor = '';
         submitBtn.style.color = '';
+        formStatus.textContent = '';
     }, 3000);
 });
 
@@ -202,30 +272,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ============================================
-// LAZY LOADING DE IMÁGENES
-// ============================================
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.loading = 'lazy';
-                observer.unobserve(img);
-            }
-        });
-    });
-
-    document.querySelectorAll('img').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
-
-// ============================================
-// ANIMACIONES AL SCROLL
+// ANIMACIONES AL SCROLL (INTERSECTION OBSERVER)
 // ============================================
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const elementObserver = new IntersectionObserver((entries) => {
@@ -237,7 +288,7 @@ const elementObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.gallery-item, .service-card').forEach(el => {
+document.querySelectorAll('.gallery-item, .service-card, .carousel-caption').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
