@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="gl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animacións e Efectos CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -11,13 +13,13 @@
             --bg: #f8f9fa;
             --text: #1a1a2e;
             --card: #ffffff;
-            --card-shadow: rgba(0,0,0,0.08);
+            --card-shadow: rgba(0, 0, 0, 0.08);
             --accent: #6c63ff;
             --accent2: #e94560;
-            --overlay: rgba(0,0,0,0.5);
-            --glass-bg: rgba(0,0,0,0.35);
-            --glass-border: rgba(255,255,255,0.5);
-            --nav-bg: rgba(255,255,255,0.85);
+            --overlay: rgba(0, 0, 0, 0.5);
+            --glass-bg: rgba(0, 0, 0, 0.35);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --nav-bg: rgba(255, 255, 255, 0.85);
             --section-alt: #f0f0f5;
         }
 
@@ -25,17 +27,21 @@
             --bg: #0f0f1a;
             --text: #e8e8f0;
             --card: #1a1a2e;
-            --card-shadow: rgba(0,0,0,0.3);
+            --card-shadow: rgba(0, 0, 0, 0.3);
             --accent: #8b83ff;
             --accent2: #ff6b81;
-            --overlay: rgba(0,0,0,0.7);
-            --glass-bg: rgba(0,0,0,0.45);
-            --glass-border: rgba(255,255,255,0.3);
-            --nav-bg: rgba(15,15,26,0.9);
+            --overlay: rgba(0, 0, 0, 0.7);
+            --glass-bg: rgba(0, 0, 0, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --nav-bg: rgba(15, 15, 26, 0.9);
             --section-alt: #151525;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -47,7 +53,10 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -56,7 +65,9 @@
 
         nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             background: var(--nav-bg);
             backdrop-filter: blur(16px);
@@ -92,7 +103,9 @@
             transition: color 0.3s ease;
         }
 
-        nav .nav-links a:hover { color: var(--accent); }
+        nav .nav-links a:hover {
+            color: var(--accent);
+        }
 
         .nav-toggle {
             display: none;
@@ -119,14 +132,24 @@
             color: var(--text);
         }
 
-        .theme-toggle:hover { transform: rotate(30deg) scale(1.1); }
+        .theme-toggle:hover {
+            transform: rotate(30deg) scale(1.1);
+        }
 
         @media (max-width: 768px) {
-            nav { padding: 0 1rem; }
-            .nav-toggle { display: block; }
+            nav {
+                padding: 0 1rem;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
             nav .nav-links {
                 position: fixed;
-                top: 64px; left: 0; right: 0;
+                top: 64px;
+                left: 0;
+                right: 0;
                 background: var(--nav-bg);
                 backdrop-filter: blur(16px);
                 flex-direction: column;
@@ -136,7 +159,10 @@
                 transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 border-bottom: 1px solid var(--glass-border);
             }
-            nav .nav-links.open { transform: translateY(0); }
+
+            nav .nav-links.open {
+                transform: translateY(0);
+            }
         }
 
         section {
@@ -145,7 +171,9 @@
             margin: 0 auto;
         }
 
-        section:nth-child(even) { background: var(--section-alt); }
+        section:nth-child(even) {
+            background: var(--section-alt);
+        }
 
         .section-title {
             text-align: center;
@@ -178,9 +206,8 @@
             position: relative;
             overflow: hidden;
             background:
-        linear-gradient(135deg, rgba(15,12,41,0.75), rgba(48,43,99,0.65), rgba(36,36,62,0.8)),
-        url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1920')
-        center/cover fixed;
+                linear-gradient(135deg, rgba(15, 12, 41, 0.75), rgba(48, 43, 99, 0.65), rgba(36, 36, 62, 0.8)),
+                url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover fixed;
             padding: 2rem;
         }
 
@@ -189,8 +216,8 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(108,99,255,0.3) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 50%, rgba(233,69,96,0.2) 0%, transparent 60%);
+                radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, 0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(233, 69, 96, 0.2) 0%, transparent 60%);
             z-index: 1;
         }
 
@@ -203,8 +230,15 @@
         }
 
         @keyframes heroFadeIn {
-            0% { opacity: 0; transform: translateY(40px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .hero h1 {
@@ -237,12 +271,12 @@
             font-weight: 600;
             font-size: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+            box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
         }
 
         .hero .cta:hover {
             transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 8px 30px rgba(108,99,255,0.55);
+            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.55);
         }
 
         .floating-shapes {
@@ -262,28 +296,46 @@
         }
 
         .floating-shapes span:nth-child(1) {
-            width: 300px; height: 300px;
+            width: 300px;
+            height: 300px;
             background: var(--accent);
-            top: -80px; left: -80px;
+            top: -80px;
+            left: -80px;
             animation-delay: 0s;
         }
+
         .floating-shapes span:nth-child(2) {
-            width: 200px; height: 200px;
+            width: 200px;
+            height: 200px;
             background: var(--accent2);
-            bottom: -40px; right: -40px;
+            bottom: -40px;
+            right: -40px;
             animation-delay: -4s;
         }
+
         .floating-shapes span:nth-child(3) {
-            width: 150px; height: 150px;
+            width: 150px;
+            height: 150px;
             background: #ffc107;
-            top: 50%; left: 70%;
+            top: 50%;
+            left: 70%;
             animation-delay: -8s;
         }
 
         @keyframes floatShape {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-30px) rotate(120deg); }
-            66% { transform: translateY(20px) rotate(240deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-30px) rotate(120deg);
+            }
+
+            66% {
+                transform: translateY(20px) rotate(240deg);
+            }
         }
 
         .transitions-grid {
@@ -300,8 +352,8 @@
             box-shadow: 0 4px 20px var(--card-shadow);
             cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        box-shadow 0.3s ease,
-                        background 0.3s ease;
+                box-shadow 0.3s ease,
+                background 0.3s ease;
         }
 
         .trans-card:hover {
@@ -316,11 +368,18 @@
             transition: transform 0.4s ease;
         }
 
-        .trans-card:hover .icon { transform: scale(1.2) rotate(10deg); }
+        .trans-card:hover .icon {
+            transform: scale(1.2) rotate(10deg);
+        }
 
-        .trans-card h3 { margin-bottom: 0.5rem; }
+        .trans-card h3 {
+            margin-bottom: 0.5rem;
+        }
 
-        .trans-card p { font-size: 0.9rem; opacity: 0.7; }
+        .trans-card p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
 
         .trans-card.color-shift {
             background: var(--accent);
@@ -367,42 +426,105 @@
             margin: 0 auto 1rem auto;
         }
 
-        .kf-box .anim-target.circle { border-radius: 50%; }
+        .kf-box .anim-target.circle {
+            border-radius: 50%;
+        }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-30px); }
-            60% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-30px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.25); opacity: 0.7; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.25);
+                opacity: 0.7;
+            }
         }
 
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-12px); }
-            40% { transform: translateX(12px); }
-            60% { transform: translateX(-8px); }
-            80% { transform: translateX(8px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-12px);
+            }
+
+            40% {
+                transform: translateX(12px);
+            }
+
+            60% {
+                transform: translateX(-8px);
+            }
+
+            80% {
+                transform: translateX(8px);
+            }
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes flipIn {
-            0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
-            100% { transform: perspective(400px) rotateY(0); opacity: 1; }
+            0% {
+                transform: perspective(400px) rotateY(90deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: perspective(400px) rotateY(0);
+                opacity: 1;
+            }
         }
 
-        .anim-bounce .anim-target { animation: bounce 0.8s ease infinite; }
-        .anim-pulse .anim-target { animation: pulse 1.2s ease infinite; }
-        .anim-shake .anim-target { animation: shake 0.6s ease infinite; }
-        .anim-spin .anim-target { animation: spin 2s linear infinite; }
-        .anim-flip { animation: flipIn 1s ease; }
+        .anim-bounce .anim-target {
+            animation: bounce 0.8s ease infinite;
+        }
+
+        .anim-pulse .anim-target {
+            animation: pulse 1.2s ease infinite;
+        }
+
+        .anim-shake .anim-target {
+            animation: shake 0.6s ease infinite;
+        }
+
+        .anim-spin .anim-target {
+            animation: spin 2s linear infinite;
+        }
+
+        .anim-flip {
+            animation: flipIn 1s ease;
+        }
 
         .transform-grid {
             display: grid;
@@ -428,15 +550,39 @@
             transition: transform 0.4s ease;
         }
 
-        .transform-card.rotate-demo:hover .t-box { transform: rotate(180deg); }
-        .transform-card.scale-demo:hover .t-box { transform: scale(1.4); }
-        .transform-card.translate-demo:hover .t-box { transform: translateX(20px); }
-        .transform-card.skew-demo:hover .t-box { transform: skew(20deg); }
-        .transform-card.perspective-demo { perspective: 400px; }
-        .transform-card.perspective-demo:hover .t-box { transform: rotateY(180deg); }
+        .transform-card.rotate-demo:hover .t-box {
+            transform: rotate(180deg);
+        }
 
-        .transform-card h3 { font-size: 0.95rem; }
-        .transform-card p { font-size: 0.8rem; opacity: 0.65; margin-top: 0.3rem; }
+        .transform-card.scale-demo:hover .t-box {
+            transform: scale(1.4);
+        }
+
+        .transform-card.translate-demo:hover .t-box {
+            transform: translateX(20px);
+        }
+
+        .transform-card.skew-demo:hover .t-box {
+            transform: skew(20deg);
+        }
+
+        .transform-card.perspective-demo {
+            perspective: 400px;
+        }
+
+        .transform-card.perspective-demo:hover .t-box {
+            transform: rotateY(180deg);
+        }
+
+        .transform-card h3 {
+            font-size: 0.95rem;
+        }
+
+        .transform-card p {
+            font-size: 0.8rem;
+            opacity: 0.65;
+            margin-top: 0.3rem;
+        }
 
         .entrance-demo-area {
             display: flex;
@@ -457,7 +603,10 @@
             transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
-        .entrance-demo-area button:hover { transform: scale(1.05); opacity: 0.9; }
+        .entrance-demo-area button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
 
         .entrance-targets {
             display: grid;
@@ -530,15 +679,22 @@
             display: block;
         }
 
-        .scroll-item:nth-child(2) { transition-delay: 0.15s; }
-        .scroll-item:nth-child(3) { transition-delay: 0.3s; }
-        .scroll-item:nth-child(4) { transition-delay: 0.45s; }
+        .scroll-item:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .scroll-item:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .scroll-item:nth-child(4) {
+            transition-delay: 0.45s;
+        }
 
         .glass-section {
             background:
-        linear-gradient(135deg, rgba(10,8,30,0.6), rgba(30,20,60,0.5)),
-        url('https://images.pexels.com/photos/310452/pexels-photo-310452.jpeg?auto=compress&cs=tinysrgb&w=1920')
-        center/cover fixed;
+                linear-gradient(135deg, rgba(10, 8, 30, 0.6), rgba(30, 20, 60, 0.5)),
+                url('https://images.pexels.com/photos/310452/pexels-photo-310452.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover fixed;
             color: #fff;
         }
 
@@ -552,8 +708,8 @@
             position: relative;
             overflow: hidden;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.4);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             background-size: cover;
             background-position: center;
@@ -567,7 +723,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.25);
+            background: rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             z-index: 1;
@@ -576,13 +732,13 @@
 
         .glass-card:hover {
             transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
 
         .glass-card:hover::before {
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            background: rgba(0,0,0,0.15);
+            background: rgba(0, 0, 0, 0.15);
         }
 
         .glass-content {
@@ -591,23 +747,47 @@
             padding: 2rem;
             text-align: center;
             color: #fff;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
         }
 
-        .glass-content .g-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-        .glass-content h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
-        .glass-content p { opacity: 0.95; font-size: 0.9rem; }
+        .glass-content .g-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .glass-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .glass-content p {
+            opacity: 0.95;
+            font-size: 0.9rem;
+        }
 
         .glass-card.float {
             animation: glassFloat 4s ease-in-out infinite;
         }
 
-        .glass-card.float:nth-child(2) { animation-delay: -1.5s; }
-        .glass-card.float:nth-child(3) { animation-delay: -3s; }
+        .glass-card.float:nth-child(2) {
+            animation-delay: -1.5s;
+        }
+
+        .glass-card.float:nth-child(3) {
+            animation-delay: -3s;
+        }
 
         @keyframes glassFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
         }
 
         .aos-demo-grid {
@@ -624,7 +804,11 @@
             box-shadow: 0 4px 20px var(--card-shadow);
         }
 
-        .aos-card .a-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+        .aos-card .a-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
 
         footer {
             text-align: center;
@@ -635,54 +819,88 @@
             transition: background 0.4s ease;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
 
         @media (max-width: 480px) {
-            section { padding: 3rem 1rem; }
-            .section-title { font-size: 1.6rem; }
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
         }
-    
+
         .code-box {
             margin-top: 2rem;
             border-radius: 12px;
             border: 2px solid var(--accent);
             background: #1a1a2e;
             overflow: hidden;
+            width: 100%;
         }
+
         .code-box .code-header {
             background: var(--accent);
             color: #fff;
             padding: 0.5rem 1rem;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .code-box pre {
             color: #e8e8f0;
             padding: 1.2rem;
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.7;
             overflow-x: auto;
             margin: 0;
             tab-size: 2;
+            width: 100%;
         }
+
         .code-box code {
             font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            white-space: pre;
+            word-break: normal;
+            word-wrap: normal;
         }
-        .code-box .hl,
-        .demo-code .hl { color: #ff79c6; }
-        .code-box .hp,
-        .demo-code .hp { color: #50fa7b; }
-        .code-box .hc,
-        .demo-code .hc { color: #8be9fd; }
-        .code-box .hv,
-        .demo-code .hv { color: #f1fa8c; }
 
+        .code-box .hl,
+        .demo-code .hl {
+            color: #ff79c6;
+        }
+
+        .code-box .hp,
+        .demo-code .hp {
+            color: #50fa7b;
+        }
+
+        .code-box .hc,
+        .demo-code .hc {
+            color: #8be9fd;
+        }
+
+        .code-box .hv,
+        .demo-code .hv {
+            color: #f1fa8c;
+        }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -711,33 +929,41 @@
         </div>
     </header>
 
-    <section id="transicions">
-        <h2 class="section-title">Transicións CSS</h2>
-        <p class="section-sub">Cambios suaves entre estados con <code>transition</code>, duración e <code>timing-function</code>.</p>
-        <div class="transitions-grid">
-            <div class="trans-card">
-                <span class="icon">🎨</span>
-                <h3>Elevar</h3>
-                <p><code>translateY + scale</code> — 0.3s cubic-bezier</p>
+
+
+    <div class="container">
+        <section id="transicions">
+            <h2 class="section-title">Transicións CSS</h2>
+            <p class="section-sub">Cambios suaves entre estados con <code>transition</code>, duración e
+                <code>timing-function</code>.
+            </p>
+            <div class="transitions-grid">
+                <div class="trans-card">
+                    <span class="icon">🎨</span>
+                    <h3>Elevar</h3>
+                    <p><code>translateY + scale</code> — 0.3s cubic-bezier</p>
+                </div>
+                <div class="trans-card color-shift">
+                    <span class="icon">🌈</span>
+                    <h3>Cambio de cor</h3>
+                    <p><code>background + border-radius</code> — 0.4s ease</p>
+                </div>
+                <div class="trans-card timing-demo">
+                    <span class="icon">🌀</span>
+                    <h3>Hue rotate</h3>
+                    <p><code>scale + filter</code> — 0.3s ease</p>
+                </div>
+                <div class="trans-card">
+                    <span class="icon">✨</span>
+                    <h3>Brillo</h3>
+                    <p><code>box-shadow + opacity</code> — 0.3s ease</p>
+                </div>
             </div>
-            <div class="trans-card color-shift">
-                <span class="icon">🌈</span>
-                <h3>Cambio de cor</h3>
-                <p><code>background + border-radius</code> — 0.4s ease</p>
-            </div>
-            <div class="trans-card timing-demo">
-                <span class="icon">🌀</span>
-                <h3>Hue rotate</h3>
-                <p><code>scale + filter</code> — 0.3s ease</p>
-            </div>
-            <div class="trans-card">
-                <span class="icon">✨</span>
-                <h3>Brillo</h3>
-                <p><code>box-shadow + opacity</code> — 0.3s ease</p>
-            </div>
-        <div class="code-box">
-            <div class="code-header">📄 Código CSS — Transicións</div>
-            <pre><code><span class="hc">/* Transición básica */</span>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="code-box">
+                        <div class="code-header">📄 Código CSS — Transicións</div>
+                        <pre><code><span class="hc">/* Transición básica */</span>
 <span class="hp">.trans-card</span> {
     <span class="hl">transition</span>: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
                 box-shadow 0.3s ease;
@@ -754,36 +980,47 @@
     <span class="hl">background</span>: var(--accent2);
     <span class="hl">border-radius</span>: 24px;
 }</code></pre>
-        </div>
-    </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-    <section id="keyframes">
-        <h2 class="section-title">Animacións con @keyframes</h2>
-        <p class="section-sub">Secuencias personalizadas con control de repetición, dirección e temporización.</p>
-        <div class="keyframes-grid">
-            <div class="kf-box anim-bounce">
-                <div class="anim-target"></div>
-                <span>Bounce</span>
+
+
+    <div class="container">
+        <section id="keyframes">
+            <h2 class="section-title">Animacións con @keyframes</h2>
+            <p class="section-sub">Secuencias personalizadas con control de repetición, dirección e
+                temporización.
+            </p>
+            <div class="keyframes-grid">
+                <div class="kf-box anim-bounce">
+                    <div class="anim-target"></div>
+                    <span>Bounce</span>
+                </div>
+                <div class="kf-box anim-pulse">
+                    <div class="anim-target circle"></div>
+                    <span>Pulse</span>
+                </div>
+                <div class="kf-box anim-shake">
+                    <div class="anim-target"></div>
+                    <span>Shake</span>
+                </div>
+                <div class="kf-box anim-spin">
+                    <div class="anim-target circle"></div>
+                    <span>Spin</span>
+                </div>
+                <div class="kf-box">
+                    <div class="anim-target anim-flip"></div>
+                    <span>Flip In</span>
+                </div>
             </div>
-            <div class="kf-box anim-pulse">
-                <div class="anim-target circle"></div>
-                <span>Pulse</span>
-            </div>
-            <div class="kf-box anim-shake">
-                <div class="anim-target"></div>
-                <span>Shake</span>
-            </div>
-            <div class="kf-box anim-spin">
-                <div class="anim-target circle"></div>
-                <span>Spin</span>
-            </div>
-            <div class="kf-box">
-                <div class="anim-target anim-flip"></div>
-                <span>Flip In</span>
-            </div>
-        <div class="code-box">
-            <div class="code-header">📄 Código CSS — @keyframes</div>
-            <pre><code><span class="hc">/* Definición do keyframe */</span>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="code-box">
+                        <div class="code-header">📄 Código CSS — @keyframes</div>
+                        <pre><code><span class="hc">/* Definición do keyframe */</span>
 <span class="hl">@keyframes</span> bounce {
     0%, 100% { <span class="hl">transform</span>: translateY(0); }
     40%      { <span class="hl">transform</span>: translateY(-30px); }
@@ -802,41 +1039,53 @@
 <span class="hp">.anim-pulse .anim-target</span> {
     <span class="hl">animation</span>: pulse 1.2s ease infinite;
 }</code></pre>
-        </div>
-    </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-    <section id="transformacions">
-        <h2 class="section-title">Transformacións 2D e 3D</h2>
-        <p class="section-sub">Pasa o rato por riba para ver <code>rotate</code>, <code>scale</code>, <code>translate</code>, <code>skew</code> e perspectiva 3D.</p>
-        <div class="transform-grid">
-            <div class="transform-card rotate-demo">
-                <div class="t-box"></div>
-                <h3>Rotate</h3>
-                <p><code>rotate(180deg)</code></p>
+
+
+    <div class="container">
+        <section id="transformacions">
+            <h2 class="section-title">Transformacións 2D e 3D</h2>
+            <p class="section-sub">Pasa o rato por riba para ver <code>rotate</code>,
+                <code>scale</code>,
+                <code>translate</code>, <code>skew</code> e perspectiva 3D.
+            </p>
+            <div class="transform-grid">
+                <div class="transform-card rotate-demo">
+                    <div class="t-box"></div>
+                    <h3>Rotate</h3>
+                    <p><code>rotate(180deg)</code></p>
+                </div>
+                <div class="transform-card scale-demo">
+                    <div class="t-box"></div>
+                    <h3>Scale</h3>
+                    <p><code>scale(1.4)</code></p>
+                </div>
+                <div class="transform-card translate-demo">
+                    <div class="t-box"></div>
+                    <h3>Translate</h3>
+                    <p><code>translateX(20px)</code></p>
+                </div>
+                <div class="transform-card skew-demo">
+                    <div class="t-box"></div>
+                    <h3>Skew</h3>
+                    <p><code>skew(20deg)</code></p>
+                </div>
+                <div class="transform-card perspective-demo">
+                    <div class="t-box"></div>
+                    <h3>3D Rotate Y</h3>
+                    <p><code>perspective + rotateY</code></p>
+                </div>
             </div>
-            <div class="transform-card scale-demo">
-                <div class="t-box"></div>
-                <h3>Scale</h3>
-                <p><code>scale(1.4)</code></p>
-            </div>
-            <div class="transform-card translate-demo">
-                <div class="t-box"></div>
-                <h3>Translate</h3>
-                <p><code>translateX(20px)</code></p>
-            </div>
-            <div class="transform-card skew-demo">
-                <div class="t-box"></div>
-                <h3>Skew</h3>
-                <p><code>skew(20deg)</code></p>
-            </div>
-            <div class="transform-card perspective-demo">
-                <div class="t-box"></div>
-                <h3>3D Rotate Y</h3>
-                <p><code>perspective + rotateY</code></p>
-            </div>
-        <div class="code-box">
-            <div class="code-header">📄 Código CSS — Transformacións</div>
-            <pre><code><span class="hc">/* Transformacións individuais */</span>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="code-box">
+                        <div class="code-header">📄 Código CSS — Transformacións</div>
+                        <pre><code><span class="hc">/* Transformacións individuais */</span>
 <span class="hp">.rotate-demo:hover .t-box</span>   { <span class="hl">transform</span>: rotate(180deg); }
 <span class="hp">.scale-demo:hover .t-box</span>    { <span class="hl">transform</span>: scale(1.4); }
 <span class="hp">.translate-demo:hover .t-box</span> { <span class="hl">transform</span>: translateX(20px); }
@@ -847,25 +1096,36 @@
 <span class="hp">.perspective-demo:hover .t-box</span> {
     <span class="hl">transform</span>: rotateY(180deg);
 }</code></pre>
-        </div>
-    </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-    <section id="entrada">
-        <h2 class="section-title">Animacións de Entrada e Saída</h2>
-        <p class="section-sub">Fade, Slide, Zoom — controlados con clases CSS e botóns.</p>
-        <div class="entrance-demo-area">
-            <button onclick="resetEntrance()">🔄 Restablecer</button>
-            <button onclick="showEntrance('fade')">⬇ Fade In</button>
-            <button onclick="showEntrance('slide')">➡ Slide Left</button>
-            <button onclick="showEntrance('zoom')">🔍 Zoom In</button>
-        </div>
-        <div class="entrance-targets" id="entranceTargets">
-            <div class="entrance-box" data-type="fade">Fade In</div>
-            <div class="entrance-box slide-left" data-type="slide">Slide Left</div>
-            <div class="entrance-box zoom-in" data-type="zoom">Zoom In</div>
-        <div class="code-box">
-            <div class="code-header">📄 Código CSS + JS — Entrada e Saída</div>
-            <pre><code><span class="hc">/* Fade In */</span>
+
+
+    <div class="container">
+        <section id="entrada">
+            <h2 class="section-title">Animacións de Entrada e Saída</h2>
+            <p class="section-sub">Fade, Slide, Zoom — controlados con clases CSS e botóns.
+            </p>
+            <div class="entrance-demo-area">
+                <button onclick="resetEntrance()">🔄 Restablecer</button>
+                <button onclick="showEntrance('fade')">⬇ Fade In</button>
+                <button onclick="showEntrance('slide')">➡ Slide Left</button>
+                <button onclick="showEntrance('zoom')">🔍 Zoom In</button>
+            </div>
+            <div class="entrance-targets" id="entranceTargets">
+                <div class="entrance-box" data-type="fade">Fade In</div>
+                <div class="entrance-box slide-left" data-type="slide">Slide Left</div>
+                <div class="entrance-box zoom-in" data-type="zoom">Zoom In</div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="code-box">
+                        <div class="code-header">📄 Código CSS + JS — Entrada e Saída
+                        </div>
+                        <pre><code><span class="hc">/* Fade In */</span>
 <span class="hp">.entrance-box</span> {
     <span class="hl">opacity</span>: 0;
     <span class="hl">transform</span>: translateY(30px);
@@ -890,36 +1150,53 @@
         el.classList.toggle(<span class="hv">'visible'</span>, el.dataset.type === type);
     });
 }</code></pre>
-        </div>
-    </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-    <section id="scroll">
-        <h2 class="section-title">Animacións ao facer Scroll</h2>
-        <p class="section-sub">Elementos que aparecen progresivamente usando <strong>Intersection Observer</strong>.</p>
-        <div class="scroll-demo-grid">
-            <div class="scroll-item" data-scroll style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
-                <span class="s-icon">🚀</span>
-                <h3>Proxecto Único</h3>
-                <p>Deseño minimalista con animacións sutís.</p>
+
+
+    <div class="container">
+        <section id="scroll">
+            <h2 class="section-title">Animacións ao facer Scroll</h2>
+            <p class="section-sub">Elementos que aparecen progresivamente usando
+                <strong>Intersection
+                    Observer</strong>.
+            </p>
+            <div class="scroll-demo-grid">
+                <div class="scroll-item" data-scroll
+                    style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
+                    <span class="s-icon">🚀</span>
+                    <h3>Proxecto Único</h3>
+                    <p>Deseño minimalista con animacións sutís.</p>
+                </div>
+                <div class="scroll-item" data-scroll
+                    style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
+                    <span class="s-icon">🎯</span>
+                    <h3>Precisión</h3>
+                    <p>Interaccións pensadas para a experiencia de usuario.</p>
+                </div>
+                <div class="scroll-item" data-scroll
+                    style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
+                    <span class="s-icon">⚡</span>
+                    <h3>Rendemento</h3>
+                    <p>Animacións optimizadas con transform e opacity.</p>
+                </div>
+                <div class="scroll-item" data-scroll
+                    style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
+                    <span class="s-icon">🎨</span>
+                    <h3>Creatividade</h3>
+                    <p>Efectos visuais modernos sen sacrificar velocidade.</p>
+                </div>
             </div>
-            <div class="scroll-item" data-scroll style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
-                <span class="s-icon">🎯</span>
-                <h3>Precisión</h3>
-                <p>Interaccións pensadas para a experiencia de usuario.</p>
-            </div>
-            <div class="scroll-item" data-scroll style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
-                <span class="s-icon">⚡</span>
-                <h3>Rendemento</h3>
-                <p>Animacións optimizadas con transform e opacity.</p>
-            </div>
-            <div class="scroll-item" data-scroll style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
-                <span class="s-icon">🎨</span>
-                <h3>Creatividade</h3>
-                <p>Efectos visuais modernos sen sacrificar velocidade.</p>
-            </div>
-        <div class="code-box">
-            <div class="code-header">📄 Código JavaScript — Intersection Observer</div>
-            <pre><code><span class="hc">// Intersection Observer — animacións ao facer scroll</span>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="code-box">
+                        <div class="code-header">📄 Código JavaScript —
+                            Intersection Observer</div>
+                        <pre><code><span class="hc">// Intersection Observer — animacións ao facer scroll</span>
 <span class="hl">const</span> observer = <span class="hl">new</span> IntersectionObserver((entries) => {
     entries.forEach(entry => {
         <span class="hl">if</span> (entry.isIntersecting) {
@@ -931,40 +1208,53 @@
 <span class="hc">// Observa cada elemento con data-scroll</span>
 document.querySelectorAll(<span class="hv">'[data-scroll]'</span>)
     .forEach(item => observer.observe(item));</code></pre>
-        </div>
-    </section>
-
-    <section id="glass" class="full-width glass-section">
-        <div style="max-width:1200px;margin:0 auto;">
-            <h2 class="section-title" style="color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.5);">Efectos con Capas</h2>
-            <p class="section-sub" style="color:rgba(255,255,255,0.95);text-shadow:0 1px 6px rgba(0,0,0,0.4);">Glassmorphism, overlays, blur e elementos flotantes.</p>
-            <div class="glass-grid">
-                <div class="glass-card float" style="background-image: url('https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&w=800');">
-                    <div class="glass-content">
-                        <span class="g-icon">🔮</span>
-                        <h3>Glassmorphism</h3>
-                        <p><code>backdrop-filter: blur(16px)</code> sobre imaxe real con efecto vidro mate.</p>
-                    </div>
-                </div>
-                <div class="glass-card float" style="background-image: url('https://images.pexels.com/photos/2387418/pexels-photo-2387418.jpeg?auto=compress&cs=tinysrgb&w=800');">
-                    <div class="glass-content">
-                        <span class="g-icon">🌊</span>
-                        <h3>Overlay dinámico</h3>
-                        <p>Gradientes e capas superpostas con fotografía de fondo e transparencia.</p>
-                    </div>
-                </div>
-                <div class="glass-card float" style="background-image: url('https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&w=800');">
-                    <div class="glass-content">
-                        <span class="g-icon">💎</span>
-                        <h3>Elemento flotante</h3>
-                        <p>Animación <code>float</code> con delay escalonado sobre fondo de cristal/xeo.</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="code-box" style="max-width:1200px;margin:2rem auto 0;">
-            <div class="code-header">📄 Código CSS — Glassmorphism / Capas</div>
-            <pre><code><span class="hp">.glass-card</span> {
+        </section>
+    </div>
+    <div class="container">
+        <section id="glass" class="full-width glass-section">
+            <div style="max-width:1200px;margin:0 auto;">
+                <h2 class="section-title" style="color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.5);">Efectos
+                    con Capas</h2>
+                <p class="section-sub" style="color:rgba(255,255,255,0.95);text-shadow:0 1px 6px rgba(0,0,0,0.4);">
+                    Glassmorphism, overlays, blur e elementos flotantes.</p>
+                <div class="glass-grid">
+                    <div class="glass-card float"
+                        style="background-image: url('https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                        <div class="glass-content">
+                            <span class="g-icon">🔮</span>
+                            <h3>Glassmorphism</h3>
+                            <p><code>backdrop-filter: blur(16px)</code> sobre imaxe real
+                                con efecto vidro
+                                mate.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card float"
+                        style="background-image: url('https://images.pexels.com/photos/2387418/pexels-photo-2387418.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                        <div class="glass-content">
+                            <span class="g-icon">🌊</span>
+                            <h3>Overlay dinámico</h3>
+                            <p>Gradientes e capas superpostas con fotografía de fondo e
+                                transparencia.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card float"
+                        style="background-image: url('https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                        <div class="glass-content">
+                            <span class="g-icon">💎</span>
+                            <h3>Elemento flotante</h3>
+                            <p>Animación <code>float</code> con delay escalonado sobre
+                                fondo de cristal/xeo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-box" style="max-width:1200px;margin:2rem auto 0;">
+                <div class="code-header">📄 Código CSS — Glassmorphism / Capas</div>
+                <pre><code><span class="hp">.glass-card</span> {
     <span class="hl">background-image</span>: <span class="hv">url('foto.jpg')</span>;
     <span class="hl">background-size</span>: cover;
     <span class="hl">position</span>: relative;
@@ -989,37 +1279,44 @@ document.querySelectorAll(<span class="hv">'[data-scroll]'</span>)
     <span class="hl">color</span>: #fff;
     <span class="hl">text-shadow</span>: 0 2px 12px rgba(0,0,0,0.6);
 }</code></pre>
-        </div>
-    </section>
+            </div>
+        </section>
+    </div>
+    <div class="container">
+        <section id="aos">
+            <h2 class="section-title">Biblioteca AOS</h2>
+            <p class="section-sub">Animacións ó facer scroll usando a librería
+                <strong>AOS (Animate On
+                    Scroll)</strong>.
+            </p>
+            <div class="aos-demo-grid">
+                <div class="aos-card" data-aos="fade-up" data-aos-duration="800">
+                    <span class="a-icon">🌸</span>
+                    <h3>Fade Up</h3>
+                    <p><code>data-aos="fade-up"</code></p>
+                </div>
+                <div class="aos-card" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                    <span class="a-icon">🍃</span>
+                    <h3>Fade Left</h3>
+                    <p><code>data-aos="fade-left"</code></p>
+                </div>
+                <div class="aos-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                    <span class="a-icon">⭐</span>
+                    <h3>Zoom In</h3>
+                    <p><code>data-aos="zoom-in"</code></p>
+                </div>
+                <div class="aos-card" data-aos="flip-up" data-aos-duration="800" data-aos-delay="300">
+                    <span class="a-icon">🌀</span>
+                    <h3>Flip Up</h3>
+                    <p><code>data-aos="flip-up"</code></p>
+                </div>
+            </div>
 
-    <section id="aos">
-        <h2 class="section-title">Biblioteca AOS</h2>
-        <p class="section-sub">Animacións ó facer scroll usando a librería <strong>AOS (Animate On Scroll)</strong>.</p>
-        <div class="aos-demo-grid">
-            <div class="aos-card" data-aos="fade-up" data-aos-duration="800">
-                <span class="a-icon">🌸</span>
-                <h3>Fade Up</h3>
-                <p><code>data-aos="fade-up"</code></p>
-            </div>
-            <div class="aos-card" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
-                <span class="a-icon">🍃</span>
-                <h3>Fade Left</h3>
-                <p><code>data-aos="fade-left"</code></p>
-            </div>
-            <div class="aos-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
-                <span class="a-icon">⭐</span>
-                <h3>Zoom In</h3>
-                <p><code>data-aos="zoom-in"</code></p>
-            </div>
-            <div class="aos-card" data-aos="flip-up" data-aos-duration="800" data-aos-delay="300">
-                <span class="a-icon">🌀</span>
-                <h3>Flip Up</h3>
-                <p><code>data-aos="flip-up"</code></p>
-            </div>
-        </div>
-        <div class="code-box">
-            <div class="code-header">📄 Código HTML + JS — AOS</div>
-            <pre><code><span class="hc">&lt;!-- HTML: engadir atributos data-aos --&gt;</span>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="code-box">
+                        <div class="code-header">📄 Código HTML + JS — AOS</div>
+                        <pre><code><span class="hc">&lt;!-- HTML: engadir atributos data-aos --&gt;</span>
 &lt;div <span class="hl">data-aos</span>=<span class="hv">"fade-up"</span>
      <span class="hl">data-aos-duration</span>=<span class="hv">"800"</span>
      <span class="hl">data-aos-delay</span>=<span class="hv">"100"</span>&gt;
@@ -1029,13 +1326,17 @@ document.querySelectorAll(<span class="hv">'[data-scroll]'</span>)
 <span class="hc">&lt;!-- JS: inicializar AOS --&gt;</span>
 &lt;script src=<span class="hv">"https://unpkg.com/aos@2.3.1/dist/aos.js"</span>&gt;&lt;/script&gt;
 &lt;script&gt; AOS.init({ once: true }); &lt;/script&gt;</code></pre>
-        </div>
-    </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <footer>
         <p>Efectos especiais e interacción en páxinas web — UF5 · TEMA 2</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true });
@@ -1121,4 +1422,5 @@ document.querySelectorAll(<span class="hv">'[data-scroll]'</span>)
         });
     </script>
 </body>
+
 </html>
