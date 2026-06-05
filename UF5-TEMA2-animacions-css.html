@@ -15,8 +15,8 @@
             --accent: #6c63ff;
             --accent2: #e94560;
             --overlay: rgba(0,0,0,0.5);
-            --glass-bg: rgba(255,255,255,0.15);
-            --glass-border: rgba(255,255,255,0.25);
+            --glass-bg: rgba(0,0,0,0.35);
+            --glass-border: rgba(255,255,255,0.5);
             --nav-bg: rgba(255,255,255,0.85);
             --section-alt: #f0f0f5;
         }
@@ -29,8 +29,8 @@
             --accent: #8b83ff;
             --accent2: #ff6b81;
             --overlay: rgba(0,0,0,0.7);
-            --glass-bg: rgba(255,255,255,0.08);
-            --glass-border: rgba(255,255,255,0.12);
+            --glass-bg: rgba(0,0,0,0.45);
+            --glass-border: rgba(255,255,255,0.3);
             --nav-bg: rgba(15,15,26,0.9);
             --section-alt: #151525;
         }
@@ -177,7 +177,10 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background:
+        linear-gradient(135deg, rgba(15,12,41,0.75), rgba(48,43,99,0.65), rgba(36,36,62,0.8)),
+        url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1920')
+        center/cover fixed;
             padding: 2rem;
         }
 
@@ -532,7 +535,10 @@
         .scroll-item:nth-child(4) { transition-delay: 0.45s; }
 
         .glass-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:
+        linear-gradient(135deg, rgba(15,12,41,0.75), rgba(48,43,99,0.7)),
+        url('https://images.pexels.com/photos/310452/pexels-photo-310452.jpeg?auto=compress&cs=tinysrgb&w=1920')
+        center/cover fixed;
             color: #fff;
         }
 
@@ -543,13 +549,14 @@
         }
 
         .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.6);
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
@@ -743,22 +750,22 @@
         <h2 class="section-title">Animacións ao facer Scroll</h2>
         <p class="section-sub">Elementos que aparecen progresivamente usando <strong>Intersection Observer</strong>.</p>
         <div class="scroll-demo-grid">
-            <div class="scroll-item" data-scroll>
+            <div class="scroll-item" data-scroll style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
                 <span class="s-icon">🚀</span>
                 <h3>Proxecto Único</h3>
                 <p>Deseño minimalista con animacións sutís.</p>
             </div>
-            <div class="scroll-item" data-scroll>
+            <div class="scroll-item" data-scroll style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/4144179/pexels-photo-4144179.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
                 <span class="s-icon">🎯</span>
                 <h3>Precisión</h3>
                 <p>Interaccións pensadas para a experiencia de usuario.</p>
             </div>
-            <div class="scroll-item" data-scroll>
+            <div class="scroll-item" data-scroll style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
                 <span class="s-icon">⚡</span>
                 <h3>Rendemento</h3>
                 <p>Animacións optimizadas con transform e opacity.</p>
             </div>
-            <div class="scroll-item" data-scroll>
+            <div class="scroll-item" data-scroll style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:flex-end;">
                 <span class="s-icon">🎨</span>
                 <h3>Creatividade</h3>
                 <p>Efectos visuais modernos sen sacrificar velocidade.</p>
@@ -768,23 +775,23 @@
 
     <section id="glass" class="full-width glass-section">
         <div style="max-width:1200px;margin:0 auto;">
-            <h2 class="section-title" style="color:#fff;">Efectos con Capas</h2>
-            <p class="section-sub" style="color:rgba(255,255,255,0.8);">Glassmorphism, overlays, blur e elementos flotantes.</p>
+            <h2 class="section-title" style="color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.5);">Efectos con Capas</h2>
+            <p class="section-sub" style="color:rgba(255,255,255,0.95);text-shadow:0 1px 6px rgba(0,0,0,0.4);">Glassmorphism, overlays, blur e elementos flotantes.</p>
             <div class="glass-grid">
                 <div class="glass-card float">
                     <span class="g-icon">🔮</span>
                     <h3>Glassmorphism</h3>
-                    <p><code>backdrop-filter: blur(20px)</code> con fondo translúcido.</p>
+                    <p style="text-shadow:0 1px 6px rgba(0,0,0,0.4);"><code>backdrop-filter: blur(24px)</code> con fondo escuro semitransparente.</p>
                 </div>
                 <div class="glass-card float">
                     <span class="g-icon">🌊</span>
                     <h3>Overlay dinámico</h3>
-                    <p>Capas superpostas con gradiente e transparencia.</p>
+                    <p style="text-shadow:0 1px 6px rgba(0,0,0,0.4);">Capas superpostas con gradiente escuro e transparencia.</p>
                 </div>
                 <div class="glass-card float">
                     <span class="g-icon">💎</span>
                     <h3>Elemento flotante</h3>
-                    <p>Animación <code>float</code> con delay para efecto escalonado.</p>
+                    <p style="text-shadow:0 1px 6px rgba(0,0,0,0.4);">Animación <code>float</code> con delay para efecto escalonado.</p>
                 </div>
             </div>
         </div>
