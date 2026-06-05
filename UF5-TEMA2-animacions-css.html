@@ -536,7 +536,7 @@
 
         .glass-section {
             background:
-        linear-gradient(135deg, rgba(15,12,41,0.75), rgba(48,43,99,0.7)),
+        linear-gradient(135deg, rgba(10,8,30,0.6), rgba(30,20,60,0.5)),
         url('https://images.pexels.com/photos/310452/pexels-photo-310452.jpeg?auto=compress&cs=tinysrgb&w=1920')
         center/cover fixed;
             color: #fff;
@@ -549,25 +549,54 @@
         }
 
         .glass-card {
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255,255,255,0.6);
+            position: relative;
+            overflow: hidden;
             border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
+            border: 1px solid rgba(255,255,255,0.4);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background-size: cover;
+            background-position: center;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1;
+            transition: backdrop-filter 0.4s ease;
         }
 
         .glass-card:hover {
             transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
 
-        .glass-card .g-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-        .glass-card h3 { margin-bottom: 0.5rem; }
-        .glass-card p { opacity: 0.85; font-size: 0.9rem; }
+        .glass-card:hover::before {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.15);
+        }
+
+        .glass-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+        }
+
+        .glass-content .g-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        .glass-content h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .glass-content p { opacity: 0.95; font-size: 0.9rem; }
 
         .glass-card.float {
             animation: glassFloat 4s ease-in-out infinite;
@@ -614,6 +643,44 @@
             section { padding: 3rem 1rem; }
             .section-title { font-size: 1.6rem; }
         }
+    
+        .code-box {
+            margin-top: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--accent);
+            background: #1a1a2e;
+            overflow: hidden;
+        }
+        .code-box .code-header {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .code-box pre {
+            color: #e8e8f0;
+            padding: 1.2rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 0;
+            tab-size: 2;
+        }
+        .code-box code {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+        }
+        .code-box .hl,
+        .demo-code .hl { color: #ff79c6; }
+        .code-box .hp,
+        .demo-code .hp { color: #50fa7b; }
+        .code-box .hc,
+        .demo-code .hc { color: #8be9fd; }
+        .code-box .hv,
+        .demo-code .hv { color: #f1fa8c; }
+
     </style>
 </head>
 <body>
@@ -668,6 +735,25 @@
                 <h3>Brillo</h3>
                 <p><code>box-shadow + opacity</code> — 0.3s ease</p>
             </div>
+        <div class="code-box">
+            <div class="code-header">📄 Código CSS — Transicións</div>
+            <pre><code><span class="hc">/* Transición básica */</span>
+<span class="hp">.trans-card</span> {
+    <span class="hl">transition</span>: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease;
+}
+<span class="hp">.trans-card:hover</span> {
+    <span class="hl">transform</span>: translateY(-8px) scale(1.02);
+}
+
+<span class="hc">/* Cambio de cor con timing diferente */</span>
+<span class="hp">.trans-card.color-shift</span> {
+    <span class="hl">transition</span>: background 0.4s ease, border-radius 0.4s ease;
+}
+<span class="hp">.trans-card.color-shift:hover</span> {
+    <span class="hl">background</span>: var(--accent2);
+    <span class="hl">border-radius</span>: 24px;
+}</code></pre>
         </div>
     </section>
 
@@ -695,6 +781,27 @@
                 <div class="anim-target anim-flip"></div>
                 <span>Flip In</span>
             </div>
+        <div class="code-box">
+            <div class="code-header">📄 Código CSS — @keyframes</div>
+            <pre><code><span class="hc">/* Definición do keyframe */</span>
+<span class="hl">@keyframes</span> bounce {
+    0%, 100% { <span class="hl">transform</span>: translateY(0); }
+    40%      { <span class="hl">transform</span>: translateY(-30px); }
+    60%      { <span class="hl">transform</span>: translateY(-10px); }
+}
+
+<span class="hl">@keyframes</span> pulse {
+    0%, 100% { <span class="hl">transform</span>: scale(1); <span class="hl">opacity</span>: 1; }
+    50%      { <span class="hl">transform</span>: scale(1.25); <span class="hl">opacity</span>: 0.7; }
+}
+
+<span class="hc">/* Aplicación da animación */</span>
+<span class="hp">.anim-bounce .anim-target</span> {
+    <span class="hl">animation</span>: bounce 0.8s ease infinite;
+}
+<span class="hp">.anim-pulse .anim-target</span> {
+    <span class="hl">animation</span>: pulse 1.2s ease infinite;
+}</code></pre>
         </div>
     </section>
 
@@ -727,6 +834,19 @@
                 <h3>3D Rotate Y</h3>
                 <p><code>perspective + rotateY</code></p>
             </div>
+        <div class="code-box">
+            <div class="code-header">📄 Código CSS — Transformacións</div>
+            <pre><code><span class="hc">/* Transformacións individuais */</span>
+<span class="hp">.rotate-demo:hover .t-box</span>   { <span class="hl">transform</span>: rotate(180deg); }
+<span class="hp">.scale-demo:hover .t-box</span>    { <span class="hl">transform</span>: scale(1.4); }
+<span class="hp">.translate-demo:hover .t-box</span> { <span class="hl">transform</span>: translateX(20px); }
+<span class="hp">.skew-demo:hover .t-box</span>     { <span class="hl">transform</span>: skew(20deg); }
+
+<span class="hc">/* 3D: cómpre activar perspectiva no pai */</span>
+<span class="hp">.perspective-demo</span> { <span class="hl">perspective</span>: 400px; }
+<span class="hp">.perspective-demo:hover .t-box</span> {
+    <span class="hl">transform</span>: rotateY(180deg);
+}</code></pre>
         </div>
     </section>
 
@@ -743,6 +863,33 @@
             <div class="entrance-box" data-type="fade">Fade In</div>
             <div class="entrance-box slide-left" data-type="slide">Slide Left</div>
             <div class="entrance-box zoom-in" data-type="zoom">Zoom In</div>
+        <div class="code-box">
+            <div class="code-header">📄 Código CSS + JS — Entrada e Saída</div>
+            <pre><code><span class="hc">/* Fade In */</span>
+<span class="hp">.entrance-box</span> {
+    <span class="hl">opacity</span>: 0;
+    <span class="hl">transform</span>: translateY(30px);
+    <span class="hl">transition</span>: opacity 0.5s ease, transform 0.5s ease;
+}
+<span class="hp">.entrance-box.visible</span> {
+    <span class="hl">opacity</span>: 1;
+    <span class="hl">transform</span>: translateY(0);
+}
+
+<span class="hc">/* Slide Left */</span>
+<span class="hp">.entrance-box.slide-left</span> { <span class="hl">transform</span>: translateX(-40px); }
+<span class="hp">.entrance-box.slide-left.visible</span> { <span class="hl">transform</span>: translateX(0); }
+
+<span class="hc">/* Zoom In */</span>
+<span class="hp">.entrance-box.zoom-in</span> { <span class="hl">transform</span>: scale(0.5); }
+<span class="hp">.entrance-box.zoom-in.visible</span> { <span class="hl">transform</span>: scale(1); }
+
+<span class="hc">/* JavaScript para engadir/eliminar clase */</span>
+<span class="hl">function</span> showEntrance(type) {
+    document.querySelectorAll(<span class="hv">'.entrance-box'</span>).forEach(el => {
+        el.classList.toggle(<span class="hv">'visible'</span>, el.dataset.type === type);
+    });
+}</code></pre>
         </div>
     </section>
 
@@ -770,6 +917,20 @@
                 <h3>Creatividade</h3>
                 <p>Efectos visuais modernos sen sacrificar velocidade.</p>
             </div>
+        <div class="code-box">
+            <div class="code-header">📄 Código JavaScript — Intersection Observer</div>
+            <pre><code><span class="hc">// Intersection Observer — animacións ao facer scroll</span>
+<span class="hl">const</span> observer = <span class="hl">new</span> IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        <span class="hl">if</span> (entry.isIntersecting) {
+            entry.target.classList.add(<span class="hv">'visible'</span>);
+        }
+    });
+}, { <span class="hl">threshold</span>: 0.15 });
+
+<span class="hc">// Observa cada elemento con data-scroll</span>
+document.querySelectorAll(<span class="hv">'[data-scroll]'</span>)
+    .forEach(item => observer.observe(item));</code></pre>
         </div>
     </section>
 
@@ -778,22 +939,56 @@
             <h2 class="section-title" style="color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.5);">Efectos con Capas</h2>
             <p class="section-sub" style="color:rgba(255,255,255,0.95);text-shadow:0 1px 6px rgba(0,0,0,0.4);">Glassmorphism, overlays, blur e elementos flotantes.</p>
             <div class="glass-grid">
-                <div class="glass-card float">
-                    <span class="g-icon">🔮</span>
-                    <h3>Glassmorphism</h3>
-                    <p style="text-shadow:0 1px 6px rgba(0,0,0,0.4);"><code>backdrop-filter: blur(24px)</code> con fondo escuro semitransparente.</p>
+                <div class="glass-card float" style="background-image: url('https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                    <div class="glass-content">
+                        <span class="g-icon">🔮</span>
+                        <h3>Glassmorphism</h3>
+                        <p><code>backdrop-filter: blur(16px)</code> sobre imaxe real con efecto vidro mate.</p>
+                    </div>
                 </div>
-                <div class="glass-card float">
-                    <span class="g-icon">🌊</span>
-                    <h3>Overlay dinámico</h3>
-                    <p style="text-shadow:0 1px 6px rgba(0,0,0,0.4);">Capas superpostas con gradiente escuro e transparencia.</p>
+                <div class="glass-card float" style="background-image: url('https://images.pexels.com/photos/2387418/pexels-photo-2387418.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                    <div class="glass-content">
+                        <span class="g-icon">🌊</span>
+                        <h3>Overlay dinámico</h3>
+                        <p>Gradientes e capas superpostas con fotografía de fondo e transparencia.</p>
+                    </div>
                 </div>
-                <div class="glass-card float">
-                    <span class="g-icon">💎</span>
-                    <h3>Elemento flotante</h3>
-                    <p style="text-shadow:0 1px 6px rgba(0,0,0,0.4);">Animación <code>float</code> con delay para efecto escalonado.</p>
+                <div class="glass-card float" style="background-image: url('https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&w=800');">
+                    <div class="glass-content">
+                        <span class="g-icon">💎</span>
+                        <h3>Elemento flotante</h3>
+                        <p>Animación <code>float</code> con delay escalonado sobre fondo de cristal/xeo.</p>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="code-box" style="max-width:1200px;margin:2rem auto 0;">
+            <div class="code-header">📄 Código CSS — Glassmorphism / Capas</div>
+            <pre><code><span class="hp">.glass-card</span> {
+    <span class="hl">background-image</span>: <span class="hv">url('foto.jpg')</span>;
+    <span class="hl">background-size</span>: cover;
+    <span class="hl">position</span>: relative;
+    <span class="hl">overflow</span>: hidden;
+}
+
+<span class="hc">/* Capa de vidro mate (frosted glass) */</span>
+<span class="hp">.glass-card::before</span> {
+    <span class="hl">content</span>: <span class="hv">""</span>;
+    <span class="hl">position</span>: absolute;
+    <span class="hl">inset</span>: 0;
+    <span class="hl">background</span>: rgba(0,0,0,0.25);
+    <span class="hl">backdrop-filter</span>: blur(16px);
+    <span class="hl">-webkit-backdrop-filter</span>: blur(16px);
+    <span class="hl">z-index</span>: 1;
+}
+
+<span class="hc">/* Contido por riba da capa de blur */</span>
+<span class="hp">.glass-content</span> {
+    <span class="hl">position</span>: relative;
+    <span class="hl">z-index</span>: 2;
+    <span class="hl">color</span>: #fff;
+    <span class="hl">text-shadow</span>: 0 2px 12px rgba(0,0,0,0.6);
+}</code></pre>
         </div>
     </section>
 
@@ -821,6 +1016,19 @@
                 <h3>Flip Up</h3>
                 <p><code>data-aos="flip-up"</code></p>
             </div>
+        </div>
+        <div class="code-box">
+            <div class="code-header">📄 Código HTML + JS — AOS</div>
+            <pre><code><span class="hc">&lt;!-- HTML: engadir atributos data-aos --&gt;</span>
+&lt;div <span class="hl">data-aos</span>=<span class="hv">"fade-up"</span>
+     <span class="hl">data-aos-duration</span>=<span class="hv">"800"</span>
+     <span class="hl">data-aos-delay</span>=<span class="hv">"100"</span>&gt;
+    Contido animado
+&lt;/div&gt;
+
+<span class="hc">&lt;!-- JS: inicializar AOS --&gt;</span>
+&lt;script src=<span class="hv">"https://unpkg.com/aos@2.3.1/dist/aos.js"</span>&gt;&lt;/script&gt;
+&lt;script&gt; AOS.init({ once: true }); &lt;/script&gt;</code></pre>
         </div>
     </section>
 

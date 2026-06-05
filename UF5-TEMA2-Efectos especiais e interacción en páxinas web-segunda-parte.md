@@ -190,3 +190,101 @@ Exemplo:
 - Respectar usuarios con sensibilidade ao movemento mediante `prefers-reduced-motion`.
 
 As animacións deben mellorar a experiencia de usuario e non converterse nun elemento de distracción.
+
+---
+
+## Exercicio práctico: Animacións CSS activadas con JavaScript
+
+### Obxectivo
+
+Aplicar transicións e animacións CSS combinadas con eventos de JavaScript para crear interaccións reais nunha interface web.
+
+⸻
+
+### Enunciado
+
+Desenvolve unha pequena páxina web cunha sección de “tarxetas de servizos” (mínimo 3 tarxetas).
+
+Cada tarxeta debe incluír:
+
+* Título
+* Breve descrición
+* Botón de acción
+
+⸻
+
+### Requisitos técnicos
+
+### 1. Estrutura HTML
+
+* Crear unha estrutura con 3 tarxetas.
+* Cada tarxeta debe ter unha clase común (.card).
+
+⸻
+
+#### 2. Estilos CSS base
+
+* Aplicar deseño con Flexbox ou Grid.
+* Definir estilo inicial das tarxetas:
+    * fondo branco
+    * sombra suave
+    * bordes redondeados
+    * transición suave
+
+⸻
+
+#### 3. Animación CSS
+
+Define unha animación con @keyframes chamada aparecerCard:
+
+* Opacidade: 0 → 1
+* Transformación: translateY(20px → 0)
+
+A animación debe aplicarse cando a tarxeta sexa “activada”.
+
+⸻
+
+#### 4. Interacción con JavaScript
+
+Implementa un comportamento onde:
+
+* Ao facer clic nun botón “Ver máis”:
+    * a tarxeta correspondente recibe unha clase .active
+    * esa clase activa:
+        * dispara a animación CSS
+        * amplía lixeiramente a tarxeta (scale 1.05)
+        * cambia o fondo ou borde para destacala
+
+Exemplo de lóxica:
+
+* evento click
+* uso de classList.add() ou toggle()
+
+⸻
+
+#### 5. Requisito de animación combinada
+
+* Debe existir:
+    * unha transición CSS (hover ou estado normal → activo)
+    * unha animación @keyframes (entrada da tarxeta)
+    * un cambio de estado controlado por JS
+
+⸻
+
+### Melloras opcionais (nivel avanzado)
+
+* Aplicar Intersection Observer para activar animacións ao facer scroll.
+* Engadir botón de “pechar” que elimine a clase .active.
+* Usar prefers-reduced-motion para desactivar animacións.
+* Engadir retraso escalonado (stagger effect) nas tarxetas.
+
+⸻
+
+### Criterios de avaliación asociados
+
+* Correcto uso de CSS animations e transitions.
+* Manipulación do DOM con JavaScript.
+* Activación de clases mediante eventos.
+* Coherencia visual da interacción.
+* Usabilidade e feedback visual adecuado.
+* Rendemento básico das animacións.
