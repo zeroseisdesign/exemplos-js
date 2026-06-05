@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimeX One | Reloxo Intelixente Premium</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="exercicio8.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top transition-nav" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="imaxes/logo.png" alt="logo" height="48" class="d-inline-block align-top">
+      </a>
+      <button class="navbar-toggler custom-toggler" type="button" id="menuToggle" aria-expanded="false"
+        aria-label="Menú" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="bi bi-list" id="menuIcon"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#caracteristicas">Características</a></li>
+          <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#info">Info</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="btn btn-mode-toggle ms-lg-3 mt-2 mt-lg-0" id="darkModeBtn" aria-label="Cambiar tema">
+          <i class="bi bi-sun-fill" id="darkModeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="inicio" class="hero-section">
+    <div class="hero-content">
+      <div class="hero-left">
+        <span class="hero-badge">Novo</span>
+        <h1 class="hero-title">
+          <span class="hero-title-line">TIMEX</span>
+          <span class="hero-title-line accent">One</span>
+        </h1>
+        <p class="hero-subtitle">O reloxo intelixente deseñado para o teu ritmo de vida.</p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary-hero" id="btnMercar">Mercar agora</button>
+          <button type="button" class="btn btn-ghost" id="btnInfo">Máis información</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-image-wrapper">
+          <img src="imaxes/banner.jpeg" alt="TimeX One" class="hero-img">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MARQUEE STATS -->
+  <section class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span class="marquee-item">13+ Anos de Innovación</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">600+ Proxectos Exitosos</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">130+ Reseñas Positivas</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">100% Satisfacción do Cliente</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">50+ Plataformas Líderes</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">9 Certificados</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">13+ Anos de Innovación</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">600+ Proxectos Exitosos</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">130+ Reseñas Positivas</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">100% Satisfacción do Cliente</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">50+ Plataformas Líderes</span>
+        <span class="marquee-dot"></span>
+        <span class="marquee-item">9 Certificados</span>
+        <span class="marquee-dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARACTERÍSTICAS -->
+  <section id="caracteristicas" class="feature-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">/ Servizos, Habilidades, Capacidades</span>
+        <h2 class="section-title">Que fai mellor o TimeX One?</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card reveal" style="transition-delay:0.1s">
+          <span class="feature-number">01.</span>
+          <h3 class="feature-card-title">GPS Integrado</h3>
+          <p class="feature-card-text">Controla as túas rutas en tempo real cunha precisión milimétrica.</p>
+          <div class="feature-tags">
+            <span class="tag">Figma</span>
+            <span class="tag">Rastrexo en tempo real</span>
+            <span class="tag">Alcance global</span>
+          </div>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.2s">
+          <span class="feature-number">02.</span>
+          <h3 class="feature-card-title">Monitor Cardíaco</h3>
+          <p class="feature-card-text">Consulta a túa actividade física durante todo o día para un control total.</p>
+          <div class="feature-tags">
+            <span class="tag">24/7</span>
+            <span class="tag">SpO2</span>
+            <span class="tag">Estrés</span>
+          </div>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.3s">
+          <span class="feature-number">03.</span>
+          <h3 class="feature-card-title">Resistente á Auga</h3>
+          <p class="feature-card-text">Preparado para deporte e actividades exteriores sen límites.</p>
+          <div class="feature-tags">
+            <span class="tag">10 ATM</span>
+            <span class="tag">Natación</span>
+            <span class="tag">100m</span>
+          </div>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.4s">
+          <span class="feature-number">04.</span>
+          <h3 class="feature-card-title">Batería Avanzada</h3>
+          <p class="feature-card-text">Ata 7 días de autonomía nunha soa carga para que nada te deteña.</p>
+          <div class="feature-tags">
+            <span class="tag">450 mAh</span>
+            <span class="tag">Carga rápida</span>
+            <span class="tag">7 días</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI / ABOUT -->
+  <section id="sobremi" class="about-section">
+    <div class="container">
+      <div class="about-centered">
+        <span class="section-label">/ Sobre o TimeX One</span>
+        <h2 class="section-title">Innovación no Teu Pulso</h2>
+        <p class="about-text">Deseñador. Enxeñeiro. Innovador. O TimeX One combina elegancia e tecnoloxía moderna para ofrecer a mellor experiencia wearable.</p>
+        <p class="about-text-muted">Materiais premium de titanio e cristal de zafiro para resistir calquera golpe sen perder o estilo no teu día a día.</p>
+        <div class="about-actions">
+          <a href="#contacto" class="btn btn-primary-hero">Agendar unha chamada</a>
+          <a href="#info" class="btn btn-ghost">Ver especificacións</a>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-number">4.9</span>
+            <span class="stat-label">/ 5</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-label">Confianza de</span>
+            <span class="stat-number">130+</span>
+            <span class="stat-label">clientes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria" class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">/ Proxectos Seleccionados</span>
+        <h2 class="section-title">Traballo Seleccionado</h2>
+        <p class="section-subtitle">Unha mostra coidada de proxectos que destacan o noso compromiso coa innovación.</p>
+      </div>
+      <div class="gallery-grid" id="galleryContainer">
+        <div class="gallery-item reveal" style="transition-delay:0.1s">
+          <a href="imaxes/imaxe1.png" data-fancybox="gallery">
+            <img src="imaxes/imaxe1.png" alt="imaxe1" class="gallery-img">
+          </a>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.2s">
+          <a href="imaxes/imaxe2.png" data-fancybox="gallery">
+            <img src="imaxes/imaxe2.png" alt="imaxe2" class="gallery-img">
+          </a>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.3s">
+          <a href="imaxes/imaxe3.jpeg" data-fancybox="gallery">
+            <img src="imaxes/imaxe3.jpeg" alt="imaxe3" class="gallery-img">
+          </a>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.1s">
+          <a href="imaxes/imaxe4.jpeg" data-fancybox="gallery">
+            <img src="imaxes/imaxe4.jpeg" alt="imaxe4" class="gallery-img">
+          </a>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.2s">
+          <a href="imaxes/imaxe5.jpeg" data-fancybox="gallery">
+            <img src="imaxes/imaxe5.jpeg" alt="imaxe5" class="gallery-img">
+          </a>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.3s">
+          <a href="imaxes/imaxe6.jpeg" data-fancybox="gallery">
+            <img src="imaxes/imaxe6.jpeg" alt="imaxe6" class="gallery-img">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">/ Confianza da Comunidade</span>
+        <h2 class="section-title">O que din os nosos clientes</h2>
+      </div>
+      <div class="testimonials-scroll">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"O mellor reloxo que tiven. A batería dura unha semana enteira."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AL</div>
+            <div>
+              <p class="author-name">Ana López</p>
+              <p class="author-role">Corredora de montaña</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Precisión GPS incríble. Recomendado para sendeirismo."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div>
+              <p class="author-name">Marcos Rodríguez</p>
+              <p class="author-role">Guía de montaña</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★☆</div>
+          <p class="testimonial-text">"Deseño elegante e funcionalidades de saúde moi completas."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">CM</div>
+            <div>
+              <p class="author-name">Carla Méndez</p>
+              <p class="author-role">Fisioterapeuta</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Creative beyond limits. The design feels timeless and premium."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">LP</div>
+            <div>
+              <p class="author-name">Lucía Pérez</p>
+              <p class="author-role">Deseñadora UI/UX</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Diseño elegante e funcionalidades de saúde moi completas. Recomendado!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JR</div>
+            <div>
+              <p class="author-name">Javier Rodríguez</p>
+              <p class="author-role">Atleta profesional</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO / ESPECIFICACIÓNS -->
+  <section id="info" class="specs-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">/ Especificacións</span>
+        <h2 class="section-title">Ficha Técnica</h2>
+      </div>
+      <ul class="nav nav-pills justify-content-center mb-4" id="infoTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="deseno-tab" data-bs-toggle="tab" data-bs-target="#deseno"
+            type="button" role="tab">Deseño</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="saude-tab" data-bs-toggle="tab" data-bs-target="#saude" type="button"
+            role="tab">Saúde</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="deportes-tab" data-bs-toggle="tab" data-bs-target="#deportes"
+            type="button" role="tab">Deportes</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tecnicas-tab" data-bs-toggle="tab" data-bs-target="#tecnicas" type="button"
+            role="tab">Técnicas</button>
+        </li>
+      </ul>
+      <div class="tab-content reveal" id="infoTabsContent">
+        <div class="tab-pane fade show active" id="deseno" role="tabpanel">
+          <h3 class="tab-title">TimeX One combina elegancia e tecnoloxía moderna.</h3>
+          <p class="tab-text">Materiais premium de titanio e cristal de zafiro para resistir calquera golpe sen
+            perder o estilo no teu día a día.</p>
+        </div>
+        <div class="tab-pane fade" id="saude" role="tabpanel">
+          <h3 class="tab-title">Monitorización cardíaca e control do sono.</h3>
+          <p class="tab-text">Sensores biométricos avanzados que vixían o teu osíxeno en sangue, estrés e fases
+            do sono profundo.</p>
+        </div>
+        <div class="tab-pane fade" id="deportes" role="tabpanel">
+          <h3 class="tab-title">Seguimento de actividades deportivas e rutas GPS.</h3>
+          <p class="tab-text">Máis de 50 modos deportivos integrados coa máxima precisión satelital para
+            rexistrar cada quilómetro.</p>
+        </div>
+        <div class="tab-pane fade" id="tecnicas" role="tabpanel">
+          <h3 class="tab-title">Ficha técnica completa</h3>
+          <div class="specs-grid">
+            <div class="spec-row">
+              <span class="spec-label">Peso</span>
+              <span class="spec-value">42 g</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Pantalla</span>
+              <span class="spec-value">1.43" AMOLED</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Batería</span>
+              <span class="spec-value">450 mAh — 7 días</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Sensores</span>
+              <span class="spec-value">Cardíaco, SpO2, acelerómetro, xiroscopio</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Conectividade</span>
+              <span class="spec-value">Bluetooth 5.3, WiFi, NFC</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Resistencia</span>
+              <span class="spec-value">10 ATM (100 m)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">/ Preguntas comúns e respostas</span>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Cal é o prazo de envío?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">O prazo de envío é de 2-5 días laborables para toda a península.
+                Envíos gratuítos a partir de €50.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                data-bs-target="#faq2">
+                Ten garantía?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Todos os modelos inclúen 2 anos de garantía oficial. Podes
+                estendela a 3 anos contratando o seguro Premium.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                data-bs-target="#faq3">
+                Podo devolvelo?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Si, tes 30 días desde a recepción para devolución sen compromiso.
+                Reembolso íntegro.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                data-bs-target="#faq4">
+                É compatible con iPhone e Android?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Compatible con iOS 15+ e Android 10+ mediante a app gratuíta
+                TimeX Connect.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <span class="section-label">/ Información de Contacto</span>
+          <h2 class="section-title">Comeza agora</h2>
+          <p class="contact-text">Como podo axudarche?</p>
+          <p class="contact-text-muted">Encantaríame saber máis do teu proxecto ou empresa.</p>
+        </div>
+        <div class="contact-right">
+          <form id="contactForm" class="needs-validation" novalidate>
+            <div id="formAlert" class="alert d-none" role="alert"></div>
+            <div class="form-group">
+              <label for="nome" class="form-label">Nome completo</label>
+              <input type="text" class="form-control" id="nome" required placeholder="O teu nome">
+              <div class="invalid-feedback">Introduce o teu nome.</div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="email" required placeholder="email@exemplo.com">
+              <div class="invalid-feedback">Introduce un correo válido.</div>
+            </div>
+            <div class="form-group">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono" pattern="[0-9]{9}" required placeholder="600123456">
+              <div class="invalid-feedback">Introduce un teléfono válido.</div>
+            </div>
+            <div class="form-group">
+              <label for="mensaxe" class="form-label">Mensaxe</label>
+              <textarea class="form-control" id="mensaxe" rows="4" placeholder="En que podemos axudarche?"
+                required></textarea>
+              <div class="invalid-feedback">Escribe unha mensaxe.</div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="condicions" required>
+                <label class="form-check-label" for="condicions">Acepto a <a href="privacidade.html" target="_blank">política de privacidade</a> e condicións de
+                  uso.</label>
+                <div class="invalid-feedback">Debes aceptar as condicións.</div>
+              </div>
+            </div>
+            <button class="btn btn-primary-hero w-100" type="submit">Enviar mensaxe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter" class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2 class="newsletter-title">Non te perdas nada</h2>
+        <p class="newsletter-text">Subscríbete e recibe un 10% de desconto no teu primeiro pedido.</p>
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="O teu correo electrónico" required>
+          <button type="submit" class="btn btn-primary-hero">Subscribirse</button>
+        </form>
+        <div id="newsletterAlert" class="alert d-none mt-3" role="alert"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h5 class="footer-brand">TimeX</h5>
+          <p class="footer-desc">Tecnoloxía wearable para unha vida activa e saudable.</p>
+        </div>
+        <div class="footer-col">
+          <h6 class="footer-heading">Links</h6>
+          <ul class="footer-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#caracteristicas">Características</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h6 class="footer-heading">Síguenos</h6>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> TimeX. Todos os dereitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN SCROLL TO TOP -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Volver arriba">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script src="exercicio8.js"></script>
+
+</body>
+
+</html>
