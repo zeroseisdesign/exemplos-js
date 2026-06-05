@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animacións e Efectos CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --text: #1a1a2e;
+            --card: #ffffff;
+            --card-shadow: rgba(0,0,0,0.08);
+            --accent: #6c63ff;
+            --accent2: #e94560;
+            --overlay: rgba(0,0,0,0.5);
+            --glass-bg: rgba(255,255,255,0.15);
+            --glass-border: rgba(255,255,255,0.25);
+            --nav-bg: rgba(255,255,255,0.85);
+            --section-alt: #f0f0f5;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f0f1a;
+            --text: #e8e8f0;
+            --card: #1a1a2e;
+            --card-shadow: rgba(0,0,0,0.3);
+            --accent: #8b83ff;
+            --accent2: #ff6b81;
+            --overlay: rgba(0,0,0,0.7);
+            --glass-bg: rgba(255,255,255,0.08);
+            --glass-border: rgba(255,255,255,0.12);
+            --nav-bg: rgba(15,15,26,0.9);
+            --section-alt: #151525;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            transition: background 0.4s ease;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-links a:hover { color: var(--accent); }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            color: var(--text);
+        }
+
+        .theme-toggle:hover { transform: rotate(30deg) scale(1.1); }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 1rem; }
+            .nav-toggle { display: block; }
+            nav .nav-links {
+                position: fixed;
+                top: 64px; left: 0; right: 0;
+                background: var(--nav-bg);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+                transform: translateY(-120%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-bottom: 1px solid var(--glass-border);
+            }
+            nav .nav-links.open { transform: translateY(0); }
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(even) { background: var(--section-alt); }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .section-sub {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section.full-width {
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(108,99,255,0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(233,69,96,0.2) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            animation: heroFadeIn 1.2s ease forwards;
+        }
+
+        @keyframes heroFadeIn {
+            0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f5f5ff, #c5c3ff, #f5f5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .cta {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+        }
+
+        .hero .cta:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 8px 30px rgba(108,99,255,0.55);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-shapes span {
+            position: absolute;
+            display: block;
+            border-radius: 50%;
+            opacity: 0.12;
+            animation: floatShape 12s infinite ease-in-out;
+        }
+
+        .floating-shapes span:nth-child(1) {
+            width: 300px; height: 300px;
+            background: var(--accent);
+            top: -80px; left: -80px;
+            animation-delay: 0s;
+        }
+        .floating-shapes span:nth-child(2) {
+            width: 200px; height: 200px;
+            background: var(--accent2);
+            bottom: -40px; right: -40px;
+            animation-delay: -4s;
+        }
+        .floating-shapes span:nth-child(3) {
+            width: 150px; height: 150px;
+            background: #ffc107;
+            top: 50%; left: 70%;
+            animation-delay: -8s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        .transitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .trans-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.3s ease,
+                        background 0.3s ease;
+        }
+
+        .trans-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px var(--card-shadow);
+        }
+
+        .trans-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .trans-card:hover .icon { transform: scale(1.2) rotate(10deg); }
+
+        .trans-card h3 { margin-bottom: 0.5rem; }
+
+        .trans-card p { font-size: 0.9rem; opacity: 0.7; }
+
+        .trans-card.color-shift {
+            background: var(--accent);
+            color: #fff;
+            transition: background 0.4s ease, transform 0.3s ease, border-radius 0.4s ease;
+            border-radius: 16px;
+        }
+
+        .trans-card.color-shift:hover {
+            background: var(--accent2);
+            border-radius: 24px;
+        }
+
+        .trans-card.timing-demo {
+            transition: all 0.3s ease;
+        }
+
+        .trans-card.timing-demo:hover {
+            transform: scale(0.95);
+            filter: hue-rotate(60deg);
+        }
+
+        .keyframes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .kf-box {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .kf-box .anim-target {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: var(--accent);
+            margin: 0 auto 1rem auto;
+        }
+
+        .kf-box .anim-target.circle { border-radius: 50%; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.25); opacity: 0.7; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-12px); }
+            40% { transform: translateX(12px); }
+            60% { transform: translateX(-8px); }
+            80% { transform: translateX(8px); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes flipIn {
+            0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
+            100% { transform: perspective(400px) rotateY(0); opacity: 1; }
+        }
+
+        .anim-bounce .anim-target { animation: bounce 0.8s ease infinite; }
+        .anim-pulse .anim-target { animation: pulse 1.2s ease infinite; }
+        .anim-shake .anim-target { animation: shake 0.6s ease infinite; }
+        .anim-spin .anim-target { animation: spin 2s linear infinite; }
+        .anim-flip { animation: flipIn 1s ease; }
+
+        .transform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .transform-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            transition: transform 0.4s ease;
+        }
+
+        .transform-card .t-box {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 12px;
+            margin: 0 auto 1rem auto;
+            transition: transform 0.4s ease;
+        }
+
+        .transform-card.rotate-demo:hover .t-box { transform: rotate(180deg); }
+        .transform-card.scale-demo:hover .t-box { transform: scale(1.4); }
+        .transform-card.translate-demo:hover .t-box { transform: translateX(20px); }
+        .transform-card.skew-demo:hover .t-box { transform: skew(20deg); }
+        .transform-card.perspective-demo { perspective: 400px; }
+        .transform-card.perspective-demo:hover .t-box { transform: rotateY(180deg); }
+
+        .transform-card h3 { font-size: 0.95rem; }
+        .transform-card p { font-size: 0.8rem; opacity: 0.65; margin-top: 0.3rem; }
+
+        .entrance-demo-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .entrance-demo-area button {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .entrance-demo-area button:hover { transform: scale(1.05); opacity: 0.9; }
+
+        .entrance-targets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .entrance-box {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px var(--card-shadow);
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .entrance-box.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .entrance-box.slide-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .entrance-box.slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .entrance-box.zoom-in {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .entrance-box.zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .scroll-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .scroll-item {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .scroll-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-item .s-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .scroll-item:nth-child(2) { transition-delay: 0.15s; }
+        .scroll-item:nth-child(3) { transition-delay: 0.3s; }
+        .scroll-item:nth-child(4) { transition-delay: 0.45s; }
+
+        .glass-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .glass-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .glass-card .g-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        .glass-card h3 { margin-bottom: 0.5rem; }
+        .glass-card p { opacity: 0.85; font-size: 0.9rem; }
+
+        .glass-card.float {
+            animation: glassFloat 4s ease-in-out infinite;
+        }
+
+        .glass-card.float:nth-child(2) { animation-delay: -1.5s; }
+        .glass-card.float:nth-child(3) { animation-delay: -3s; }
+
+        @keyframes glassFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .aos-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .aos-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--card-shadow);
+        }
+
+        .aos-card .a-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--section-alt);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: background 0.4s ease;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+        @media (max-width: 480px) {
+            section { padding: 3rem 1rem; }
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <span class="logo">✦ AnimCSS</span>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#transicions">Transicións</a></li>
+            <li><a href="#keyframes">Keyframes</a></li>
+            <li><a href="#transformacions">Transformacións</a></li>
+            <li><a href="#entrada">Entrada/Saída</a></li>
+            <li><a href="#scroll">Scroll</a></li>
+            <li><a href="#glass">Glassmorphism</a></li>
+            <li><a href="#aos">AOS</a></li>
+            <li><button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌙</button></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="hero">
+        <div class="floating-shapes">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="hero-content">
+            <h1>Efectos e Animacións CSS</h1>
+            <p>Explora transicións, keyframes, transformacións 2D/3D, scroll animado, glassmorphism e moito máis.</p>
+            <a href="#transicions" class="cta">Comezar →</a>
+        </div>
+    </header>
+
+    <section id="transicions">
+        <h2 class="section-title">Transicións CSS</h2>
+        <p class="section-sub">Cambios suaves entre estados con <code>transition</code>, duración e <code>timing-function</code>.</p>
+        <div class="transitions-grid">
+            <div class="trans-card">
+                <span class="icon">🎨</span>
+                <h3>Elevar</h3>
+                <p><code>translateY + scale</code> — 0.3s cubic-bezier</p>
+            </div>
+            <div class="trans-card color-shift">
+                <span class="icon">🌈</span>
+                <h3>Cambio de cor</h3>
+                <p><code>background + border-radius</code> — 0.4s ease</p>
+            </div>
+            <div class="trans-card timing-demo">
+                <span class="icon">🌀</span>
+                <h3>Hue rotate</h3>
+                <p><code>scale + filter</code> — 0.3s ease</p>
+            </div>
+            <div class="trans-card">
+                <span class="icon">✨</span>
+                <h3>Brillo</h3>
+                <p><code>box-shadow + opacity</code> — 0.3s ease</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="keyframes">
+        <h2 class="section-title">Animacións con @keyframes</h2>
+        <p class="section-sub">Secuencias personalizadas con control de repetición, dirección e temporización.</p>
+        <div class="keyframes-grid">
+            <div class="kf-box anim-bounce">
+                <div class="anim-target"></div>
+                <span>Bounce</span>
+            </div>
+            <div class="kf-box anim-pulse">
+                <div class="anim-target circle"></div>
+                <span>Pulse</span>
+            </div>
+            <div class="kf-box anim-shake">
+                <div class="anim-target"></div>
+                <span>Shake</span>
+            </div>
+            <div class="kf-box anim-spin">
+                <div class="anim-target circle"></div>
+                <span>Spin</span>
+            </div>
+            <div class="kf-box">
+                <div class="anim-target anim-flip"></div>
+                <span>Flip In</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="transformacions">
+        <h2 class="section-title">Transformacións 2D e 3D</h2>
+        <p class="section-sub">Pasa o rato por riba para ver <code>rotate</code>, <code>scale</code>, <code>translate</code>, <code>skew</code> e perspectiva 3D.</p>
+        <div class="transform-grid">
+            <div class="transform-card rotate-demo">
+                <div class="t-box"></div>
+                <h3>Rotate</h3>
+                <p><code>rotate(180deg)</code></p>
+            </div>
+            <div class="transform-card scale-demo">
+                <div class="t-box"></div>
+                <h3>Scale</h3>
+                <p><code>scale(1.4)</code></p>
+            </div>
+            <div class="transform-card translate-demo">
+                <div class="t-box"></div>
+                <h3>Translate</h3>
+                <p><code>translateX(20px)</code></p>
+            </div>
+            <div class="transform-card skew-demo">
+                <div class="t-box"></div>
+                <h3>Skew</h3>
+                <p><code>skew(20deg)</code></p>
+            </div>
+            <div class="transform-card perspective-demo">
+                <div class="t-box"></div>
+                <h3>3D Rotate Y</h3>
+                <p><code>perspective + rotateY</code></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="entrada">
+        <h2 class="section-title">Animacións de Entrada e Saída</h2>
+        <p class="section-sub">Fade, Slide, Zoom — controlados con clases CSS e botóns.</p>
+        <div class="entrance-demo-area">
+            <button onclick="resetEntrance()">🔄 Restablecer</button>
+            <button onclick="showEntrance('fade')">⬇ Fade In</button>
+            <button onclick="showEntrance('slide')">➡ Slide Left</button>
+            <button onclick="showEntrance('zoom')">🔍 Zoom In</button>
+        </div>
+        <div class="entrance-targets" id="entranceTargets">
+            <div class="entrance-box" data-type="fade">Fade In</div>
+            <div class="entrance-box slide-left" data-type="slide">Slide Left</div>
+            <div class="entrance-box zoom-in" data-type="zoom">Zoom In</div>
+        </div>
+    </section>
+
+    <section id="scroll">
+        <h2 class="section-title">Animacións ao facer Scroll</h2>
+        <p class="section-sub">Elementos que aparecen progresivamente usando <strong>Intersection Observer</strong>.</p>
+        <div class="scroll-demo-grid">
+            <div class="scroll-item" data-scroll>
+                <span class="s-icon">🚀</span>
+                <h3>Proxecto Único</h3>
+                <p>Deseño minimalista con animacións sutís.</p>
+            </div>
+            <div class="scroll-item" data-scroll>
+                <span class="s-icon">🎯</span>
+                <h3>Precisión</h3>
+                <p>Interaccións pensadas para a experiencia de usuario.</p>
+            </div>
+            <div class="scroll-item" data-scroll>
+                <span class="s-icon">⚡</span>
+                <h3>Rendemento</h3>
+                <p>Animacións optimizadas con transform e opacity.</p>
+            </div>
+            <div class="scroll-item" data-scroll>
+                <span class="s-icon">🎨</span>
+                <h3>Creatividade</h3>
+                <p>Efectos visuais modernos sen sacrificar velocidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="glass" class="full-width glass-section">
+        <div style="max-width:1200px;margin:0 auto;">
+            <h2 class="section-title" style="color:#fff;">Efectos con Capas</h2>
+            <p class="section-sub" style="color:rgba(255,255,255,0.8);">Glassmorphism, overlays, blur e elementos flotantes.</p>
+            <div class="glass-grid">
+                <div class="glass-card float">
+                    <span class="g-icon">🔮</span>
+                    <h3>Glassmorphism</h3>
+                    <p><code>backdrop-filter: blur(20px)</code> con fondo translúcido.</p>
+                </div>
+                <div class="glass-card float">
+                    <span class="g-icon">🌊</span>
+                    <h3>Overlay dinámico</h3>
+                    <p>Capas superpostas con gradiente e transparencia.</p>
+                </div>
+                <div class="glass-card float">
+                    <span class="g-icon">💎</span>
+                    <h3>Elemento flotante</h3>
+                    <p>Animación <code>float</code> con delay para efecto escalonado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aos">
+        <h2 class="section-title">Biblioteca AOS</h2>
+        <p class="section-sub">Animacións ó facer scroll usando a librería <strong>AOS (Animate On Scroll)</strong>.</p>
+        <div class="aos-demo-grid">
+            <div class="aos-card" data-aos="fade-up" data-aos-duration="800">
+                <span class="a-icon">🌸</span>
+                <h3>Fade Up</h3>
+                <p><code>data-aos="fade-up"</code></p>
+            </div>
+            <div class="aos-card" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                <span class="a-icon">🍃</span>
+                <h3>Fade Left</h3>
+                <p><code>data-aos="fade-left"</code></p>
+            </div>
+            <div class="aos-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                <span class="a-icon">⭐</span>
+                <h3>Zoom In</h3>
+                <p><code>data-aos="zoom-in"</code></p>
+            </div>
+            <div class="aos-card" data-aos="flip-up" data-aos-duration="800" data-aos-delay="300">
+                <span class="a-icon">🌀</span>
+                <h3>Flip Up</h3>
+                <p><code>data-aos="flip-up"</code></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Efectos especiais e interacción en páxinas web — UF5 · TEMA 2</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️';
+        } else if (savedTheme === 'light') {
+            html.removeAttribute('data-theme');
+            themeToggle.textContent = '🌙';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                html.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        function resetEntrance() {
+            document.querySelectorAll('.entrance-box').forEach(el => {
+                el.classList.remove('visible');
+            });
+        }
+
+        function showEntrance(type) {
+            document.querySelectorAll('.entrance-box').forEach(el => {
+                if (el.dataset.type === type) {
+                    el.classList.add('visible');
+                } else {
+                    el.classList.remove('visible');
+                }
+            });
+        }
+
+        setTimeout(() => {
+            document.querySelectorAll('.entrance-box').forEach(el => el.classList.add('visible'));
+        }, 500);
+
+        const scrollItems = document.querySelectorAll('[data-scroll]');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        scrollItems.forEach(item => observer.observe(item));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
