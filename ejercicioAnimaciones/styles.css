@@ -1,0 +1,238 @@
+:root {
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --card: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --accent: #6c63ff;
+  --accent2: #e94560;
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f1a;
+  --text: #e8e8f0;
+  --card: #1a1a2e;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --accent: #8b83ff;
+  --accent2: #ff6b81;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.top-nav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.top-nav__link {
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--accent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.top-nav__link:hover {
+  opacity: 1;
+}
+
+.top-nav__link.active {
+  opacity: 1;
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 12px var(--card-shadow);
+}
+
+.theme-toggle:hover {
+  transform: rotate(30deg) scale(1.1);
+  border-color: var(--accent2);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  color: var(--accent);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1.8rem 1.5rem;
+  box-shadow: 0 2px 12px var(--card-shadow);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  cursor: default;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px var(--card-shadow);
+}
+
+.card.active {
+  background: var(--card);
+  border-color: var(--accent);
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(108, 99, 255, 0.2);
+  animation: aparecerCard 0.5s ease forwards;
+}
+
+@keyframes aparecerCard {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+}
+
+.card__icon {
+  margin-bottom: 0.25rem;
+  color: var(--accent);
+}
+
+.card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.card__desc {
+  font-size: 0.85rem;
+  color: var(--text);
+  opacity: 0.7;
+  line-height: 1.5;
+}
+
+.card__btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.card__btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.card__close {
+  display: none;
+  margin-top: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  opacity: 0.5;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.card__close:hover {
+  opacity: 1;
+}
+
+.card.active .card__close {
+  display: inline-block;
+}
+
+.card.active .card__btn {
+  display: none;
+}
+
+.card.stagger-in {
+  animation: aparecerCard 0.5s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

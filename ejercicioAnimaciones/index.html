@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarxetas de Servizos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌙</button>
+
+  <nav class="top-nav">
+    <a href="index.html" class="top-nav__link active">Tarxetas</a>
+    <a href="prompts.html" class="top-nav__link">Prompts</a>
+  </nav>
+
+  <main class="container">
+    <h1 class="title">Os nosos servizos</h1>
+
+    <div class="cards" id="cards">
+
+      <article class="card" data-delay="0">
+        <div class="card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h2 class="card__title">Deseño Gráfico</h2>
+        <p class="card__desc">
+          Creamos identidades visuais únicas que contan a historia da túa marca con creatividade e precisión.
+        </p>
+        <button class="card__btn">Ver máis</button>
+        <button class="card__close">Pechar</button>
+      </article>
+
+      <article class="card" data-delay="150">
+        <div class="card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h2 class="card__title">Desenvolvemento Web</h2>
+        <p class="card__desc">
+          Construímos sitios e aplicacións modernas, responsivas e optimizadas para un rendemento máximo.
+        </p>
+        <button class="card__btn">Ver máis</button>
+        <button class="card__close">Pechar</button>
+      </article>
+
+      <article class="card" data-delay="300">
+        <div class="card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="M4.93 4.93l1.41 1.41"/>
+            <path d="M17.66 17.66l1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="M6.34 17.66l-1.41 1.41"/>
+            <path d="M19.07 4.93l-1.41 1.41"/>
+          </svg>
+        </div>
+        <h2 class="card__title">Marketing Dixital</h2>
+        <p class="card__desc">
+          Estratexias de posicionamento e campañas que conectan coa túa audiencia e generan resultados.
+        </p>
+        <button class="card__btn">Ver máis</button>
+        <button class="card__close">Pechar</button>
+      </article>
+
+      <article class="card" data-delay="450">
+        <div class="card__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <h2 class="card__title">Fotografía Profesional</h2>
+        <p class="card__desc">
+          Sesións de fotografía de produto, espazos e retratos con iluminación natural e estilo minimalista.
+        </p>
+        <button class="card__btn">Ver máis</button>
+        <button class="card__close">Pechar</button>
+      </article>
+
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

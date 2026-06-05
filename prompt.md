@@ -68,3 +68,30 @@ starting with the design Exercicio-8.pen i need your to complete and generate th
 #prompt3
 
 give me recomendations about what effects of gsap in this url: GSAP Demo Hub. i tell what i'm can put in my project on the filles i will pass up. And explain me more expedite has possible and comment the code and the final result see ok, perfect without error please
+
+#prompt4
+
+i have one cuestion this element not working, gimme how to fix them:
+
+----
+
+I have many problems, in the images, the hamburguer button dont working and not is responsive in console 12 i have many problems:
+
+-----
+
+now have another problem the library in the <element>, in the section: project, dont working. Please fix them and be responsive
+
+#prompt5
+
+i have one question. how to make the implemate a #librery: https://url. In this section of my code:
+
+#prompt6
+
+Imagine that you are designing the website of a creative studio called 'Nordic Studio', specialized in minimalist digital design.
+
+
+#prompt7
+
+i'm a need specifict part the design is  onlyf the form. Make the project be simillar only the form to a design by next the follow url: https://www.figma.com/design/I7jqelUJWMpMYNgYOMqz6b/exercicio-8?node-id=2-2&t=9fi9b8RvfQ7EhHDq-4.  generate and save in this location C:\xampp\htdocs\xampp\proyectoJavascript2\exemplos-js\ejercicioAnimaciones
+
+#prompt8
