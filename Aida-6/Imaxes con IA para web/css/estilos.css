@@ -28,6 +28,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -38,6 +39,7 @@ body {
     font-size: var(--font-size-base);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 img {
@@ -101,6 +103,86 @@ img {
 /* ============================================
    NAVEGACIÓN
    ============================================ */
+.Menu {
+    perspective: 60rem;
+    transform-style: preserve-3d;
+}
+
+.Menu-list {
+    align-items: center;
+    transform: rotateX(-10deg) rotateY(20deg);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.Menu-list-item {
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.Menu-list-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    right: -10%;
+    height: 4px;
+    border-radius: 999px;
+    margin-top: -2px;
+    background: #ffe4e4;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .8s cubic-bezier(.16, 1.08, .38, .98);
+    z-index: 1;
+}
+
+.Mask {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    color: var(--color-text);
+    opacity: 0;
+    transition: color .8s cubic-bezier(.16, 1.08, .38, .98), transform .8s cubic-bezier(.16, 1.08, .38, .98);
+    pointer-events: none;
+}
+
+.Mask span {
+    display: block;
+}
+
+.Mask + .Mask {
+    top: 50%;
+}
+
+.Mask + .Mask span {
+    transform: translateY(-50%);
+}
+
+.Menu-list-item:hover .Mask,
+.Menu-list-item:active .Mask,
+.Menu-list-item:focus-within .Mask {
+    color: #631919;
+    opacity: 1;
+    transform: skewX(12deg) translateX(5px);
+}
+
+.Menu-list-item:hover .Mask + .Mask,
+.Menu-list-item:active .Mask + .Mask,
+.Menu-list-item:focus-within .Mask + .Mask {
+    transform: skewX(12deg) translateX(-5px);
+}
+
+.Menu-list-item:hover::before,
+.Menu-list-item:active::before,
+.Menu-list-item:focus-within::before {
+    transform: scaleX(1);
+}
 .navbar {
     position: fixed;
     top: 0;
@@ -121,6 +203,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo-link {
@@ -142,26 +225,35 @@ img {
 }
 
 .nav-link {
+    display: block;
+    min-width: max-content;
+    padding: 0.2rem 0;
     text-decoration: none;
     color: var(--color-text);
     font-weight: 500;
-    transition: color var(--transition-speed);
+    font-size: clamp(1rem, 1.3vw, 1.25rem);
+    line-height: 1.2;
+    transition: color var(--transition-speed), text-shadow var(--transition-speed);
     position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}
+
+.Menu-list-item:hover .nav-link,
+.Menu-list-item:active .nav-link,
+.Menu-list-item:focus-within .nav-link {
+    color: transparent;
+    text-shadow: none;
 }
 
 .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-accent);
-    transition: width var(--transition-speed);
+    display: none;
 }
 
 .nav-link:hover::after {
-    width: 100%;
+    display: none;
 }
 
 .nav-toggle {
@@ -302,6 +394,16 @@ img {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
+
+.pulse {
+    animation: pulse 4s infinite; }
+
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    10% { transform: scale(1.1); }
+    20% { transform: scale(1); }
+}
 /* ============================================
    CAROUSEL SECTION
    ============================================ */
@@ -328,6 +430,8 @@ img {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     flex: 1;
+    min-width: 0;
+    width: 100%;
     border-radius: 4px;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -339,6 +443,7 @@ img {
 
 .carousel-slide {
     min-width: 100%;
+    width: 100%;
     scroll-snap-align: start;
     flex-shrink: 0;
     display: flex;
@@ -453,7 +558,7 @@ img {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -531,7 +636,7 @@ img {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -542,7 +647,7 @@ img {
     border-radius: 4px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
-    transition: all var(--transition-speed);
+    transition: all var(--transition-speed) !important;
     border: 1px solid var(--color-border);
 }
 
@@ -700,18 +805,79 @@ img {
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: flex;
+@media (max-width: 1100px) {
+    .navbar {
+        padding: 0.75rem 0;
+    }
+
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+
+    .logo {
+        height: clamp(58px, 8vw, 86px);
     }
 
     .nav-menu {
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+        letter-spacing: 0.06em;
+    }
+
+    .hero {
+        padding-top: 88px;
+    }
+
+    .carousel-wrapper,
+    .gallery-grid,
+    .services-content,
+    .footer-content {
+        max-width: 920px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        height: 56px;
+    }
+
+    .Menu {
         position: absolute;
         top: 100%;
         left: 0;
+        right: 0;
+        width: 100%;
+        perspective: none;
+        z-index: 1001;
+    }
+
+    .nav-toggle {
+        display: flex;
+        border: 0;
+        background: transparent;
+        padding: 0.25rem;
+        z-index: 1002;
+    }
+
+    .nav-menu {
+        position: relative;
+        top: auto;
+        left: 0;
         width: 100%;
         flex-direction: column;
-        gap: 0;
+        align-items: stretch;
+        gap: 0.25rem;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease;
@@ -719,16 +885,24 @@ img {
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--color-border);
     }
 
     .nav-menu.active {
-        max-height: 300px;
+        max-height: 420px;
+        padding: 0.75rem 0;
+        transform: none !important;
     }
 
     .nav-link {
         display: block;
         padding: 1rem 2rem;
         border-bottom: 1px solid var(--color-border);
+        width: 100%;
+        color: var(--color-text);
+        min-width: 0;
+        font-size: 1rem;
+        letter-spacing: 0.06em;
     }
 
     .nav-link::after {
@@ -739,26 +913,47 @@ img {
         background-color: var(--color-primary);
     }
 
+    .Menu-list-item {
+        transform: none !important;
+    }
+
+    .Menu-list-item::before {
+        left: 2rem;
+        right: 2rem;
+    }
+
     .hero {
-        min-height: 70vh;
-        padding-top: 50px;
+        min-height: 76vh;
+        padding: 96px 1.25rem 3rem;
+    }
+
+    .hero-background img {
+        height: 100%;
+        top: 0;
+    }
+
+    .hero-content {
+        max-width: 32rem;
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: clamp(2rem, 12vw, 3.25rem);
+        letter-spacing: 1.5px;
     }
 
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        margin-bottom: 1.5rem;
     }
 
     .carousel-section {
-        padding: 3rem 1rem;
+        padding: 3rem 1rem 3.5rem;
     }
 
     .carousel-wrapper {
-        flex-direction: column;
-        gap: 0.75rem;
+        display: block;
+        width: 100%;
+        max-width: 680px;
     }
 
     .carousel-btn {
@@ -766,7 +961,7 @@ img {
         height: 38px;
         font-size: 1rem;
         position: absolute;
-        top: 35%;
+        top: clamp(110px, 31vw, 170px);
         transform: translateY(-50%);
         z-index: 10;
     }
@@ -780,11 +975,13 @@ img {
     }
 
     .carousel-img img {
-        max-height: 300px;
+        height: clamp(220px, 52vw, 340px);
+        max-height: none;
+        object-fit: cover;
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
     }
 
@@ -793,7 +990,7 @@ img {
     }
 
     .services-content {
-        padding: 3rem 1rem;
+        padding: 3rem 1rem 0;
     }
 
     .gallery-section {
@@ -804,8 +1001,14 @@ img {
         padding: 3rem 1rem;
     }
 
+    .contact-form {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
     .footer-content {
         flex-direction: column-reverse;
+        justify-content: center;
         text-align: center;
     }
 
@@ -821,11 +1024,11 @@ img {
     }
 
     .logo {
-        height: 64px;
+        height: 48px;
     }
 
     .nav-menu.active {
-        max-height: 250px;
+        max-height: 420px;
     }
 
     .hero-title {
@@ -850,7 +1053,8 @@ img {
     }
 
     .carousel-img img {
-        max-height: 250px;
+        height: 220px;
+        max-height: none;
     }
 
     .carousel-caption h3 {
@@ -866,23 +1070,49 @@ img {
         gap: 0.75rem;
     }
 
+    .gallery-item {
+        aspect-ratio: 4 / 3;
+    }
+
     .service-card {
         padding: 1.5rem;
     }
 
     .services-banner img {
-        max-height: 200px;
+        height: 200px;
+        max-height: none;
         object-fit: cover;
     }
 
     .contact-container {
         padding: 0;
     }
+
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+
+    .btn-back-to-top {
+        width: 100%;
+        max-width: 260px;
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
+    .hero {
+        min-height: 82vh;
+        padding: 110px 2rem 4rem;
+    }
+
+    .carousel-section,
+    .gallery-section,
+    .contact-section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
     .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .services-grid {

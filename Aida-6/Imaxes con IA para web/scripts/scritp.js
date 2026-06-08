@@ -52,6 +52,54 @@ document.addEventListener('click', (e) => {
         navMenu.classList.remove('active');
     }
 });
+// ============================================
+// NAVEGACIÓN 
+// ============================================
+
+const menuList = document.querySelector('.Menu-list');
+const menuItems = document.querySelectorAll('.Menu-list-item');
+
+function updatePerspectiveMenu(event) {
+    if (!menuList || window.innerWidth <= 768) {
+        return;
+    }
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const offsetX = 0.5 - event.clientX / width;
+    const offsetY = 0.5 - event.clientY / height;
+    const offsetPoster = Number(menuList.dataset.offset) || 10;
+
+    menuList.style.transform =
+        'translate3d(0, ' + (-offsetX * offsetPoster) + 'px, 0) ' +
+        'rotateX(' + (-offsetY * offsetPoster) + 'deg) ' +
+        'rotateY(' + (offsetX * (offsetPoster * 2)) + 'deg)';
+
+    menuItems.forEach(item => {
+        const offsetLayer = Number(item.dataset.offset) || 0;
+
+        item.style.transform =
+            'translate3d(' + (offsetX * offsetLayer) + 'px, ' +
+            (offsetY * offsetLayer) + 'px, 20px)';
+    });
+}
+
+function resetPerspectiveMenu() {
+    if (!menuList) {
+        return;
+    }
+
+    menuList.style.transform = window.innerWidth <= 768 ? 'none' : 'rotateX(-10deg) rotateY(20deg)';
+    menuItems.forEach(item => {
+        item.style.transform = 'none';
+    });
+}
+
+window.addEventListener('mousemove', updatePerspectiveMenu);
+window.addEventListener('resize', () => {
+    resetPerspectiveMenu();
+    moveToSlide(currentSlide);
+});
 
 // ============================================
 // CARRUSEL AUTOMÁTICO
@@ -144,6 +192,30 @@ carouselTrack.addEventListener('touchstart', () => {
 carouselTrack.addEventListener('touchend', () => {
     resetAutoSlide();
 }, false);
+
+// ============================================
+// Intento de descripcion en imágenes galería
+// ============================================
+document.getElementById("trigger").addEventListener("click", () => {
+        Fancybox.show([
+          // HTML content
+          {
+            html: "<p> Nos intentaremos plasmar a vosa idea nunha versión web adaptada ás vosas necesidades comerciais e estéticas. Axudaremosche no que desexes para que quede o máis orixinal e cun resultado final adaptado. </p>",
+          },
+          
+          {
+            html: "<p> O diseño moderno, minimalista, conceptual, aesthetic, dá igual! Pídenos consello e intentaremos facer unha páxinas web concreta aos teus gustos e os da túa empresa</p>",
+          },
+          {
+           html: "<p> Dende un primer momento encontrarás en Nordic Studio un lugar ao que acudir cando precises axuda técnica para a túa páxina. Estamos contigo nun proceso de desenvolvemento, de creación de contido e mantemento posterior para o que poideses precisar. </p>",
+          },
+            {
+           html: "<p> Porque colaborar? Porque cada mente ten unha perspectiva única e enriquecerse dos contidos que poidamos aportarnos é o máis importante </p>",
+          },
+        ],{
+            // Your custom options
+        });
+      })
 
 // ============================================
 // SCROLL EFFECTS & PARALLAX

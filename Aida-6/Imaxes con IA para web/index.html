@@ -26,11 +26,31 @@
                     <span></span>
                     <span></span>
                 </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                </ul>
+                <div class="Menu">
+                    <ul class="nav-menu Menu-list" id="navMenu" data-offset="10">
+                        <li class="Menu-list-item" data-offset="20" onclick>
+                            <a href="#inicio" class="nav-link">
+                                Inicio
+                                <span class="Mask"><span>Inicio</span></span>
+                                <span class="Mask"><span>Inicio</span></span>
+                            </a>
+                        </li>
+                        <li class="Menu-list-item" data-offset="16" onclick>
+                            <a href="#servicios" class="nav-link">
+                                Servicios
+                                <span class="Mask"><span>Servicios</span></span>
+                                <span class="Mask"><span>Servicios</span></span>
+                            </a>
+                        </li>
+                        <li class="Menu-list-item" data-offset="12" onclick>
+                            <a href="#contacto" class="nav-link">
+                                Contacto
+                                <span class="Mask"><span>Contacto</span></span>
+                                <span class="Mask"><span>Contacto</span></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
@@ -43,7 +63,7 @@
         <div class="hero-content">
             <h1 class="hero-title">Nordic Studio</h1>
             <p class="hero-subtitle">Diseño digital minimalista y elegante</p>
-            <button class="btn btn-primary" id="contactBtn">Contactar</button>
+            <button class="btn btn-primary  pulse" id="contactBtn">Contactar</button>
         </div>
     </section>
 
@@ -115,8 +135,17 @@
 
     <!-- GALLERY SECTION -->
     <section class="gallery-section" id="galeria">
+        <div id="dialog-content" style="display:none;max-width:500px;"></div>
         <h2 class="section-title">Nuestros Trabajos</h2>
-        <div class="gallery-grid">
+        <div>
+            <p>
+                <input type="text" />
+            </p>
+            <p>
+                Intentamos crear unha empresa colaborativa e con gran valor á colaboración entre os nosos traballadores
+                e por iso temos grandes ideas creativas facendo un brainstorming coas nosas ideas e en requerimento ó
+                desexo do cliente.
+            </p>
             <div class="gallery-item">
                 <img src="assets/Foto1.avif" loading="lazy" alt="Reunión creativa">
                 <div class="gallery-overlay">
