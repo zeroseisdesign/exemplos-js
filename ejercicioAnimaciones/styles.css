@@ -36,40 +36,6 @@ body {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
-.top-nav {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 100;
-  display: flex;
-  gap: 0.5rem;
-}
-
-.top-nav__link {
-  padding: 0.35rem 1rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-decoration: none;
-  color: var(--text);
-  background: var(--card);
-  border: 1px solid var(--accent);
-  opacity: 0.6;
-  transition: opacity 0.3s ease, background 0.3s ease;
-}
-
-.top-nav__link:hover {
-  opacity: 1;
-}
-
-.top-nav__link.active {
-  opacity: 1;
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
 .theme-toggle {
   position: fixed;
   top: 1rem;

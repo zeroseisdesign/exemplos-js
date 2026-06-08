@@ -5,17 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarxetas de Servizos</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .hero-img {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px var(--card-shadow);
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .gallery-section {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .gallery-section .img-block {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--card-shadow);
+    }
+
+    .gallery-section .img-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .gallery-section .img-block:first-child {
+      max-width: 300px;
+      justify-self: center;
+    }
+
+    .gallery-section .img-block:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .gallery-section .img-block:last-child img {
+      aspect-ratio: 1920 / 500;
+      object-fit: cover;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 640px) {
+      .gallery-section {
+        grid-template-columns: 1fr;
+      }
+      .gallery-section .img-block:first-child {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌙</button>
 
-  <nav class="top-nav">
-    <a href="index.html" class="top-nav__link active">Tarxetas</a>
-    <a href="prompts.html" class="top-nav__link">Prompts</a>
-  </nav>
-
   <main class="container">
+
+    <h1 class="title">Nordic Studio</h1>
+    <p class="section-label">Deseño dixital minimalista</p>
+
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=900&fit=crop&q=80" alt="Hero Nordic Studio">
+    </div>
+
     <h1 class="title">Os nosos servizos</h1>
 
     <div class="cards" id="cards">
@@ -94,6 +164,16 @@
       </article>
 
     </div>
+
+    <div class="gallery-section">
+      <div class="img-block">
+        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop&q=80" alt="Thumbnail">
+      </div>
+      <div class="img-block">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&h=500&fit=crop&q=80" alt="Banner">
+      </div>
+    </div>
+
   </main>
 
   <script src="main.js"></script>
