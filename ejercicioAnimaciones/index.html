@@ -7,6 +7,19 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css">
   <link rel="stylesheet" href="styles.css">
   <style>
+    .logo {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 101;
+      box-shadow: 0 2px 12px var(--card-shadow);
+      border: 2px solid var(--accent);
+    }
+
     .hero-carousel {
       position: relative;
       width: 100%;
@@ -135,6 +148,8 @@
   </style>
 </head>
 <body>
+
+  <img src="assets/fenrir.jpg" alt="Fenrir" class="logo">
 
   <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌙</button>
 

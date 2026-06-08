@@ -96,3 +96,22 @@ i'm a need specifict part the design is  onlyf the form. Make the project be sim
 
 #prompt8
 
+
+starting with the design Exercicio-8.pen i need your to complete and generate the index.html, style.css, script.js and all the code o templates of bootstrap i'm need to complete this design
+
+
+I need to be an expert in DevOps, especially in web development. I require you to take information from these URLs and official documents, which I provide at the end of this prompt. Make a double-check of the information and also make a query to each repository on GitHub such as MoureDev and others. Each query I make must serve to generate the correct code with corrections and comments on the lines, and generate the index.html, style.css, script.js files and the Bootstrap templates according to the requirement.
+
+#prompt9
+
+Modern technology professional working on a sleek laptop at a minimalist Scandinavian desk, clean workspace with natural wood textures, subtle technological elements, contemporary architectural office interior with large windows, uncluttered environment, neutral color palette (white, beige, light oak, soft gray), Scandinavian minimalism, professional corporate branding photography, soft natural daylight entering from the side, realistic shadows, premium visual quality, highly detailed textures, sharp focus, modern technology company aesthetic, clean composition with negative space, designed for website hero section and corporate branding, photorealistic, ultra high resolution.
+
+#prompt10
+
+Minimalist technology setup featuring a premium laptop, smartphone and wireless accessories arranged on a clean Scandinavian workspace, light oak desk surface, architectural background with soft geometric lines, neutral tones, elegant and functional composition, Scandinavian design principles, professional technology branding style, soft natural daylight, balanced exposure, subtle reflections, premium product photography, ultra clean aesthetics, highly detailed materials and textures, realistic rendering, modern and trustworthy brand image, ample negative space for website content, optimized for web design and corporate visual identity, ultra realistic, high resolution.
+
+#prompt11
+
+Contemporary Scandinavian technology office interior, minimalist architecture with clean lines, natural wood, white surfaces and glass elements, elegant collaborative workspace, modern technological atmosphere without visible people, spacious environment, refined architectural details, soft neutral color palette, Scandinavian minimalism, premium corporate photography style, abundant natural daylight through large windows, soft shadows and balanced lighting, highly detailed architectural visualization, realistic materials, clean and sophisticated composition, professional technology company branding aesthetic, ideal for website backgrounds and visual identity assets, photorealistic, ultra high resolution.
+
+
