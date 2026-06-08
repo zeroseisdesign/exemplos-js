@@ -95,3 +95,4 @@ Imagine that you are designing the website of a creative studio called 'Nordic S
 i'm a need specifict part the design is  onlyf the form. Make the project be simillar only the form to a design by next the follow url: https://www.figma.com/design/I7jqelUJWMpMYNgYOMqz6b/exercicio-8?node-id=2-2&t=9fi9b8RvfQ7EhHDq-4.  generate and save in this location C:\xampp\htdocs\xampp\proyectoJavascript2\exemplos-js\ejercicioAnimaciones
 
 #prompt8
+

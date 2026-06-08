@@ -52,6 +52,72 @@
     });
   });
 
+  // ─── Hero Carousel ────────────────────────────────
+  (function () {
+    var carousel = document.getElementById('heroCarousel');
+    if (!carousel) return;
+
+    var slides = carousel.querySelector('.slides');
+    var images = slides.querySelectorAll('img');
+    var total = images.length;
+    if (total < 2) return;
+
+    var current = 0;
+    var interval;
+    var DURATION = 5000;
+
+    function goTo(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
+      current = index;
+      slides.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, i) {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAuto() {
+      stopAuto();
+      interval = setInterval(next, DURATION);
+    }
+
+    function stopAuto() {
+      clearInterval(interval);
+    }
+
+    // Dots
+    var dotsContainer = document.getElementById('heroDots');
+    var dots = [];
+    for (var i = 0; i < total; i++) {
+      var btn = document.createElement('button');
+      btn.setAttribute('aria-label', 'Ir á imaxe ' + (i + 1));
+      if (i === 0) btn.classList.add('active');
+      btn.addEventListener('click', function (idx) {
+        return function () { goTo(idx); startAuto(); };
+      }(i));
+      dotsContainer.appendChild(btn);
+      dots.push(btn);
+    }
+
+    // Arrows
+    document.getElementById('heroPrev').addEventListener('click', function () { prev(); startAuto(); });
+    document.getElementById('heroNext').addEventListener('click', function () { next(); startAuto(); });
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+
+    startAuto();
+  })();
+
+  // ─── Fancybox ────────────────────────────────────
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    Thumbs: { autoStart: false }
+  });
+
   // ─── Pechar ao clicar fóra ───────────────────────
   document.addEventListener('click', function (e) {
     if (!e.target.closest('.card')) {

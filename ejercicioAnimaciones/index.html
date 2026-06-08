@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarxetas de Servizos</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .hero-img {
+    .hero-carousel {
+      position: relative;
       width: 100%;
       border-radius: 16px;
       overflow: hidden;
@@ -14,43 +16,72 @@
       box-shadow: 0 4px 20px var(--card-shadow);
     }
 
-    .hero-img img {
+    .hero-carousel .slides {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-carousel .slides img {
       width: 100%;
-      height: auto;
+      flex-shrink: 0;
       display: block;
     }
 
-    .gallery-section {
-      margin-top: 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+    .hero-carousel .dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
     }
 
-    .gallery-section .img-block {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px var(--card-shadow);
+    .hero-carousel .dots button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.7);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s ease;
     }
 
-    .gallery-section .img-block img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .hero-carousel .dots button.active {
+      background: #fff;
+      border-color: #fff;
     }
 
-    .gallery-section .img-block:first-child {
-      max-width: 300px;
-      justify-self: center;
+    .hero-carousel .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+      z-index: 2;
+      backdrop-filter: blur(2px);
     }
 
-    .gallery-section .img-block:last-child {
-      grid-column: 1 / -1;
+    .hero-carousel .arrow:hover {
+      background: rgba(255,255,255,0.3);
     }
 
-    .gallery-section .img-block:last-child img {
-      aspect-ratio: 1920 / 500;
-      object-fit: cover;
+    .hero-carousel .arrow.prev {
+      left: 12px;
+    }
+
+    .hero-carousel .arrow.next {
+      right: 12px;
     }
 
     .section-label {
@@ -63,12 +94,42 @@
       margin-bottom: 0.75rem;
     }
 
+    .gallery-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .gallery-section .img-block {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--card-shadow);
+      display: block;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .gallery-section a.img-block:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px var(--card-shadow);
+    }
+
+    .gallery-section .img-block img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.4s ease, transform 0.4s ease;
+    }
+
+    .gallery-section .img-block:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
     @media (max-width: 640px) {
       .gallery-section {
         grid-template-columns: 1fr;
-      }
-      .gallery-section .img-block:first-child {
-        max-width: 100%;
       }
     }
   </style>
@@ -82,8 +143,17 @@
     <h1 class="title">Nordic Studio</h1>
     <p class="section-label">Deseño dixital minimalista</p>
 
-    <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=900&fit=crop&q=80" alt="Hero Nordic Studio">
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="slides">
+        <img src="assets/hero-1.jpg" alt="Hero 1">
+        <img src="assets/hero-2.jpg" alt="Hero 2">
+        <img src="assets/hero-3.jpg" alt="Hero 3">
+        <img src="assets/hero-4.jpg" alt="Hero 4">
+        <img src="assets/hero-5.jpg" alt="Hero 5">
+      </div>
+      <button class="arrow prev" id="heroPrev">&#8249;</button>
+      <button class="arrow next" id="heroNext">&#8250;</button>
+      <div class="dots" id="heroDots"></div>
     </div>
 
     <h1 class="title">Os nosos servizos</h1>
@@ -165,17 +235,32 @@
 
     </div>
 
+    <p class="section-label">Galería de traballos</p>
+
     <div class="gallery-section">
-      <div class="img-block">
-        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop&q=80" alt="Thumbnail">
-      </div>
-      <div class="img-block">
-        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&h=500&fit=crop&q=80" alt="Banner">
-      </div>
+      <a href="assets/gallery-1-1200.jpg" data-fancybox="gallery" class="img-block">
+        <img src="assets/gallery-1-800.jpg" srcset="assets/gallery-1-300.jpg 300w, assets/gallery-1-800.jpg 800w, assets/gallery-1-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Branding" loading="lazy">
+      </a>
+      <a href="assets/gallery-2-1200.jpg" data-fancybox="gallery" class="img-block">
+        <img src="assets/gallery-2-800.jpg" srcset="assets/gallery-2-300.jpg 300w, assets/gallery-2-800.jpg 800w, assets/gallery-2-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Deseño dixital" loading="lazy">
+      </a>
+      <a href="assets/gallery-3-1200.jpg" data-fancybox="gallery" class="img-block">
+        <img src="assets/gallery-3-800.jpg" srcset="assets/gallery-3-300.jpg 300w, assets/gallery-3-800.jpg 800w, assets/gallery-3-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Consultoría" loading="lazy">
+      </a>
+      <a href="assets/gallery-4-1200.jpg" data-fancybox="gallery" class="img-block">
+        <img src="assets/gallery-4-800.jpg" srcset="assets/gallery-4-300.jpg 300w, assets/gallery-4-800.jpg 800w, assets/gallery-4-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Oficina moderna" loading="lazy">
+      </a>
+      <a href="assets/gallery-5-1200.jpg" data-fancybox="gallery" class="img-block">
+        <img src="assets/gallery-5-800.jpg" srcset="assets/gallery-5-300.jpg 300w, assets/gallery-5-800.jpg 800w, assets/gallery-5-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Tecnoloxía" loading="lazy">
+      </a>
+      <a href="assets/gallery-6-1200.jpg" data-fancybox="gallery" class="img-block">
+        <img src="assets/gallery-6-800.jpg" srcset="assets/gallery-6-300.jpg 300w, assets/gallery-6-800.jpg 800w, assets/gallery-6-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Equipo creativo" loading="lazy">
+      </a>
     </div>
 
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
