@@ -113,6 +113,15 @@
     startAuto();
   })();
 
+  // ─── AOS ─────────────────────────────────────────
+  AOS.init({
+    duration: 600,
+    easing: 'ease-out-cubic',
+    once: true,
+    mirror: false,
+    offset: 60,
+  });
+
   // ─── Fancybox ────────────────────────────────────
   Fancybox.bind('[data-fancybox="gallery"]', {
     Thumbs: { autoStart: false }
@@ -127,34 +136,4 @@
     }
   });
 
-  // ─── Intersection Observer con stagger ──────────
-  if ('IntersectionObserver' in window) {
-    var cards = document.querySelectorAll('.card');
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var card = entry.target;
-            var delay = parseInt(card.getAttribute('data-delay')) || 0;
-
-            setTimeout(function () {
-              card.classList.add('stagger-in');
-            }, delay);
-
-            observer.unobserve(card);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    cards.forEach(function (card) {
-      observer.observe(card);
-    });
-  } else {
-    document.querySelectorAll('.card').forEach(function (card) {
-      card.classList.add('stagger-in');
-    });
-  }
 })();
