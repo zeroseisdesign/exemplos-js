@@ -194,28 +194,33 @@ carouselTrack.addEventListener('touchend', () => {
 }, false);
 
 // ============================================
-// Intento de descripcion en imágenes galería
+// Fancybox para carrusel y galería
 // ============================================
-document.getElementById("trigger").addEventListener("click", () => {
-        Fancybox.show([
-          // HTML content
-          {
-            html: "<p> Nos intentaremos plasmar a vosa idea nunha versión web adaptada ás vosas necesidades comerciais e estéticas. Axudaremosche no que desexes para que quede o máis orixinal e cun resultado final adaptado. </p>",
-          },
-          
-          {
-            html: "<p> O diseño moderno, minimalista, conceptual, aesthetic, dá igual! Pídenos consello e intentaremos facer unha páxinas web concreta aos teus gustos e os da túa empresa</p>",
-          },
-          {
-           html: "<p> Dende un primer momento encontrarás en Nordic Studio un lugar ao que acudir cando precises axuda técnica para a túa páxina. Estamos contigo nun proceso de desenvolvemento, de creación de contido e mantemento posterior para o que poideses precisar. </p>",
-          },
-            {
-           html: "<p> Porque colaborar? Porque cada mente ten unha perspectiva única e enriquecerse dos contidos que poidamos aportarnos é o máis importante </p>",
-          },
-        ],{
-            // Your custom options
+Fancybox.bind('[data-fancybox="gallery"]', {
+    caption: function (fancybox, carousel, slide) {
+        return slide.$trigger ? slide.$trigger.dataset.caption : '';
+    }
+});
+
+const carouselImages = document.querySelectorAll('.carousel-slide .carousel-img img');
+
+if (carouselImages.length > 0) {
+    const fancyItems = Array.from(carouselImages).map(img => ({
+        src: img.src,
+        type: 'image',
+        caption: img.alt || ''
+    }));
+
+    carouselImages.forEach((img, index) => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', (event) => {
+            event.preventDefault();
+            Fancybox.show(fancyItems, {
+                startIndex: index
+            });
         });
-      })
+    });
+}
 
 // ============================================
 // SCROLL EFFECTS & PARALLAX
@@ -383,6 +388,39 @@ document.addEventListener('keydown', (e) => {
         nextSlide();
     }
 });
+
+// ============================================
+// ACTIVE NAV LINK ON SCROLL (scroll spy)
+// ============================================
+const navSections = [
+    { id: 'inicio', linkIndex: 0 },
+    { id: 'servicios', linkIndex: 1 },
+    { id: 'contacto', linkIndex: 2 }
+];
+
+function updateActiveNav() {
+    const scrollY = window.scrollY;
+    let currentIndex = -1;
+
+    navSections.forEach((s, i) => {
+        const el = document.getElementById(s.id);
+        if (el) {
+            const offset = el.offsetTop - 120;
+            if (scrollY >= offset) {
+                currentIndex = i;
+            }
+        }
+    });
+
+    menuItems.forEach(item => item.classList.remove('active'));
+    if (currentIndex >= 0 && menuItems[currentIndex]) {
+        menuItems[currentIndex].classList.add('active');
+    }
+}
+
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+window.addEventListener('resize', updateActiveNav);
+updateActiveNav();
 
 // ============================================
 // INICIALIZACIÓN

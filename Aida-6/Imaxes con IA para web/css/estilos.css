@@ -166,7 +166,8 @@ img {
 
 .Menu-list-item:hover .Mask,
 .Menu-list-item:active .Mask,
-.Menu-list-item:focus-within .Mask {
+.Menu-list-item:focus-within .Mask,
+.Menu-list-item.active .Mask {
     color: #631919;
     opacity: 1;
     transform: skewX(12deg) translateX(5px);
@@ -174,13 +175,15 @@ img {
 
 .Menu-list-item:hover .Mask + .Mask,
 .Menu-list-item:active .Mask + .Mask,
-.Menu-list-item:focus-within .Mask + .Mask {
+.Menu-list-item:focus-within .Mask + .Mask,
+.Menu-list-item.active .Mask + .Mask {
     transform: skewX(12deg) translateX(-5px);
 }
 
 .Menu-list-item:hover::before,
 .Menu-list-item:active::before,
-.Menu-list-item:focus-within::before {
+.Menu-list-item:focus-within::before,
+.Menu-list-item.active::before {
     transform: scaleX(1);
 }
 .navbar {
@@ -243,7 +246,8 @@ img {
 
 .Menu-list-item:hover .nav-link,
 .Menu-list-item:active .nav-link,
-.Menu-list-item:focus-within .nav-link {
+.Menu-list-item:focus-within .nav-link,
+.Menu-list-item.active .nav-link {
     color: transparent;
     text-shadow: none;
 }
@@ -408,7 +412,7 @@ img {
    CAROUSEL SECTION
    ============================================ */
 .carousel-section {
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
     background-color: var(--color-primary);
     position: relative;
 }
@@ -456,13 +460,13 @@ img {
     overflow: hidden;
     border-radius: 4px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 16 / 9;
 }
 
 .carousel-img img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    max-height: 450px;
     object-fit: cover;
     transition: transform 0.6s ease;
 }
@@ -567,9 +571,18 @@ img {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 1;
+    aspect-ratio: 4 / 3;
     border-radius: 4px;
     cursor: pointer;
+    display: block;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.gallery-item:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
 }
 
 .gallery-item img {
@@ -588,7 +601,7 @@ img {
 .gallery-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(74, 74, 74, 0.9) 0%, rgba(74, 74, 74, 0.7) 100%);
+    background: linear-gradient(135deg, rgba(74, 74, 74, 0.85) 0%, rgba(74, 74, 74, 0.65) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -606,6 +619,7 @@ img {
     font-weight: 500;
     letter-spacing: 1px;
     text-align: center;
+    padding: 1rem;
 }
 
 /* ============================================
@@ -961,7 +975,7 @@ img {
         height: 38px;
         font-size: 1rem;
         position: absolute;
-        top: clamp(110px, 31vw, 170px);
+        top: clamp(90px, 24vw, 200px);
         transform: translateY(-50%);
         z-index: 10;
     }
@@ -972,12 +986,6 @@ img {
 
     .carousel-next {
         right: 0.5rem;
-    }
-
-    .carousel-img img {
-        height: clamp(220px, 52vw, 340px);
-        max-height: none;
-        object-fit: cover;
     }
 
     .gallery-grid {
@@ -1050,11 +1058,6 @@ img {
 
     .carousel-slide {
         gap: 0.75rem;
-    }
-
-    .carousel-img img {
-        height: 220px;
-        max-height: none;
     }
 
     .carousel-caption h3 {

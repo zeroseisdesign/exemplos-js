@@ -1,14 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="gl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Imaxes con IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            background: #0a0a0f;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: clamp(28px, 5vw, 56px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #6B01B8, #17EA9E);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            overflow: hidden;
+            border-radius: 16px;
+            background: #15151f;
+            transition: transform .3s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.02);
+        }
+
+        .grid-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .grid-item.tall {
+            grid-row: span 2;
+        }
+
+        .grid-item.wide {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 640px) {
+            .grid-item.wide {
+                grid-column: span 1;
+            }
+            .grid-item.tall {
+                grid-row: span 1;
+            }
+            .grid {
+                gap: 16px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <h1> Imaxes con <span>IA</span></h1>
+    <p class="subtitle">Exploración visual xerada por intelixencia artificial</p>
 
+    <div class="grid">
+        <div class="grid-item wide"><img src="imaxe-1.jpg" srcset="imaxe-1.jpg 1x, imaxe-1@2x.jpg 2x" alt="" loading="lazy"></div>
+        <div class="grid-item tall"><img src="imaxe-2.jpg" srcset="imaxe-2.jpg 1x, imaxe-2@2x.jpg 2x" alt="" loading="lazy"></div>
+        <div class="grid-item tall"><img src="imaxe-3.jpg" srcset="imaxe-3.jpg 1x, imaxe-3@2x.jpg 2x" alt="" loading="lazy"></div>
+        <div class="grid-item"><img src="imaxe-440.jpg" alt="" loading="lazy"></div>
+        <div class="grid-item wide"><img src="imaxe-4.jpg" srcset="imaxe-4.jpg 1x, imaxe-4@2x.jpg 2x" alt="" loading="lazy"></div>
+    </div>
 </body>
-
 </html>

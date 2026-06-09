@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nordic Studio - Diseño Digital Minimalista</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
 </head>
 
 <body>
@@ -135,53 +136,44 @@
 
     <!-- GALLERY SECTION -->
     <section class="gallery-section" id="galeria">
-        <div id="dialog-content" style="display:none;max-width:500px;"></div>
-        <h2 class="section-title">Nuestros Trabajos</h2>
-        <div>
-            <p>
-                <input type="text" />
-            </p>
-            <p>
-                Intentamos crear unha empresa colaborativa e con gran valor á colaboración entre os nosos traballadores
-                e por iso temos grandes ideas creativas facendo un brainstorming coas nosas ideas e en requerimento ó
-                desexo do cliente.
-            </p>
-            <div class="gallery-item">
+        <h2 class="section-title">Galería</h2>
+        <div class="gallery-grid">
+            <a href="assets/Foto1.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Reunión creativa</strong><br>Equipo colaborando en soluciones innovadoras">
                 <img src="assets/Foto1.avif" loading="lazy" alt="Reunión creativa">
                 <div class="gallery-overlay">
                     <h3>Reunión creativa</h3>
                 </div>
-            </div>
-            <div class="gallery-item">
+            </a>
+            <a href="assets/foto2.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Conceptualización</strong><br>Plasmamos tus ideas en wireframes">
                 <img src="assets/foto2.avif" loading="lazy" alt="Conceptualización">
                 <div class="gallery-overlay">
                     <h3>Conceptualización</h3>
                 </div>
-            </div>
-            <div class="gallery-item">
+            </a>
+            <a href="assets/Foto3.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Diseño digital</strong><br>Creamos interfaces modernas y funcionales">
                 <img src="assets/Foto3.avif" loading="lazy" alt="Diseño digital">
                 <div class="gallery-overlay">
                     <h3>Diseño digital</h3>
                 </div>
-            </div>
-            <div class="gallery-item">
+            </a>
+            <a href="assets/Foto4.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Experiencia de usuario</strong><br>Interfaces intuitivas y accesibles">
                 <img src="assets/Foto4.avif" loading="lazy" alt="Experiencia de usuario">
                 <div class="gallery-overlay">
                     <h3>Experiencia de usuario</h3>
                 </div>
-            </div>
-            <div class="gallery-item">
+            </a>
+            <a href="assets/Foto5.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Colaboración</strong><br>Trabajamos juntos en cada proyecto">
                 <img src="assets/Foto5.avif" loading="lazy" alt="Colaboración">
                 <div class="gallery-overlay">
                     <h3>Colaboración</h3>
                 </div>
-            </div>
-            <div class="gallery-item">
+            </a>
+            <a href="assets/Foto6.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Presentación final</strong><br>Resultados que superan expectativas">
                 <img src="assets/Foto6.avif" loading="lazy" alt="Presentación final">
                 <div class="gallery-overlay">
                     <h3>Presentación final</h3>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -237,7 +229,7 @@
             <button class="btn-back-to-top" id="backToTop">↑ Volver al inicio</button>
         </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
     <script src="scripts/scritp.js"></script>
 </body>
 
