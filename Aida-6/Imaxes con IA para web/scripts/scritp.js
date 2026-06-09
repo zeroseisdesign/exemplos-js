@@ -3,7 +3,6 @@
 // ============================================
 
 // DOM Elements
-const pageLoader = document.getElementById('pageLoader');
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -19,15 +18,6 @@ let currentSlide = 0;
 const slides = document.querySelectorAll('.carousel-slide');
 const totalSlides = slides.length;
 let autoSlideInterval;
-
-// ============================================
-// PAGE LOADER
-// ============================================
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        pageLoader.classList.add('hidden');
-    }, 800);
-});
 
 // ============================================
 // NAVEGACIÓN HAMBURGUESA
@@ -95,7 +85,14 @@ function resetPerspectiveMenu() {
     });
 }
 
-window.addEventListener('mousemove', updatePerspectiveMenu);
+let rafMousemoveId = null;
+window.addEventListener('mousemove', (e) => {
+    if (rafMousemoveId) return;
+    rafMousemoveId = requestAnimationFrame(() => {
+        updatePerspectiveMenu(e);
+        rafMousemoveId = null;
+    });
+});
 window.addEventListener('resize', () => {
     resetPerspectiveMenu();
     moveToSlide(currentSlide);
@@ -164,6 +161,15 @@ nextBtn.addEventListener('click', nextSlide);
 // Iniciar auto-slide
 autoSlideInterval = setInterval(autoSlide, 5000);
 
+// Pausar auto-slide al ocultar la pestaña
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        clearInterval(autoSlideInterval);
+    } else {
+        resetAutoSlide();
+    }
+});
+
 // Sincronizar dots al hacer scroll manual
 carouselTrack.addEventListener('scroll', () => {
     const slideWidth = getSlideWidth();
@@ -194,33 +200,33 @@ carouselTrack.addEventListener('touchend', () => {
 }, false);
 
 // ============================================
-// Fancybox para carrusel y galería
+// Lightbox nativo con <dialog>
 // ============================================
-Fancybox.bind('[data-fancybox="gallery"]', {
-    caption: function (fancybox, carousel, slide) {
-        return slide.$trigger ? slide.$trigger.dataset.caption : '';
-    }
+const lightboxDialog = document.createElement('dialog');
+lightboxDialog.id = 'lightbox';
+lightboxDialog.innerHTML = '<div class="lightbox-overlay"><button class="lightbox-close" aria-label="Cerrar">&times;</button><img class="lightbox-img" src="" alt=""><p class="lightbox-caption"></p></div>';
+document.body.appendChild(lightboxDialog);
+
+const lightboxImg = lightboxDialog.querySelector('.lightbox-img');
+const lightboxCaption = lightboxDialog.querySelector('.lightbox-caption');
+const lightboxClose = lightboxDialog.querySelector('.lightbox-close');
+
+document.querySelectorAll('[data-lightbox="gallery"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        lightboxImg.src = link.href;
+        lightboxCaption.textContent = link.dataset.caption || '';
+        lightboxDialog.showModal();
+    });
 });
 
-const carouselImages = document.querySelectorAll('.carousel-slide .carousel-img img');
-
-if (carouselImages.length > 0) {
-    const fancyItems = Array.from(carouselImages).map(img => ({
-        src: img.src,
-        type: 'image',
-        caption: img.alt || ''
-    }));
-
-    carouselImages.forEach((img, index) => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', (event) => {
-            event.preventDefault();
-            Fancybox.show(fancyItems, {
-                startIndex: index
-            });
-        });
-    });
-}
+lightboxClose.addEventListener('click', () => lightboxDialog.close());
+lightboxDialog.addEventListener('click', (e) => {
+    if (e.target === lightboxDialog) lightboxDialog.close();
+});
+lightboxDialog.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightboxDialog.close();
+});
 
 // ============================================
 // SCROLL EFFECTS & PARALLAX (with RAF)
