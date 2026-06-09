@@ -4,6 +4,28 @@
     box-sizing: border-box;
 }
 
+*:focus-visible {
+    outline: 3px solid #C990CC;
+    outline-offset: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    z-index: 10000;
+    padding: 12px 24px;
+    background: #C990CC;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.1s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #FFFFFF;
@@ -360,4 +382,32 @@ body {
     text-decoration: none;
     color: inherit;
     display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .botar {
+        animation: none;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .trans-card {
+        transition: none;
+    }
+
+    .trans-card:hover {
+        transform: none;
+    }
+
+    .service-card:hover {
+        transform: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
 }
