@@ -175,7 +175,7 @@ carouselTrack.addEventListener('scroll', () => {
             resetAutoSlide();
         }
     }
-});
+}, { passive: true });
 
 // Pausar auto-slide cuando el usuario interactúa
 carouselTrack.addEventListener('mouseenter', () => {
@@ -223,23 +223,28 @@ if (carouselImages.length > 0) {
 }
 
 // ============================================
-// SCROLL EFFECTS & PARALLAX
+// SCROLL EFFECTS & PARALLAX (with RAF)
 // ============================================
+let ticking = false;
+const navbar = document.querySelector('.navbar');
+const heroImg = document.querySelector('.hero-background img');
+
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    const scrolled = window.scrollY;
-    
-    if (scrolled > 100) {
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+
+            navbar.classList.toggle('scrolled', scrolled > 100);
+
+            if (heroImg && scrolled <= window.innerHeight) {
+                heroImg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+            }
+
+            ticking = false;
+        });
+        ticking = true;
     }
-    
-    const heroImg = document.querySelector('.hero-background img');
-    if (heroImg && scrolled <= window.innerHeight) {
-        heroImg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
-    }
-});
+}, { passive: true });
 
 // ============================================
 // BOTÓN CONTACTAR (HERO)
@@ -330,25 +335,6 @@ contactForm.addEventListener('submit', (e) => {
 });
 
 // ============================================
-// SMOOTH SCROLL LINKS
-// ============================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-    });
-});
-
-// ============================================
 // ANIMACIONES AL SCROLL (INTERSECTION OBSERVER)
 // ============================================
 const observerOptions = {
@@ -425,4 +411,3 @@ updateActiveNav();
 // ============================================
 // INICIALIZACIÓN
 // ============================================
-console.log('Nordic Studio - Sitio web cargado correctamente');

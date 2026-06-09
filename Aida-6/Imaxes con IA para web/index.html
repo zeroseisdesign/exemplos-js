@@ -4,9 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nordic Studio - Diseño Digital Minimalista</title>
+    <title>Nordic Studio - Diseño Digital Minimalista y Elegante</title>
+    <meta name="description" content="Nordic Studio: diseño digital minimalista, creación de páginas web, logotipos, frameworks y mantenimiento web. Transformamos tus ideas en experiencias digitales únicas.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nordicstudio.com">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nordic Studio - Diseño Digital Minimalista y Elegante">
+    <meta property="og:description" content="Transformamos tus ideas en experiencias digitales únicas con diseño minimalista, páginas web, logotipos y más.">
+    <meta property="og:image" content="https://nordicstudio.com/assets/hero.avif">
+    <meta property="og:url" content="https://nordicstudio.com">
+    <meta property="og:site_name" content="Nordic Studio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nordic Studio - Diseño Digital Minimalista y Elegante">
+    <meta name="twitter:description" content="Transformamos tus ideas en experiencias digitales únicas con diseño minimalista, páginas web, logotipos y más.">
+    <meta name="twitter:image" content="https://nordicstudio.com/assets/hero.avif">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preload" href="assets/hero.avif" as="image" fetchpriority="high">
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Nordic Studio",
+        "url": "https://nordicstudio.com",
+        "logo": "https://nordicstudio.com/assets/logo.png",
+        "description": "Diseño digital minimalista y elegante. Creación de páginas web, logotipos, frameworks y mantenimiento web.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service"
+        }
+    }
+    </script>
 </head>
 
 <body>
@@ -21,7 +51,7 @@
         <!-- NAVIGATION -->
         <nav class="navbar">
             <div class="nav-container">
-                <a href="#inicio" class="logo-link"><img src="assets/logo.png" alt="Nordic Studio" class="logo"></a>
+                <a href="#inicio" class="logo-link"><img src="assets/logo.png" alt="Nordic Studio" class="logo" width="200" height="120"></a>
                 <div class="nav-toggle" id="navToggle">
                     <span></span>
                     <span></span>
@@ -29,21 +59,21 @@
                 </div>
                 <div class="Menu">
                     <ul class="nav-menu Menu-list" id="navMenu" data-offset="10">
-                        <li class="Menu-list-item" data-offset="20" onclick>
+                        <li class="Menu-list-item" data-offset="20">
                             <a href="#inicio" class="nav-link">
                                 Inicio
                                 <span class="Mask"><span>Inicio</span></span>
                                 <span class="Mask"><span>Inicio</span></span>
                             </a>
                         </li>
-                        <li class="Menu-list-item" data-offset="16" onclick>
+                        <li class="Menu-list-item" data-offset="16">
                             <a href="#servicios" class="nav-link">
                                 Servicios
                                 <span class="Mask"><span>Servicios</span></span>
                                 <span class="Mask"><span>Servicios</span></span>
                             </a>
                         </li>
-                        <li class="Menu-list-item" data-offset="12" onclick>
+                        <li class="Menu-list-item" data-offset="12">
                             <a href="#contacto" class="nav-link">
                                 Contacto
                                 <span class="Mask"><span>Contacto</span></span>
@@ -57,7 +87,7 @@
 
         <!-- HERO BACKGROUND IMAGE -->
         <div class="hero-background">
-            <img src="assets/hero.avif" alt="Nordic Studio - Diseño Digital Minimalista" loading="eager">
+            <img src="assets/hero.avif" alt="Nordic Studio - Diseño Digital Minimalista" width="1920" height="1080" fetchpriority="high">
         </div>
 
         <!-- HERO CONTENT -->
@@ -76,7 +106,7 @@
             <div class="carousel-track" id="carouselTrack">
                 <div class="carousel-slide">
                     <div class="carousel-img">
-                        <img src="assets/Foto1.avif" loading="lazy" alt="Reunión creativa">
+                        <img src="assets/Foto1.avif" loading="lazy" alt="Reunión creativa" width="800" height="450">
                     </div>
                     <div class="carousel-caption">
                         <h3>Reunión creativa</h3>
@@ -85,7 +115,7 @@
                 </div>
                 <div class="carousel-slide">
                     <div class="carousel-img">
-                        <img src="assets/foto2.avif" loading="lazy" alt="Conceptualización">
+                        <img src="assets/foto2.avif" loading="lazy" alt="Conceptualización" width="800" height="450">
                     </div>
                     <div class="carousel-caption">
                         <h3>Conceptualización</h3>
@@ -94,7 +124,7 @@
                 </div>
                 <div class="carousel-slide">
                     <div class="carousel-img">
-                        <img src="assets/Foto3.avif" loading="lazy" alt="Diseño digital">
+                        <img src="assets/Foto3.avif" loading="lazy" alt="Diseño digital" width="800" height="450">
                     </div>
                     <div class="carousel-caption">
                         <h3>Diseño digital</h3>
@@ -103,7 +133,7 @@
                 </div>
                 <div class="carousel-slide">
                     <div class="carousel-img">
-                        <img src="assets/Foto4.avif" loading="lazy" alt="Experiencia de usuario">
+                        <img src="assets/Foto4.avif" loading="lazy" alt="Experiencia de usuario" width="800" height="450">
                     </div>
                     <div class="carousel-caption">
                         <h3>Experiencia de usuario</h3>
@@ -112,7 +142,7 @@
                 </div>
                 <div class="carousel-slide">
                     <div class="carousel-img">
-                        <img src="assets/Foto5.avif" loading="lazy" alt="Colaboración">
+                        <img src="assets/Foto5.avif" loading="lazy" alt="Colaboración" width="800" height="450">
                     </div>
                     <div class="carousel-caption">
                         <h3>Colaboración</h3>
@@ -121,7 +151,7 @@
                 </div>
                 <div class="carousel-slide">
                     <div class="carousel-img">
-                        <img src="assets/Foto6.avif" loading="lazy" alt="Presentación final">
+                        <img src="assets/Foto6.avif" loading="lazy" alt="Presentación final" width="800" height="450">
                     </div>
                     <div class="carousel-caption">
                         <h3>Presentación final</h3>
@@ -139,37 +169,37 @@
         <h2 class="section-title">Galería</h2>
         <div class="gallery-grid">
             <a href="assets/Foto1.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Reunión creativa</strong><br>Equipo colaborando en soluciones innovadoras">
-                <img src="assets/Foto1.avif" loading="lazy" alt="Reunión creativa">
+                <img src="assets/Foto1.avif" loading="lazy" alt="Reunión creativa" width="800" height="600">
                 <div class="gallery-overlay">
                     <h3>Reunión creativa</h3>
                 </div>
             </a>
             <a href="assets/foto2.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Conceptualización</strong><br>Plasmamos tus ideas en wireframes">
-                <img src="assets/foto2.avif" loading="lazy" alt="Conceptualización">
+                <img src="assets/foto2.avif" loading="lazy" alt="Conceptualización" width="800" height="600">
                 <div class="gallery-overlay">
                     <h3>Conceptualización</h3>
                 </div>
             </a>
             <a href="assets/Foto3.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Diseño digital</strong><br>Creamos interfaces modernas y funcionales">
-                <img src="assets/Foto3.avif" loading="lazy" alt="Diseño digital">
+                <img src="assets/Foto3.avif" loading="lazy" alt="Diseño digital" width="800" height="600">
                 <div class="gallery-overlay">
                     <h3>Diseño digital</h3>
                 </div>
             </a>
             <a href="assets/Foto4.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Experiencia de usuario</strong><br>Interfaces intuitivas y accesibles">
-                <img src="assets/Foto4.avif" loading="lazy" alt="Experiencia de usuario">
+                <img src="assets/Foto4.avif" loading="lazy" alt="Experiencia de usuario" width="800" height="600">
                 <div class="gallery-overlay">
                     <h3>Experiencia de usuario</h3>
                 </div>
             </a>
             <a href="assets/Foto5.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Colaboración</strong><br>Trabajamos juntos en cada proyecto">
-                <img src="assets/Foto5.avif" loading="lazy" alt="Colaboración">
+                <img src="assets/Foto5.avif" loading="lazy" alt="Colaboración" width="800" height="600">
                 <div class="gallery-overlay">
                     <h3>Colaboración</h3>
                 </div>
             </a>
             <a href="assets/Foto6.avif" class="gallery-item" data-fancybox="gallery" data-caption="<strong>Presentación final</strong><br>Resultados que superan expectativas">
-                <img src="assets/Foto6.avif" loading="lazy" alt="Presentación final">
+                <img src="assets/Foto6.avif" loading="lazy" alt="Presentación final" width="800" height="600">
                 <div class="gallery-overlay">
                     <h3>Presentación final</h3>
                 </div>
@@ -180,7 +210,7 @@
     <!-- SERVICES SECTION -->
     <section class="services-section" id="servicios">
         <div class="services-banner">
-            <img src="assets/banner.avif" loading="lazy" alt="Servicios Nordic Studio">
+            <img src="assets/banner.avif" loading="lazy" alt="Servicios Nordic Studio" width="1920" height="600">
         </div>
         <div class="services-content">
             <h2 class="section-title">Nuestros Servicios</h2>
@@ -229,8 +259,8 @@
             <button class="btn-back-to-top" id="backToTop">↑ Volver al inicio</button>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
-    <script src="scripts/scritp.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
+    <script defer src="scripts/scritp.js"></script>
 </body>
 
 </html>

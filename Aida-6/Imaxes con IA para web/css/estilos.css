@@ -14,7 +14,6 @@
     
     --font-primary: 'Georgia', 'Trebuchet MS', sans-serif;
     --font-size-base: 16px;
-    --spacing-unit: 1rem;
     --transition-speed: 0.3s ease;
     --transition-slow: 0.6s ease;
 }
@@ -199,6 +198,10 @@ img {
     transition: box-shadow var(--transition-speed);
 }
 
+.navbar.scrolled {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -250,14 +253,6 @@ img {
 .Menu-list-item.active .nav-link {
     color: transparent;
     text-shadow: none;
-}
-
-.nav-link::after {
-    display: none;
-}
-
-.nav-link:hover::after {
-    display: none;
 }
 
 .nav-toggle {
@@ -338,17 +333,6 @@ img {
     animation: fadeInUp 1s ease 0.3s both;
 }
 
-@keyframes zoomIn {
-    from {
-        transform: scale(1.1);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
 .hero-title {
     font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: 300;
@@ -400,10 +384,10 @@ img {
 
 
 .pulse {
-    animation: pulse 4s infinite; }
+    animation: pulseScale 4s infinite; }
 
 
-@keyframes pulse {
+@keyframes pulseScale {
     0% { transform: scale(1); }
     10% { transform: scale(1.1); }
     20% { transform: scale(1); }
@@ -431,8 +415,6 @@ img {
     gap: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
     flex: 1;
     min-width: 0;
     width: 100%;
@@ -633,11 +615,12 @@ img {
 .services-banner {
     width: 100%;
     overflow: hidden;
+    aspect-ratio: 16 / 5;
 }
 
 .services-banner img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
 }
@@ -661,7 +644,7 @@ img {
     border-radius: 4px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
-    transition: all var(--transition-speed) !important;
+    transition: all var(--transition-speed);
     border: 1px solid var(--color-border);
 }
 
@@ -919,10 +902,6 @@ img {
         letter-spacing: 0.06em;
     }
 
-    .nav-link::after {
-        display: none;
-    }
-
     .nav-link:hover {
         background-color: var(--color-primary);
     }
@@ -1081,10 +1060,8 @@ img {
         padding: 1.5rem;
     }
 
-    .services-banner img {
-        height: 200px;
-        max-height: none;
-        object-fit: cover;
+    .services-banner {
+        aspect-ratio: 4 / 3;
     }
 
     .contact-container {
