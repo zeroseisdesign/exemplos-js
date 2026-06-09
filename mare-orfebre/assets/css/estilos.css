@@ -332,3 +332,32 @@ body {
 .trans-card:hover {
     transform: translateY(-8px) scale(1.02);
 }
+
+.nav-mobile {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    width: max-content;
+}
+
+.nav-mobile li {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-mobile li:last-child {
+    border-bottom: none;
+}
+
+.nav-mobile.visible {
+    display: block;
+}
+
+.nav-mobile a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
