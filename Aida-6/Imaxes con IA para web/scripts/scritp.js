@@ -25,6 +25,9 @@ let autoSlideInterval;
 navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
+    const isExpanded = navToggle.classList.contains('active');
+    navToggle.setAttribute('aria-expanded', isExpanded);
+    navToggle.setAttribute('aria-label', isExpanded ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
 });
 
 // Cerrar menú al hacer click en un enlace
@@ -32,6 +35,8 @@ navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
     });
 });
 
@@ -40,6 +45,8 @@ document.addEventListener('click', (e) => {
     if (!e.target.closest('.nav-container')) {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
     }
 });
 // ============================================
@@ -211,21 +218,32 @@ const lightboxImg = lightboxDialog.querySelector('.lightbox-img');
 const lightboxCaption = lightboxDialog.querySelector('.lightbox-caption');
 const lightboxClose = lightboxDialog.querySelector('.lightbox-close');
 
+let previousFocusElement = null;
+
 document.querySelectorAll('[data-lightbox="gallery"]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
+        previousFocusElement = document.activeElement;
         lightboxImg.src = link.href;
         lightboxCaption.textContent = link.dataset.caption || '';
         lightboxDialog.showModal();
+        lightboxClose.focus();
     });
 });
 
-lightboxClose.addEventListener('click', () => lightboxDialog.close());
+function closeLightbox() {
+    lightboxDialog.close();
+    if (previousFocusElement) {
+        previousFocusElement.focus();
+    }
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
 lightboxDialog.addEventListener('click', (e) => {
-    if (e.target === lightboxDialog) lightboxDialog.close();
+    if (e.target === lightboxDialog) closeLightbox();
 });
 lightboxDialog.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') lightboxDialog.close();
+    if (e.key === 'Escape') closeLightbox();
 });
 
 // ============================================
@@ -289,6 +307,7 @@ formInputs.forEach(input => {
             input.style.borderColor = '';
             input.style.backgroundColor = '';
         }
+        formStatus.classList.remove('visible');
     });
 });
 
@@ -310,6 +329,7 @@ contactForm.addEventListener('submit', (e) => {
     if (!isValid) {
         formStatus.className = 'form-status error';
         formStatus.textContent = 'Por favor, completa todos los campos correctamente.';
+        formStatus.classList.add('visible');
         return;
     }
 
@@ -320,11 +340,10 @@ contactForm.addEventListener('submit', (e) => {
     console.log('Formulario enviado:', { name, email, message });
 
     formStatus.className = 'form-status success';
-    formStatus.textContent = '✓ Mensaje enviado correctamente';
-    submitBtn.textContent = '✓ Enviado';
-    submitBtn.style.backgroundColor = '#2e7d32';
-    submitBtn.style.borderColor = '#2e7d32';
-    submitBtn.style.color = '#ffffff';
+    formStatus.textContent = 'Mensaje enviado correctamente.';
+    formStatus.classList.add('visible');
+    submitBtn.textContent = 'Enviado';
+    submitBtn.disabled = true;
 
     setTimeout(() => {
         contactForm.reset();
@@ -333,10 +352,9 @@ contactForm.addEventListener('submit', (e) => {
             input.style.backgroundColor = '';
         });
         submitBtn.textContent = originalText;
-        submitBtn.style.backgroundColor = '';
-        submitBtn.style.borderColor = '';
-        submitBtn.style.color = '';
-        formStatus.textContent = '';
+        submitBtn.disabled = false;
+        formStatus.classList.remove('visible');
+        setTimeout(() => { formStatus.textContent = ''; }, 300);
     }, 3000);
 });
 
@@ -371,6 +389,8 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
     }
     
     // Navegación con teclado en carrusel
@@ -390,29 +410,24 @@ const navSections = [
     { id: 'contacto', linkIndex: 2 }
 ];
 
-function updateActiveNav() {
-    const scrollY = window.scrollY;
-    let currentIndex = -1;
-
-    navSections.forEach((s, i) => {
-        const el = document.getElementById(s.id);
-        if (el) {
-            const offset = el.offsetTop - 120;
-            if (scrollY >= offset) {
-                currentIndex = i;
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const idx = navSections.findIndex(s => s.id === entry.target.id);
+            if (idx >= 0) {
+                menuItems.forEach(item => item.classList.remove('active'));
+                if (menuItems[idx]) {
+                    menuItems[idx].classList.add('active');
+                }
             }
         }
     });
+}, { rootMargin: '-120px 0px -60% 0px', threshold: 0 });
 
-    menuItems.forEach(item => item.classList.remove('active'));
-    if (currentIndex >= 0 && menuItems[currentIndex]) {
-        menuItems[currentIndex].classList.add('active');
-    }
-}
-
-window.addEventListener('scroll', updateActiveNav, { passive: true });
-window.addEventListener('resize', updateActiveNav);
-updateActiveNav();
+navSections.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (el) sectionObserver.observe(el);
+});
 
 // ============================================
 // INICIALIZACIÓN
