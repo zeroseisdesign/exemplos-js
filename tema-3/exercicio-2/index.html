@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Exemplo con erros</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
 
     <header>
-        <h1>A miña web
+        <h1>A miña web</h1>
+
+
+        <img src="logo.png">
+
+        <p id="mensaxe">Benvido á páxina</p>
+
+        <button id="btn">Premer</button>
     </header>
-
-    <img src="logo.png">
-
-    <p id="mensaxe">Benvido á páxina</p>
-
-    <button id="btn">Premer</button>
-
     <script>
-        document.getElementById("boton").addEventListener("click", function () {
+        document.getElementById("btn").addEventListener("click", function () {
             alert("Ola mundo");
         });
     </script>
