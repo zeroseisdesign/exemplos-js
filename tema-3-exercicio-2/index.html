@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="gl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio visual de Nordic Studio, estudo de deseño dixital minimalista.">
+    <meta name="color-scheme" content="light dark">
+    <title>Nordic Studio</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <a href="#main" class="skip-link">Saltar ao contido principal</a>
+
+    <header class="site-header">
+        <nav class="nav">
+            <a href="#" class="logo" aria-label="Nordic Studio - Ir ao inicio">
+                <svg width="32" height="32" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="6" />
+                    <path d="M30 60 L50 30 L70 60" fill="none" stroke="currentColor" stroke-width="6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Nordic Studio</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li class="menu-close-wrapper">
+                    <button class="menu-close" type="button" aria-label="Pechar menú">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                            focusable="false">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </li>
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#galeria">Portfolio</a></li>
+                <li><a href="#carrusel">Proxectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Cambiar a modo escuro" id="theme-toggle">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                        focusable="false">
+                        <circle cx="12" cy="12" r="5" />
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                        focusable="false">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
+
+                <button class="menu-toggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false"
+                    aria-controls="nav-links" id="menu-toggle">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+    </header>
+
+    <section id="hero" class="hero">
+        <picture class="hero-media">
+            <source srcset="imaxes/01.webp" media="(max-width: 768px)">
+            <img src="imaxes/01.webp" alt="Oficina luminosa con tecnoloxía moderna" loading="eager">
+        </picture>
+
+        <div class="hero-content">
+            <h1>Deseño minimalista.<br>Impacto real.</h1>
+            <p>Creamos experiencias dixitais con estética escandinava e tecnoloxía de vangarda.</p>
+            <a href="#galeria" class="btn">Ver portfolio</a>
+        </div>
+    </section>
+
+    <main id="main">
+
+        <section id="galeria" class="galeria-section">
+            <header class="section-header">
+                <h2>Portfolio</h2>
+                <p>Unha selección dos nosos proxectos máis recentes.</p>
+            </header>
+
+            <div class="gallery">
+
+                <figure class="gallery-item">
+                    <img src="imaxes/02.webp" alt="Proxecto de deseño 02">
+                    <figcaption>Proxecto Aurora</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imaxes/03.webp" alt="Proxecto de deseño 03">
+                    <figcaption>Estudio Nórdico</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imaxes/04.webp" alt="Proxecto de deseño 04">
+                    <figcaption>Taller de UX</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="imaxes/05.webp" alt="Proxecto de deseño 05">
+                    <figcaption>Coworking Oslo</figcaption>
+                </figure>
+
+            </div>
+        </section>
+
+        <section id="carrusel" class="carrusel-section">
+            <header class="section-header">
+                <h2>Proxectos destacados</h2>
+                <p>Un repaso visual aos traballos máis relevantes do estudo.</p>
+            </header>
+
+            <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Proxectos destacados">
+                <button class="carousel-btn prev" aria-label="Imaxe anterior" type="button">&#10094;</button>
+
+                <div class="carousel-track" aria-live="polite" aria-atomic="true">
+                    <article class="carousel-slide is-active" aria-roledescription="slide"
+                        aria-label="Diapositiva 1 de 3">
+                        <img src="imaxes/06.webp" alt="Proxecto destacado 06">
+                        <div class="carousel-caption">
+                            <h3>Branding Aurora</h3>
+                            <p>Identidade visual para unha startup tecnolóxica.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-slide" aria-roledescription="slide" aria-label="Diapositiva 2 de 3">
+                        <img src="imaxes/07.webp" alt="Proxecto destacado 07">
+                        <div class="carousel-caption">
+                            <h3>Web Corporativa Fjord</h3>
+                            <p>Sitio web minimalista para empresa de enerxía.</p>
+                        </div>
+                    </article>
+
+                    <article class="carousel-slide" aria-roledescription="slide" aria-label="Diapositiva 3 de 3">
+                        <img src="imaxes/08.webp" alt="Proxecto destacado 08">
+                        <div class="carousel-caption">
+                            <h3>App Móbil Birch</h3>
+                            <p>Aplicación de benestar con interface limpa.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <button class="carousel-btn next" aria-label="Imaxe seguinte" type="button">&#10095;</button>
+
+                <div class="carousel-dots" role="group" aria-label="Diapositivas">
+                    <button class="dot is-active" aria-label="Ir á diapositiva 1" type="button"
+                        aria-current="true"></button>
+                    <button class="dot" aria-label="Ir á diapositiva 2" type="button" aria-current="false"></button>
+                    <button class="dot" aria-label="Ir á diapositiva 3" type="button" aria-current="false"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contacto-section">
+            <h2>Traballamos xuntos?</h2>
+            <p>Contáctanos para converter a túa idea nun produto dixital memorable.</p>
+            <a href="mailto:hola@nordicstudio.gal" class="btn btn-secondary">Escribir correo</a>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Nordic Studio.</p>
+    </footer>
+
+    <script>
+        (function () {
+            /* CARRUSEL */
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prev = document.querySelector('.carousel-btn.prev');
+            const next = document.querySelector('.carousel-btn.next');
+            const carousel = document.querySelector('.carousel');
+            let index = 0;
+            let timer = null;
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            function updateAriaCurrent() {
+                dots.forEach((d, k) => {
+                    d.setAttribute('aria-current', k === index ? 'true' : 'false');
+                });
+            }
+
+            function show(i) {
+                slides.forEach((s, k) => {
+                    s.classList.toggle('is-active', k === i);
+                    s.setAttribute('aria-hidden', k !== i ? 'true' : 'false');
+                });
+                dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+                updateAriaCurrent();
+                index = i;
+            }
+
+            function nextSlide() { show((index + 1) % slides.length); }
+            function prevSlide() { show((index - 1 + slides.length) % slides.length); }
+
+            function autoplay() {
+                if (prefersReducedMotion.matches) return;
+                timer = setInterval(nextSlide, 5000);
+            }
+            function pause() { clearInterval(timer); }
+
+            prev.addEventListener('click', () => { prevSlide(); pause(); autoplay(); });
+            next.addEventListener('click', () => { nextSlide(); pause(); autoplay(); });
+            dots.forEach((d, k) => d.addEventListener('click', () => { show(k); pause(); autoplay(); }));
+
+            carousel.addEventListener('mouseenter', pause);
+            carousel.addEventListener('mouseleave', autoplay);
+
+            carousel.addEventListener('keydown', (e) => {
+                switch (e.key) {
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        prevSlide();
+                        pause();
+                        autoplay();
+                        prev.focus();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        nextSlide();
+                        pause();
+                        autoplay();
+                        next.focus();
+                        break;
+                    case 'Escape':
+                        e.preventDefault();
+                        pause();
+                        break;
+                }
+            });
+
+            show(0);
+            autoplay();
+
+            /* MENÚ MÓBIL */
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuClose = document.querySelector('.menu-close');
+            const navLinks = document.getElementById('nav-links');
+            const navOverlay = document.getElementById('nav-overlay');
+            let lastFocusedElement = null;
+            let isMenuOpen = false;
+
+            function getFocusableInMenu() {
+                return navLinks.querySelectorAll('a');
+            }
+            function getMenuLis() {
+                return navLinks.querySelectorAll('li');
+            }
+
+            const prefersReducedMotionMenu = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            function getTransitionDelay() {
+                return prefersReducedMotionMenu.matches ? 0 : 200;
+            }
+
+            function openMenu() {
+                if (isMenuOpen) return;
+                isMenuOpen = true;
+                lastFocusedElement = document.activeElement;
+                menuToggle.setAttribute('aria-expanded', 'true');
+                menuToggle.setAttribute('aria-label', 'Pechar menú de navegación');
+                navLinks.classList.add('is-open');
+                navOverlay.classList.add('is-visible');
+                navOverlay.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('menu-open');
+                getFocusableInMenu()[0]?.focus();
+            }
+
+            function closeMenu() {
+                if (!isMenuOpen) return;
+                isMenuOpen = false;
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+
+                getMenuLis().forEach(li => {
+                    li.style.opacity = '0';
+                    li.style.transform = 'translateX(24px)';
+                });
+
+                setTimeout(() => {
+                    navLinks.classList.remove('is-open');
+                    navOverlay.classList.remove('is-visible');
+                    navOverlay.setAttribute('aria-hidden', 'true');
+                    document.body.classList.remove('menu-open');
+                    getMenuLis().forEach(li => {
+                        li.style.opacity = '';
+                        li.style.transform = '';
+                    });
+                    if (lastFocusedElement) lastFocusedElement.focus();
+                }, getTransitionDelay());
+            }
+
+            function toggleMenu() {
+                isMenuOpen ? closeMenu() : openMenu();
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+            menuClose.addEventListener('click', closeMenu);
+            navOverlay.addEventListener('click', closeMenu);
+            getFocusableInMenu().forEach(link => link.addEventListener('click', closeMenu));
+
+            navLinks.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMenu();
+                    return;
+                }
+                if (e.key === 'Tab') {
+                    const focusArray = Array.from(getFocusableInMenu());
+                    const first = focusArray[0];
+                    const last = focusArray[focusArray.length - 1];
+
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && isMenuOpen) {
+                    closeMenu();
+                }
+            });
+
+            /* MODO ESCURO */
+            const themeToggle = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+            const STORAGE_KEY = 'nordic-theme';
+
+            function getSystemPreference() {
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            function getSavedTheme() {
+                try { return localStorage.getItem(STORAGE_KEY); }
+                catch { return null; }
+            }
+
+            function applyTheme(theme) {
+                root.setAttribute('data-theme', theme);
+                const isDark = theme === 'dark';
+                themeToggle.setAttribute('aria-label',
+                    isDark ? 'Cambiar a modo claro' : 'Cambiar a modo escuro'
+                );
+            }
+
+            function toggleTheme() {
+                const current = root.getAttribute('data-theme') || getSystemPreference();
+                const next = current === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+                try { localStorage.setItem(STORAGE_KEY, next); }
+                catch { /* almacenamento non dispoñible */ }
+            }
+
+            const savedTheme = getSavedTheme();
+            applyTheme(savedTheme || getSystemPreference());
+            themeToggle.addEventListener('click', toggleTheme);
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!getSavedTheme()) {
+                    applyTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
