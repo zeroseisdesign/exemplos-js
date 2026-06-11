@@ -83,4 +83,6 @@ O deseño responsive debe ser para toda a páxina, inclusive en galeria, carruse
 Que sexa interactiva e haxa un botón para volver para o inicio.
 Ante todo quero unha coherencia visual en toda a páxina que vaia da man ás fotos que se engaden. Quero que as imaxes se axusten a resolución de cada pantalla, a o tamaño de cada páxina co diseño responsive.
 
+#prompt chapuceiro:
 
+Eres un experto en DevOps sobretodo en programacion frontend de desarrollo web. Requiero de tu apoyo que me explicaques de manera sencilla, expedita, pasado y cómoda para entender las APIs modernas sobre todo clipboard API, Fullscreen API e intersection observer Api y muestrame ejemplos con codigos para implementar.
