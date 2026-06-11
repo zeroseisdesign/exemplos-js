@@ -207,29 +207,85 @@ carouselTrack.addEventListener('touchend', () => {
 }, false);
 
 // ============================================
-// Lightbox nativo con <dialog>
+// Lightbox carrusel interactivo
 // ============================================
+const galleryLinks = document.querySelectorAll('[data-lightbox="gallery"]');
+const galleryItems = [];
+galleryLinks.forEach(link => {
+    galleryItems.push({
+        src: link.href,
+        caption: link.dataset.caption || '',
+        alt: link.querySelector('img')?.alt || ''
+    });
+});
+
 const lightboxDialog = document.createElement('dialog');
 lightboxDialog.id = 'lightbox';
-lightboxDialog.innerHTML = '<div class="lightbox-overlay"><button class="lightbox-close" aria-label="Cerrar">&times;</button><img class="lightbox-img" src="" alt=""><p class="lightbox-caption"></p></div>';
+lightboxDialog.innerHTML = `
+    <div class="lightbox-overlay">
+        <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+        <button class="lightbox-prev" aria-label="Imagen anterior">&#10094;</button>
+        <button class="lightbox-next" aria-label="Imagen siguiente">&#10095;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" src="" alt="">
+            <p class="lightbox-caption"></p>
+        </div>
+        <div class="lightbox-counter"><span class="lightbox-current">1</span> / <span class="lightbox-total">${galleryItems.length}</span></div>
+        <div class="lightbox-dots" id="lightboxDots"></div>
+    </div>`;
 document.body.appendChild(lightboxDialog);
 
 const lightboxImg = lightboxDialog.querySelector('.lightbox-img');
 const lightboxCaption = lightboxDialog.querySelector('.lightbox-caption');
 const lightboxClose = lightboxDialog.querySelector('.lightbox-close');
+const lightboxPrev = lightboxDialog.querySelector('.lightbox-prev');
+const lightboxNext = lightboxDialog.querySelector('.lightbox-next');
+const lightboxCurrent = lightboxDialog.querySelector('.lightbox-current');
+const lightboxTotal = lightboxDialog.querySelector('.lightbox-total');
+const lightboxDots = lightboxDialog.querySelector('#lightboxDots');
 
 let previousFocusElement = null;
+let lightboxIndex = 0;
 
-document.querySelectorAll('[data-lightbox="gallery"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        previousFocusElement = document.activeElement;
-        lightboxImg.src = link.href;
-        lightboxCaption.textContent = link.dataset.caption || '';
-        lightboxDialog.showModal();
-        lightboxClose.focus();
-    });
+// Crear dots del lightbox
+galleryItems.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'lightbox-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Ir a imagen ' + (i + 1));
+    dot.addEventListener('click', () => goToLightboxSlide(i));
+    lightboxDots.appendChild(dot);
 });
+
+function goToLightboxSlide(index) {
+    if (index < 0) index = galleryItems.length - 1;
+    if (index >= galleryItems.length) index = 0;
+    lightboxIndex = index;
+
+    lightboxImg.style.opacity = '0';
+    lightboxImg.style.transform = 'scale(0.95)';
+
+    setTimeout(() => {
+        lightboxImg.src = galleryItems[lightboxIndex].src;
+        lightboxImg.alt = galleryItems[lightboxIndex].alt;
+        lightboxCaption.textContent = galleryItems[lightboxIndex].caption;
+        lightboxCurrent.textContent = lightboxIndex + 1;
+
+        lightboxDots.querySelectorAll('.lightbox-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === lightboxIndex);
+        });
+
+        lightboxImg.style.opacity = '1';
+        lightboxImg.style.transform = 'scale(1)';
+    }, 150);
+}
+
+function openLightbox(index) {
+    previousFocusElement = document.activeElement;
+    lightboxIndex = index;
+    goToLightboxSlide(lightboxIndex);
+    lightboxDialog.showModal();
+    lightboxClose.focus();
+}
 
 function closeLightbox() {
     lightboxDialog.close();
@@ -238,13 +294,49 @@ function closeLightbox() {
     }
 }
 
+galleryLinks.forEach((link, i) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(i);
+    });
+});
+
 lightboxClose.addEventListener('click', closeLightbox);
 lightboxDialog.addEventListener('click', (e) => {
     if (e.target === lightboxDialog) closeLightbox();
 });
+
+lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    goToLightboxSlide(lightboxIndex - 1);
+});
+
+lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    goToLightboxSlide(lightboxIndex + 1);
+});
+
+// Teclado en lightbox
 lightboxDialog.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') goToLightboxSlide(lightboxIndex - 1);
+    if (e.key === 'ArrowRight') goToLightboxSlide(lightboxIndex + 1);
 });
+
+// Swipe táctil en lightbox
+let touchStartX = 0;
+let touchEndX = 0;
+lightboxDialog.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+lightboxDialog.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) goToLightboxSlide(lightboxIndex + 1);
+        else goToLightboxSlide(lightboxIndex - 1);
+    }
+}, { passive: true });
 
 // ============================================
 // SCROLL EFFECTS & PARALLAX (with RAF)
@@ -393,7 +485,8 @@ document.addEventListener('keydown', (e) => {
         navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
     }
     
-    // Navegación con teclado en carrusel
+    if (lightboxDialog.open) return;
+
     if (e.key === 'ArrowLeft') {
         prevSlide();
     } else if (e.key === 'ArrowRight') {
