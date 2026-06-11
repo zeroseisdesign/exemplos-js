@@ -86,7 +86,7 @@ function resetPerspectiveMenu() {
         return;
     }
 
-    menuList.style.transform = window.innerWidth <= 768 ? 'none' : 'rotateX(-10deg) rotateY(20deg)';
+    menuList.style.transform = window.innerWidth <= 768 ? 'none' : 'rotateX(-1deg) rotateY(4deg)';
     menuItems.forEach(item => {
         item.style.transform = 'none';
     });
