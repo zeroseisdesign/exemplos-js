@@ -144,14 +144,14 @@ img {
 .Menu-list-item.active .Mask {
     color: var(--color-accent-strong);
     opacity: 1;
-    transform: translateX(3px);
+    transform: translateX(1px);
 }
 
 .Menu-list-item:hover .Mask + .Mask,
 .Menu-list-item:active .Mask + .Mask,
 .Menu-list-item:focus-within .Mask + .Mask,
 .Menu-list-item.active .Mask + .Mask {
-    transform: translateX(-3px);
+    transform: translateX(-1px);
 }
 
 .Menu-list-item:hover::before,
