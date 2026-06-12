@@ -18,14 +18,45 @@
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preload" href="../ejercicioImagenes/imagenes/casa-comprimido.jpg" as="image" fetchpriority="high">
+  <link rel="preload" as="image" href="../ejercicioImagenes/imagenes/casa-comprimido.jpg" fetchpriority="high">
+  <link rel="preload" as="style" href="css/styles.min.css">
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v19/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" crossorigin>
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/jetsbrainsmono/v23/tDbD2oWUg0MKq9npv3iXfO2i9YHzN4aY3oI5F0xA.woff2" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.css"></noscript>
   <link rel="stylesheet" href="css/styles.min.css">
-
+  <style>
+    /* Critical inline CSS for above-fold content */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--white:#F5F3F0;--pearl:#E8E6E1;--light-wood:#D4C9B8;--beige:#C4B6A6;--nordic-blue:#A3B5C4;--dark:#2C2C2C;--gray:#6B6B6B;--light-gray:#B4B4B4;--font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--font-mono:'JetBrains Mono',monospace;--transition:.4s cubic-bezier(.25,.46,.45,.94);--shadow:0 4px 24px rgba(0,0,0,.06)}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-sans);color:var(--dark);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(245,243,240,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.04);transition:var(--transition)}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav__logo{font-size:18px;font-weight:500;letter-spacing:2px;color:var(--dark)}
+    .nav__links{display:flex;gap:32px;list-style:none}
+    .nav__links a{font-size:14px;font-weight:400;color:var(--gray);transition:color var(--transition);position:relative}
+    .nav__links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--dark);transition:width var(--transition)}
+    .nav__links a:hover{color:var(--dark)}
+    .nav__links a:hover::after{width:100%}
+    .nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+    .nav__toggle span{width:24px;height:1.5px;background:var(--dark);transition:var(--transition)}
+    .hero{position:relative;width:100%;height:100vh;min-height:600px;max-height:900px;background:var(--dark);background-image:url(../../ejercicioImagenes/imagenes/casa-comprimido.jpg);background-size:cover;background-position:center;display:flex;align-items:center}
+    .hero__overlay{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+    .hero__content{position:relative;z-index:1}
+    .hero__title{font-size:clamp(40px,8vw,80px);font-weight:300;letter-spacing:8px;color:#fff;line-height:1.1;margin-bottom:16px}
+    .hero__subtitle{font-size:clamp(16px,2.5vw,24px);font-weight:300;letter-spacing:4px;color:rgba(255,255,255,.85);margin-bottom:40px}
+    .hero__cta{display:inline-block;font-family:var(--font-sans);font-size:13px;font-weight:500;letter-spacing:3px;color:#fff;padding:14px 40px;border:1px solid rgba(255,255,255,.3);border-radius:9999px;transition:var(--transition)}
+    .hero__cta:hover{background:#fff;color:var(--dark);border-color:#fff}
+    @media (max-width:768px){.nav__links{position:fixed;top:0;right:-100%;width:240px;height:100vh;background:#fff;flex-direction:column;padding:80px 32px 32px;gap:24px;box-shadow:-4px 0 24px rgba(0,0,0,.08)}.nav__toggle{display:flex}.hero__title{letter-spacing:4px}.hero__subtitle{letter-spacing:2px}}
+  </style>
 </head>
 
 <body>
@@ -56,7 +87,7 @@
     </div>
   </section>
 
-  <section class="projects" id="projects">
+  <section class="projects" id="projects" style="content-visibility: auto; contain-intrinsic-size: 800px;">
     <div class="container">
       <div class="section-label">
         <span class="section-label__tag">PROXECTOS</span>
@@ -121,8 +152,8 @@
     </div>
   </section>
 
-  <section class="services" id="services">
-    <div class="services__banner">
+  <section class="services" id="services" style="content-visibility: auto; contain-intrinsic-size: 1000px;">
+    <div class="services__banner" style="background-image: url('../ejercicioImagenes/imagenes/sala-comprimido.jpg');">
       <div class="services__overlay"></div>
       <div class="services__content container">
         <span class="services__tag">SERVIZOS</span>
@@ -189,7 +220,7 @@
     </div>
   </section>
 
-  <section class="palette" id="palette">
+  <section class="palette" id="palette" style="content-visibility: auto; contain-intrinsic-size: 400px;">
     <div class="container">
       <div class="section-label">
         <span class="section-label__tag">PALETA</span>
@@ -220,7 +251,7 @@
     </div>
   </section>
 
-  <section class="contact" id="contact">
+  <section class="contact" id="contact" style="content-visibility: auto; contain-intrinsic-size: 600px;">
     <div class="container">
       <div class="contact__inner">
         <div class="section-label">
@@ -254,10 +285,23 @@
     </div>
   </footer>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script defer src="js/main.min.js"></script>
+  <script>
+    // Load non-critical scripts after page load
+    window.addEventListener('load', function() {
+      var scripts = [
+        'https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js',
+        'js/main.min.js'
+      ];
+      scripts.forEach(function(src) {
+        var s = document.createElement('script');
+        s.src = src;
+        s.defer = true;
+        document.body.appendChild(s);
+      });
+    });
+  </script>
 </body>
 
 </html>

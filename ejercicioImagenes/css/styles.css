@@ -284,7 +284,6 @@ img {
   position: relative;
   width: 100%;
   height: 500px;
-  background-image: url('../../ejercicioImagenes/imagenes/sala-comprimido.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
