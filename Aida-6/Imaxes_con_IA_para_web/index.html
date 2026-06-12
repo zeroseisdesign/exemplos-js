@@ -25,7 +25,9 @@
     <link rel="preconnect" href="https://garet.typeforward.com" crossorigin>
     <link rel="preload" href="https://garet.typeforward.com/assets/fonts/shared/TFMixVF.woff2" as="font"
         type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/hero.avif" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/hero-480.jpg" as="image" fetchpriority="high"
+        imagesrcset="assets/hero-480.jpg 480w, assets/hero-800.jpg 800w, assets/hero-1200.jpg 1200w"
+        imagesizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px">
     <link rel="stylesheet" href="css/estilos.css">
     <script type="application/ld+json">
     {
@@ -90,8 +92,16 @@
 
             <!-- HERO BACKGROUND IMAGE -->
             <div class="hero-background">
-                <img src="assets/hero.avif" alt="Nordic Studio - Diseño Digital Minimalista" width="1920" height="1080"
-                    fetchpriority="high">
+                <img src="assets/hero-480.jpg"
+                    srcset="
+                        assets/hero-480.jpg 480w,
+                        assets/hero-800.jpg 800w,
+                        assets/hero-1200.jpg 1200w"
+                    sizes="(max-width: 600px) 480px,
+                           (max-width: 1000px) 800px,
+                           1200px"
+                    alt="Nordic Studio - Diseño Digital Minimalista" width="1200" height="675" fetchpriority="high"
+                    decoding="async">
             </div>
 
             <!-- HERO CONTENT -->
