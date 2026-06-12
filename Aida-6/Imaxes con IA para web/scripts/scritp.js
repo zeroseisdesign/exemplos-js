@@ -3,7 +3,6 @@
 // ============================================
 
 // DOM Elements
-const pageLoader = document.getElementById('pageLoader');
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -21,20 +20,14 @@ const totalSlides = slides.length;
 let autoSlideInterval;
 
 // ============================================
-// PAGE LOADER
-// ============================================
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        pageLoader.classList.add('hidden');
-    }, 800);
-});
-
-// ============================================
 // NAVEGACIÓN HAMBURGUESA
 // ============================================
 navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
+    const isExpanded = navToggle.classList.contains('active');
+    navToggle.setAttribute('aria-expanded', isExpanded);
+    navToggle.setAttribute('aria-label', isExpanded ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
 });
 
 // Cerrar menú al hacer click en un enlace
@@ -42,6 +35,8 @@ navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
     });
 });
 
@@ -50,7 +45,64 @@ document.addEventListener('click', (e) => {
     if (!e.target.closest('.nav-container')) {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
     }
+});
+// ============================================
+// NAVEGACIÓN 
+// ============================================
+
+const menuList = document.querySelector('.Menu-list');
+const menuItems = document.querySelectorAll('.Menu-list-item');
+
+function updatePerspectiveMenu(event) {
+    if (!menuList || window.innerWidth <= 768) {
+        return;
+    }
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const offsetX = 0.5 - event.clientX / width;
+    const offsetY = 0.5 - event.clientY / height;
+    const offsetPoster = Number(menuList.dataset.offset) || 10;
+
+    menuList.style.transform =
+        'translate3d(0, ' + (-offsetX * offsetPoster) + 'px, 0) ' +
+        'rotateX(' + (-offsetY * offsetPoster) + 'deg) ' +
+        'rotateY(' + (offsetX * (offsetPoster * 2)) + 'deg)';
+
+    menuItems.forEach(item => {
+        const offsetLayer = Number(item.dataset.offset) || 0;
+
+        item.style.transform =
+            'translate3d(' + (offsetX * offsetLayer) + 'px, ' +
+            (offsetY * offsetLayer) + 'px, 20px)';
+    });
+}
+
+function resetPerspectiveMenu() {
+    if (!menuList) {
+        return;
+    }
+
+    menuList.style.transform = window.innerWidth <= 768 ? 'none' : 'rotateX(-1deg) rotateY(4deg)';
+    menuItems.forEach(item => {
+        item.style.transform = 'none';
+    });
+}
+
+let rafMousemoveId = null;
+window.addEventListener('mousemove', (e) => {
+    if (rafMousemoveId) return;
+    rafMousemoveId = requestAnimationFrame(() => {
+        updatePerspectiveMenu(e);
+        rafMousemoveId = null;
+    });
+});
+window.addEventListener('resize', () => {
+    resetPerspectiveMenu();
+    moveToSlide(currentSlide);
 });
 
 // ============================================
@@ -116,6 +168,15 @@ nextBtn.addEventListener('click', nextSlide);
 // Iniciar auto-slide
 autoSlideInterval = setInterval(autoSlide, 5000);
 
+// Pausar auto-slide al ocultar la pestaña
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        clearInterval(autoSlideInterval);
+    } else {
+        resetAutoSlide();
+    }
+});
+
 // Sincronizar dots al hacer scroll manual
 carouselTrack.addEventListener('scroll', () => {
     const slideWidth = getSlideWidth();
@@ -127,7 +188,7 @@ carouselTrack.addEventListener('scroll', () => {
             resetAutoSlide();
         }
     }
-});
+}, { passive: true });
 
 // Pausar auto-slide cuando el usuario interactúa
 carouselTrack.addEventListener('mouseenter', () => {
@@ -146,23 +207,160 @@ carouselTrack.addEventListener('touchend', () => {
 }, false);
 
 // ============================================
-// SCROLL EFFECTS & PARALLAX
+// Lightbox carrusel interactivo
 // ============================================
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    const scrolled = window.scrollY;
-    
-    if (scrolled > 100) {
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-    }
-    
-    const heroImg = document.querySelector('.hero-background img');
-    if (heroImg && scrolled <= window.innerHeight) {
-        heroImg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
-    }
+const galleryLinks = document.querySelectorAll('[data-lightbox="gallery"]');
+const galleryItems = [];
+galleryLinks.forEach(link => {
+    galleryItems.push({
+        src: link.href,
+        caption: link.dataset.caption || '',
+        alt: link.querySelector('img')?.alt || ''
+    });
 });
+
+const lightboxDialog = document.createElement('dialog');
+lightboxDialog.id = 'lightbox';
+lightboxDialog.innerHTML = `
+    <div class="lightbox-overlay">
+        <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+        <button class="lightbox-prev" aria-label="Imagen anterior">&#10094;</button>
+        <button class="lightbox-next" aria-label="Imagen siguiente">&#10095;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-img" src="" alt="">
+            <p class="lightbox-caption"></p>
+        </div>
+        <div class="lightbox-counter"><span class="lightbox-current">1</span> / <span class="lightbox-total">${galleryItems.length}</span></div>
+        <div class="lightbox-dots" id="lightboxDots"></div>
+    </div>`;
+document.body.appendChild(lightboxDialog);
+
+const lightboxImg = lightboxDialog.querySelector('.lightbox-img');
+const lightboxCaption = lightboxDialog.querySelector('.lightbox-caption');
+const lightboxClose = lightboxDialog.querySelector('.lightbox-close');
+const lightboxPrev = lightboxDialog.querySelector('.lightbox-prev');
+const lightboxNext = lightboxDialog.querySelector('.lightbox-next');
+const lightboxCurrent = lightboxDialog.querySelector('.lightbox-current');
+const lightboxTotal = lightboxDialog.querySelector('.lightbox-total');
+const lightboxDots = lightboxDialog.querySelector('#lightboxDots');
+
+let previousFocusElement = null;
+let lightboxIndex = 0;
+
+// Crear dots del lightbox
+galleryItems.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'lightbox-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Ir a imagen ' + (i + 1));
+    dot.addEventListener('click', () => goToLightboxSlide(i));
+    lightboxDots.appendChild(dot);
+});
+
+function goToLightboxSlide(index) {
+    if (index < 0) index = galleryItems.length - 1;
+    if (index >= galleryItems.length) index = 0;
+    lightboxIndex = index;
+
+    lightboxImg.style.opacity = '0';
+    lightboxImg.style.transform = 'scale(0.95)';
+
+    setTimeout(() => {
+        lightboxImg.src = galleryItems[lightboxIndex].src;
+        lightboxImg.alt = galleryItems[lightboxIndex].alt;
+        lightboxCaption.textContent = galleryItems[lightboxIndex].caption;
+        lightboxCurrent.textContent = lightboxIndex + 1;
+
+        lightboxDots.querySelectorAll('.lightbox-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === lightboxIndex);
+        });
+
+        lightboxImg.style.opacity = '1';
+        lightboxImg.style.transform = 'scale(1)';
+    }, 150);
+}
+
+function openLightbox(index) {
+    previousFocusElement = document.activeElement;
+    lightboxIndex = index;
+    goToLightboxSlide(lightboxIndex);
+    lightboxDialog.showModal();
+    lightboxClose.focus();
+}
+
+function closeLightbox() {
+    lightboxDialog.close();
+    if (previousFocusElement) {
+        previousFocusElement.focus();
+    }
+}
+
+galleryLinks.forEach((link, i) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(i);
+    });
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxDialog.addEventListener('click', (e) => {
+    if (e.target === lightboxDialog) closeLightbox();
+});
+
+lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    goToLightboxSlide(lightboxIndex - 1);
+});
+
+lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    goToLightboxSlide(lightboxIndex + 1);
+});
+
+// Teclado en lightbox
+lightboxDialog.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') goToLightboxSlide(lightboxIndex - 1);
+    if (e.key === 'ArrowRight') goToLightboxSlide(lightboxIndex + 1);
+});
+
+// Swipe táctil en lightbox
+let touchStartX = 0;
+let touchEndX = 0;
+lightboxDialog.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+lightboxDialog.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) goToLightboxSlide(lightboxIndex + 1);
+        else goToLightboxSlide(lightboxIndex - 1);
+    }
+}, { passive: true });
+
+// ============================================
+// SCROLL EFFECTS & PARALLAX (with RAF)
+// ============================================
+let ticking = false;
+const navbar = document.querySelector('.navbar');
+const heroImg = document.querySelector('.hero-background img');
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+
+            navbar.classList.toggle('scrolled', scrolled > 100);
+
+            if (heroImg && scrolled <= window.innerHeight) {
+                heroImg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+            }
+
+            ticking = false;
+        });
+        ticking = true;
+    }
+}, { passive: true });
 
 // ============================================
 // BOTÓN CONTACTAR (HERO)
@@ -201,6 +399,7 @@ formInputs.forEach(input => {
             input.style.borderColor = '';
             input.style.backgroundColor = '';
         }
+        formStatus.classList.remove('visible');
     });
 });
 
@@ -222,6 +421,7 @@ contactForm.addEventListener('submit', (e) => {
     if (!isValid) {
         formStatus.className = 'form-status error';
         formStatus.textContent = 'Por favor, completa todos los campos correctamente.';
+        formStatus.classList.add('visible');
         return;
     }
 
@@ -232,11 +432,10 @@ contactForm.addEventListener('submit', (e) => {
     console.log('Formulario enviado:', { name, email, message });
 
     formStatus.className = 'form-status success';
-    formStatus.textContent = '✓ Mensaje enviado correctamente';
-    submitBtn.textContent = '✓ Enviado';
-    submitBtn.style.backgroundColor = '#2e7d32';
-    submitBtn.style.borderColor = '#2e7d32';
-    submitBtn.style.color = '#ffffff';
+    formStatus.textContent = 'Mensaje enviado correctamente.';
+    formStatus.classList.add('visible');
+    submitBtn.textContent = 'Enviado';
+    submitBtn.disabled = true;
 
     setTimeout(() => {
         contactForm.reset();
@@ -245,30 +444,10 @@ contactForm.addEventListener('submit', (e) => {
             input.style.backgroundColor = '';
         });
         submitBtn.textContent = originalText;
-        submitBtn.style.backgroundColor = '';
-        submitBtn.style.borderColor = '';
-        submitBtn.style.color = '';
-        formStatus.textContent = '';
+        submitBtn.disabled = false;
+        formStatus.classList.remove('visible');
+        setTimeout(() => { formStatus.textContent = ''; }, 300);
     }, 3000);
-});
-
-// ============================================
-// SMOOTH SCROLL LINKS
-// ============================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-    });
 });
 
 // ============================================
@@ -302,9 +481,12 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
     }
     
-    // Navegación con teclado en carrusel
+    if (lightboxDialog.open) return;
+
     if (e.key === 'ArrowLeft') {
         prevSlide();
     } else if (e.key === 'ArrowRight') {
@@ -313,6 +495,33 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
+// ACTIVE NAV LINK ON SCROLL (scroll spy)
+// ============================================
+const navSections = [
+    { id: 'inicio', linkIndex: 0 },
+    { id: 'servicios', linkIndex: 1 },
+    { id: 'contacto', linkIndex: 2 }
+];
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const idx = navSections.findIndex(s => s.id === entry.target.id);
+            if (idx >= 0) {
+                menuItems.forEach(item => item.classList.remove('active'));
+                if (menuItems[idx]) {
+                    menuItems[idx].classList.add('active');
+                }
+            }
+        }
+    });
+}, { rootMargin: '-120px 0px -60% 0px', threshold: 0 });
+
+navSections.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (el) sectionObserver.observe(el);
+});
+
+// ============================================
 // INICIALIZACIÓN
 // ============================================
-console.log('Nordic Studio - Sitio web cargado correctamente');
