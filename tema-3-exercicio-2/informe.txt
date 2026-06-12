@@ -1,0 +1,64 @@
+INFORME RESUMIDO - NORDIC STUDIO PORTFOLIO
+============================================
+
+Alumno: Sergiu
+Asignatura: Confección e Publicación de Páxinas Web
+Data: 12/06/2026
+
+--------------------------------------------------
+1. OBXECTIVO
+--------------------------------------------------
+Desenvolver un portfolio web responsivo e accesible para 
+"Nordic Studio", estudo de deseño dixital con estética 
+escandinava minimalista.
+
+--------------------------------------------------
+2. TECNOLOXÍAS EMPREGADAS
+--------------------------------------------------
+- HTML5 semántico (único ficheiro index.html)
+- CSS3 moderno: Custom Properties, Grid/Flexbox, clamp(), 
+  color-mix(), animacións @keyframes
+- JavaScript Vanilla (ES6+, IIFE pattern) embedded no HTML
+- Imaxes WebP optimizadas
+- Google Fonts: Inter + Playfair Display
+
+--------------------------------------------------
+3. FUNCIONALIDADES PRINCIPAIS
+--------------------------------------------------
+Hero Section:      Pantalla completa con imaxe, título e CTA
+Galería Portfolio: Grid 2x2 responsivo con hover grayscale->color
+Carrusel Accesible: 3 slides, navegación teclado/ratón/tacto, 
+                    autoplay, ARIA live regions
+Menú Móbil:        Panel lateral con focus trap, animación 
+                    escalonada, overlay blur
+Modo Escuro/Claro: Toggle persistente (localStorage), sincronizado 
+                    co sistema (prefers-color-scheme)
+Accesibilidade:    WCAG 2.1 AA - Skip link, focus visible, 
+                    ARIA completo, reduced motion, forced colors
+
+--------------------------------------------------
+4. PUNTAS FORTES TÉCNICAS
+--------------------------------------------------
+- Arquitectura CSS escalable: Variables para theming completo
+- Mobile-first con breakpoints coherentes (600/768/769/900px)
+- JavaScript modular ben organizado: carrusel, menú, theme aislados
+- Rendemento: will-change, contain, aspect-ratio, eager loading LCP
+- Accesibilidade real: Non só compliance, senón UX inclusiva testada
+
+--------------------------------------------------
+5. MELLORAS IDENTIFICADAS (POST-ENTREGA)
+--------------------------------------------------
+1. Separar JS en ficheiro externo (app.js) + defer
+2. Implementar srcset/sizes en todas as imaxes responsive
+3. Engadir alt descritivos únicos por imaxe de galería
+4. Build pipeline (Vite) para minify, hash, source maps
+5. preconnect a fonts.googleapis.com
+6. Tests automatizados (Playwright + axe-core + Lighthouse CI)
+
+--------------------------------------------------
+6. CONCLUSIÓN
+--------------------------------------------------
+Proxecto completado que demonstra dominio de frontend moderno: 
+CSS avanzado, JavaScript vanilla ben estruturado, accesibilidade 
+real e UX minimalista coherente. Base sólida para escalar a 
+arquitectura modular en futuras iteracións.
