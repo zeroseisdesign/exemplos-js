@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarxetas de Servizos</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="styles.css">
   <style>
     .logo {
@@ -140,6 +141,96 @@
       transform: scale(1.05);
     }
 
+    /* ─── Modal ─────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: var(--card);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      transform: translateY(30px) scale(0.95);
+      transition: transform 0.35s ease;
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .modal-box h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    .modal-box p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    @media only screen and (max-width: 768px) and (orientation: portrait),
+           only screen and (max-width: 768px) and (orientation: landscape) {
+      .modal-box {
+        width: 95%;
+        padding: 1.5rem;
+        max-height: 90vh;
+      }
+      .modal-box h2 {
+        font-size: 1.1rem;
+      }
+      .modal-box p {
+        font-size: 0.85rem;
+      }
+    }
+
     @media (max-width: 640px) {
       .gallery-section {
         grid-template-columns: 1fr;
@@ -149,14 +240,14 @@
 </head>
 <body>
 
-  <img src="assets/fenrir.jpg" alt="Fenrir" class="logo">
+  <img src="assets/fenrir.jpg" alt="Fenrir" class="logo" data-aos="fade-down">
 
   <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌙</button>
 
   <main class="container">
 
-    <h1 class="title">Nordic Studio</h1>
-    <p class="section-label">Deseño dixital minimalista</p>
+    <h1 class="title" data-aos="fade-up">Nordic Studio</h1>
+    <p class="section-label" data-aos="fade-up" data-aos-delay="50">Deseño dixital minimalista</p>
 
     <div class="hero-carousel" id="heroCarousel">
       <div class="slides">
@@ -171,11 +262,11 @@
       <div class="dots" id="heroDots"></div>
     </div>
 
-    <h1 class="title">Os nosos servizos</h1>
+    <h1 class="title" data-aos="fade-up">Os nosos servizos</h1>
 
     <div class="cards" id="cards">
 
-      <article class="card" data-delay="0">
+      <article class="card" data-aos="fade-up" data-aos-delay="0">
         <div class="card__icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                stroke-linecap="round" stroke-linejoin="round">
@@ -192,7 +283,7 @@
         <button class="card__close">Pechar</button>
       </article>
 
-      <article class="card" data-delay="150">
+      <article class="card" data-aos="fade-up" data-aos-delay="100">
         <div class="card__icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                stroke-linecap="round" stroke-linejoin="round">
@@ -209,7 +300,7 @@
         <button class="card__close">Pechar</button>
       </article>
 
-      <article class="card" data-delay="300">
+      <article class="card" data-aos="fade-up" data-aos-delay="200">
         <div class="card__icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                stroke-linecap="round" stroke-linejoin="round">
@@ -232,7 +323,7 @@
         <button class="card__close">Pechar</button>
       </article>
 
-      <article class="card" data-delay="450">
+      <article class="card" data-aos="fade-up" data-aos-delay="300">
         <div class="card__icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                stroke-linecap="round" stroke-linejoin="round">
@@ -250,31 +341,41 @@
 
     </div>
 
-    <p class="section-label">Galería de traballos</p>
+    <p class="section-label" data-aos="fade-up">Galería de traballos</p>
 
     <div class="gallery-section">
-      <a href="assets/gallery-1-1200.jpg" data-fancybox="gallery" class="img-block">
+      <a href="assets/gallery-1-1200.jpg" data-fancybox="gallery" class="img-block" data-aos="zoom-in" data-aos-delay="0">
         <img src="assets/gallery-1-800.jpg" srcset="assets/gallery-1-300.jpg 300w, assets/gallery-1-800.jpg 800w, assets/gallery-1-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Branding" loading="lazy">
       </a>
-      <a href="assets/gallery-2-1200.jpg" data-fancybox="gallery" class="img-block">
+      <a href="assets/gallery-2-1200.jpg" data-fancybox="gallery" class="img-block" data-aos="zoom-in" data-aos-delay="80">
         <img src="assets/gallery-2-800.jpg" srcset="assets/gallery-2-300.jpg 300w, assets/gallery-2-800.jpg 800w, assets/gallery-2-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Deseño dixital" loading="lazy">
       </a>
-      <a href="assets/gallery-3-1200.jpg" data-fancybox="gallery" class="img-block">
+      <a href="assets/gallery-3-1200.jpg" data-fancybox="gallery" class="img-block" data-aos="zoom-in" data-aos-delay="160">
         <img src="assets/gallery-3-800.jpg" srcset="assets/gallery-3-300.jpg 300w, assets/gallery-3-800.jpg 800w, assets/gallery-3-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Consultoría" loading="lazy">
       </a>
-      <a href="assets/gallery-4-1200.jpg" data-fancybox="gallery" class="img-block">
+      <a href="assets/gallery-4-1200.jpg" data-fancybox="gallery" class="img-block" data-aos="zoom-in" data-aos-delay="240">
         <img src="assets/gallery-4-800.jpg" srcset="assets/gallery-4-300.jpg 300w, assets/gallery-4-800.jpg 800w, assets/gallery-4-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Oficina moderna" loading="lazy">
       </a>
-      <a href="assets/gallery-5-1200.jpg" data-fancybox="gallery" class="img-block">
+      <a href="assets/gallery-5-1200.jpg" data-fancybox="gallery" class="img-block" data-aos="zoom-in" data-aos-delay="320">
         <img src="assets/gallery-5-800.jpg" srcset="assets/gallery-5-300.jpg 300w, assets/gallery-5-800.jpg 800w, assets/gallery-5-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Tecnoloxía" loading="lazy">
       </a>
-      <a href="assets/gallery-6-1200.jpg" data-fancybox="gallery" class="img-block">
+      <a href="assets/gallery-6-1200.jpg" data-fancybox="gallery" class="img-block" data-aos="zoom-in" data-aos-delay="400">
         <img src="assets/gallery-6-800.jpg" srcset="assets/gallery-6-300.jpg 300w, assets/gallery-6-800.jpg 800w, assets/gallery-6-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Equipo creativo" loading="lazy">
       </a>
     </div>
 
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+      <div class="modal-box">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+
   </main>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
   <script src="main.js"></script>
 </body>

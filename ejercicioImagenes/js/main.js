@@ -298,6 +298,112 @@
     });
   })();
 
+  // ─── 9. Parallax Effects ─────────────────────────────
+
+  // 9.1 Hero content parallax (subtle upward drift)
+  (function () {
+    var heroContent = document.querySelector('.hero__content');
+    if (!heroContent) return;
+    gsap.fromTo(heroContent,
+      { y: 0 },
+      {
+        y: -80,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8
+        }
+      }
+    );
+  })();
+
+  // 9.2 Project cards alternating parallax
+  (function () {
+    var cards = document.querySelectorAll('.project-card');
+    if (!cards.length) return;
+    cards.forEach(function (card, i) {
+      var direction = i % 2 === 0 ? 1 : -1;
+      gsap.fromTo(card,
+        { y: 0 },
+        {
+          y: direction * 60,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1
+          }
+        }
+      );
+    });
+  })();
+
+  // 9.3 Service cards subtle parallax
+  (function () {
+    var cards = document.querySelectorAll('.service-card');
+    if (!cards.length) return;
+    cards.forEach(function (card, i) {
+      var direction = i % 2 === 0 ? 1 : -1;
+      gsap.fromTo(card,
+        { y: 0 },
+        {
+          y: direction * 40,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.services__grid',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1
+          }
+        }
+      );
+    });
+  })();
+
+  // 9.4 Palette swatches parallax
+  (function () {
+    var swatches = document.querySelectorAll('.palette__swatch');
+    if (!swatches.length) return;
+    swatches.forEach(function (swatch, i) {
+      var direction = i % 2 === 0 ? 1 : -1;
+      gsap.fromTo(swatch,
+        { y: 0 },
+        {
+          y: direction * 30,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.palette',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1
+          }
+        }
+      );
+    });
+  })();
+
+  // 9.5 Contact form subtle parallax
+  (function () {
+    var form = document.querySelector('.contact__form');
+    if (!form) return;
+    gsap.fromTo(form,
+      { y: 0 },
+      {
+        y: 30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.contact',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1
+        }
+      }
+    );
+  })();
+
 })();
 
 // ─── Fancybox ──────────────────────────────────────

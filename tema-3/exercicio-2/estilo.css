@@ -1,0 +1,16 @@
+body {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+heder {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+heder h1 {
+    font-size: 72px;
+}
