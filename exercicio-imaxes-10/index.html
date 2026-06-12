@@ -23,151 +23,169 @@
 </head>
 
 <body class="js-loading">
+    <a href="#main" class="skip-link">Ir ao contido principal</a>
     <header>
 
         <!-- Nav -->
-        <nav class="nav">
+        <nav class="nav" aria-label="Navegación principal">
             <div class="nav-inner">
-                <a href="#" class="nav-logo"><img src="assets/logo.png" alt="Nordic Studio" /></a>
+                <a href="#" class="nav-logo"><img src="assets/logo.png" alt="Nordic Studio" width="256"
+                        height="256" /></a>
                 <ul class="nav-links">
-                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#" class="active" aria-current="page">Inicio</a></li>
                     <li><a href="#descubrenos">Descubrénos</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
-                <button class="nav-toggle" aria-label="Menú">☰</button>
+                <button class="nav-toggle" aria-label="Menú" aria-expanded="false">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
             </div>
         </nav>
     </header>
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <p class="hero-label">Estudo creativo</p>
-                <h1>Nordic Studio</h1>
-                <p class="hero-sub">Deseño dixital minimalista con alma escandinava</p>
-                <a href="#proxectos" class="btn">Ver proxectos</a>
+    <main id="main">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <p class="hero-label">Estudo creativo</p>
+                    <h1>Nordic Studio</h1>
+                    <p class="hero-sub">Deseño dixital minimalista con alma escandinava</p>
+                    <a href="#proxectos" class="btn">Ver proxectos</a>
+                </div>
             </div>
-        </div>
-        <img src="assets/portada.avif" alt="Nordic Studio Hero" class="hero-bg" loading="lazy" />
-    </section>
+            <img src="assets/portada.avif" alt="Nordic Studio Hero" class="hero-bg" loading="lazy" width="1920"
+                height="1080" />
+        </section>
 
-    <!-- Proxectos -->
-    <section id="proxectos" class="section">
-        <div class="container">
-            <h2 class="section-title">Proxectos</h2>
-            <p class="section-desc">Unha selección dos nosos traballos máis recentes</p>
-            <div class="gallery">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="assets/interior.webp"
-                            alt="Interior luminoso con mobles nórdicos — identidade visual para marca de moda"
-                            loading="lazy" />
+        <!-- Proxectos -->
+        <section id="proxectos" class="section">
+            <div class="container">
+                <h2 class="section-title">Proxectos</h2>
+                <p class="section-desc">Unha selección dos nosos traballos máis recentes</p>
+                <div class="gallery">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="assets/interior.webp"
+                                alt="Interior luminoso con mobles nórdicos — identidade visual para marca de moda"
+                                loading="lazy" width="400" height="400" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Identidade visual</h3>
+                            <p>Branding minimalista para marca de moda nórdica</p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h3>Identidade visual</h3>
-                        <p>Branding minimalista para marca de moda nórdica</p>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="assets/OIP.webp"
+                                alt="Mockup da interface de usuario da app de benestar con tons suaves" loading="lazy"
+                                width="400" height="400" />
+                        </div>
+                        <div class="card-body">
+                            <h3>App de benestar</h3>
+                            <p>Interface de usuario con enfoque calmado</p>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="assets/OIP.webp"
-                            alt="Mockup da interface de usuario da app de benestar con tons suaves" loading="lazy" />
-                    </div>
-                    <div class="card-body">
-                        <h3>App de benestar</h3>
-                        <p>Interface de usuario con enfoque calmado</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="assets/interior2.webp" alt="Maqueta de web corporativa para estudio de arquitectura"
-                            loading="lazy" />
-                    </div>
-                    <div class="card-body">
-                        <h3>Web corporativa</h3>
-                        <p>Deseño web para estudio de arquitectura</p>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="assets/interior2.webp"
+                                alt="Maqueta de web corporativa para estudio de arquitectura" loading="lazy" width="400"
+                                height="400" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Web corporativa</h3>
+                            <p>Deseño web para estudio de arquitectura</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Descubrénos -->
-    <section id="descubrenos" class="section">
-        <div class="container">
-            <h2 class="section-title">Descubrénos</h2>
-            <p class="section-desc">Somos un estudio de deseño dixital con base en Gotemburgo. Combinamos a tradición
-                escandinava coa innovación tecnolóxica para crear experiencias dixitais auténticas.</p>
-            <div class="about-grid">
-                <div class="about-item">
-                    <h3>Deseño</h3>
-                    <p>Creamos identidades visuais e interfaces que contan historias.</p>
-                </div>
-                <div class="about-item">
-                    <h3>Tecnoloxía</h3>
-                    <p>Desenvolvemos solucións dixitais robustas e accesibles.</p>
-                </div>
-                <div class="about-item">
-                    <h3>Estratexia</h3>
-                    <p>Axudamos a marcas a atopar a súa voz no mundo dixital.</p>
+        <!-- Descubrénos -->
+        <section id="descubrenos" class="section">
+            <div class="container">
+                <h2 class="section-title">Descubrénos</h2>
+                <p class="section-desc">Somos un estudio de deseño dixital con base en Gotemburgo. Combinamos a
+                    tradición
+                    escandinava coa innovación tecnolóxica para crear experiencias dixitais auténticas.</p>
+                <div class="about-grid">
+                    <div class="about-item">
+                        <h3>Deseño</h3>
+                        <p>Creamos identidades visuais e interfaces que contan historias.</p>
+                    </div>
+                    <div class="about-item">
+                        <h3>Tecnoloxía</h3>
+                        <p>Desenvolvemos solucións dixitais robustas e accesibles.</p>
+                    </div>
+                    <div class="about-item">
+                        <h3>Estratexia</h3>
+                        <p>Axudamos a marcas a atopar a súa voz no mundo dixital.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Banner Servizos -->
-    <section class="banner-section">
-        <div class="banner-overlay">
-            <div class="banner-content">
-                <h2>Servizos</h2>
-                <p>Deseño de marca, interfaces, prototipado e estratexia dixital</p>
-                <a href="#contacto" class="btn btn-light">Falemos</a>
-            </div>
-        </div>
-        <img src="assets/banner.png" alt="Servizos Nordic Studio" class="banner-bg" loading="lazy" />
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <p class="section-desc">Estamos en Estocolmo, pero traballamos para todo o mundo</p>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div>
-                        <p class="contact-label">Email</p>
-                        <p><a href="mailto:ola@nordicstudio.se"
-                                style="color:inherit;text-decoration:underline">ola@nordicstudio.se</a></p>
-                    </div>
-                    <div>
-                        <p class="contact-label">Teléfono</p>
-                        <p><a href="tel:+4681234567" style="color:inherit;text-decoration:underline">+46 8 123 45 67</a>
-                        </p>
-                    </div>
-                    <div>
-                        <p class="contact-label">Enderezo</p>
-                        <p>Västra Hamngatan 12, 411 17 Göteborg</p>
-                    </div>
+        <!-- Banner Servizos -->
+        <section class="banner-section">
+            <div class="banner-overlay">
+                <div class="banner-content">
+                    <h2>Servizos</h2>
+                    <p>Deseño de marca, interfaces, prototipado e estratexia dixital</p>
+                    <a href="#contacto" class="btn btn-light">Falemos</a>
                 </div>
-                <form class="contact-form" action="https://formspree.io/f/xqapqkbr" method="POST" novalidate>
-                    <label for="nome" class="sr-only">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Nome" required pattern="[A-Za-zÀ-ÿ\s'-]{2,50}"
-                        title="Só letras, espazos, apóstrofos e guións (2-50 caracteres)" />
-                    <span class="form-error" id="nome-error" role="alert"></span>
-                    <label for="email" class="sr-only">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email" required
-                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                        title="Introduce un email válido (exemplo: usuario@dominio.com)" />
-                    <span class="form-error" id="email-error" role="alert"></span>
-                    <label for="texto" class="sr-only">Texto</label>
-                    <textarea id="texto" name="texto" placeholder="Texto" rows="5" required minlength="5"
-                        maxlength="2000"></textarea>
-                    <span class="form-error" id="texto-error" role="alert"></span>
-                    <button type="submit" class="btn btn-light">Enviar</button>
-                </form>
             </div>
-        </div>
-    </section>
+            <img src="assets/banner.avif" alt="Servizos Nordic Studio" class="banner-bg" loading="lazy" width="1920"
+                height="500" />
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <p class="section-desc">Estamos en Estocolmo, pero traballamos para todo o mundo</p>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div>
+                            <p class="contact-label">Email</p>
+                            <p><a href="mailto:ola@nordicstudio.se"
+                                    style="color:inherit;text-decoration:underline">ola@nordicstudio.se</a></p>
+                        </div>
+                        <div>
+                            <p class="contact-label">Teléfono</p>
+                            <p><a href="tel:+4681234567" style="color:inherit;text-decoration:underline">+46 8 123 45
+                                    67</a>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="contact-label">Enderezo</p>
+                            <p>Västra Hamngatan 12, 411 17 Göteborg</p>
+                        </div>
+                    </div>
+                    <form class="contact-form" action="https://formspree.io/f/xqapqkbr" method="POST" novalidate>
+                        <label for="nome" class="sr-only">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="Nome" required
+                            pattern="[A-Za-zÀ-ÿ\s'-]{2,50}"
+                            title="Só letras, espazos, apóstrofos e guións (2-50 caracteres)" autocomplete="name" />
+                        <span class="form-error" id="nome-error" role="alert"></span>
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email" required
+                            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                            title="Introduce un email válido (exemplo: usuario@dominio.com)" autocomplete="email" />
+                        <span class="form-error" id="email-error" role="alert"></span>
+                        <label for="texto" class="sr-only">Texto</label>
+                        <textarea id="texto" name="texto" placeholder="Texto" rows="5" required minlength="5"
+                            maxlength="2000" autocomplete="off"></textarea>
+                        <span class="form-error" id="texto-error" role="alert"></span>
+                        <button type="submit" class="btn btn-light">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">

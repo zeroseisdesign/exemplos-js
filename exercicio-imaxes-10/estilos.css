@@ -80,9 +80,13 @@ body {
   display: none;
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
   color: #1A1A1A;
+  padding: 4px;
+}
+
+.nav-toggle svg {
+  display: block;
 }
 
 @media (max-width: 640px) {
@@ -326,7 +330,7 @@ body {
 .banner-content p {
   font-size: 1.05rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 32px;
 }
 
@@ -440,8 +444,8 @@ body {
 /* Footer */
 footer {
   padding: 40px 0;
-  background: #1A1A1A;
-  color: rgba(255, 255, 255, 0.4);
+  background: #f5f2ed;
+  color: #6B6B6B;
   font-size: 0.8125rem;
   font-weight: 300;
   text-align: center;
@@ -459,6 +463,25 @@ footer {
 .js-loaded .card-img img,
 .js-loaded .banner-bg {
   opacity: 1;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  z-index: 200;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: #1A1A1A;
+  color: #fff;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 /* Focus visible */
