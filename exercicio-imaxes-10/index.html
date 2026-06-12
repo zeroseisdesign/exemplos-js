@@ -149,7 +149,7 @@
                         <p>Västra Hamngatan 12, 411 17 Göteborg</p>
                     </div>
                 </div>
-                <form class="contact-form" action="https://formspree.io/f/xqapqkbr" method="POST">
+                <form class="contact-form" action="https://formspree.io/f/xqapqkbr" method="POST" novalidate>
                     <label for="nome" class="sr-only">Nome</label>
                     <input type="text" id="nome" name="nome" placeholder="Nome" required pattern="[A-Za-zÀ-ÿ\s'-]{2,50}"
                         title="Só letras, espazos, apóstrofos e guións (2-50 caracteres)" />
@@ -160,7 +160,7 @@
                         title="Introduce un email válido (exemplo: usuario@dominio.com)" />
                     <span class="form-error" id="email-error" role="alert"></span>
                     <label for="texto" class="sr-only">Texto</label>
-                    <textarea id="texto" name="texto" placeholder="Texto" rows="5" required minlength="10"
+                    <textarea id="texto" name="texto" placeholder="Texto" rows="5" required minlength="5"
                         maxlength="2000"></textarea>
                     <span class="form-error" id="texto-error" role="alert"></span>
                     <button type="submit" class="btn btn-light">Enviar</button>
