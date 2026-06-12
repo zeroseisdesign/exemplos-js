@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Nordic Studio — Estudo de deseño dixital minimalista con alma escandinava. Branding, interfaces e estratexia dixital en Gotemburgo." />
+    <meta property="og:title" content="Nordic Studio — Deseño Dixital Minimalista" />
+    <meta property="og:description"
+        content="Deseño dixital minimalista con alma escandinava. Branding, interfaces e estratexia dixital." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nordicstudio.se" />
+    <meta property="og:image" content="assets/portada.avif" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1A1A'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23F5F2ED' font-family='serif'>N</text></svg>" />
     <title>Nordic Studio — Deseño Dixital Minimalista</title>
     <link rel="stylesheet" href="estilos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,7 +48,7 @@
                 <a href="#proxectos" class="btn">Ver proxectos</a>
             </div>
         </div>
-        <img src="assets/portada.avif" alt="Nordic Studio Hero" class="hero-bg" />
+        <img src="assets/portada.avif" alt="Nordic Studio Hero" class="hero-bg" loading="lazy" />
     </section>
 
     <!-- Proxectos -->
@@ -49,7 +59,9 @@
             <div class="gallery">
                 <div class="card">
                     <div class="card-img">
-                        <img src="assets/interior.webp" alt="interior" />
+                        <img src="assets/interior.webp"
+                            alt="Interior luminoso con mobles nórdicos — identidade visual para marca de moda"
+                            loading="lazy" />
                     </div>
                     <div class="card-body">
                         <h3>Identidade visual</h3>
@@ -58,7 +70,8 @@
                 </div>
                 <div class="card">
                     <div class="card-img">
-                        <img src="assets/OIP.jpg" alt="interior3" />
+                        <img src="assets/OIP.webp"
+                            alt="Mockup da interface de usuario da app de benestar con tons suaves" loading="lazy" />
                     </div>
                     <div class="card-body">
                         <h3>App de benestar</h3>
@@ -67,7 +80,8 @@
                 </div>
                 <div class="card">
                     <div class="card-img">
-                        <img src="assets/interior2.webp" alt="interior2" />
+                        <img src="assets/interior2.webp" alt="Maqueta de web corporativa para estudio de arquitectura"
+                            loading="lazy" />
                     </div>
                     <div class="card-body">
                         <h3>Web corporativa</h3>
@@ -110,7 +124,7 @@
                 <a href="#contacto" class="btn btn-light">Falemos</a>
             </div>
         </div>
-        <img src="assets/banner.png" alt="Servizos Nordic Studio" class="banner-bg" />
+        <img src="assets/banner.png" alt="Servizos Nordic Studio" class="banner-bg" loading="lazy" />
     </section>
 
     <!-- Contacto -->
@@ -122,21 +136,26 @@
                 <div class="contact-info">
                     <div>
                         <p class="contact-label">Email</p>
-                        <p>ola@nordicstudio.se</p>
+                        <p><a href="mailto:ola@nordicstudio.se"
+                                style="color:inherit;text-decoration:underline">ola@nordicstudio.se</a></p>
                     </div>
                     <div>
                         <p class="contact-label">Teléfono</p>
-                        <p>+46 8 123 45 67</p>
+                        <p><a href="tel:+4681234567" style="color:inherit;text-decoration:underline">+46 8 123 45 67</a>
+                        </p>
                     </div>
                     <div>
                         <p class="contact-label">Enderezo</p>
                         <p>Västra Hamngatan 12, 411 17 Göteborg</p>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <input type="text" name="nome" placeholder="Nome" required />
-                    <input type="email" name="email" placeholder="Email" required />
-                    <textarea name="texto" placeholder="Texto" rows="5" required></textarea>
+                <form class="contact-form" action="https://formspree.io/f/xqapqkbr" method="POST">
+                    <label for="nome" class="sr-only">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome" required />
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required />
+                    <label for="texto" class="sr-only">Texto</label>
+                    <textarea id="texto" name="texto" placeholder="Texto" rows="5" required></textarea>
                     <button type="submit" class="btn btn-light">Enviar</button>
                 </form>
             </div>
