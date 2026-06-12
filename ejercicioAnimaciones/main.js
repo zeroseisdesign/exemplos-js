@@ -24,6 +24,32 @@
     }
   });
 
+  // ─── Modal ──────────────────────────────────────
+  var modal = document.getElementById('modal');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalDesc = document.getElementById('modalDesc');
+  var modalClose = document.getElementById('modalClose');
+
+  function openModal(title, desc) {
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+    modal.classList.add('open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+  }
+
+  modalClose.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
   // ─── Cards "Ver máis" ────────────────────────────
   var btns = document.querySelectorAll('.card__btn');
 
@@ -33,11 +59,14 @@
       var card = btn.closest('.card');
       if (!card) return;
 
-      document.querySelectorAll('.card.active').forEach(function (other) {
-        if (other !== card) other.classList.remove('active');
-      });
-
-      card.classList.add('active');
+      var title = card.querySelector('.card__title').textContent;
+      var descs = {
+        'Deseño Gráfico': 'Creamos identidades visuais únicas que contan a historia da túa marca con creatividade e precisión. Desde logotipos ata guías de estilo completas, cada elemento está deseñado para comunicar a esencia do teu negocio.',
+        'Desenvolvemento Web': 'Construímos sitios e aplicacións modernas, responsivas e optimizadas para un rendemento máximo. Empregamos as últimas tecnoloxías para garantir velocidade, accesibilidade e unha experiencia de usuario excepcional.',
+        'Marketing Dixital': 'Estratexias de posicionamento e campañas que conectan coa túa audiencia e generan resultados. SEO, SEM, redes sociais e email marketing para levar a túa marca ao seguinte nivel.',
+        'Fotografía Profesional': 'Sesións de fotografía de produto, espazos e retratos con iluminación natural e estilo minimalista. Cada imaxe está coidadosamente composta para reflectir a calidade e o carácter da túa marca.',
+      };
+      openModal(title, descs[title] || card.querySelector('.card__desc').textContent);
     });
   });
 

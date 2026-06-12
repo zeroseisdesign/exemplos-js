@@ -141,6 +141,96 @@
       transform: scale(1.05);
     }
 
+    /* ─── Modal ─────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: var(--card);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      transform: translateY(30px) scale(0.95);
+      transition: transform 0.35s ease;
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .modal-box h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    .modal-box p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    @media only screen and (max-width: 768px) and (orientation: portrait),
+           only screen and (max-width: 768px) and (orientation: landscape) {
+      .modal-box {
+        width: 95%;
+        padding: 1.5rem;
+        max-height: 90vh;
+      }
+      .modal-box h2 {
+        font-size: 1.1rem;
+      }
+      .modal-box p {
+        font-size: 0.85rem;
+      }
+    }
+
     @media (max-width: 640px) {
       .gallery-section {
         grid-template-columns: 1fr;
@@ -272,6 +362,15 @@
       <a href="assets/gallery-6-1200.jpg" data-fancybox="gallery" class="img-block" data-aos="zoom-in" data-aos-delay="400">
         <img src="assets/gallery-6-800.jpg" srcset="assets/gallery-6-300.jpg 300w, assets/gallery-6-800.jpg 800w, assets/gallery-6-1200.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 33vw, 300px" alt="Equipo creativo" loading="lazy">
       </a>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+      <div class="modal-box">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+      </div>
     </div>
 
   </main>
