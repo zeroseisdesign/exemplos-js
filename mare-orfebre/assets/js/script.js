@@ -1,4 +1,4 @@
-// Navbar scroll effect
+// Efecto de scroll en la barra de navegación
 const navbar = document.querySelector('.navbar-custom');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
@@ -8,7 +8,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Intersection Observer for fade-in animations
+// Observador de intersección para animaciones al hacer scroll
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -19,7 +19,9 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Smooth scroll for nav links (only for same-page anchors)
+// Desplazamiento suave para enlaces internos (solo anclas en la misma página)
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.querySelectorAll('.nav-link').forEach(link => {
     const href = link.getAttribute('href');
     if (href && href.startsWith('#')) {
@@ -27,7 +29,12 @@ document.querySelectorAll('.nav-link').forEach(link => {
             e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                target.scrollIntoView({
+                    behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                    block: 'start'
+                });
+                target.setAttribute('tabindex', '-1');
+                target.focus({ preventScroll: true });
             }
         });
     }

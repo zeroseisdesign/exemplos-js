@@ -1,15 +1,46 @@
+@import "tailwindcss";
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #FFFFFF;
+*:focus-visible {
+    outline: 3px solid #C990CC;
+    outline-offset: 2px;
 }
 
-/* ========== NAVBAR ========== */
+.H2 {
+    TEXT-ALIGN: CENTER;
+    MARGIN-TOP: 20PX;
+    MARGIN-BOTTOM: 20PX;
+    color: #C990CC;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    z-index: 10000;
+    padding: 12px 24px;
+    background: #C990CC;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.1s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #D1D1D6;
+}
+
+/* ========== BARRA DE NAVEGACIÓN ========== */
 .navbar-custom {
     background-color: #C990CC;
     padding: 60px 0 40px;
@@ -25,6 +56,29 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: logoSlide 5s ease-in-out infinite;
+}
+
+@keyframes logoSlide {
+
+    0%,
+    15% {
+        transform: translateX(0);
+    }
+
+    35%,
+    50% {
+        transform: translateX(120px);
+    }
+
+    65%,
+    80% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .logo-img {
@@ -53,7 +107,7 @@ body {
     color: #FFFFFF !important;
 }
 
-/* ========== HAMBURGER MENU ANIMADO ========== */
+/* ========== MENÚ HAMBURGUESA ANIMADO ========== */
 .navbar-toggler {
     border-color: rgba(0, 0, 0, 0.3);
     border-width: 2px;
@@ -91,7 +145,7 @@ body {
     transform: translateY(-7.5px) rotate(-45deg);
 }
 
-/* ========== HERO ========== */
+/* ========== PORTADA ========== */
 .hero-section {
     position: relative;
     width: 100%;
@@ -140,6 +194,7 @@ body {
 .gallery-section {
     background-color: #D1D1D6;
     padding: 0;
+    position: relative;
 }
 
 .gallery-item {
@@ -219,7 +274,7 @@ body {
     margin: 0;
 }
 
-/* ========== FOOTER ========== */
+/* ========== PIE DE PÁGINA ========== */
 .footer {
     background-color: #C990CC;
     padding: 80px 0;
@@ -241,7 +296,7 @@ body {
     transform: translateY(0);
 }
 
-/* ========== RESPONSIVE ========== */
+/* ========== DISEÑO ADAPTATIVO ========== */
 @media (max-width: 992px) {
     .gallery-item {
         height: 300px !important;
@@ -331,4 +386,87 @@ body {
 
 .trans-card:hover {
     transform: translateY(-8px) scale(1.02);
+}
+
+.nav-mobile {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    width: max-content;
+}
+
+.nav-mobile li {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-mobile li:last-child {
+    border-bottom: none;
+}
+
+.nav-mobile.visible {
+    display: block;
+}
+
+.nav-mobile a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .botar {
+        animation: none;
+    }
+
+    .navbar-brand {
+        animation: none;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .trans-card {
+        transition: none;
+    }
+
+    .trans-card:hover {
+        transform: none;
+    }
+
+    .service-card:hover {
+        transform: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    position: absolute;
+    background: black;
+    height: 100%;
+    inset-inline: 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 720;
+    text-align: center;
+    z-index: 1;
+}
+
+@media (max-width: 992px) {
+    .vertical-text {
+        display: none;
+    }
 }
