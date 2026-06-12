@@ -1,0 +1,32 @@
+{
+  "name": "nordic-studio",
+  "version": "1.0.0",
+  "description": "Portfolio website with Nordic design",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "node build-css.js",
+    "build:js": "node build-js.js",
+    "build:images": "node build-images.js",
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:css": "stylelint estilos.css",
+    "lint:js": "eslint script.js",
+    "test": "npm run test:accessibility",
+    "test:accessibility": "node test-accessibility.js"
+  },
+  "devDependencies": {
+    "cssnano": "^6.0.1",
+    "eslint": "^8.57.0",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "stylelint": "^16.2.1",
+    "terser": "^5.31.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "eslint-plugin-prettier": "^5.5.6"
+  }
+}

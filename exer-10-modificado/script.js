@@ -1,10 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
   var form = document.getElementById('form-contacto');
+  if (!form) {
+    console.error('Form element not found');
+    return;
+  }
+
   var nome = document.getElementById('nome');
   var email = document.getElementById('email');
   var telefono = document.getElementById('telefono');
   var texto = document.getElementById('texto');
   var successMsg = document.getElementById('form-success');
+
+  if (!nome || !email || !telefono || !texto || !successMsg) {
+    console.error('Required form elements not found');
+    return;
+  }
 
   var errors = {
     nome: document.getElementById('error-nome'),
@@ -12,6 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
     telefono: document.getElementById('error-telefono'),
     texto: document.getElementById('error-texto')
   };
+
+  if (!errors.nome || !errors.email || !errors.telefono || !errors.texto) {
+    console.error('Error message elements not found');
+    return;
+  }
 
   function clearErrors() {
     Object.keys(errors).forEach(function (key) {
@@ -63,14 +78,27 @@ document.addEventListener('DOMContentLoaded', function () {
     clearErrors();
 
     var valid = true;
-    if (!validateNome()) valid = false;
-    if (!validateEmail()) valid = false;
-    if (!validateTelefono()) valid = false;
-    if (!validateTexto()) valid = false;
+    if (!validateNome()) {
+      valid = false;
+      nome.focus();
+    }
+    if (!validateEmail()) {
+      valid = false;
+      if (!nome.classList.contains('error')) email.focus();
+    }
+    if (!validateTelefono()) {
+      valid = false;
+      if (!nome.classList.contains('error') && !email.classList.contains('error')) telefono.focus();
+    }
+    if (!validateTexto()) {
+      valid = false;
+      if (!nome.classList.contains('error') && !email.classList.contains('error') && !telefono.classList.contains('error')) texto.focus();
+    }
 
     if (valid) {
       successMsg.classList.add('visible');
       form.reset();
+      nome.focus();
     }
   });
 

@@ -399,6 +399,17 @@ body {
   align-self: flex-start;
 }
 
+.form-error {
+  display: none;
+  font-size: 0.8125rem;
+  color: #FF6B6B;
+  margin-top: -8px;
+}
+
+.form-error.visible {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .contact-grid {
     grid-template-columns: 1fr;

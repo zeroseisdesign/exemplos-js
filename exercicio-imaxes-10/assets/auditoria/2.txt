@@ -1,0 +1,53 @@
+ERROS:
+HTML
+
+Liña 134: <a href="#hero" class="nav-logo"> ten hrefs duplicados (aparece dúas veces).
+Liña 134: Camiño SVG sen pechar.
+Liña 134: Falta atributo lang na etiqueta html.
+
+CSS
+
+Sen minificación de CSS.
+Sen variables CSS para consistencia.
+Algúns selectores redundantes.
+
+JS
+
+Sen minificación/bundle de JavaScript.
+Sen optimización de rendemento.
+Sen tratamento de erros para elementos faltantes.
+
+
+RENDEMENTO
+
+Sen lazy loading para imaxes fora de pantalla.
+Sen minificación de CSS/JS.
+Sen división de código.
+Sen orzamentos de rendemento.
+
+ACCESIBILIDADE
+
+Liña 134: Links de navegación duplicados
+Sen xestión adecuada de foco na validación de formularios
+Algúns iconos SVG carecen de títulos descriptivos
+
+
+RECOMENDACIONS:
+
+Corrixir problemas de HTML (index.html:134):
+Eliminar link duplicado de nav-logo.
+Pechar camiño SVG.
+Engadir atributo lang á etiqueta html.
+Engadir lazy loading para imaxes fóra de pantalla.
+Implementar minificación de CSS.
+Engadir xestión de foco para formularios na accesibilidade.
+
+Engadir variables CSS para tokens de deseño.
+Implementar bundling/minificación de JavaScript.
+Engadir monitorización de rendemento.
+Melhorar accesibilidade de SVG con títulos.
+
+Engadir tests automatizados para accesibilidade.
+Implementar orzamentos de rendemento.
+Engadir pipeline de optimización de imaxes.
+Crear checklist de accesibilidade.

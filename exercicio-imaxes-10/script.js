@@ -29,11 +29,82 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.setAttribute('aria-expanded', isOpen);
   });
 
-  // Form submission
+  // Form validation messages
+  const errorMessages = {
+    nome: {
+      valueMissing: 'nome mínimo de 3 caracteres.',
+      patternMismatch: 'Só letras, espazos, apóstrofos e guións (2-50 caracteres).'
+    },
+    email: {
+      valueMissing: 'usuario@dominio.com',
+      typeMismatch: 'Introduce un email válido (exemplo: usuario@dominio.com).',
+      patternMismatch: 'Introduce un email válido (exemplo: usuario@dominio.com).'
+    },
+    texto: {
+      valueMissing: 'mínimo 4 caracteres.',
+      tooShort: 'A mensaxe debe ter polo menos 4 caracteres.',
+      tooLong: 'A mensaxe non pode superar os 2000 caracteres.'
+    }
+  };
+
+  function showError(input, message) {
+    const errorSpan = document.getElementById(input.id + '-error');
+    if (errorSpan) {
+      errorSpan.textContent = message;
+      errorSpan.classList.add('visible');
+    }
+  }
+
+  function clearError(input) {
+    const errorSpan = document.getElementById(input.id + '-error');
+    if (errorSpan) {
+      errorSpan.textContent = '';
+      errorSpan.classList.remove('visible');
+    }
+  }
+
+  function validateField(input) {
+    clearError(input);
+    if (input.validity.valid) return true;
+    const msgs = errorMessages[input.name];
+    if (!msgs) return false;
+    for (const errorType of Object.keys(msgs)) {
+      if (input.validity[errorType]) {
+        showError(input, msgs[errorType]);
+        return false;
+      }
+    }
+    return false;
+  }
+
   const form = document.querySelector('.contact-form');
   if (form) {
+    const inputs = form.querySelectorAll('input, textarea');
+
+    // Live validation on blur and input
+    inputs.forEach((input) => {
+      input.addEventListener('blur', () => validateField(input));
+      input.addEventListener('input', () => {
+        if (input.classList.contains('was-validated')) validateField(input);
+      });
+    });
+
+    // Submission
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      let valid = true;
+
+      inputs.forEach((input) => {
+        input.classList.add('was-validated');
+        if (!validateField(input)) valid = false;
+      });
+
+      if (!valid) {
+        const firstError = form.querySelector('.form-error.visible');
+        if (firstError) firstError.previousElementSibling.focus();
+        return;
+      }
+
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
       btn.textContent = 'Enviando...';
@@ -48,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           btn.textContent = 'Enviado!';
           form.reset();
+          inputs.forEach((input) => { input.classList.remove('was-validated'); clearError(input); });
           setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 3000);
         } else {
           throw new Error('Erro no servidor');
