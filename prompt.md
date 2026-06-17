@@ -114,4 +114,51 @@ Minimalist technology setup featuring a premium laptop, smartphone and wireless 
 
 Contemporary Scandinavian technology office interior, minimalist architecture with clean lines, natural wood, white surfaces and glass elements, elegant collaborative workspace, modern technological atmosphere without visible people, spacious environment, refined architectural details, soft neutral color palette, Scandinavian minimalism, premium corporate photography style, abundant natural daylight through large windows, soft shadows and balanced lighting, highly detailed architectural visualization, realistic materials, clean and sophisticated composition, professional technology company branding aesthetic, ideal for website backgrounds and visual identity assets, photorealistic, ultra high resolution.
 
+#prompt12
+i need another thing in the menu the navigation make happen innner link in the pages, with the animated line in inferior part with a transition soft. The botons a need a hover effect with change color with a gradual expansion using the atribute transform scale() and transition and the card class in the section need have a soft shadow Improve the website with the following requirements:
+
+### Navigation Menu
+
+* Add one additional item to the navigation menu.
+* All menu links must use internal anchors (`href="#section-id"`) that navigate smoothly to the corresponding sections of the page.
+* Implement a hover effect on menu items that displays an animated line underneath the link.
+* The underline should appear with a smooth transition effect.
+
+### Buttons
+
+* Add a hover effect to all buttons.
+* On hover, the button background color should change smoothly.
+* Use `transform: scale()` to create a gradual expansion effect.
+* Apply `transition` properties to ensure smooth animations.
+
+### Cards
+
+* The `.card` elements should have a subtle box shadow by default.
+* On hover:
+
+  * Increase the shadow intensity.
+  * Slightly lift the card using `transform: translateY()`.
+  * Use smooth transitions for all effects.
+
+### Animate.css
+
+* Include the Animate.css library.
+* Apply an entrance animation to the main `<h1>` element.
+* Apply an entrance animation to the hero/principal section when the page loads.
+
+### AOS (Animate On Scroll)
+
+* Include the AOS library.
+* Configure AOS correctly with JavaScript initialization.
+* Add scroll-triggered animations to the cards and other relevant sections.
+* Use different effects such as `fade-up`, `fade-right`, and `zoom-in`.
+* Configure appropriate duration, easing, and offset values for smooth scrolling animations.
+
+### General Requirements
+
+* Maintain clean and semantic HTML structure.
+* Keep the design responsive.
+* Use CSS transitions and transforms for all interactive effects.
+* Ensure that all animations are smooth and visually consistent throughout the page.
+with hover increase the shadow and slightly raise the block using a translateY() and th animation adding animate.css apply a entrance effect in the element h1 and apply too entrance effect in the principal section. The animation must do scroll with aos library make settings in the scroll
 
