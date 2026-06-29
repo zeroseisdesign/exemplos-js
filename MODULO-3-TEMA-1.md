@@ -114,7 +114,7 @@ rmdir proxecto
 Crear ficheiro:
 
 ```cmd
-echo.> index.html
+echo index.html
 ```
 
 ---
