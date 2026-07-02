@@ -14,5 +14,5 @@ heder {
 
 heder h1 {
     font-size: 72px;
-    color: red;
+    color: #ff0000 !important;
 }
