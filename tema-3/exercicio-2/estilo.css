@@ -5,14 +5,14 @@ body {
     color: #333;
 }
 
-heder {
+header {
     background-color: #333;
     color: white;
     padding: 10px;
     text-align: center;
 }
 
-heder h1 {
+header h1 {
     font-size: 72px;
     color: #ff0000 !important;
 }
